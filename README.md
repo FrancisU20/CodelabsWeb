@@ -21,7 +21,8 @@ Landing estática para CodeLabs con App Router, Tailwind 4 y export estático. I
 - `app/(legal)/` — privacidad, tratamiento de datos, términos, desuscripción
 - `public/logos/` — logos de clientes y AWS; favicon e íconos PWA en `public/`
 - `infra/` — AWS CDK v2 para S3 privado, CloudFront, ACM, Route 53 y role OIDC de GitHub Actions
-- `.github/workflows/` — CI y despliegue productivo a AWS
+- `.github/workflows/pipeline.yml` — pipeline único con detección de cambios, quality gates y deploy web
+- `.github/actions/` — acciones compuestas para setup web e infra
 
 ### Configuración
 - `next.config.ts` con `output: "export"` y `images.unoptimized: true`
@@ -33,6 +34,7 @@ Landing estática para CodeLabs con App Router, Tailwind 4 y export estático. I
 - Hosting: S3 privado + CloudFront con Origin Access Control.
 - Dominio: `codelabsecuador.com` y `www.codelabsecuador.com` via Route 53.
 - CI/CD: GitHub Actions con OIDC hacia AWS, sin access keys estáticas.
+- Pipeline: detecta cambios, valida solo las capas afectadas, publica artefacto web y despliega contenido a S3/CloudFront cuando corresponde.
 - Antes de `cdk deploy`, confirmar perfil AWS; para este proyecto el esperado es `codelabs`.
 - Antes de `git push`, confirmar que el remote apunta a `FrancisU20/CodelabsWeb`.
 

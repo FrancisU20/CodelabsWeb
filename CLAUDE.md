@@ -21,7 +21,7 @@ Repositorio personal bajo `~/Documents/CodeLabs/Proyectos/`, por lo tanto:
 - Sitio estatico corporativo con paginas legales.
 - Dominio canonical configurado en metadata: `https://codelabsecuador.com`.
 - Infraestructura AWS CDK v2 en `infra/`.
-- CI/CD con GitHub Actions en `.github/workflows/`.
+- CI/CD con GitHub Actions en `.github/workflows/pipeline.yml`.
 
 ## Memorias de contexto
 

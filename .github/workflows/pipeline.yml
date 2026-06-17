@@ -1,0 +1,326 @@
+##############################################################################
+# Pipeline — CodeLabs Web
+#
+# Flujo unico para PRs, pushes a master y despliegues manuales.
+# El primer stage detecta cambios y decide que validar/desplegar.
+#
+# Stages:
+#   Plan / Detect Changes
+#     ├─ Web / Quality Gate       (solo si cambia app/public/config web)
+#     ├─ Infra / Validate CDK     (solo si cambia infra/pipeline)
+#     └─ Deploy / Static Site     (solo master/manual, solo si cambia web)
+#
+# Docs-only: solo ejecuta Plan + Summary.
+# Infra changes: valida CDK, pero NO ejecuta cdk deploy automaticamente.
+# Web deploy: publica out/ en S3 e invalida CloudFront via OIDC.
+##############################################################################
+
+name: Pipeline
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      deploy_web:
+        description: "Build and deploy the current web artifact"
+        required: true
+        type: boolean
+        default: true
+      reason:
+        description: "Reason for manual run"
+        required: false
+        type: string
+
+concurrency:
+  group: pipeline-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+  actions: read
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  NODE_VERSION: "20.19.6"
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  CDK_DEFAULT_ACCOUNT: "890763499626"
+  CDK_DEFAULT_REGION: "us-east-1"
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}
+  SITE_BUCKET_NAME: ${{ vars.SITE_BUCKET_NAME }}
+
+jobs:
+  changes:
+    name: Plan / Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      web: ${{ steps.flags.outputs.web }}
+      infra: ${{ steps.flags.outputs.infra }}
+      pipeline: ${{ steps.flags.outputs.pipeline }}
+      docs_only: ${{ steps.flags.outputs.docs_only }}
+      validate_web: ${{ steps.flags.outputs.validate_web }}
+      validate_infra: ${{ steps.flags.outputs.validate_infra }}
+      deploy_web: ${{ steps.flags.outputs.deploy_web }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed paths
+        id: flags
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
+            if [ -z "${BASE}" ] || [[ "${BASE}" =~ ^0+$ ]]; then
+              if git rev-parse "${HEAD}^" >/dev/null 2>&1; then
+                BASE="${HEAD}^"
+              else
+                BASE="${HEAD}"
+              fi
+            fi
+          fi
+
+          git diff --name-only "${BASE}" "${HEAD}" | tee /tmp/changed-files.txt
+
+          web=false
+          infra=false
+          pipeline=false
+          docs=false
+          other=false
+
+          while IFS= read -r file; do
+            [ -z "${file}" ] && continue
+            case "${file}" in
+              app/*|public/*|package.json|package-lock.json|next.config.ts|tsconfig.json|postcss.config.mjs|eslint.config.mjs)
+                web=true
+                ;;
+              infra/*)
+                infra=true
+                ;;
+              .github/workflows/*|.github/actions/*)
+                pipeline=true
+                ;;
+              CLAUDE.md|README.md|context/*|docs/*|*.md)
+                docs=true
+                ;;
+              *)
+                other=true
+                ;;
+            esac
+          done < /tmp/changed-files.txt
+
+          validate_web=false
+          validate_infra=false
+          deploy_web=false
+          docs_only=false
+
+          if [ "${web}" = true ] || [ "${pipeline}" = true ] || [ "${other}" = true ]; then
+            validate_web=true
+          fi
+
+          if [ "${infra}" = true ] || [ "${pipeline}" = true ] || [ "${other}" = true ]; then
+            validate_infra=true
+          fi
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.deploy_web }}" = "true" ]; then
+            validate_web=true
+            deploy_web=true
+          elif [ "${{ github.event_name }}" = "push" ] && [ "${{ github.ref }}" = "refs/heads/master" ]; then
+            if [ "${web}" = true ] || [ "${pipeline}" = true ] || [ "${other}" = true ]; then
+              deploy_web=true
+            fi
+          fi
+
+          if [ "${docs}" = true ] && [ "${web}" = false ] && [ "${infra}" = false ] && [ "${pipeline}" = false ] && [ "${other}" = false ]; then
+            docs_only=true
+          fi
+
+          {
+            echo "web=${web}"
+            echo "infra=${infra}"
+            echo "pipeline=${pipeline}"
+            echo "docs_only=${docs_only}"
+            echo "validate_web=${validate_web}"
+            echo "validate_infra=${validate_infra}"
+            echo "deploy_web=${deploy_web}"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Change Plan"
+            echo
+            echo "Base: \`${BASE}\`"
+            echo "Head: \`${HEAD}\`"
+            echo
+            echo "### Changed files"
+            echo '```text'
+            cat /tmp/changed-files.txt
+            echo '```'
+            echo
+            echo "web=${web}"
+            echo "infra=${infra}"
+            echo "pipeline=${pipeline}"
+            echo "docs_only=${docs_only}"
+            echo "validate_web=${validate_web}"
+            echo "validate_infra=${validate_infra}"
+            echo "deploy_web=${deploy_web}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  web-quality:
+    name: Web / Quality Gate
+    runs-on: ubuntu-latest
+    needs: [changes]
+    if: needs.changes.outputs.validate_web == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup web
+        uses: ./.github/actions/setup-web
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Validate export artifact
+        run: |
+          test -f out/index.html
+          test -f out/terminos.html
+          test -f out/privacidad.html
+          test -f out/tratamiento-datos.html
+          test -f out/desuscripcion.html
+
+      - name: Upload web export artifact
+        if: needs.changes.outputs.deploy_web == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-export-${{ github.sha }}
+          path: out
+          if-no-files-found: error
+          retention-days: 7
+
+  infra-validate:
+    name: Infra / Validate CDK
+    runs-on: ubuntu-latest
+    needs: [changes]
+    if: needs.changes.outputs.validate_infra == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup infra
+        uses: ./.github/actions/setup-infra
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Typecheck CDK
+        working-directory: infra
+        run: npm run build
+
+      - name: CDK synth
+        working-directory: infra
+        run: npm run synth -- -c stage=prod --quiet
+
+      - name: Upload CloudFormation template
+        uses: actions/upload-artifact@v4
+        with:
+          name: cfn-prod-${{ github.sha }}
+          path: infra/cdk.out/*.template.json
+          if-no-files-found: error
+          retention-days: 14
+
+  deploy-web:
+    name: Deploy / Static Site
+    runs-on: ubuntu-latest
+    needs: [changes, web-quality, infra-validate]
+    if: |
+      always() &&
+      needs.changes.outputs.deploy_web == 'true' &&
+      needs.web-quality.result == 'success' &&
+      (needs.infra-validate.result == 'success' || needs.infra-validate.result == 'skipped')
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Download web export artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: web-export-${{ github.sha }}
+          path: out
+
+      - name: Validate deployment configuration
+        run: |
+          test -n "${{ vars.AWS_ROLE_TO_ASSUME }}"
+          test -n "$SITE_BUCKET_NAME"
+          test -n "$CLOUDFRONT_DISTRIBUTION_ID"
+          test -f out/index.html
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
+          role-session-name: codelabs-web-${{ github.run_id }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload immutable assets
+        run: |
+          if [ -d out/_next/static ]; then
+            aws s3 sync out/_next/static "s3://$SITE_BUCKET_NAME/_next/static" \
+              --delete \
+              --cache-control "public,max-age=31536000,immutable"
+          fi
+
+      - name: Upload site
+        run: |
+          aws s3 sync out "s3://$SITE_BUCKET_NAME" \
+            --delete \
+            --exclude "_next/static/*" \
+            --cache-control "public,max-age=300,must-revalidate"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
+            --paths "/*"
+
+  summary:
+    name: Pipeline / Summary
+    runs-on: ubuntu-latest
+    needs: [changes, web-quality, infra-validate, deploy-web]
+    if: always()
+    steps:
+      - name: Write summary
+        run: |
+          {
+            echo "## Pipeline Summary"
+            echo
+            echo "- web changed: ${{ needs.changes.outputs.web }}"
+            echo "- infra changed: ${{ needs.changes.outputs.infra }}"
+            echo "- pipeline changed: ${{ needs.changes.outputs.pipeline }}"
+            echo "- docs only: ${{ needs.changes.outputs.docs_only }}"
+            echo "- web quality: ${{ needs.web-quality.result }}"
+            echo "- infra validate: ${{ needs.infra-validate.result }}"
+            echo "- deploy web: ${{ needs.deploy-web.result }}"
+          } >> "$GITHUB_STEP_SUMMARY"

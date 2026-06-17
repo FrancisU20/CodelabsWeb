@@ -1,0 +1,20 @@
+name: Setup Web
+description: Install Node.js and root web dependencies.
+
+inputs:
+  node-version:
+    description: Node.js version to use.
+    default: "20.19.6"
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js ${{ inputs.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: npm
+
+    - name: Install web dependencies
+      shell: bash
+      run: npm ci
