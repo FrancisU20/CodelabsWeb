@@ -1,0 +1,21 @@
+{
+  "name": "@codelabs/web-infra",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --noEmit",
+    "cdk": "cdk",
+    "diff": "cdk diff",
+    "synth": "cdk synth"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.224.0",
+    "constructs": "^10.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.25",
+    "aws-cdk": "^2.1033.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
