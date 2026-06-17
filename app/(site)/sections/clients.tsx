@@ -32,7 +32,6 @@ const Clients = () => {
 
   useEffect(() => {
     // Necesitamos diferir el render hasta el cliente para evitar diferencias de hidratación.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

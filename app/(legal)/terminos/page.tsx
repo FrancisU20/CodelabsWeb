@@ -13,7 +13,7 @@ export default function TerminosPage() {
             Estos términos regulan el uso del sitio codelabsecuador.com y la relación con CodeLabs.
             Al navegar o contactarnos aceptas estas condiciones.
           </p>
-          <p className="text-sm text-black/60">Última actualización: enero 2025</p>
+          <p className="text-sm text-black/60">Última actualización: junio 2026</p>
         </div>
       </section>
 
@@ -22,8 +22,9 @@ export default function TerminosPage() {
           <article className="space-y-3">
             <h2 className="text-xl font-semibold text-black">1. Identidad y contacto</h2>
             <p className="text-sm text-black/80">
-              CodeLabs opera en codelabsecuador.com. Para consultas, soporte o ejercicio de
-              derechos escribe a{" "}
+              CodeLabs opera en codelabsecuador.com. El sitio es administrado por ULLOA TERAN
+              FRANCISCO MATEO, persona natural con identificación 1003368725. Para consultas,
+              soporte o ejercicio de derechos escribe a{" "}
               <a className="font-semibold text-black underline" href="mailto:support@codelabsecuador.com">
                 support@codelabsecuador.com
               </a>{" "}
