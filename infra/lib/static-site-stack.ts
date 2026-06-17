@@ -187,7 +187,10 @@ function handler(event) {
           clientIds: [githubActionsAudience],
         });
 
-    const repositorySubject = `repo:${config.githubOwner}/${config.githubRepository}:ref:refs/heads/${config.githubBranch}`;
+    const repositorySubjects = [
+      `repo:${config.githubOwner}/${config.githubRepository}:ref:refs/heads/${config.githubBranch}`,
+      `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
+    ];
 
     const role = new Role(this, "GitHubActionsDeployRole", {
       assumedBy: new FederatedPrincipal(
@@ -195,7 +198,7 @@ function handler(event) {
         {
           StringEquals: {
             "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": repositorySubject,
+            "token.actions.githubusercontent.com:sub": repositorySubjects,
           },
         },
         "sts:AssumeRoleWithWebIdentity",
