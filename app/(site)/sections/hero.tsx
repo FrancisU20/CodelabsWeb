@@ -1,6 +1,12 @@
 import Link from "next/link";
+import { getDictionary } from "@/app/i18n/dictionary";
+import { getRoutes } from "@/app/i18n/paths";
+import type { Locale } from "@/app/i18n/locale";
 
-const Hero = () => {
+const Hero = ({ locale }: { locale: Locale }) => {
+  const dict = getDictionary(locale).hero;
+  const routes = getRoutes(locale);
+
   return (
     <section
       id="inicio"
@@ -11,53 +17,37 @@ const Hero = () => {
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 md:grid-cols-2">
         <div className="relative z-10 space-y-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs font-semibold text-black/70 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#7B3FE4] to-[#C778FF]" />
-            Estudio premium de software
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#818CF8]" />
+            {dict.badge}
           </div>
           <div className="space-y-4">
             <h1
               id="hero-title"
               className="text-4xl font-semibold leading-tight tracking-tight text-black sm:text-5xl"
             >
-              Software listo para negocios críticos. CodeLabs diseña, construye
-              y opera productos digitales con estándar empresarial.
+              {dict.title}
             </h1>
-            <p className="text-lg text-black/70">
-              Arquitectura, diseño y delivery end-to-end. Un fundador arquitecto
-              senior lidera cada iniciativa para garantizar claridad técnica,
-              control de riesgos y velocidad sostenida.
-            </p>
+            <p className="text-lg text-black/70">{dict.subtitle}</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
-              href="#contacto"
+              href={routes.contacto}
               className="gradient-pill soft-shadow rounded-full px-6 py-3 text-center text-base font-semibold text-white transition-transform duration-200 hover:-translate-y-[2px]"
             >
-              Trabaja con nosotros
+              {dict.ctaPrimary}
             </Link>
             <Link
-              href="#servicios"
+              href={routes.servicios}
               className="rounded-full border border-black/10 px-6 py-3 text-center text-base font-semibold text-black transition duration-200 hover:border-transparent hover:bg-black/5"
             >
-              Ver capacidades
+              {dict.ctaSecondary}
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-4 text-sm text-black/70 sm:w-max sm:grid-cols-2">
-            {[
-              {
-                title: "Arquitectura",
-                detail:
-                  "Clean Architecture, DDD, microservicios y gobernanza técnica",
-              },
-              {
-                title: "Entrega",
-                detail:
-                  "Sistemas críticos en salud, fintech, identidad y nube con SLAs claros",
-              },
-            ].map((item) => (
+            {dict.chips.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-black/5 bg-white px-4 py-3 shadow-sm shadow-purple-500/5"
+                className="rounded-2xl border border-black/5 bg-white px-4 py-3 shadow-sm shadow-indigo-500/5"
               >
                 <p className="text-xs uppercase tracking-wide text-black/50">
                   {item.title}
@@ -68,38 +58,25 @@ const Hero = () => {
           </div>
         </div>
         <div className="relative z-10">
-          <div className="relative overflow-hidden rounded-3xl border border-black/5 bg-gradient-to-br from-[#f4edff] via-white to-[#f8f6ff] p-6 shadow-xl shadow-purple-500/10">
-            <div className="absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#c778ff]/20 blur-3xl" />
-            <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-[#7b3fe4]/20 blur-3xl" />
+          <div className="relative overflow-hidden rounded-3xl border border-black/5 bg-gradient-to-br from-[#eef0fb] via-white to-[#f5f6fd] p-6 shadow-xl shadow-indigo-500/10">
+            <div className="absolute -left-16 -top-16 h-44 w-44 rounded-full bg-[#818cf8]/20 blur-3xl" />
+            <div className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-[#4f46e5]/20 blur-3xl" />
             <div className="relative space-y-6">
               <div className="flex items-center justify-between">
                 <div className="rounded-full bg-white/70 px-4 py-2 text-sm font-semibold text-black/70 shadow-sm">
-                  Arquitectura + Producto
+                  {dict.panelLabel}
                 </div>
                 <span className="rounded-full bg-black/5 px-3 py-1 text-xs font-semibold text-black/60">
-                  Web · Móvil · Nube
+                  {dict.panelTag}
                 </span>
               </div>
               <div className="space-y-3">
-                {[
-                  {
-                    label: "Dirección técnica",
-                    value: "Arquitecto senior asignado en cada entrega.",
-                  },
-                  {
-                    label: "Calidad medible",
-                    value: "Escalabilidad, seguridad y DX desde el día uno.",
-                  },
-                  {
-                    label: "Ejecución completa",
-                    value: "Discovery, UX/UI, frontend, backend y DevOps.",
-                  },
-                ].map((item) => (
+                {dict.panelItems.map((item) => (
                   <div
                     key={item.label}
                     className="flex items-start gap-3 rounded-2xl border border-black/5 bg-white/70 px-4 py-3 text-sm text-black shadow-sm"
                   >
-                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#7B3FE4] to-[#C778FF]" />
+                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-gradient-to-r from-[#4F46E5] to-[#818CF8]" />
                     <div>
                       <p className="font-semibold">{item.label}</p>
                       <p className="text-black/70">{item.value}</p>

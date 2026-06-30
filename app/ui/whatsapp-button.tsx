@@ -1,7 +1,15 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getDictionary } from "@/app/i18n/dictionary";
+import { localeFromPathname } from "@/app/i18n/paths";
 
 const WhatsAppButton = () => {
-  const phone = "0998630405";
+  const pathname = usePathname();
+  const locale = localeFromPathname(pathname);
+  const dict = getDictionary(locale).whatsapp;
+  const phone = "0984522092";
   const waLink = `https://wa.me/593${phone.replace(/\D/g, "").slice(-9)}`;
 
   return (
@@ -9,7 +17,7 @@ const WhatsAppButton = () => {
       href={waLink}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Abrir WhatsApp"
+      aria-label={dict.ariaLabel}
       className="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#25D366] to-[#1ebe57] text-white shadow-lg shadow-green-500/30 transition-transform duration-200 hover:-translate-y-[2px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
     >
       <svg

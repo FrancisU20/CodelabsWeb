@@ -38,10 +38,12 @@ Leer estos archivos segun la capa antes de tocar codigo:
 - Instalar dependencias: `npm ci`
 - Lint: `npm run lint`
 - Build: `npm run build`
+- Previsualizar el export estatico: `npm start` (sirve `out/` con `serve`; requiere haber corrido `npm run build` antes)
 
 Notas:
 
-- `npm run build` usa `next/font` con Google Fonts, por lo que puede requerir red.
+- La tipografia (Geist) esta autohospedada via el paquete `geist`, sin dependencia de red en build.
+- `npm start` NO usa `next start`: el sitio usa `output: "export"`, incompatible con el modo servidor de Next.
 - Antes de cerrar cambios, ejecutar lint y build cuando sea razonable.
 
 ## Git

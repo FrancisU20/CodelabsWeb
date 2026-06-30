@@ -1,5 +1,6 @@
 export const stackItems = [
   "Flutter",
+  "React Native",
   "NestJS",
   "Node.js",
   "Vue.js",

@@ -1,42 +1,38 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import HtmlLangSync from "@/app/ui/html-lang-sync";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 export const metadata: Metadata = {
-  title: "CodeLabs | Estudio de software premium",
+  title: "CodeLabs | Ingeniería de software empresarial",
   description:
-    "CodeLabs diseña, arquitecta y construye software elegante y escalable para empresas que exigen calidad.",
+    "CodeLabs es la empresa de ingeniería de software que diseña, construye y opera productos digitales con estándar de nivel empresarial.",
   metadataBase: new URL("https://codelabsecuador.com"),
   keywords: [
     "CodeLabs",
-    "estudio de software",
+    "ingeniería de software empresarial",
     "arquitectura de software",
     "Next.js",
     "Flutter",
+    "React Native",
     "AWS",
     "Clean Architecture",
     "WordPress empresarial",
   ],
   openGraph: {
-    title: "CodeLabs | Software confiable, arquitectura elegante",
+    title: "CodeLabs | Software que funciona en producción",
     description:
-      "Estudio boutique liderado por un arquitecto senior. Soluciones end-to-end en web, móvil y nube.",
+      "Empresa de ingeniería de software con estándares de nivel empresarial. Soluciones end-to-end en web, móvil y nube.",
     url: "https://codelabsecuador.com",
     siteName: "CodeLabs",
-    locale: "es_MX",
+    locale: "es_EC",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CodeLabs | Software confiable, arquitectura elegante",
+    title: "CodeLabs | Software que funciona en producción",
     description:
-      "Ingeniería premium que entrega valor real. Web, móvil, nube, AWS y WordPress empresarial.",
+      "Ingeniería de software premium con estándar de nivel empresarial. Web, móvil, nube, AWS y WordPress empresarial.",
   },
   icons: {
     icon: [
@@ -62,7 +58,8 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body className={`${spaceGrotesk.variable} antialiased bg-white text-black`}>
+      <body className={`${GeistSans.variable} antialiased bg-white text-black`}>
+        <HtmlLangSync />
         {children}
       </body>
     </html>

@@ -1,35 +1,28 @@
-import About from "./sections/about";
-import AwsShowcase from "./sections/aws-showcase";
-import Capabilities from "./sections/capabilities";
-import CaseStudies from "./sections/case-studies";
+import type { Metadata } from "next";
+import CapabilitiesTeaser from "./sections/capabilities-teaser";
+import CaseStudiesTeaser from "./sections/case-studies-teaser";
 import Clients from "./sections/clients";
-import Contact from "./sections/contact";
-import ContactInfo from "./sections/contact-info";
-import Footer from "./sections/footer";
+import CtaBanner from "./sections/cta-banner";
 import Hero from "./sections/hero";
-import Navbar from "./sections/navbar";
-import TechStack from "./sections/tech-stack";
 import TrustBar from "./sections/trust-bar";
-import WhatsAppButton from "../ui/whatsapp-button";
+import ValueProp from "./sections/value-prop";
+
+export const metadata: Metadata = {
+  alternates: {
+    languages: { es: "https://codelabsecuador.com/", en: "https://codelabsecuador.com/en" },
+  },
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-black">
-      <Navbar />
-      <main className="relative">
-        <Hero />
-        <TrustBar />
-        <Clients />
-        <Capabilities />
-        <AwsShowcase />
-        <About />
-        <CaseStudies />
-        <TechStack />
-        <ContactInfo />
-        <Contact />
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+    <>
+      <Hero locale="es" />
+      <TrustBar locale="es" />
+      <ValueProp locale="es" />
+      <Clients locale="es" />
+      <CapabilitiesTeaser locale="es" />
+      <CaseStudiesTeaser locale="es" />
+      <CtaBanner locale="es" />
+    </>
   );
 }

@@ -2,17 +2,18 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
-  --muted: #161616;
-  --primary-start: #7b3fe4;
-  --primary-end: #c778ff;
-  --surface: #f8f6ff;
+  --foreground: #0e0e10;
+  --muted: #1a1a1a;
+  --primary: #4f46e5;
+  --primary-start: #4f46e5;
+  --primary-end: #6d5fef;
+  --surface: #eef0fb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-display), system-ui, -apple-system, BlinkMacSystemFont,
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
 }
 
@@ -33,7 +34,7 @@ a {
 }
 
 ::selection {
-  background: #efe4ff;
+  background: var(--surface);
 }
 
 .gradient-pill {
@@ -41,7 +42,7 @@ a {
 }
 
 .soft-shadow {
-  box-shadow: 0 25px 60px rgba(55, 26, 116, 0.12);
+  box-shadow: 0 25px 60px rgba(49, 46, 129, 0.14);
 }
 
 .card-border {
@@ -51,7 +52,7 @@ a {
 .fade-glow {
   background: radial-gradient(
     circle at 20% 20%,
-    rgba(123, 63, 228, 0.08),
+    rgba(79, 70, 229, 0.08),
     transparent 40%
   );
 }
