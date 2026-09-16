@@ -592,20 +592,26 @@ pre.rouge .gs {
 <h2 id="_1_contexto_y_metadatos">1. Contexto y metadatos</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Repositorio: <code>CodelabsWeb</code>. Fuente: <code>origin/master</code> refrescado (worktree detached limpio). SHA: <code>33d6b5cbe9d210fd7493e43802d36f48ba4c66df</code>.</p>
+<p>Repositorio: <code>CodelabsWeb</code>. Fuente: <code>origin/master</code> refrescado (worktree detached limpio). SHA: <code>51c55321ef036b5896a219709ab88539fdf76c04</code>.</p>
+</div>
+<div class="paragraph">
+<p>La rama remota <code>origin/master</code>, después de <code>git fetch origin master</code>, es la fuente de verdad del código y de los cambios integrados. El estado y los diffs de Git identifican el trabajo local pendiente; los planes de continuidad y la memoria de las herramientas de IA son auxiliares.</p>
+</div>
+<div class="paragraph">
+<p>La documentación formal es canónica en <code>Documentación/</code> y se genera desde un worktree detached limpio del master remoto. <code>provenance.json</code> registra el commit fuente: el commit que publica los documentos es posterior al commit documentado.</p>
 </div>
 <div class="paragraph">
 <p>Tecnología: Next.js/React/TypeScript; versiones declaradas en <code>package.json</code>: <code>next</code> <code>^15.5.9</code>, <code>react</code> <code>^18.3.1</code>, <code>react-dom</code> <code>^18.3.1</code>, <code>typescript</code> <code>^5</code>, <code>tailwindcss</code> <code>^4</code> (vía <code>@tailwindcss/postcss</code>), <code>eslint</code> <code>^9</code> con <code>eslint-config-next</code> <code>15.5.9</code>. Fuente de fuente tipográfica: <code>geist</code> <code>^1.7.2</code>. Node fijado con Volta: <code>20.19.6</code>. La infraestructura AWS CDK vive en <code>infra/</code> como paquete independiente (<code>@codelabs/web-infra</code>, <code>aws-cdk-lib</code> <code>^2.224.0</code>, <code>constructs</code> <code>^10.4.3</code>, <code>aws-cdk</code> <code>^2.1033.0</code>).</p>
 </div>
 <div class="paragraph">
-<p>Estructura inmediata del repositorio (raíz del worktree):
-<code>app/</code>, <code>context/</code>, <code>infra/</code>, <code>public/</code>, <code>social/</code>, <code>.github/</code>, <code>CLAUDE.md</code>, <code>README.md</code>, <code>next.config.ts</code>, <code>package.json</code>, <code>package-lock.json</code>, <code>tsconfig.json</code>, <code>eslint.config.mjs</code>, <code>postcss.config.mjs</code>, <code>.gitignore</code>.</p>
+<p>Estructura versionada inmediata del repositorio (raíz del worktree):
+<code>app/</code>, <code>infra/</code>, <code>public/</code>, <code>social/</code>, <code>.github/</code>, <code>Documentación/</code>, <code>README.md</code>, <code>next.config.ts</code>, <code>package.json</code>, <code>package-lock.json</code>, <code>tsconfig.json</code>, <code>eslint.config.mjs</code>, <code>postcss.config.mjs</code>, <code>.gitignore</code>, <code>.gitattributes</code>.</p>
 </div>
 <div class="paragraph">
 <p>Inventario de código fuente TypeScript/TSX (excluyendo <code>node_modules</code> y <code>infra/cdk.out</code>): 48 archivos — 44 bajo <code>app/</code>, 3 bajo <code>infra/</code> (<code>bin/codelabs-web.ts</code>, <code>lib/config.ts</code>, <code>lib/static-site-stack.ts</code>) y 1 en la raíz (<code>next.config.ts</code>). No se encontraron archivos de prueba (<code><strong>.test.</strong></code>, <code><strong>.spec.</strong></code>, <code><em>tests</em>/</code>) en ninguna ruta del repositorio.</p>
 </div>
 <div class="paragraph">
-<p><code>context/</code> (memoria de desarrollo interna del propio repositorio: <code>DEPLOYMENT.md</code>, <code>FRONTEND.md</code>, <code>IMPLEMENTATION_PLAN.md</code>, <code>INFRA.md</code>, <code>LEGAL.md</code>) es memoria operativa del proyecto, no la fuente canónica de esta documentación formal; el contenido de este documento fue verificado directamente contra el código del worktree.</p>
+<p>Contexto multi-IA, según la política versionada en <code>README.md</code>: el repositorio adopta el protocolo global 2.2; Codex carga <code>AGENTS.md</code> y Claude Code carga <code>CLAUDE.md</code>, cuyo único contenido es <code>@AGENTS.md</code>. Las instrucciones globales de ambas herramientas mantienen el mismo protocolo. <code>AGENTS.md</code>, <code>CLAUDE.md</code> y <code>docs/exec-plans/</code> son estado local excluido mediante el archivo privado <code>info/exclude</code>; no se versionan ni se añaden a <code>.gitignore</code>. El contexto local debe instalarse en cada checkout donde se trabaje.</p>
 </div>
 </div>
 </div>
@@ -797,7 +803,7 @@ pre.rouge .gs {
 <p>Variables de entorno/configuración leídas por el código (solo nombres, sin valores): <code>CDK_DEFAULT_ACCOUNT</code>, <code>CDK_DEFAULT_REGION</code>/región fija <code>us-east-1</code> (<code>infra/lib/config.ts:20-21</code>), <code>GITHUB_OIDC_PROVIDER_ARN</code> (override opcional, <code>infra/lib/config.ts:29-33</code>). El perfil de AWS local esperado para operaciones manuales de CDK es <code>codelabs</code> (documentado en <code>README.md</code> e <code>infra/README.md</code>, no forzado por código).</p>
 </div>
 <div class="paragraph">
-<p>Esta tarea fue exclusivamente de documentación: no se ejecutó <code>npm install</code>/<code>build</code>/<code>test</code>, no se modificó ningún pipeline, secreto, variable de repositorio ni aplicación desplegada, y no se realizaron cambios de código en ningún checkout del repositorio.</p>
+<p>La generación documental parte del commit remoto identificado en <code>provenance.json</code> y solo actualiza fuentes y derivados de <code>Documentación/</code>. Los controles de publicación de la aplicación siguen registrados en el pipeline; generar documentación no acredita por sí mismo una ejecución de esos controles ni un despliegue.</p>
 </div>
 </div>
 </div>
@@ -822,7 +828,7 @@ pre.rouge .gs {
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deuda técnica</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Datos de contacto (teléfono <code>0984522092</code> y correo <code>info@codelabsecuador.com</code>) duplicados como literales en al menos 9 ubicaciones distintas (componentes, diccionario i18n y páginas legales) sin una única fuente de verdad, pese a que <code>README.md</code> indica ajustar estos datos únicamente en <code>footer.tsx</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Datos de contacto (teléfono <code>0984522092</code> y correo <code>info@codelabsecuador.com</code>) duplicados como literales en al menos 9 ubicaciones distintas (componentes, diccionario i18n y páginas legales) sin una única fuente de verdad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>app/ui/whatsapp-button.tsx</code>; <code>app/(site)/sections/contact.tsx</code>; <code>app/(site)/sections/contact-info.tsx</code>; <code>app/i18n/dictionary.ts</code>; <code>app/(legal)/privacidad/page.tsx</code>; <code>app/(legal)/terminos/page.tsx</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">whatsapp-button.tsx:12; contact.tsx:14; contact-info.tsx:79; dictionary.ts:143,310,368,535; privacidad/page.tsx:191; terminos/page.tsx:37,205</p></td>
 </tr>
@@ -852,7 +858,7 @@ pre.rouge .gs {
 <h2 id="_anexo_evidencia_técnica">Anexo — Evidencia técnica</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Fuente de toda la evidencia de este anexo: worktree detached de <code>origin/master</code> en <code>33d6b5cbe9d210fd7493e43802d36f48ba4c66df</code>.</p>
+<p>Fuente de toda la evidencia de este anexo: worktree detached de <code>origin/master</code> en <code>51c55321ef036b5896a219709ab88539fdf76c04</code>.</p>
 </div>
 <div class="sect2">
 <h3 id="_dependencias_declaradas">Dependencias declaradas</h3>
@@ -1113,7 +1119,10 @@ pre.rouge .gs {
 </ol>
 </div>
 <div class="paragraph">
-<p>Este flujo implica que un cambio puramente documental (<code>docs_only == 'true'</code>, es decir, solo toca <code>CLAUDE.md</code>, <code>README.md</code>, <code>context/<strong></code> o <code></strong>.md</code>) no dispara ni <code>web-quality</code> ni <code>infra-validate</code> ni <code>deploy-web</code>: solo corren <code>changes</code> y <code>summary</code>.</p>
+<p>El detector solicita rutas literales a Git mediante <code>git -c core.quotePath=false diff --name-only</code> (línea 101), lo que permite reconocer el nombre acentuado <code>Documentación/</code>. Clasifica como documentación <code>AGENTS.md</code>, <code>CLAUDE.md</code>, <code>README.md</code>, <code>docs/exec-plans/<strong></code>, <code>Documentación/</strong></code> y <code>*.md</code> (línea 121). Las categorías previas mantienen prioridad: por ejemplo, <code>infra/README.md</code> se clasifica como infraestructura.</p>
+</div>
+<div class="paragraph">
+<p>En push y pull request, un cambio puramente documental ejecuta <code>changes</code> y <code>summary</code> sin activar los gates de la aplicación ni su despliegue. Una ejecución manual con <code>deploy_web=true</code> solicita explícitamente build y publicación incluso cuando el rango de cambios es documental (líneas 143-145). Los cambios mixtos activan los controles de las categorías afectadas.</p>
 </div>
 </div>
 </div>
@@ -1121,7 +1130,6 @@ pre.rouge .gs {
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-09-15 21:47:29 -0500
 </div>
 </div>
 </body>

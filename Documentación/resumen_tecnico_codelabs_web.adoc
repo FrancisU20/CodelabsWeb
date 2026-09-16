@@ -6,16 +6,20 @@
 
 == 1. Contexto y metadatos
 
-Repositorio: `CodelabsWeb`. Fuente: `origin/master` refrescado (worktree detached limpio). SHA: `33d6b5cbe9d210fd7493e43802d36f48ba4c66df`.
+Repositorio: `CodelabsWeb`. Fuente: `origin/master` refrescado (worktree detached limpio). SHA: `51c55321ef036b5896a219709ab88539fdf76c04`.
+
+La rama remota `origin/master`, después de `git fetch origin master`, es la fuente de verdad del código y de los cambios integrados. El estado y los diffs de Git identifican el trabajo local pendiente; los planes de continuidad y la memoria de las herramientas de IA son auxiliares.
+
+La documentación formal es canónica en `Documentación/` y se genera desde un worktree detached limpio del master remoto. `provenance.json` registra el commit fuente: el commit que publica los documentos es posterior al commit documentado.
 
 Tecnología: Next.js/React/TypeScript; versiones declaradas en `package.json`: `next` `^15.5.9`, `react` `^18.3.1`, `react-dom` `^18.3.1`, `typescript` `^5`, `tailwindcss` `^4` (vía `@tailwindcss/postcss`), `eslint` `^9` con `eslint-config-next` `15.5.9`. Fuente de fuente tipográfica: `geist` `^1.7.2`. Node fijado con Volta: `20.19.6`. La infraestructura AWS CDK vive en `infra/` como paquete independiente (`@codelabs/web-infra`, `aws-cdk-lib` `^2.224.0`, `constructs` `^10.4.3`, `aws-cdk` `^2.1033.0`).
 
-Estructura inmediata del repositorio (raíz del worktree):
-`app/`, `context/`, `infra/`, `public/`, `social/`, `.github/`, `CLAUDE.md`, `README.md`, `next.config.ts`, `package.json`, `package-lock.json`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`, `.gitignore`.
+Estructura versionada inmediata del repositorio (raíz del worktree):
+`app/`, `infra/`, `public/`, `social/`, `.github/`, `Documentación/`, `README.md`, `next.config.ts`, `package.json`, `package-lock.json`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`, `.gitignore`, `.gitattributes`.
 
 Inventario de código fuente TypeScript/TSX (excluyendo `node_modules` y `infra/cdk.out`): 48 archivos — 44 bajo `app/`, 3 bajo `infra/` (`bin/codelabs-web.ts`, `lib/config.ts`, `lib/static-site-stack.ts`) y 1 en la raíz (`next.config.ts`). No se encontraron archivos de prueba (`*.test.*`, `*.spec.*`, `__tests__/`) en ninguna ruta del repositorio.
 
-`context/` (memoria de desarrollo interna del propio repositorio: `DEPLOYMENT.md`, `FRONTEND.md`, `IMPLEMENTATION_PLAN.md`, `INFRA.md`, `LEGAL.md`) es memoria operativa del proyecto, no la fuente canónica de esta documentación formal; el contenido de este documento fue verificado directamente contra el código del worktree.
+Contexto multi-IA, según la política versionada en `README.md`: el repositorio adopta el protocolo global 2.2; Codex carga `AGENTS.md` y Claude Code carga `CLAUDE.md`, cuyo único contenido es `@AGENTS.md`. Las instrucciones globales de ambas herramientas mantienen el mismo protocolo. `AGENTS.md`, `CLAUDE.md` y `docs/exec-plans/` son estado local excluido mediante el archivo privado `info/exclude`; no se versionan ni se añaden a `.gitignore`. El contexto local debe instalarse en cada checkout donde se trabaje.
 
 == 2. Propósito funcional
 
@@ -106,7 +110,7 @@ Pipeline real de publicación (`.github/workflows/pipeline.yml`, con las accione
 
 Variables de entorno/configuración leídas por el código (solo nombres, sin valores): `CDK_DEFAULT_ACCOUNT`, `CDK_DEFAULT_REGION`/región fija `us-east-1` (`infra/lib/config.ts:20-21`), `GITHUB_OIDC_PROVIDER_ARN` (override opcional, `infra/lib/config.ts:29-33`). El perfil de AWS local esperado para operaciones manuales de CDK es `codelabs` (documentado en `README.md` e `infra/README.md`, no forzado por código).
 
-Esta tarea fue exclusivamente de documentación: no se ejecutó `npm install`/`build`/`test`, no se modificó ningún pipeline, secreto, variable de repositorio ni aplicación desplegada, y no se realizaron cambios de código en ningún checkout del repositorio.
+La generación documental parte del commit remoto identificado en `provenance.json` y solo actualiza fuentes y derivados de `Documentación/`. Los controles de publicación de la aplicación siguen registrados en el pipeline; generar documentación no acredita por sí mismo una ejecución de esos controles ni un despliegue.
 
 == 10. Riesgos y deuda
 
@@ -115,7 +119,7 @@ Esta tarea fue exclusivamente de documentación: no se ejecutó `npm install`/`b
 | Clasificación | Hallazgo | Archivo | Línea
 
 | Deuda técnica
-| Datos de contacto (teléfono `0984522092` y correo `info@codelabsecuador.com`) duplicados como literales en al menos 9 ubicaciones distintas (componentes, diccionario i18n y páginas legales) sin una única fuente de verdad, pese a que `README.md` indica ajustar estos datos únicamente en `footer.tsx`
+| Datos de contacto (teléfono `0984522092` y correo `info@codelabsecuador.com`) duplicados como literales en al menos 9 ubicaciones distintas (componentes, diccionario i18n y páginas legales) sin una única fuente de verdad
 | `app/ui/whatsapp-button.tsx`; `app/(site)/sections/contact.tsx`; `app/(site)/sections/contact-info.tsx`; `app/i18n/dictionary.ts`; `app/(legal)/privacidad/page.tsx`; `app/(legal)/terminos/page.tsx`
 | whatsapp-button.tsx:12; contact.tsx:14; contact-info.tsx:79; dictionary.ts:143,310,368,535; privacidad/page.tsx:191; terminos/page.tsx:37,205
 
