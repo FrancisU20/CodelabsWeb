@@ -140,7 +140,7 @@ const es: Dictionary = {
   footer: {
     tagline:
       "Empresa de ingeniería de software que diseña, construye y opera productos digitales con estándar de nivel empresarial.",
-    addressPrefix: "Asunción y Estados Unidos, Quito, Ecuador · Tel: 0984522092 ·",
+    addressPrefix: "Urbanización Cascadas de Chorlaví, Ibarra, Ecuador · Tel: 0984522092 ·",
     navTitle: "Navegación",
     legalTitle: "Legal",
     copyright: (year) => `© ${year} CodeLabs. Todos los derechos reservados.`,
@@ -308,7 +308,7 @@ const es: Dictionary = {
       "Respuesta rápida de nuestro equipo. Elige el canal que prefieras.",
     items: [
       { title: "Teléfonos", value: "0984522092" },
-      { title: "Dirección", value: "Asunción y Estados Unidos. Quito, Ecuador" },
+      { title: "Dirección", value: "Urbanización Cascadas de Chorlaví, Ibarra, Ecuador" },
       { title: "Email", value: "info@codelabsecuador.com" },
     ],
   },
@@ -365,7 +365,7 @@ const en: Dictionary = {
   footer: {
     tagline:
       "A software engineering company that designs, builds, and operates digital products to an enterprise-grade standard.",
-    addressPrefix: "Asunción y Estados Unidos, Quito, Ecuador · Phone: 0984522092 ·",
+    addressPrefix: "Urbanización Cascadas de Chorlaví, Ibarra, Ecuador · Phone: 0984522092 ·",
     navTitle: "Navigation",
     legalTitle: "Legal",
     copyright: (year) => `© ${year} CodeLabs. All rights reserved.`,
@@ -533,7 +533,7 @@ const en: Dictionary = {
       "A fast response from our team. Pick the channel you prefer.",
     items: [
       { title: "Phone", value: "0984522092" },
-      { title: "Address", value: "Asunción y Estados Unidos. Quito, Ecuador" },
+      { title: "Address", value: "Urbanización Cascadas de Chorlaví, Ibarra, Ecuador" },
       { title: "Email", value: "info@codelabsecuador.com" },
     ],
   },
