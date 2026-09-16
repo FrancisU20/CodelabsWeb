@@ -1,0 +1,16 @@
+control,mecanismo,archivo,linea
+TLS minimo en CDN,SecurityPolicyProtocol.TLS_V1_2_2021,infra/lib/static-site-stack.ts,134
+Redireccion forzada a HTTPS,ViewerProtocolPolicy.REDIRECT_TO_HTTPS,infra/lib/static-site-stack.ts,115
+Cabeceras de seguridad HTTP,ResponseHeadersPolicy.SECURITY_HEADERS (politica administrada AWS; sin CSP propia),infra/lib/static-site-stack.ts,114
+Acceso al origen S3 restringido,S3BucketOrigin.withOriginAccessControl,infra/lib/static-site-stack.ts,113
+Bucket S3 sin acceso publico,BlockPublicAccess.BLOCK_ALL,infra/lib/static-site-stack.ts,73
+Cifrado en reposo del bucket,BucketEncryption.S3_MANAGED,infra/lib/static-site-stack.ts,74
+SSL forzado hacia el bucket,enforceSSL: true,infra/lib/static-site-stack.ts,75
+Propiedad de objetos forzada,ObjectOwnership.BUCKET_OWNER_ENFORCED,infra/lib/static-site-stack.ts,76
+Despliegue sin credenciales estaticas,rol IAM asumido via OIDC de GitHub Actions,infra/lib/static-site-stack.ts,179-193
+Alcance del rol de despliegue,condicion sts:sub restringida a rama master y environment production del repo FrancisU20/CodelabsWeb,infra/lib/static-site-stack.ts,190-193
+Permisos minimos del rol de despliegue,solo s3:PutObject/DeleteObject/GetBucketLocation/ListBucket/PutObjectTagging y cloudfront:CreateInvalidation sobre recursos concretos,infra/lib/static-site-stack.ts,210-226
+Autenticacion AWS en CI,OIDC via aws-actions/configure-aws-credentials (sin access keys),.github/workflows/pipeline.yml,280-285
+Permisos minimos del job de deploy,id-token: write unicamente,.github/workflows/pipeline.yml,264-265
+Secretos de despliegue,referenciados solo por nombre de variable de repositorio GitHub (AWS_ROLE_TO_ASSUME/SITE_BUCKET_NAME/CLOUDFRONT_DISTRIBUTION_ID/AWS_REGION),.github/workflows/pipeline.yml,55-61
+Autenticacion/autorizacion de la aplicacion,No aplica: sitio publico sin sesiones ni roles,app/,-

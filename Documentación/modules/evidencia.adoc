@@ -1,0 +1,94 @@
+== Anexo — Evidencia técnica
+
+Fuente de toda la evidencia de este anexo: worktree detached de `origin/master` en `33d6b5cbe9d210fd7493e43802d36f48ba4c66df`.
+
+=== Dependencias declaradas
+
+Aplicación web (`package.json`, raíz):
+
+* Runtime: `next` `^15.5.9`, `react` `^18.3.1`, `react-dom` `^18.3.1`, `geist` `^1.7.2`.
+* Desarrollo: `typescript` `^5`, `tailwindcss` `^4`, `@tailwindcss/postcss` `^4`, `eslint` `^9`, `eslint-config-next` `15.5.9`, `@types/node` `^20`, `@types/react` `^18.3.27`, `@types/react-dom` `^18.3.7`, `serve` `^14.2.6`.
+* Node fijado vía Volta: `20.19.6` (`package.json`, bloque `volta`).
+
+Infraestructura (`infra/package.json`, paquete `@codelabs/web-infra` independiente):
+
+* Runtime: `aws-cdk-lib` `^2.224.0`, `constructs` `^10.4.3`.
+* Desarrollo: `aws-cdk` `^2.1033.0`, `ts-node` `^10.9.2`, `typescript` `^5.9.3`, `@types/node` `^20.19.25`.
+
+Ambos `package.json` son manifiestos separados (`tsconfig.json` de la app excluye explícitamente `infra` en su bloque `exclude`), por lo que la app web y la infraestructura CDK tienen árboles de dependencias y compilación independientes dentro del mismo repositorio.
+
+=== Punto de entrada de la aplicación
+
+`app/layout.tsx` es el layout raíz de Next.js App Router: define metadata SEO/OpenGraph/Twitter (líneas 6-48), registra la fuente `GeistSans` vía `geist/font/sans` (línea 2), fija `<html lang="es">` de forma estática (línea 56) y monta el componente cliente `HtmlLangSync` antes de renderizar `children` (línea 62).
+
+`next.config.ts` configura el modo de export estático:
+
+[source,typescript]
+----
+const nextConfig: NextConfig = {
+  output: "export",
+  images: { unoptimized: true },
+  eslint: { ignoreDuringBuilds: true },
+};
+----
+(`next.config.ts:3-10`). `output: "export"` implica que no hay servidor Next.js en producción — el resultado de `next build` es HTML/CSS/JS estático en `out/`, servido íntegramente por CloudFront/S3. `images.unoptimized: true` es consistente con esa restricción (el optimizador de imágenes de Next.js requiere un servidor). `eslint.ignoreDuringBuilds: true` desacopla el lint del build de Next.js; el pipeline de CI ejecuta `npm run lint` como paso separado y previo al build (`.github/workflows/pipeline.yml:200-204`), por lo que el lint sigue siendo un gate real, solo que no bloquea `next build` en ejecuciones locales.
+
+=== Composición de rutas y componentes
+
+Grupos de rutas de Next.js (paréntesis = no afectan la URL):
+
+* `app/(site)/` — sitio público, con layout propio (`app/(site)/layout.tsx`) que monta `Navbar`, `main` y `Footer` + `WhatsAppButton` flotante.
+** `app/(site)/page.tsx`, `servicios/`, `casos/`, `nosotros/`, `contacto/` — español.
+** `app/(site)/en/page.tsx`, `en/services/`, `en/case-studies/`, `en/about/`, `en/contact/` — inglés, bajo el mismo grupo de rutas y layout.
+* `app/(legal)/` — `privacidad/`, `tratamiento-datos/`, `terminos/`, `desuscripcion/`, sin layout adicional propio.
+
+Secciones reutilizables en `app/(site)/sections/` (17 archivos): `hero.tsx`, `trust-bar.tsx`, `value-prop.tsx`, `clients.tsx`, `capabilities.tsx`, `capabilities-teaser.tsx`, `case-studies.tsx`, `case-studies-teaser.tsx`, `cta-banner.tsx`, `contact.tsx`, `contact-info.tsx`, `navbar.tsx`, `footer.tsx`, `about.tsx`, `aws-showcase.tsx`, `how-we-work.tsx`, `tech-stack.tsx`. Cada página de `(site)` importa un subconjunto de estas secciones y les pasa la prop `locale` (`"es"` o `"en"` según el archivo de página).
+
+Componentes compartidos en `app/ui/`: `logo.tsx` (wordmark SVG con variante clara/oscura, `next/image`), `page-intro.tsx` (encabezado reutilizado por páginas internas), `html-lang-sync.tsx` (sincroniza `<html lang>`), `whatsapp-button.tsx` (botón flotante global).
+
+Datos de contenido estático en `app/data/`: `capabilities.ts`, `case-studies.ts` (estructura `Record<"es"|"en", string>` por campo — ver ejemplo abajo), `clients.ts`, `stack.ts`. No hay llamadas a APIs externas ni CMS: todo el contenido textual vive en estos módulos TypeScript y en `app/i18n/dictionary.ts`.
+
+[source,typescript]
+----
+export type CaseStudy = {
+  id: string;
+  title: Record<"es" | "en", string>;
+  result: Record<"es" | "en", string>;
+  impact: Record<"es" | "en", string>;
+  focus: Record<"es" | "en", string>;
+};
+----
+(`app/data/case-studies.ts:1-7`).
+
+=== Internacionalización propia (sin librería de terceros)
+
+`app/i18n/locale.ts` define el tipo `Locale = "es" | "en"` y el locale por defecto `"es"` (líneas 1-5). `app/i18n/paths.ts` mapea explícitamente cada ruta española a su equivalente en inglés en un arreglo `pathPairs` (líneas 3-9) y expone dos funciones puras:
+
+* `localeFromPathname(pathname)`: determina el locale por prefijo `/en` (líneas 11-12).
+* `getAlternatePath(pathname, target)`: resuelve la ruta equivalente en el locale destino para el selector de idioma (líneas 15-19), usada por `navbar.tsx` para el switch de idioma y por `HtmlLangSync`.
+
+`app/i18n/dictionary.ts` (580 líneas) exporta un tipo `Dictionary` con secciones por área de UI (`nav`, `footer`, `hero`, `trustBar`, `valueProp`, `contact`, `whatsapp`, etc.) y una función `getDictionary(locale)` que devuelve el diccionario completo para ese locale. Los componentes cliente (p. ej. `contact.tsx`, `whatsapp-button.tsx`) llaman `getDictionary(locale)` para obtener sus textos.
+
+=== Infraestructura AWS CDK (`infra/`)
+
+Entry point (`infra/bin/codelabs-web.ts:1-13`): crea la `cdk.App`, lee el contexto `stage` (por defecto `"prod"`) e instancia `StaticSiteStack` con la configuración resuelta por `getEnvironmentConfig(stage)`.
+
+`infra/lib/config.ts` define `StaticSiteConfig` y una única configuración real, `prodConfig` (líneas 16-34): `stackName: "CodelabsWebProdStack"`, región `us-east-1`, dominio `codelabsecuador.com` + alterno `www.codelabsecuador.com`, y los datos del repositorio de GitHub (`githubOwner: "FrancisU20"`, `githubRepository: "CodelabsWeb"`, `githubBranch: "master"`) usados para restringir el rol OIDC. `getEnvironmentConfig` lanza `Error` para cualquier `stage` distinto de `"prod"` (líneas 36-42): no hay ambiente de staging modelado en código.
+
+`infra/lib/static-site-stack.ts` (`StaticSiteStack`, líneas 56-241) compone, en este orden:
+
+. `HostedZone.fromLookup` sobre `hostedZoneDomainName` (línea 62).
+. `Certificate` ACM con validación DNS sobre esa zona, incluyendo el dominio alterno (líneas 66-70).
+. `Bucket` S3 privado: `BLOCK_ALL`, cifrado gestionado por S3, SSL forzado, `BUCKET_OWNER_ENFORCED`, versionado, `RemovalPolicy.RETAIN` (líneas 72-79).
+. `Function` de CloudFront (CloudFront Functions, no Lambda@Edge) que reescribe URLs limpias a `.html` o `index.html` para soportar el export estático de Next.js (líneas 81-99).
+. `Distribution` con esa función asociada al evento `VIEWER_REQUEST`, origen S3 vía Origin Access Control, `ResponseHeadersPolicy.SECURITY_HEADERS`, `CachePolicy.CACHING_OPTIMIZED`, redirección forzada a HTTPS, TLS mínimo 1.2 (2021), HTTP/2 y HTTP/3, páginas de error 403/404 mapeadas a `/404.html` (líneas 101-136).
+. Registros `ARecord`/`AaaaRecord` alias hacia la distribución para cada dominio configurado (líneas 138-153).
+. Rol IAM `GitHubActionsDeployRole` asumible vía OIDC de GitHub Actions, con permisos acotados a subir/borrar objetos en el bucket del sitio e invalidar la distribución CloudFront concreta (método `createGitHubDeployRole`, líneas 174-231).
+
+Salidas (`CfnOutput`, líneas 157-171): URL del sitio, nombre del bucket, ID y dominio de la distribución CloudFront, y ARN del rol de despliegue — estos valores son los que se cargan manualmente como variables de repositorio de GitHub según `infra/README.md`.
+
+=== Patrones notables
+
+* Separación estricta build-time/deploy-time: el export estático (`out/`) se construye una sola vez en el job `web-quality` y se reutiliza como artefacto (`actions/upload-artifact` / `download-artifact`) en el job `deploy-web`, en lugar de reconstruirlo — evita divergencia entre lo validado y lo publicado (`.github/workflows/pipeline.yml:214-221` y `267-271`).
+* Cache-Control diferenciado en el despliegue: los assets versionados de Next.js bajo `_next/static` se suben con `public,max-age=31536000,immutable`, mientras el resto del sitio usa `public,max-age=300,must-revalidate` (`.github/workflows/pipeline.yml:287-300`), coherente con el hashing de archivos que aplica `next build`.
+* Sin llaves de acceso de AWS estáticas en ningún flujo: tanto el pipeline de GitHub Actions como la propia stack CDK están diseñados alrededor de un proveedor OIDC (`infra/lib/static-site-stack.ts:179-193`, `.github/workflows/pipeline.yml:280-285`).

@@ -1,46 +1,56 @@
-## CodeLabs Web (Next.js + Tailwind)
+# CodeLabs Web
 
-Landing estática para CodeLabs con App Router, Tailwind 4 y export estático. Incluye secciones de servicios, clientes, AWS, casos, contacto, políticas legales y botón flotante de WhatsApp.
+Sitio corporativo estático de CodeLabs Ecuador, construido con Next.js, React, TypeScript y Tailwind CSS. El mismo repositorio contiene la infraestructura AWS CDK y el pipeline de publicación.
 
-### Requisitos
-- Node 20.19.6 (Volta fijada en package.json)
-- npm
+## Requisitos
 
-### Scripts
-- `npm run dev` — modo desarrollo
-- `npm run build` — build de producción (export estático habilitado)
-- `npm run start` — serve (no necesario si usas `next export`)
-- `npm run lint` — ESLint
-- `cd infra && npm run synth -- -c stage=prod --profile codelabs` — sintetiza la infraestructura CDK
+- Node.js 20.19.6, fijado mediante Volta.
+- npm.
 
-### Estructura clave
-- `app/(site)/page.tsx` — landing principal
-- `app/(site)/sections/` — secciones (hero, clientes, capacidades, AWS, fundador, casos, stack, contacto-info, contacto, navbar, footer)
-- `app/ui/` — componentes compartidos (logo, whatsapp-button)
-- `app/data/` — datos de clientes, capacidades, casos y stack
-- `app/(legal)/` — privacidad, tratamiento de datos, términos, desuscripción
-- `public/logos/` — logos de clientes y AWS; favicon e íconos PWA en `public/`
-- `infra/` — AWS CDK v2 para S3 privado, CloudFront, ACM, Route 53 y role OIDC de GitHub Actions
-- `.github/workflows/pipeline.yml` — pipeline único con detección de cambios, quality gates y deploy web
-- `.github/actions/` — acciones compuestas para setup web e infra
+## Uso local
 
-### Configuración
-- `next.config.ts` con `output: "export"` y `images.unoptimized: true`
-- Metadatos y dominio apuntan a `https://codelabsecuador.com`
-- Manifest y apple-touch-icon referenciados en `app/layout.tsx`
+```bash
+npm ci
+npm run dev
+npm run lint
+npm run build
+npm start
+```
 
-### Despliegue
-- Infraestructura: AWS CDK en `infra/`, stack `CodelabsWebProdStack`.
-- Hosting: S3 privado + CloudFront con Origin Access Control.
-- Dominio: `codelabsecuador.com` y `www.codelabsecuador.com` via Route 53.
-- CI/CD: GitHub Actions con OIDC hacia AWS, sin access keys estáticas.
-- Pipeline: detecta cambios, valida solo las capas afectadas, publica artefacto web y despliega contenido a S3/CloudFront cuando corresponde.
-- Antes de `cdk deploy`, confirmar perfil AWS; para este proyecto el esperado es `codelabs`.
-- Antes de `git push`, confirmar que el remote apunta a `FrancisU20/CodelabsWeb`.
+`npm start` sirve el export generado en `out/`; requiere ejecutar primero `npm run build`.
 
-### Notas
-- Formulario de contacto abre WhatsApp con los datos capturados.
-- Enlaces legales: `/privacidad`, `/tratamiento-datos`, `/terminos`, `/desuscripcion`.
-- Ajusta emails/teléfono/dirección en `app/(site)/sections/footer.tsx` si cambian.
-- El deploy productivo requiere configurar variables de GitHub con los outputs de CDK:
-  `AWS_ROLE_TO_ASSUME`, `AWS_REGION`, `SITE_BUCKET_NAME`, `CLOUDFRONT_DISTRIBUTION_ID`.
+## Estructura
+
+- `app/`: rutas, layouts, componentes, datos e internacionalización.
+- `public/`: identidad visual, logos, manifest e iconos.
+- `infra/`: aplicación AWS CDK y su guía operativa.
+- `.github/`: workflow y acciones compuestas de CI/CD.
+- `Documentación/`: documentación técnica formal y canónica.
+- `docs/exec-plans/`: planes locales de continuidad para trabajo asistido, excluidos de Git.
+
+## Infraestructura
+
+```bash
+cd infra
+npm ci
+npm run build
+npm run synth -- -c stage=prod --profile codelabs
+```
+
+El despliegue de infraestructura es manual. Antes de ejecutar `cdk deploy`, se deben confirmar perfil, cuenta, región y hosted zone; el perfil local esperado es `codelabs`.
+
+## Documentación
+
+La rama remota `origin/master`, después de `git fetch origin master`, es la fuente de verdad del código y de los cambios integrados. El estado de Git identifica el trabajo local pendiente; los planes de continuidad y la memoria de las herramientas de IA son auxiliares.
+
+La fuente formal es [Documentación/resumen_tecnico_codelabs_web.adoc](Documentación/resumen_tecnico_codelabs_web.adoc); sus derivados publicables son [HTML](Documentación/resumen_tecnico_codelabs_web.html) y [PDF](Documentación/resumen_tecnico_codelabs_web.pdf). El detalle selectivo se mantiene en `Documentación/modules/` y `Documentación/matrices/`.
+
+La documentación formal se genera desde `origin/master` refrescado, en un worktree detached limpio, y se regenera después de integrar cambios. `Documentación/provenance.json` identifica el commit documentado.
+
+Este README es una guía de entrada y no reemplaza la documentación técnica canónica.
+
+## Contexto multi-IA
+
+Este repositorio adopta el protocolo global 2.2. Codex carga `AGENTS.md`; Claude Code carga `CLAUDE.md`, cuyo único contenido es `@AGENTS.md`. Las instrucciones globales de ambas herramientas mantienen el mismo protocolo.
+
+`AGENTS.md`, `CLAUDE.md` y `docs/exec-plans/` son estado local de trabajo y se excluyen mediante el archivo privado de Git `info/exclude`; no se versionan ni se añaden a `.gitignore`.

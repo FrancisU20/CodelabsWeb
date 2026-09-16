@@ -1,0 +1,17 @@
+ruta,locale,archivo,tipo
+/,es,app/(site)/page.tsx,pagina
+/servicios,es,app/(site)/servicios/page.tsx,pagina
+/casos,es,app/(site)/casos/page.tsx,pagina
+/nosotros,es,app/(site)/nosotros/page.tsx,pagina
+/contacto,es,app/(site)/contacto/page.tsx,pagina
+/en,en,app/(site)/en/page.tsx,pagina
+/en/services,en,app/(site)/en/services/page.tsx,pagina
+/en/case-studies,en,app/(site)/en/case-studies/page.tsx,pagina
+/en/about,en,app/(site)/en/about/page.tsx,pagina
+/en/contact,en,app/(site)/en/contact/page.tsx,pagina
+/privacidad,es,app/(legal)/privacidad/page.tsx,pagina legal
+/tratamiento-datos,es,app/(legal)/tratamiento-datos/page.tsx,pagina legal
+/terminos,es,app/(legal)/terminos/page.tsx,pagina legal
+/desuscripcion,es,app/(legal)/desuscripcion/page.tsx,pagina legal
+mailto:info@codelabsecuador.com,-,app/(site)/sections/contact.tsx:52,enlace saliente (sin backend propio)
+https://wa.me/593<telefono>,-,app/ui/whatsapp-button.tsx:13,enlace saliente (sin backend propio)

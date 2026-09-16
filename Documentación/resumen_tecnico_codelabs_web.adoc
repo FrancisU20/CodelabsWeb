@@ -1,0 +1,140 @@
+= Resumen técnico — CodelabsWeb
+:lang: es
+:toc: left
+:sectnums!:
+:source-highlighter: rouge
+
+== 1. Contexto y metadatos
+
+Repositorio: `CodelabsWeb`. Fuente: `origin/master` refrescado (worktree detached limpio). SHA: `33d6b5cbe9d210fd7493e43802d36f48ba4c66df`.
+
+Tecnología: Next.js/React/TypeScript; versiones declaradas en `package.json`: `next` `^15.5.9`, `react` `^18.3.1`, `react-dom` `^18.3.1`, `typescript` `^5`, `tailwindcss` `^4` (vía `@tailwindcss/postcss`), `eslint` `^9` con `eslint-config-next` `15.5.9`. Fuente de fuente tipográfica: `geist` `^1.7.2`. Node fijado con Volta: `20.19.6`. La infraestructura AWS CDK vive en `infra/` como paquete independiente (`@codelabs/web-infra`, `aws-cdk-lib` `^2.224.0`, `constructs` `^10.4.3`, `aws-cdk` `^2.1033.0`).
+
+Estructura inmediata del repositorio (raíz del worktree):
+`app/`, `context/`, `infra/`, `public/`, `social/`, `.github/`, `CLAUDE.md`, `README.md`, `next.config.ts`, `package.json`, `package-lock.json`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`, `.gitignore`.
+
+Inventario de código fuente TypeScript/TSX (excluyendo `node_modules` y `infra/cdk.out`): 48 archivos — 44 bajo `app/`, 3 bajo `infra/` (`bin/codelabs-web.ts`, `lib/config.ts`, `lib/static-site-stack.ts`) y 1 en la raíz (`next.config.ts`). No se encontraron archivos de prueba (`*.test.*`, `*.spec.*`, `__tests__/`) en ninguna ruta del repositorio.
+
+`context/` (memoria de desarrollo interna del propio repositorio: `DEPLOYMENT.md`, `FRONTEND.md`, `IMPLEMENTATION_PLAN.md`, `INFRA.md`, `LEGAL.md`) es memoria operativa del proyecto, no la fuente canónica de esta documentación formal; el contenido de este documento fue verificado directamente contra el código del worktree.
+
+== 2. Propósito funcional
+
+CodelabsWeb es el sitio corporativo estático de CodeLabs Ecuador (empresa de ingeniería de software), construido con Next.js App Router y exportado como HTML/CSS/JS estático (`output: "export"` en `next.config.ts:4`). No expone backend propio ni rutas de API: toda interacción de contacto delega en enlaces `mailto:` y `wa.me` (WhatsApp) resueltos en el cliente.
+
+Rutas reales verificadas en `app/` (ver matriz completa en `matrices/interfaces.csv`):
+
+- Sitio en español (grupo de rutas `(site)`): `/` (`app/(site)/page.tsx`), `/servicios` (`app/(site)/servicios/page.tsx`), `/casos` (`app/(site)/casos/page.tsx`), `/nosotros` (`app/(site)/nosotros/page.tsx`), `/contacto` (`app/(site)/contacto/page.tsx`).
+- Sitio en inglés, bajo el mismo grupo `(site)`: `/en` (`app/(site)/en/page.tsx`), `/en/services`, `/en/case-studies`, `/en/about`, `/en/contact`.
+- Páginas legales (grupo de rutas `(legal)`, en español únicamente): `/privacidad`, `/tratamiento-datos`, `/terminos`, `/desuscripcion`.
+
+El mapeo español↔inglés de rutas equivalentes está codificado explícitamente en `app/i18n/paths.ts:3-9` (`pathPairs`), no mediante enrutamiento de Next.js basado en segmentos `[locale]`.
+
+Alcance verificado: presentación institucional (propuesta de valor, capacidades, casos de éxito, stack tecnológico, clientes), captación de contacto (formulario que abre WhatsApp), y contenido legal (privacidad, tratamiento de datos, términos, desuscripción) conforme a LOPDP (Ecuador). No hay autenticación, panel de administración, ni persistencia de datos de negocio.
+
+== 3. Arquitectura
+
+Next.js App Router con dos grupos de rutas paralelos que comparten el layout raíz:
+
+- `app/layout.tsx` (raíz): define metadata global (título, OpenGraph, Twitter card, íconos, manifest — líneas 6-48), fuente `GeistSans`, monta `<html lang="es">` fijo y el componente cliente `HtmlLangSync` (`app/ui/html-lang-sync.tsx`) que sincroniza `document.documentElement.lang` en cada navegación según la ruta (`app/ui/html-lang-sync.tsx:7-15`).
+- `app/(site)/layout.tsx`: layout del sitio público — envuelve el contenido con `Navbar`, `Footer` y el botón flotante `WhatsAppButton` (líneas 1-18).
+- `app/(legal)/*`: páginas legales autocontenidas, sin layout adicional propio (usan `<main>` directamente, p. ej. `app/(legal)/privacidad/page.tsx`).
+
+Composición por secciones: cada página compone componentes de presentación reutilizables desde `app/(site)/sections/` (17 archivos: hero, trust-bar, value-prop, clients, capabilities/-teaser, case-studies/-teaser, cta-banner, contact/-info, navbar, footer, about, aws-showcase, how-we-work, tech-stack). Los datos de contenido (clientes, capacidades, casos, stack) están en módulos TypeScript planos bajo `app/data/`, no en un CMS ni API externa.
+
+Internacionalización: implementación propia por diccionario (`app/i18n/dictionary.ts`, 580 líneas) indexado por `Locale` (`"es" | "en"`, `app/i18n/locale.ts`), sin librería de i18n de terceros (no usa `next-intl` ni `next-i18next`). Cada componente cliente que necesita texto localizado recibe la prop `locale` y llama `getDictionary(locale)`.
+
+Estilos: Tailwind CSS 4 vía `@import "tailwindcss"` en `app/globals.css:1` y el plugin `@tailwindcss/postcss` (`postcss.config.mjs`); variables de marca (`--primary`, `--surface`, etc.) definidas en `:root` (`app/globals.css:3-11`).
+
+Infraestructura (`infra/`, paquete AWS CDK v2 independiente del build de Next.js): `infra/bin/codelabs-web.ts` instancia una única stack `StaticSiteStack` (`infra/lib/static-site-stack.ts`) usando configuración de `infra/lib/config.ts`, que solo admite el stage `"prod"` (lanza excepción para cualquier otro valor — `infra/lib/config.ts:36-42`). La stack compone: bucket S3 privado, distribución CloudFront con Origin Access Control, certificado ACM en `us-east-1`, registros alias Route 53, una CloudFront Function de reescritura de URLs limpias, y un rol IAM asumible vía OIDC de GitHub Actions. Detalle completo en `modules/evidencia.adoc`.
+
+Publicación: pipeline único en `.github/workflows/pipeline.yml` que construye el export estático (`npm run build` → `out/`) y lo sincroniza a S3 + invalidación de CloudFront cuando corresponde. Flujo completo en `modules/arquitectura_y_flujos.adoc`.
+
+== 4. Interfaces y contratos
+
+Sitio estático sin rutas de API de servidor: no existen archivos `route.ts`/`route.tsx` (Route Handlers) ni directorio `pages/api` en el repositorio. Las únicas "interfaces" son las páginas HTML que Next.js exporta estáticamente y dos integraciones de salida hacia servicios externos, ambas resueltas en el cliente sin backend propio:
+
+- `mailto:info@codelabsecuador.com` (enlaces directos en varias páginas y secciones).
+- `+https://wa.me/593{teléfono}+` (botón flotante `app/ui/whatsapp-button.tsx:13` y envío del formulario de contacto `app/(site)/sections/contact.tsx:14-28`, que arma el mensaje con los campos capturados y lo abre en una pestaña nueva vía `window.open`).
+
+Inventario completo de páginas/rutas con archivo y línea en `matrices/interfaces.csv`.
+
+== 5. Flujos técnicos
+
+Dos flujos representativos, documentados con cita de archivo y línea en `modules/arquitectura_y_flujos.adoc`:
+
+1. **Resolución de locale y navegación bilingüe**: `app/i18n/paths.ts` mapea rutas ES↔EN (`pathPairs`, líneas 3-9) y expone `localeFromPathname` (línea 11-12) y `getAlternatePath` (líneas 15-19); `HtmlLangSync` (`app/ui/html-lang-sync.tsx`) consume `localeFromPathname` en cada cambio de ruta para mantener el atributo `lang` del documento sincronizado, ya que el layout raíz fija `<html lang="es">` de forma estática (`app/layout.tsx:56`).
+2. **Pipeline de CI/CD con despliegue condicional**: `.github/workflows/pipeline.yml` — job `changes` detecta rutas modificadas y decide qué validar/desplegar (líneas 64-184); `web-quality` hace lint + build + valida artefactos del export (líneas 186-221); `infra-validate` hace `tsc --noEmit` + `cdk synth` (líneas 223-251); `deploy-web` solo corre si `deploy_web=true` (push a `master` o `workflow_dispatch`) y ambos gates previos pasaron o se omitieron, sube `_next/static` con cache inmutable y el resto con cache corta, e invalida CloudFront (líneas 253-306).
+
+== 6. Seguridad y contexto de ejecución
+
+No hay autenticación ni autorización en la aplicación: es un sitio público sin sesiones, roles ni datos protegidos.
+
+CloudFront (`infra/lib/static-site-stack.ts`): TLS mínimo `SecurityPolicyProtocol.TLS_V1_2_2021` (línea 134), `ViewerProtocolPolicy.REDIRECT_TO_HTTPS` (línea 115), origen S3 servido únicamente vía Origin Access Control (`S3BucketOrigin.withOriginAccessControl`, línea 113 — el bucket no es accesible públicamente), y `ResponseHeadersPolicy.SECURITY_HEADERS` (línea 114), la política administrada de AWS para cabeceras de seguridad estándar. El código de este repositorio no define una política de cabeceras personalizada ni una Content-Security-Policy explícita; solo referencia la política administrada por nombre.
+
+S3 (`infra/lib/static-site-stack.ts:72-79`): `BlockPublicAccess.BLOCK_ALL`, `BucketEncryption.S3_MANAGED`, `enforceSSL: true`, `ObjectOwnership.BUCKET_OWNER_ENFORCED`, `versioned: true`, `RemovalPolicy.RETAIN` (el bucket no se destruye si se elimina la stack).
+
+Despliegue desde GitHub Actions: sin credenciales estáticas. El rol `GitHubActionsDeployRole` (`infra/lib/static-site-stack.ts:174-231`) se asume vía OIDC (`token.actions.githubusercontent.com`) con condición `StringEquals` que restringe el `sub` a `repo:FrancisU20/CodelabsWeb:ref:refs/heads/master` y `repo:FrancisU20/CodelabsWeb:environment:production` (líneas 190-193), con permisos IAM acotados a `s3:PutObject/DeleteObject/GetBucketLocation/ListBucket/PutObjectTagging` sobre el bucket del sitio y `cloudfront:CreateInvalidation` sobre la distribución concreta (líneas 210-226). El job `deploy-web` del pipeline usa el `environment: production` de GitHub (línea 262) y permisos mínimos `id-token: write` (línea 265).
+
+No se detectaron secretos, claves ni credenciales en el código fuente del worktree. La configuración sensible de despliegue (rol a asumir, nombre del bucket, ID de distribución) se referencia por nombre de variable de repositorio de GitHub (`AWS_ROLE_TO_ASSUME`, `SITE_BUCKET_NAME`, `CLOUDFRONT_DISTRIBUTION_ID`, `AWS_REGION`), nunca por valor, tal como documenta `infra/README.md`.
+
+== 7. Persistencia
+
+No aplica: sitio estático sin persistencia propia. El bucket S3 de `infra/` almacena únicamente los artefactos estáticos del export (`out/`) como hosting, no datos de negocio ni estado de aplicación. El formulario de contacto (`app/(site)/sections/contact.tsx`) no envía datos a ningún backend propio: construye un mensaje y abre un enlace `wa.me` en el cliente; no hay almacenamiento, cola ni base de datos involucrados.
+
+== 8. Catálogo de implementación
+
+Verificado por conteo directo sobre el worktree:
+
+- Páginas (`page.tsx`): 14 — 5 en español + 5 en inglés (grupo `(site)`) + 4 legales (grupo `(legal)`).
+- Componentes de sección (`app/(site)/sections/*.tsx`): 17.
+- Componentes de UI compartidos (`app/ui/*.tsx`): 4 — `html-lang-sync.tsx`, `logo.tsx`, `page-intro.tsx`, `whatsapp-button.tsx`.
+- Módulos de datos estáticos (`app/data/*.ts`): 4 — `capabilities.ts`, `case-studies.ts`, `clients.ts`, `stack.ts`.
+- Módulos de i18n (`app/i18n/*.ts`): 3 — `locale.ts`, `paths.ts`, `dictionary.ts`.
+- Layouts: `app/layout.tsx` (raíz), `app/(site)/layout.tsx`.
+- Infraestructura CDK: 1 entry point (`infra/bin/codelabs-web.ts`), 1 construct de stack (`infra/lib/static-site-stack.ts`), 1 módulo de configuración (`infra/lib/config.ts`).
+- No se encontraron suites de prueba (unitarias, de integración o end-to-end) en el repositorio.
+
+Detalle narrativo por componente/módulo en `modules/evidencia.adoc`; inventario tabular en `matrices/components.csv`.
+
+== 9. Operación y configuración
+
+Comandos declarados en `package.json` (raíz, app web): `npm ci` (setup), `npm run dev` (`next dev`), `npm run build` (`next build`, genera export estático en `out/` por `output: "export"`), `npm run start` (`serve out`), `npm run lint` (`eslint`).
+
+Comandos declarados en `infra/package.json`: `npm run build` (`tsc --noEmit`), `npm run synth` (`cdk synth`), `npm run diff` (`cdk diff`), y `npm run cdk` como passthrough a la CLI de CDK. `infra/cdk.json` fija el entry point (`npx ts-node --prefer-ts-exts bin/codelabs-web.ts`) y activa el contexto `@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021`.
+
+Pipeline real de publicación (`.github/workflows/pipeline.yml`, con las acciones compuestas `.github/actions/setup-web/action.yml` y `.github/actions/setup-infra/action.yml`): se dispara en pull request contra `master`, en push a `master` y por `workflow_dispatch` manual. Detecta cambios por ruta para decidir si valida web, valida infra, o despliega; el despliegue real a S3/CloudFront solo ocurre en push a `master` o dispatch manual con `deploy_web=true`, y requiere el `environment: production` de GitHub configurado con las variables de repositorio `AWS_ROLE_TO_ASSUME`, `AWS_REGION`, `SITE_BUCKET_NAME`, `CLOUDFRONT_DISTRIBUTION_ID` (usadas en `pipeline.yml:57-61` y validadas explícitamente antes de desplegar en la línea 273-278).
+
+Variables de entorno/configuración leídas por el código (solo nombres, sin valores): `CDK_DEFAULT_ACCOUNT`, `CDK_DEFAULT_REGION`/región fija `us-east-1` (`infra/lib/config.ts:20-21`), `GITHUB_OIDC_PROVIDER_ARN` (override opcional, `infra/lib/config.ts:29-33`). El perfil de AWS local esperado para operaciones manuales de CDK es `codelabs` (documentado en `README.md` e `infra/README.md`, no forzado por código).
+
+Esta tarea fue exclusivamente de documentación: no se ejecutó `npm install`/`build`/`test`, no se modificó ningún pipeline, secreto, variable de repositorio ni aplicación desplegada, y no se realizaron cambios de código en ningún checkout del repositorio.
+
+== 10. Riesgos y deuda
+
+[cols="1,1,1,1",options="header"]
+|===
+| Clasificación | Hallazgo | Archivo | Línea
+
+| Deuda técnica
+| Datos de contacto (teléfono `0984522092` y correo `info@codelabsecuador.com`) duplicados como literales en al menos 9 ubicaciones distintas (componentes, diccionario i18n y páginas legales) sin una única fuente de verdad, pese a que `README.md` indica ajustar estos datos únicamente en `footer.tsx`
+| `app/ui/whatsapp-button.tsx`; `app/(site)/sections/contact.tsx`; `app/(site)/sections/contact-info.tsx`; `app/i18n/dictionary.ts`; `app/(legal)/privacidad/page.tsx`; `app/(legal)/terminos/page.tsx`
+| whatsapp-button.tsx:12; contact.tsx:14; contact-info.tsx:79; dictionary.ts:143,310,368,535; privacidad/page.tsx:191; terminos/page.tsx:37,205
+
+| Riesgo / cobertura
+| No existen pruebas automatizadas (unitarias, de integración o end-to-end) en el repositorio; la validación de calidad en CI se limita a lint y a que el build de Next.js no falle
+| Repositorio completo (búsqueda `*.test.*`, `*.spec.*`, `__tests__/` sin resultados)
+| No aplica (ausencia verificada)
+
+| Limitación de diseño
+| La infraestructura CDK solo admite el stage `"prod"`; cualquier otro valor de `stage` lanza una excepción, por lo que no existe un ambiente de staging para validar cambios de infraestructura antes de producción
+| `infra/lib/config.ts`
+| config.ts:36-42
+
+| Observación de seguridad
+| La distribución CloudFront usa la política administrada `ResponseHeadersPolicy.SECURITY_HEADERS` de AWS; el repositorio no define una Content-Security-Policy propia ni una política de cabeceras personalizada
+| `infra/lib/static-site-stack.ts`
+| static-site-stack.ts:114
+|===
+
+include::modules/evidencia.adoc[]
+
+include::modules/arquitectura_y_flujos.adoc[]

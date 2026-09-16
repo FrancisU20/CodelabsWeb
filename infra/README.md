@@ -1,41 +1,37 @@
-# CodeLabs Web Infrastructure
+# Infraestructura de CodeLabs Web
 
-AWS CDK v2 infrastructure for `codelabsecuador.com`.
+Guía operativa de la aplicación AWS CDK v2 que publica `codelabsecuador.com`. La arquitectura y la entrega se documentan en el [resumen técnico](../Documentación/resumen_tecnico_codelabs_web.adoc) y el [anexo de arquitectura y flujos](../Documentación/modules/arquitectura_y_flujos.adoc).
 
-## Architecture
-
-- Private S3 bucket for static files.
-- CloudFront distribution with Origin Access Control.
-- ACM certificate in `us-east-1`.
-- Route 53 alias records for `codelabsecuador.com` and `www.codelabsecuador.com`.
-- GitHub Actions OIDC role with minimum permissions for content deployment.
-
-## Commands
+## Validación
 
 ```bash
 npm ci
 npm run build
-npm run synth -- -c stage=prod
+npm run synth -- -c stage=prod --profile codelabs
 ```
 
-Before deploying, confirm the AWS profile. For this repo the expected profile is `codelabs`.
+## Despliegue manual
+
+Antes de desplegar se deben confirmar el perfil, la cuenta, la región y la hosted zone. El perfil local esperado es `codelabs`.
 
 ```bash
 npm run cdk -- deploy -c stage=prod --profile codelabs
 ```
 
-The stack imports the GitHub OIDC provider from the current CDK account by default. If you need to override it, pass:
+El stack importa por defecto el proveedor OIDC de GitHub desde la cuenta CDK actual. Solo si debe sobrescribirse:
 
 ```bash
 GITHUB_OIDC_PROVIDER_ARN=arn:aws:iam::<account-id>:oidc-provider/token.actions.githubusercontent.com \
   npm run cdk -- deploy -c stage=prod --profile codelabs
 ```
 
-## GitHub repository variables
+## Variables del repositorio GitHub
 
-After the CDK deploy, configure these repository variables from stack outputs:
+Después del deploy CDK, configurar desde los outputs del stack:
 
-- `AWS_ROLE_TO_ASSUME`: `GitHubActionsRoleArn`
-- `AWS_REGION`: `us-east-1`
-- `SITE_BUCKET_NAME`: `SiteBucketName`
-- `CLOUDFRONT_DISTRIBUTION_ID`: `CloudFrontDistributionId`
+- `AWS_ROLE_TO_ASSUME`: `GitHubActionsRoleArn`.
+- `AWS_REGION`: `us-east-1`.
+- `SITE_BUCKET_NAME`: `SiteBucketName`.
+- `CLOUDFRONT_DISTRIBUTION_ID`: `CloudFrontDistributionId`.
+
+No almacenar access keys ni credenciales en el repositorio.

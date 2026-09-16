@@ -1,0 +1,43 @@
+== Anexo — Arquitectura y flujos técnicos
+
+=== Flujo 1: resolución de locale y navegación bilingüe
+
+El sitio no usa el mecanismo de rutas dinámicas `[locale]` de Next.js ni middleware de negociación de idioma; el bilingüismo es un mapeo manual entre dos árboles de páginas (español en la raíz de `(site)`, inglés bajo `(site)/en/`).
+
+1. `app/i18n/paths.ts:3-9` declara el mapa canónico de rutas equivalentes:
++
+[source,typescript]
+----
+const pathPairs: Array<[es: string, en: string]> = [
+  ["/", "/en"],
+  ["/servicios", "/en/services"],
+  ["/casos", "/en/case-studies"],
+  ["/nosotros", "/en/about"],
+  ["/contacto", "/en/contact"],
+];
+----
+2. `localeFromPathname(pathname)` (`app/i18n/paths.ts:11-12`) clasifica cualquier ruta como `"en"` si es `/en` o empieza con `/en/`, y `"es"` en cualquier otro caso. Es la única fuente de verdad para "en qué idioma estoy" fuera de la página misma.
+3. Cada `page.tsx` invoca sus secciones pasando el `locale` correspondiente como literal (p. ej. `app/(site)/page.tsx:19-25` pasa `locale="es"` a `Hero`, `TrustBar`, `ValueProp`, etc.; su contraparte `app/(site)/en/page.tsx` pasa `locale="en"`). El locale no se infiere en tiempo de ejecución dentro de la página: está fijado por en qué archivo vive.
+4. Los componentes cliente que sí necesitan inferir el locale en tiempo de ejecución (porque no reciben la prop, p. ej. el botón flotante global) usan `usePathname()` + `localeFromPathname` directamente: `app/ui/whatsapp-button.tsx:9-11` y `app/ui/html-lang-sync.tsx:8-11`.
+5. `HtmlLangSync` (montado una sola vez en `app/layout.tsx:62`, fuera de los grupos de rutas) corrige en el cliente el atributo `lang` del `<html>`, que el layout raíz fija de forma estática en `"es"` (`app/layout.tsx:56`):
++
+[source,typescript]
+----
+useEffect(() => {
+  document.documentElement.lang = localeFromPathname(pathname);
+}, [pathname]);
+----
+(`app/ui/html-lang-sync.tsx:10-12`). Esto significa que en el HTML servido estáticamente (antes de hidratación) el atributo `lang` siempre es `"es"`, incluso para `/en/*`; se corrige después, en el cliente, tras el primer render.
+6. El selector de idioma de `navbar.tsx` usa `getAlternatePath(pathname, target)` (`app/i18n/paths.ts:15-19`) para calcular a qué URL enlazar al cambiar de idioma, buscando la ruta actual en `pathPairs` y devolviendo su par.
+
+=== Flujo 2: pipeline de CI/CD con despliegue condicional
+
+Pipeline único (`.github/workflows/pipeline.yml`) disparado por `pull_request` contra `master`, `push` a `master` y `workflow_dispatch` manual (líneas 20-41).
+
+1. **`changes` (Plan / Detect Changes)**, líneas 64-184: hace checkout completo (`fetch-depth: 0`), calcula el rango `BASE..HEAD` según el tipo de evento (líneas 86-99) y clasifica cada archivo modificado en `web`, `infra`, `pipeline`, `docs` u `other` según su ruta (líneas 109-128). A partir de esas banderas deriva cuatro salidas booleanas consumidas por los jobs siguientes: `validate_web`, `validate_infra`, `deploy_web`, `docs_only` (líneas 130-154). Un cambio en `.github/workflows/*` o `.github/actions/*` (`pipeline=true`) fuerza la validación de ambas capas, web e infra, aunque el cambio en sí no toque ni `app/` ni `infra/`.
+2. **`web-quality` (Web / Quality Gate)**, líneas 186-221, condicionado a `validate_web == 'true'`: instala dependencias con la acción compuesta `setup-web` (`npm ci`), corre `npm run lint`, luego `npm run build` (genera `out/`), y valida que existan las páginas legales exportadas (`out/index.html`, `out/terminos.html`, `out/privacidad.html`, `out/tratamiento-datos.html`, `out/desuscripcion.html` — líneas 206-212). Solo si además `deploy_web == 'true'` sube `out/` como artefacto de build (`web-export-<sha>`, líneas 214-221).
+3. **`infra-validate` (Infra / Validate CDK)**, líneas 223-251, condicionado a `validate_infra == 'true'`: instala dependencias de `infra/` con `setup-infra`, corre `tsc --noEmit` (vía `npm run build` dentro de `infra/`) y `cdk synth -c stage=prod --quiet`, y sube el/los template(s) CloudFormation resultantes como artefacto. Este job **valida** la infraestructura pero nunca ejecuta `cdk deploy` — el despliegue de infraestructura es manual (confirmado también por `infra/README.md`, que documenta `cdk deploy -c stage=prod --profile codelabs` como comando local).
+4. **`deploy-web` (Deploy / Static Site)**, líneas 253-306: solo corre si `deploy_web == 'true'` y el gate `web-quality` fue exitoso (con `infra-validate` exitoso u omitido — condición `always()` con chequeo explícito de resultados, líneas 257-261). Usa el `environment: production` de GitHub y permisos `id-token: write` para autenticarse en AWS vía OIDC (`aws-actions/configure-aws-credentials`, líneas 280-285) sin credenciales estáticas. Sube primero los assets inmutables de `_next/static` con `--cache-control "public,max-age=31536000,immutable"` (líneas 287-293), luego el resto del sitio con `--cache-control "public,max-age=300,must-revalidate"` excluyendo `_next/static/*` para no pisar la política de cache anterior (líneas 295-300), y finalmente invalida toda la distribución CloudFront (`--paths "/*"`, líneas 302-306).
+5. **`summary` (Pipeline / Summary)**, líneas 308-326: siempre corre (`if: always()`) y escribe un resumen legible de banderas y resultados en `GITHUB_STEP_SUMMARY`, independientemente de si hubo despliegue.
+
+Este flujo implica que un cambio puramente documental (`docs_only == 'true'`, es decir, solo toca `CLAUDE.md`, `README.md`, `context/*` o `*.md`) no dispara ni `web-quality` ni `infra-validate` ni `deploy-web`: solo corren `changes` y `summary`.

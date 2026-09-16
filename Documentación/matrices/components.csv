@@ -1,0 +1,48 @@
+componente,tipo,archivo
+page (raiz es),pagina,app/(site)/page.tsx
+page (servicios),pagina,app/(site)/servicios/page.tsx
+page (casos),pagina,app/(site)/casos/page.tsx
+page (nosotros),pagina,app/(site)/nosotros/page.tsx
+page (contacto),pagina,app/(site)/contacto/page.tsx
+page (en),pagina,app/(site)/en/page.tsx
+page (en/services),pagina,app/(site)/en/services/page.tsx
+page (en/case-studies),pagina,app/(site)/en/case-studies/page.tsx
+page (en/about),pagina,app/(site)/en/about/page.tsx
+page (en/contact),pagina,app/(site)/en/contact/page.tsx
+page (privacidad),pagina legal,app/(legal)/privacidad/page.tsx
+page (tratamiento-datos),pagina legal,app/(legal)/tratamiento-datos/page.tsx
+page (terminos),pagina legal,app/(legal)/terminos/page.tsx
+page (desuscripcion),pagina legal,app/(legal)/desuscripcion/page.tsx
+layout raiz,layout,app/layout.tsx
+layout (site),layout,app/(site)/layout.tsx
+hero,seccion,app/(site)/sections/hero.tsx
+trust-bar,seccion,app/(site)/sections/trust-bar.tsx
+value-prop,seccion,app/(site)/sections/value-prop.tsx
+clients,seccion,app/(site)/sections/clients.tsx
+capabilities,seccion,app/(site)/sections/capabilities.tsx
+capabilities-teaser,seccion,app/(site)/sections/capabilities-teaser.tsx
+case-studies,seccion,app/(site)/sections/case-studies.tsx
+case-studies-teaser,seccion,app/(site)/sections/case-studies-teaser.tsx
+cta-banner,seccion,app/(site)/sections/cta-banner.tsx
+contact,seccion,app/(site)/sections/contact.tsx
+contact-info,seccion,app/(site)/sections/contact-info.tsx
+navbar,seccion,app/(site)/sections/navbar.tsx
+footer,seccion,app/(site)/sections/footer.tsx
+about,seccion,app/(site)/sections/about.tsx
+aws-showcase,seccion,app/(site)/sections/aws-showcase.tsx
+how-we-work,seccion,app/(site)/sections/how-we-work.tsx
+tech-stack,seccion,app/(site)/sections/tech-stack.tsx
+logo,ui compartido,app/ui/logo.tsx
+page-intro,ui compartido,app/ui/page-intro.tsx
+html-lang-sync,ui compartido,app/ui/html-lang-sync.tsx
+whatsapp-button,ui compartido,app/ui/whatsapp-button.tsx
+capabilities (datos),datos,app/data/capabilities.ts
+case-studies (datos),datos,app/data/case-studies.ts
+clients (datos),datos,app/data/clients.ts
+stack (datos),datos,app/data/stack.ts
+locale,i18n,app/i18n/locale.ts
+paths,i18n,app/i18n/paths.ts
+dictionary,i18n,app/i18n/dictionary.ts
+codelabs-web (cdk app),infra entry point,infra/bin/codelabs-web.ts
+config,infra config,infra/lib/config.ts
+StaticSiteStack,infra stack,infra/lib/static-site-stack.ts

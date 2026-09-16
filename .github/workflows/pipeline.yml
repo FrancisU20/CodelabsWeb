@@ -98,7 +98,7 @@ jobs:
             fi
           fi
 
-          git diff --name-only "${BASE}" "${HEAD}" | tee /tmp/changed-files.txt
+          git -c core.quotePath=false diff --name-only "${BASE}" "${HEAD}" | tee /tmp/changed-files.txt
 
           web=false
           infra=false
@@ -118,7 +118,7 @@ jobs:
               .github/workflows/*|.github/actions/*)
                 pipeline=true
                 ;;
-              CLAUDE.md|README.md|context/*|docs/*|*.md)
+              AGENTS.md|CLAUDE.md|README.md|docs/exec-plans/*|Documentación/*|*.md)
                 docs=true
                 ;;
               *)

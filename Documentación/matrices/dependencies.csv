@@ -1,0 +1,20 @@
+paquete,version_declarada,ambito,archivo_manifiesto
+next,^15.5.9,runtime web,package.json
+react,^18.3.1,runtime web,package.json
+react-dom,^18.3.1,runtime web,package.json
+geist,^1.7.2,runtime web,package.json
+typescript,^5,dev web,package.json
+tailwindcss,^4,dev web,package.json
+@tailwindcss/postcss,^4,dev web,package.json
+eslint,^9,dev web,package.json
+eslint-config-next,15.5.9,dev web,package.json
+serve,^14.2.6,dev web,package.json
+@types/node,^20,dev web,package.json
+@types/react,^18.3.27,dev web,package.json
+@types/react-dom,^18.3.7,dev web,package.json
+aws-cdk-lib,^2.224.0,runtime infra,infra/package.json
+constructs,^10.4.3,runtime infra,infra/package.json
+aws-cdk,^2.1033.0,dev infra,infra/package.json
+ts-node,^10.9.2,dev infra,infra/package.json
+typescript,^5.9.3,dev infra,infra/package.json
+@types/node,^20.19.25,dev infra,infra/package.json
