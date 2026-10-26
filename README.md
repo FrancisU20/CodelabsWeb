@@ -4,7 +4,7 @@ Sitio corporativo estático de CodeLabs Ecuador, construido con Next.js, React, 
 
 ## Requisitos
 
-- Node.js 20.19.6, fijado mediante Volta.
+- Node.js 22.23.3, fijado mediante Volta.
 - npm.
 
 ## Uso local
@@ -13,6 +13,7 @@ Sitio corporativo estático de CodeLabs Ecuador, construido con Next.js, React, 
 npm ci
 npm run dev
 npm run lint
+npm test
 npm run build
 npm start
 ```
@@ -21,8 +22,17 @@ npm start
 
 ## Estructura
 
-- `app/`: rutas, layouts, componentes, datos e internacionalización.
+- `src/app/`: solo rutas de Next.js (layouts, páginas y metadata).
+- `src/views/`: composición de cada página a partir de features.
+- `src/features/`: una carpeta por sección del sitio, con sus componentes y estilos.
+- `src/layout/`: piezas comunes a todo el sitio (menú, pie, WhatsApp, encabezado de subpáginas).
+- `src/shared/`: UI reutilizable sin conocimiento del negocio (íconos, dispositivos, mockups, animaciones, utilidades).
+- `src/i18n/`: idiomas, rutas, metadata SEO y mensajes por sección en español e inglés.
+- `src/config/` y `src/content/`: configuración del sitio y datos de negocio.
+- `src/styles/`: tokens de diseño, base, componentes y animaciones globales.
 - `public/`: identidad visual, logos, manifest e iconos.
+
+Las dependencias entre capas fluyen `app → views → features/layout → shared` y las verifica ESLint (`no-restricted-imports`).
 - `infra/`: aplicación AWS CDK y su guía operativa.
 - `.github/`: workflow y acciones compuestas de CI/CD.
 - `Documentación/`: documentación técnica formal y canónica.

@@ -1,0 +1,142 @@
+.aura {
+  background: #fbf7f5;
+  color: #1c1716;
+  gap: 0.75em;
+}
+
+.auraLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+}
+
+.auraLogo svg {
+  width: 1.9em;
+  height: 1.9em;
+}
+
+.auraLogo b {
+  font-family: var(--font-serif);
+  font-size: 1.55em;
+  letter-spacing: 0.34em;
+  padding-left: 0.34em;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.auraLogo small {
+  font-size: 0.5em;
+  letter-spacing: 0.42em;
+  color: #7f6150;
+  padding-left: 0.42em;
+}
+
+.promo {
+  border-radius: 1.1em;
+  padding: 0.85em 0.95em;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(255, 255, 255, 0.55) 0 16%, transparent 17%),
+    linear-gradient(130deg, #f3d6cc 0%, #e8b4a4 50%, #c98f7a 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.promo b {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.35em;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.promo small {
+  font-size: 0.72em;
+  color: #5b3f36;
+}
+
+.promoAction {
+  font-size: 0.68em;
+  font-weight: 600;
+  background: #1c1716;
+  color: #ffffff;
+  padding: 0.5em 0.85em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.pills {
+  display: flex;
+  gap: 0.4em;
+}
+
+.category {
+  font-size: 0.72em;
+  padding: 0.5em 0.8em;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #eee2dc;
+  white-space: nowrap;
+}
+
+.categoryActive {
+  background: #1c1716;
+  color: #ffffff;
+  border-color: #1c1716;
+}
+
+.serviceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55em 0;
+  border-bottom: 1px solid #f0e6e1;
+  font-size: 0.88em;
+}
+
+.serviceRow small {
+  display: block;
+  color: #76665f;
+  font-size: 0.8em;
+}
+
+.serviceRow b {
+  font-weight: 600;
+}
+
+.serviceRowActive b {
+  color: #935f45;
+}
+
+.slot {
+  font-size: 0.74em;
+  padding: 0.5em 0.75em;
+  border-radius: 999px;
+  border: 1px solid #e5d8d2;
+}
+
+.slotActive {
+  background: #935f45;
+  color: #ffffff;
+  border-color: #935f45;
+}
+
+.auraCta {
+  margin-top: auto;
+  background: #1c1716;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.9em;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9em;
+  display: flex;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.auraCta span {
+  color: #e8b4a4;
+}

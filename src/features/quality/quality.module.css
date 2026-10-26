@@ -1,0 +1,249 @@
+.stage {
+  padding-block: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 48px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.window {
+  width: min(1000px, 100%);
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: 0 60px 120px -40px var(--shadow-glow), 0 30px 60px -30px var(--shadow-deep);
+  overflow: hidden;
+  text-align: left;
+  transform-origin: 50% 0%;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-2);
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--line);
+}
+
+.barLabel {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.meterWrap {
+  display: grid;
+  place-items: center;
+  padding: 40px 24px;
+  border-right: 1px solid var(--line);
+  min-width: 0;
+}
+
+.meter {
+  --done: 1;
+  width: 220px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(var(--brand) calc(var(--done) * 360deg), var(--line) 0);
+  display: grid;
+  place-items: center;
+}
+
+.meterCore {
+  width: 82%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.meterCore svg {
+  width: 40px;
+  height: 40px;
+  color: var(--brand);
+}
+
+.meterCore b {
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+.meterCore span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.checks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px;
+  min-width: 0;
+  justify-content: center;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--panel-2);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.tick {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--brand-strong);
+  color: #ffffff;
+  flex: none;
+}
+
+.tick svg {
+  width: 14px;
+  height: 14px;
+}
+
+.state {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand);
+  white-space: nowrap;
+}
+
+.live {
+  background: transparent;
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.pulse {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    70% {
+      box-shadow: 0 0 0 10px rgba(52, 211, 153, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+    }
+  }
+}
+
+:global(.motion) .stage {
+  padding-block: 64px 0;
+  justify-content: flex-start;
+}
+
+:global(.motion) .window {
+  --e: clamp(0, calc(var(--p, 0) * 1.7), 1);
+  transform: perspective(1600px) rotateX(calc((1 - var(--e)) * 32deg)) scale(calc(0.8 + var(--e) * 0.2));
+}
+
+:global(.motion) .meter {
+  --done: clamp(0, calc((var(--p, 0) - 0.08) * 2.2), 1);
+}
+
+:global(.motion) .check {
+  opacity: clamp(0, calc((var(--p, 0) - var(--t)) * 1000), 1);
+  transform: translateY(calc((1 - clamp(0, calc((var(--p, 0) - var(--t)) * 1000), 1)) * 8px));
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+
+@media (max-width: 760px) {
+  .meterWrap {
+    padding: 24px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .meter {
+    width: 170px;
+  }
+
+  .meterCore svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .meterCore b {
+    font-size: 16px;
+  }
+
+  .meterCore span {
+    font-size: 11px;
+  }
+
+  .checks {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .check {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+
+  :global(.motion) .stage {
+    padding-block: 96px;
+  }
+
+  :global(.motion) .window {
+    transform: none;
+  }
+
+  :global(.motion) .meter {
+    --done: 1;
+  }
+
+  :global(.motion) .check {
+    opacity: 1;
+    transform: none;
+  }
+}

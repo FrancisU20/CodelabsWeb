@@ -1,0 +1,114 @@
+.hero {
+  position: relative;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 48px;
+  padding-block: 72px 64px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(40px, 6.4vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+
+.line {
+  display: block;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.fan {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  perspective: 1800px;
+}
+
+.fan .fanPhone {
+  --w: clamp(140px, 24vw, 270px);
+}
+
+.fan .side {
+  --spread: min(300px, 30vw);
+  --f: 1;
+  position: absolute;
+  top: 0;
+  transform: translateX(calc(var(--side) * var(--spread) * (0.45 + 0.55 * var(--f)))) translateY(calc(var(--f) * 6%))
+    rotateY(calc(var(--side) * -18deg * var(--f))) rotateZ(calc(var(--side) * 5deg * var(--f))) scale(0.9);
+}
+
+.fan .left {
+  --side: -1;
+}
+
+.fan .right {
+  --side: 1;
+}
+
+.fan .center {
+  position: relative;
+  z-index: 2;
+}
+
+:global(.motion) .stage {
+  justify-content: flex-start;
+  padding-block: 56px 0;
+}
+
+:global(.motion) .copy {
+  opacity: calc(1 - var(--p, 0) * 2.6);
+  transform: translateY(calc(var(--p, 0) * -100px)) scale(calc(1 - var(--p, 0) * 0.1));
+}
+
+:global(.motion) .fan {
+  --f: clamp(0, calc(var(--p, 0) * 2), 1);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  transform: translateY(calc(82svh - var(--f) * 66svh)) scale(calc(0.92 + var(--f) * 0.1));
+  animation-name: fadeIn;
+}
+
+:global(.motion) .fan .fanPhone {
+  --w: min(clamp(160px, 24vw, 270px), 33svh);
+}
+
+:global(.motion) .fan .side {
+  --f: clamp(0, calc(var(--p, 0) * 2), 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,134 @@
+.nucleo {
+  background: #f5f0ea;
+  color: #2e2622;
+}
+
+.nucleo small {
+  color: #75655b;
+  font-size: 0.78em;
+}
+
+.nucleoWord {
+  font-size: 1.25em;
+  letter-spacing: -0.04em;
+}
+
+.nucleoTitle {
+  margin: 0.1em 0 0;
+  font-size: 1.32em;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.feature {
+  position: relative;
+  height: 7.4em;
+  border-radius: 1.2em;
+  overflow: hidden;
+  padding: 0.85em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 78% 28%, #f6d2b4 0 13%, transparent 14%),
+    radial-gradient(110% 90% at 15% 110%, #8f4f37 0, transparent 60%),
+    linear-gradient(140deg, #e4c3a6 0%, #c0785a 55%, #7a4532 100%);
+}
+
+.feature::before {
+  content: "";
+  position: absolute;
+  left: 52%;
+  bottom: 1.2em;
+  width: 7em;
+  height: 3.6em;
+  border: 0.32em solid rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.55) transparent transparent;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.feature b {
+  display: block;
+  font-size: 1.05em;
+  position: relative;
+}
+
+.nucleo .feature small {
+  color: rgba(255, 255, 255, 0.85);
+  position: relative;
+}
+
+.chipOk {
+  align-self: flex-start;
+  position: relative;
+  font-size: 0.66em;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.92);
+  color: #2e7d4f;
+  padding: 0.35em 0.75em;
+  border-radius: 999px;
+}
+
+.days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  width: 2.15em;
+  height: 3em;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.74em;
+  background: #ffffff;
+  color: #8c7b70;
+}
+
+.day b {
+  font-size: 1.2em;
+  color: #2e2622;
+}
+
+.dayActive {
+  background: #2e2622;
+  color: #e9d9cb;
+}
+
+.dayActive b {
+  color: #ffffff;
+}
+
+.classRow {
+  background: #ffffff;
+  border-radius: 1em;
+  padding: 0.6em 0.7em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.classInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.classInfo b {
+  display: block;
+  font-size: 0.9em;
+}
+
+.seat {
+  font-size: 0.66em;
+  font-weight: 600;
+  background: #f1e6dc;
+  color: #9a5b40;
+  padding: 0.35em 0.65em;
+  border-radius: 999px;
+  white-space: nowrap;
+}

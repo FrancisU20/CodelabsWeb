@@ -1,0 +1,35 @@
+.stage {
+  padding-block: 120px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.text {
+  margin: 0;
+  font-size: clamp(32px, 5.2vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  max-width: 19ch;
+}
+
+.accent {
+  color: var(--brand);
+}
+
+:global(.motion) .stage {
+  padding-block: 0;
+}
+
+.word {
+  display: inline-block;
+}
+
+:global(.motion) .word {
+  --shown: clamp(0, calc((var(--p, 0) * (var(--n) + 4) - var(--i)) * 1000), 1);
+  opacity: var(--shown);
+  transform: translateY(calc((1 - var(--shown)) * 0.35em));
+  filter: blur(calc((1 - var(--shown)) * 8px));
+  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out), filter 0.45s var(--ease-out);
+}

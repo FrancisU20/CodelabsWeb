@@ -1,0 +1,91 @@
+.stage {
+  padding-block: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 380px;
+  min-width: 0;
+}
+
+.art {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  color: var(--brand);
+}
+
+.art svg {
+  width: 108px;
+  height: 108px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.cardBody {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.audience {
+  margin: auto 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.audience span {
+  color: var(--dim);
+  font-weight: 400;
+}
+
+@media (min-width: 761px) {
+  :global(.motion) .stage {
+    padding-block: 0;
+  }
+
+  :global(.motion) .track {
+    display: flex;
+    width: max-content;
+    padding-left: max(16px, calc((100vw - 1180px) / 2 + 16px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    transform: translateX(calc(var(--p, 0) * var(--dist, 0px) * -1));
+    will-change: transform;
+  }
+
+  :global(.motion) .card {
+    width: min(380px, 78vw);
+    flex: none;
+  }
+}
