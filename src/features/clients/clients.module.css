@@ -1,0 +1,109 @@
+.clients {
+  border-block: 1px solid var(--line);
+  padding-block: 72px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(26px, 3.2vw, 40px);
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee {
+  display: flex;
+  width: max-content;
+  gap: 20px;
+}
+
+.group {
+  display: flex;
+  gap: 20px;
+  flex: none;
+}
+
+.tile {
+  width: 240px;
+  aspect-ratio: 2 / 1;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid var(--tile-line);
+  overflow: hidden;
+  flex: none;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.tile:hover {
+  transform: translateY(-4px);
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 760px) {
+  .tile {
+    width: 180px;
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .marquee {
+    animation: slide 70s linear infinite;
+  }
+
+  .reverse {
+    animation-direction: reverse;
+    animation-duration: 64s;
+  }
+
+  .rows:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  @keyframes slide {
+    to {
+      transform: translateX(calc(-50% - 10px));
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    width: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .group {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .duplicate {
+    display: none;
+  }
+}

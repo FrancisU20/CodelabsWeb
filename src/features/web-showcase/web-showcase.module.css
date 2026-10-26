@@ -1,0 +1,53 @@
+.stage {
+  padding-block: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.scene {
+  position: relative;
+  width: min(1040px, 100%);
+}
+
+.scene .scenePhone {
+  --w: clamp(150px, 19vw, 230px);
+  position: absolute;
+  right: -2%;
+  bottom: -12%;
+}
+
+@media (max-width: 760px) {
+  .scene .scenePhone {
+    --w: 120px;
+    right: -4%;
+    bottom: -18%;
+  }
+}
+
+:global(.motion) .stage {
+  padding-block: 64px 0;
+  justify-content: flex-start;
+  gap: 40px;
+}
+
+:global(.motion) .browser {
+  --e: clamp(0, calc(var(--p, 0) * 1.8), 1);
+  transform: perspective(1600px) rotateX(calc((1 - var(--e)) * 30deg)) scale(calc(0.8 + var(--e) * 0.2));
+}
+
+:global(.motion) .scene .scenePhone {
+  --e: clamp(0, calc(var(--p, 0) * 2.2 - 0.6), 1);
+  transform: translateX(calc((1 - var(--e)) * 60vw)) rotate(calc((1 - var(--e)) * 12deg));
+}

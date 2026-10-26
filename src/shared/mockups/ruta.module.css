@@ -1,0 +1,82 @@
+.ruta {
+  background: #f4f7fb;
+  color: #0f2747;
+  gap: 0.75em;
+}
+
+.rutaWord {
+  font-size: 1.15em;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.rutaWord span {
+  color: #1a66cc;
+}
+
+.routeCard {
+  background: #0f2747;
+  color: #ffffff;
+  border-radius: 1em;
+  padding: 0.85em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+}
+
+.routeEnds {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82em;
+  font-weight: 700;
+}
+
+.routeCard small {
+  color: #9fb6d6;
+  font-size: 0.72em;
+  font-weight: 500;
+  display: block;
+}
+
+.trackBar {
+  position: relative;
+  height: 0.3em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.trackFill {
+  position: absolute;
+  inset: 0 38% 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2f80ed, #56ccf2);
+}
+
+.trackDot {
+  position: absolute;
+  left: 62%;
+  top: 50%;
+  width: 0.9em;
+  height: 0.9em;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 0.2em solid #56ccf2;
+  transform: translate(-50%, -50%);
+}
+
+.shipment {
+  background: #ffffff;
+  border-radius: 0.9em;
+  padding: 0.65em 0.75em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.82em;
+}
+
+.shipment small {
+  display: block;
+  color: #56677f;
+  font-size: 0.82em;
+}

@@ -1,0 +1,145 @@
+.stage {
+  padding-block: 120px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px 72px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+.itemTitle {
+  margin: 0;
+  font-size: clamp(32px, 4.4vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 700;
+}
+
+.itemBody {
+  margin: 0;
+  color: var(--muted);
+  max-width: 40ch;
+  font-size: 18px;
+}
+
+.note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--dim);
+  max-width: 46ch;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--line);
+  transition: width 0.4s var(--ease-out), background-color 0.4s;
+}
+
+.phoneWrap {
+  display: flex;
+  justify-content: center;
+  perspective: 1600px;
+}
+
+.phoneWrap .storyPhone {
+  --w: clamp(200px, 26vw, 300px);
+  transform: rotateY(-14deg) rotateX(4deg);
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.story[data-active="0"] .layer:not([data-index="0"]),
+.story[data-active="1"] .layer:not([data-index="1"]),
+.story[data-active="2"] .layer:not([data-index="2"]) {
+  opacity: 0;
+  transform: scale(1.04);
+}
+
+.story[data-active="0"] .dot[data-index="0"],
+.story[data-active="1"] .dot[data-index="1"],
+.story[data-active="2"] .dot[data-index="2"] {
+  width: 28px;
+  background: var(--brand);
+}
+
+:global(.motion) .stage {
+  padding-block: 0;
+  align-content: center;
+}
+
+:global(.motion) .texts {
+  display: grid;
+}
+
+:global(.motion) .item {
+  grid-area: 1 / 1;
+}
+
+:global(.motion) .story[data-active="0"] .item:not([data-index="0"]),
+:global(.motion) .story[data-active="1"] .item:not([data-index="1"]),
+:global(.motion) .story[data-active="2"] .item:not([data-index="2"]) {
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+}
+
+:global(.motion) .phoneWrap .storyPhone {
+  transform: rotateY(calc(-14deg + var(--p, 0) * 28deg)) rotateX(4deg);
+}
+
+@media (max-width: 760px) {
+  :global(.motion) .stage {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-content: start;
+    padding-top: 72px;
+  }
+
+  :global(.motion) .phoneWrap {
+    order: -1;
+  }
+
+  :global(.motion) .phoneWrap .storyPhone {
+    --w: min(46vw, 34svh);
+  }
+
+  .itemTitle {
+    font-size: 30px;
+  }
+
+  .itemBody {
+    font-size: 16px;
+  }
+}

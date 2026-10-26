@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  experimental: {
+    globalNotFound: true,
+    inlineCss: true,
+  },
 };
 
 export default nextConfig;

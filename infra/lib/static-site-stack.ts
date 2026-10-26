@@ -18,7 +18,6 @@ import {
   FunctionEventType,
   HttpVersion,
   PriceClass,
-  ResponseHeadersPolicy,
   SecurityPolicyProtocol,
   ViewerProtocolPolicy,
 } from "aws-cdk-lib/aws-cloudfront";
@@ -45,6 +44,7 @@ import {
 } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 import type { StaticSiteConfig } from "./config";
+import { createSecurityHeadersPolicy } from "./security-headers-policy";
 
 export interface StaticSiteStackProps extends StackProps {
   readonly config: StaticSiteConfig;
@@ -98,6 +98,8 @@ function handler(event) {
 `),
     });
 
+    const securityHeadersPolicy = createSecurityHeadersPolicy(this, config.domainName);
+
     const distribution = new Distribution(this, "Distribution", {
       certificate,
       comment: `${config.domainName} static website`,
@@ -111,7 +113,7 @@ function handler(event) {
           },
         ],
         origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
-        responseHeadersPolicy: ResponseHeadersPolicy.SECURITY_HEADERS,
+        responseHeadersPolicy: securityHeadersPolicy,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       defaultRootObject: "index.html",

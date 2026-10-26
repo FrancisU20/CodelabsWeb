@@ -1,0 +1,79 @@
+@layer components {
+  .site-wrap {
+    max-width: 1180px;
+    margin-inline: auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+
+  .section-title {
+    font-size: clamp(38px, 6.2vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+  }
+
+  .lede {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--muted);
+    max-width: 54ch;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 52px;
+    padding: 0 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.4s var(--ease-out), filter 0.3s;
+  }
+
+  .btn:hover {
+    transform: scale(1.04);
+  }
+
+  .btn-primary {
+    background: var(--brand-strong);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.12);
+  }
+
+  .btn-ghost {
+    color: var(--brand);
+    padding-inline: 8px;
+  }
+
+  .btn-ghost:hover {
+    transform: translateX(4px);
+  }
+
+  .btn-whatsapp {
+    background: var(--wa);
+    color: var(--wa-ink);
+  }
+
+  .text-glow {
+    background: linear-gradient(100deg, var(--fg) 5%, var(--brand-soft) 40%, var(--brand) 75%, var(--brand-strong) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}

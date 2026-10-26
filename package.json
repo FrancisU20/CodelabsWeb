@@ -6,26 +6,30 @@
     "dev": "next dev",
     "build": "next build",
     "start": "serve out",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run"
   },
   "dependencies": {
-    "geist": "^1.7.2",
-    "next": "^15.5.9",
+    "next": "15.5.27",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^22.20.5",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
     "eslint": "^9",
-    "eslint-config-next": "15.5.9",
+    "eslint-config-next": "^15.5.27",
     "serve": "^14.2.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "5.0.3"
   },
   "volta": {
-    "node": "20.19.6"
+    "node": "22.23.3"
+  },
+  "overrides": {
+    "compression": "1.8.2"
   }
 }
