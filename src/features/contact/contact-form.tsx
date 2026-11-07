@@ -1,32 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import type { FormEvent } from "react";
-import { buildWhatsAppLink } from "@/config/contact";
-import type { Locale } from "@/i18n/locale";
-import { getMessages } from "@/i18n/messages/get-messages";
+import type { Messages } from "@/i18n/messages/messages";
 import { LEGAL_PATHS } from "@/i18n/routing";
 import Icon from "@/shared/ui/icons/svg-icon";
 import ContactField from "./contact-field";
-import { buildContactMessage } from "./contact-message";
+import { useContactSubmission } from "./use-contact-submission";
 
-const NEW_TAB = "_blank";
-const NEW_TAB_FEATURES = "noopener,noreferrer";
-
-const ContactForm = ({ locale }: { locale: Locale }) => {
-  const copy = getMessages(locale).contact;
-  const [whatsAppLink, setWhatsAppLink] = useState<string | null>(null);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const link = buildWhatsAppLink(buildContactMessage(copy.message, new FormData(event.currentTarget)));
-    window.open(link, NEW_TAB, NEW_TAB_FEATURES);
-    setWhatsAppLink(link);
-  };
+const ContactForm = ({ copy }: { copy: Messages["contact"] }) => {
+  const { whatsAppLink, submit } = useContactSubmission(copy.message);
 
   return (
-    <form onSubmit={handleSubmit} className="flex min-w-0 flex-col gap-[18px] rounded-[28px] border border-line bg-panel p-[clamp(24px,3vw,36px)]" data-reveal>
+    <form onSubmit={submit} className="flex min-w-0 flex-col gap-[18px] rounded-[28px] border border-line bg-panel p-[clamp(24px,3vw,36px)]" data-reveal>
       <ContactField name="name" label={copy.labels.name} placeholder={copy.placeholders.name} autoComplete="name" required />
       <ContactField name="company" label={copy.labels.company} placeholder={copy.placeholders.company} autoComplete="organization" />
       <ContactField name="email" type="email" label={copy.labels.email} placeholder={copy.placeholders.email} autoComplete="email" />
@@ -46,7 +31,7 @@ const ContactForm = ({ locale }: { locale: Locale }) => {
         {whatsAppLink && (
           <p className="m-0 flex flex-col gap-3 rounded-2xl bg-panel-2 p-4">
             <span>{copy.ready}</span>
-            <a href={whatsAppLink} target={NEW_TAB} rel="noopener noreferrer" className="font-semibold text-brand">
+            <a href={whatsAppLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand">
               {copy.openWhatsApp}
             </a>
           </p>

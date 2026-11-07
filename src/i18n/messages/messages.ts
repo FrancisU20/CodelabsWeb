@@ -96,7 +96,6 @@ export type Messages = {
     emailLabel: string;
     phoneLabel: string;
     officeLabel: string;
-    office: string;
     labels: { name: string; company: string; email: string; project: string };
     placeholders: { name: string; company: string; email: string; project: string };
     submit: string;
@@ -106,7 +105,6 @@ export type Messages = {
     message: { greeting: string; fallbackName: string; company: string; email: string; project: string };
   };
   footer: {
-    location: string;
     legalAriaLabel: string;
     privacy: string;
     terms: string;

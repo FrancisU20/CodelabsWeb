@@ -19,7 +19,7 @@ const Contact = ({ locale }: { locale: Locale }) => {
           <p className="lede mt-6 mb-0">{copy.body}</p>
           <ContactDetails copy={copy} />
         </div>
-        <ContactForm locale={locale} />
+        <ContactForm copy={copy} />
       </div>
     </section>
   );

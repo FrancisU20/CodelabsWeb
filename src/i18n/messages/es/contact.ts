@@ -6,7 +6,6 @@ export const contact: Messages["contact"] = {
   emailLabel: "Correo",
   phoneLabel: "Teléfono",
   officeLabel: "Oficina",
-  office: "Cascadas de Chorlaví, Ibarra, Ecuador",
   labels: { name: "Nombre", company: "Empresa", email: "Correo", project: "¿Qué necesitas?" },
   placeholders: {
     name: "Tu nombre",

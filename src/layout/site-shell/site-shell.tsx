@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import Footer from "@/layout/footer/footer";
+import { buildNavItems } from "@/layout/navbar/nav-items";
 import Navbar from "@/layout/navbar/navbar";
 import WhatsAppButton from "@/layout/whatsapp-button/whatsapp-button";
 import ScrollSceneController from "@/shared/motion/scroll-scene-controller";
@@ -23,7 +24,7 @@ const SiteShell = ({ locale, children }: SiteShellProps) => (
       {getMessages(locale).nav.skipToContent}
     </a>
     <IconSprite />
-    <Navbar locale={locale} />
+    <Navbar locale={locale} copy={getMessages(locale).nav} items={buildNavItems(locale)} />
     <main id={MAIN_CONTENT_ID} className="relative">
       {children}
     </main>
