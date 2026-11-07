@@ -31,7 +31,7 @@ const Hero = ({ locale }: { locale: Locale }) => {
             </Link>
           </div>
         </div>
-        <div className={`${styles.fan} rise-in [animation-delay:0.5s] [animation-duration:1.6s]`} aria-hidden="true">
+        <div className={styles.fan} aria-hidden="true">
           <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.left}`}>
             <AuraApp />
           </PhoneFrame>
