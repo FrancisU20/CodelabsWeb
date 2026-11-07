@@ -68,11 +68,11 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .button::before {
-    animation: ring 2.6s var(--ease-out) 2s 3;
+    animation: ring 2.6s var(--ease-out) 0.9s 3;
   }
 
   .button {
-    animation: enter 0.8s var(--ease-out) 1.2s backwards;
+    animation: enter 0.5s var(--ease-out) 0.4s backwards;
   }
 
   @keyframes ring {

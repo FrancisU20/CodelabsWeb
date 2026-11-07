@@ -82,12 +82,12 @@
 }
 
 :global(.motion) .copy {
-  opacity: calc(1 - var(--p, 0) * 2.6);
+  opacity: calc(1 - var(--p, 0) * 1.6);
   transform: translateY(calc(var(--p, 0) * -100px)) scale(calc(1 - var(--p, 0) * 0.1));
 }
 
 :global(.motion) .fan {
-  --f: clamp(0, calc(var(--p, 0) * 2), 1);
+  --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
   position: absolute;
   left: 0;
   right: 0;
@@ -100,12 +100,12 @@
 }
 
 :global(.motion) .fan .side {
-  --f: clamp(0, calc(var(--p, 0) * 2), 1);
+  --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .fan {
-    animation: fade-in 1.6s var(--ease-out) 0.5s both;
+    animation: fade-in 0.6s var(--ease-out) 0.2s both;
   }
 
   @keyframes fade-in {

@@ -5,6 +5,7 @@ import { cx } from "@/shared/lib/class-names";
 import { cssVars } from "@/shared/lib/css-vars";
 import Icon from "@/shared/ui/icons/svg-icon";
 import SectionHeading from "@/shared/ui/section/section-heading";
+import { pinLength } from "@/shared/motion/pin-length";
 import styles from "./quality.module.css";
 
 const FIRST_CHECK_AT = 0.12;
@@ -15,7 +16,7 @@ const Quality = ({ locale }: { locale: Locale }) => {
   const liveAt = FIRST_CHECK_AT + dict.checks.length * CHECK_STEP;
 
   return (
-    <section aria-label={dict.ariaLabel} data-pin data-pin-mobile="off" style={cssVars({ "--pin-height": "220vh" })}>
+    <section aria-label={dict.ariaLabel} data-pin data-pin-mobile="off" style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <SectionHeading className={styles.head} eyebrow={dict.eyebrow} title={dict.title} body={dict.body} />
         <div className={styles.window} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>

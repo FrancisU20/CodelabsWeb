@@ -1,10 +1,10 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
-import { cssVars } from "@/shared/lib/css-vars";
 import PhoneFrame from "@/shared/devices/phone-frame";
 import AuraApp from "@/shared/mockups/aura-app";
 import LexaApp from "@/shared/mockups/lexa-app";
 import NucleoApp from "@/shared/mockups/nucleo-app";
+import { pinLength } from "@/shared/motion/pin-length";
 import styles from "./stories.module.css";
 
 const SCREENS = [
@@ -17,7 +17,7 @@ const Stories = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).stories;
 
   return (
-    <section className={styles.story} data-pin data-story data-active="0" style={cssVars({ "--pin-height": "340vh" })}>
+    <section className={styles.story} data-pin data-story data-active="0" style={pinLength("extended")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <div className={styles.texts}>
           {dict.items.map((item, index) => (

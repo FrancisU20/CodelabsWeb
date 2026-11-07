@@ -1,7 +1,7 @@
 import { HEALTH_APPS_SPEED_GAIN_PERCENT } from "@/content/impact";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
-import { cssVars } from "@/shared/lib/css-vars";
+import { pinLength } from "@/shared/motion/pin-length";
 import styles from "./impact.module.css";
 
 const Impact = ({ locale }: { locale: Locale }) => {
@@ -9,7 +9,7 @@ const Impact = ({ locale }: { locale: Locale }) => {
 
   return (
     <>
-      <section aria-labelledby="impact-title" data-pin style={cssVars({ "--pin-height": "200vh" })}>
+      <section aria-labelledby="impact-title" data-pin style={pinLength("standard")}>
         <div className={`site-wrap ${styles.stage}`} data-stage>
           <p className="eyebrow">{dict.eyebrow}</p>
           <div className={styles.stat} data-count={HEALTH_APPS_SPEED_GAIN_PERCENT} data-prefix="+" data-suffix="%">
