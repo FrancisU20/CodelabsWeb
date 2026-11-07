@@ -1,8 +1,7 @@
 import type { Messages } from "../messages";
 
 export const contact: Messages["contact"] = {
-  titleLead: "Have an idea?",
-  titleAccent: "Let's make it happen.",
+  title: { lines: ["Have an idea?"], accent: "Let's make it happen." },
   body: "Tell us what you need. We reply in hours, not weeks, with a proposal tailored to your company.",
   emailLabel: "Email",
   phoneLabel: "Phone",

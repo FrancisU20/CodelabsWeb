@@ -1,5 +1,6 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
+import SectionHeading from "@/shared/ui/section/section-heading";
 import ServiceArt from "./service-art";
 import styles from "./services.module.css";
 
@@ -10,16 +11,7 @@ const Services = ({ locale }: { locale: Locale }) => {
     <section id="servicios" aria-labelledby="services-title" data-pin data-track data-pin-mobile="off">
       <div className={styles.stage} data-stage>
         <div className={`site-wrap w-full ${styles.head}`}>
-          <div>
-            <p className="eyebrow">{dict.eyebrow}</p>
-            <h2 id="services-title" className="section-title mt-4 mb-0">
-              {dict.titleLines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </h2>
-          </div>
+          <SectionHeading className="flex flex-col gap-4" eyebrow={dict.eyebrow} title={dict.title} titleId="services-title" />
           <p className="lede m-0 max-w-[34ch]">{dict.body}</p>
         </div>
         <div className={styles.track} data-track-rail>

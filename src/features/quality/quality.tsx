@@ -1,7 +1,10 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
+import WindowFrame from "@/shared/devices/window-frame";
+import { cx } from "@/shared/lib/class-names";
 import { cssVars } from "@/shared/lib/css-vars";
 import Icon from "@/shared/ui/icons/svg-icon";
+import SectionHeading from "@/shared/ui/section/section-heading";
 import styles from "./quality.module.css";
 
 const FIRST_CHECK_AT = 0.12;
@@ -14,48 +17,36 @@ const Quality = ({ locale }: { locale: Locale }) => {
   return (
     <section aria-label={dict.ariaLabel} data-pin data-pin-mobile="off" style={cssVars({ "--pin-height": "220vh" })}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
-        <div className={styles.head}>
-          <p className="eyebrow">{dict.eyebrow}</p>
-          <h2 className="section-title m-0">
-            {dict.titleLead}
-            <br />
-            <span className="text-glow">{dict.titleAccent}</span>
-          </h2>
-          <p className="lede m-0">{dict.body}</p>
-        </div>
+        <SectionHeading className={styles.head} eyebrow={dict.eyebrow} title={dict.title} body={dict.body} />
         <div className={styles.window} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>
-          <div className={styles.bar}>
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.dot} />
-            <span className={styles.barLabel}>{dict.windowLabel}</span>
-          </div>
-          <div className={styles.body}>
-            <div className={styles.meterWrap}>
-              <div className={styles.meter}>
-                <div className={styles.meterCore}>
-                  <Icon name="shield-check" />
-                  <b>{dict.meterTitle}</b>
-                  <span>{dict.meterCaption}</span>
+          <WindowFrame kind="app" caption={dict.windowLabel}>
+            <div className={styles.body}>
+              <div className={styles.meterWrap}>
+                <div className={styles.meter}>
+                  <div className={styles.meterCore}>
+                    <Icon name="shield-check" />
+                    <b>{dict.meterTitle}</b>
+                    <span>{dict.meterCaption}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={styles.checks}>
-              {dict.checks.map((check, index) => (
-                <span key={check} className={styles.check} style={cssVars({ "--t": FIRST_CHECK_AT + index * CHECK_STEP })}>
-                  <span className={styles.tick}>
-                    <Icon name="check" />
+              <div className={styles.checks}>
+                {dict.checks.map((check, index) => (
+                  <span key={check} className={styles.check} style={cssVars({ "--t": FIRST_CHECK_AT + index * CHECK_STEP })}>
+                    <span className={styles.tick}>
+                      <Icon name="check" />
+                    </span>
+                    {check}
+                    <span className={styles.state}>{dict.approved}</span>
                   </span>
-                  {check}
-                  <span className={styles.state}>{dict.approved}</span>
+                ))}
+                <span className={cx(styles.check, styles.live)} style={cssVars({ "--t": liveAt })}>
+                  <span className={styles.pulse} />
+                  {dict.live}
                 </span>
-              ))}
-              <span className={`${styles.check} ${styles.live}`} style={cssVars({ "--t": liveAt })}>
-                <span className={styles.pulse} />
-                {dict.live}
-              </span>
+              </div>
             </div>
-          </div>
+          </WindowFrame>
         </div>
       </div>
     </section>

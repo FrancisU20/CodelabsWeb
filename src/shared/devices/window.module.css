@@ -1,0 +1,73 @@
+.frame {
+  width: 100%;
+  overflow: hidden;
+  text-align: left;
+  transform-origin: 50% 0;
+  box-shadow: 0 60px 120px -40px var(--shadow-glow), 0 30px 60px -30px var(--shadow-deep);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  border-radius: 50%;
+}
+
+.caption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.browser {
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid var(--tile-line);
+}
+
+.browser .bar {
+  padding: 10px 14px;
+  background: #eef1f6;
+  border-bottom: 1px solid #dde3ec;
+}
+
+.browser .dot {
+  width: 10px;
+  height: 10px;
+  background: #c9d1dd;
+}
+
+.browser .caption {
+  margin-left: 12px;
+  flex: 1;
+  max-width: 360px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 4px 12px;
+  color: #56677f;
+}
+
+.app {
+  border-radius: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.app .bar {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel-2);
+}
+
+.app .dot {
+  width: 11px;
+  height: 11px;
+  background: var(--line);
+}
+
+.app .caption {
+  margin-left: auto;
+  color: var(--dim);
+}

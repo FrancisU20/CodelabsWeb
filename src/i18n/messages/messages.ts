@@ -1,5 +1,6 @@
 import type { ServiceId } from "@/content/service-id";
 import type { PageKey } from "../page-key";
+import type { SectionTitleCopy } from "./section-title-copy";
 
 export type Messages = {
   nav: {
@@ -39,13 +40,12 @@ export type Messages = {
   };
   webShowcase: {
     eyebrow: string;
-    titleLead: string;
-    titleAccent: string;
+    title: SectionTitleCopy;
     body: string;
   };
   services: {
     eyebrow: string;
-    titleLines: string[];
+    title: SectionTitleCopy;
     body: string;
     idealFor: string;
     items: { id: ServiceId; title: string; body: string; audience: string }[];
@@ -53,8 +53,7 @@ export type Messages = {
   quality: {
     ariaLabel: string;
     eyebrow: string;
-    titleLead: string;
-    titleAccent: string;
+    title: SectionTitleCopy;
     body: string;
     windowLabel: string;
     meterTitle: string;
@@ -72,7 +71,7 @@ export type Messages = {
   };
   aws: {
     eyebrow: string;
-    titleLines: string[];
+    title: SectionTitleCopy;
     badgeTitle: string;
     badgeCaption: string;
     body: string;
@@ -82,18 +81,17 @@ export type Messages = {
   };
   team: {
     eyebrow: string;
-    titleLines: string[];
+    title: SectionTitleCopy;
     body: string;
     roles: { title: string; body: string }[];
   };
   howWeWork: {
     eyebrow: string;
-    titleLines: string[];
+    title: SectionTitleCopy;
     steps: { title: string; body: string }[];
   };
   contact: {
-    titleLead: string;
-    titleAccent: string;
+    title: SectionTitleCopy;
     body: string;
     emailLabel: string;
     phoneLabel: string;

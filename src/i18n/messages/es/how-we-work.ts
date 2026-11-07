@@ -2,7 +2,7 @@ import type { Messages } from "../messages";
 
 export const howWeWork: Messages["howWeWork"] = {
   eyebrow: "Cómo trabajamos",
-  titleLines: ["Cuatro pasos.", "Cero sorpresas."],
+  title: { lines: ["Cuatro pasos.", "Cero sorpresas."] },
   steps: [
     {
       title: "Te escuchamos",

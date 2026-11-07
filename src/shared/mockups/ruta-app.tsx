@@ -1,5 +1,6 @@
 import StatusBar from "@/shared/devices/status-bar";
 import Icon from "@/shared/ui/icons/svg-icon";
+import { cx } from "@/shared/lib/class-names";
 import { RUTA_SHIPMENTS } from "./ruta-shipments";
 import StatusPill from "./status-pill";
 import styles from "./mockups.module.css";
@@ -9,7 +10,7 @@ const [featured, ...others] = RUTA_SHIPMENTS;
 const LISTED_SHIPMENTS = others.slice(0, 2);
 
 const RutaApp = () => (
-  <div className={`${styles.app} ${appStyles.ruta}`}>
+  <div className={cx(styles.app, appStyles.ruta)}>
     <StatusBar />
     <div className={styles.brandline}>
       <Icon name="mark-ruta" className={styles.mark} />

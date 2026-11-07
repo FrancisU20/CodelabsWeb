@@ -2,7 +2,7 @@ import type { Messages } from "../messages";
 
 export const aws: Messages["aws"] = {
   eyebrow: "Respaldo de Amazon Web Services",
-  titleLines: ["La misma nube", "que usa Amazon."],
+  title: { lines: ["La misma nube", "que usa Amazon."] },
   badgeTitle: "Socios oficiales de AWS",
   badgeCaption: "Equipo con certificaciones de Amazon",
   body: "AWS es la nube de Amazon, la misma que usan bancos y grandes marcas en todo el mundo. Ahí construimos y cuidamos tus sistemas.",
