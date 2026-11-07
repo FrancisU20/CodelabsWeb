@@ -25,7 +25,7 @@ export default function PrivacidadPage() {
             información recolectamos, con qué finalidad, en qué basamos su
             tratamiento y cuáles son tus derechos como titular de los datos.
           </p>
-          <p className="text-sm text-dim">Última actualización: 29 de junio de 2026</p>
+          <p className="text-sm text-dim">Última actualización: 7 de noviembre de 2026</p>
         </div>
       </section>
 
@@ -35,7 +35,7 @@ export default function PrivacidadPage() {
             <h2 className="text-xl font-semibold text-fg">1. Responsable del tratamiento</h2>
             <p className="text-sm text-muted">
               El responsable del tratamiento de tus datos personales es ULLOA TERAN
-              FRANCISCO MATEO, persona natural con identificación 1003368725, quien
+              FRANCISCO MATEO, persona natural con RUC 1003368725001, quien
               opera bajo el nombre comercial CodeLabs. Puedes contactarnos para
               cualquier asunto relacionado con esta política en{" "}
               <a className="font-semibold text-fg underline" href="mailto:info@codelabsecuador.com">

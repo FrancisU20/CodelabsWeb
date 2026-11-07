@@ -25,7 +25,7 @@ export default function TerminosPage() {
             formulario o contratar nuestros servicios, el Usuario declara haber
             leído y aceptado estos términos en su totalidad.
           </p>
-          <p className="text-sm text-dim">Última actualización: 29 de junio de 2026</p>
+          <p className="text-sm text-dim">Última actualización: 7 de noviembre de 2026</p>
         </div>
       </section>
 
@@ -35,7 +35,7 @@ export default function TerminosPage() {
             <h2 className="text-xl font-semibold text-fg">1. Identidad del responsable del Sitio</h2>
             <p className="text-sm text-muted">
               El Sitio es operado por ULLOA TERAN FRANCISCO MATEO, persona natural,
-              con número de identificación 1003368725, con domicilio en Ecuador,
+              con RUC 1003368725001, con domicilio en Ecuador,
               quien realiza actividad económica bajo el nombre comercial
               &ldquo;CodeLabs&rdquo; (en adelante, &ldquo;CodeLabs&rdquo; o
               &ldquo;nosotros&rdquo;). Para consultas, soporte o ejercicio de
