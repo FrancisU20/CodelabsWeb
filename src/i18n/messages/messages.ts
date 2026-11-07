@@ -102,6 +102,7 @@ export type Messages = {
     labels: { name: string; company: string; email: string; project: string };
     placeholders: { name: string; company: string; email: string; project: string };
     submit: string;
+    privacyNotice: { text: string; linkLabel: string };
     ready: string;
     openWhatsApp: string;
     message: { greeting: string; fallbackName: string; company: string; email: string; project: string };

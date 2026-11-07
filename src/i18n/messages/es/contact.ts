@@ -16,6 +16,10 @@ export const contact: Messages["contact"] = {
     project: "Por ejemplo: una app de reservas para mi negocio",
   },
   submit: "Enviar por WhatsApp",
+  privacyNotice: {
+    text: "Al enviar, se abrirá WhatsApp con tu mensaje. Usamos tus datos solo para responder tu solicitud, según nuestra",
+    linkLabel: "Política de privacidad",
+  },
   ready: "Tu mensaje está listo.",
   openWhatsApp: "Abrir WhatsApp →",
   message: {

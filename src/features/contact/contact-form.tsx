@@ -1,10 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { FormEvent } from "react";
 import { buildWhatsAppLink } from "@/config/contact";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
+import { LEGAL_PATHS } from "@/i18n/routing";
 import Icon from "@/shared/ui/icons/svg-icon";
 import ContactField from "./contact-field";
 import { buildContactMessage } from "./contact-message";
@@ -29,6 +31,13 @@ const ContactForm = ({ locale }: { locale: Locale }) => {
       <ContactField name="company" label={copy.labels.company} placeholder={copy.placeholders.company} autoComplete="organization" />
       <ContactField name="email" type="email" label={copy.labels.email} placeholder={copy.placeholders.email} autoComplete="email" />
       <ContactField name="project" label={copy.labels.project} placeholder={copy.placeholders.project} multiline />
+      <p className="m-0 text-[13px] text-dim">
+        {copy.privacyNotice.text}{" "}
+        <Link href={LEGAL_PATHS.privacy} hrefLang="es" className="underline underline-offset-2 hover:text-fg">
+          {copy.privacyNotice.linkLabel}
+        </Link>
+        .
+      </p>
       <button type="submit" className="btn btn-whatsapp">
         <Icon name="whatsapp" className="h-[22px] w-[22px]" />
         {copy.submit}
