@@ -28,8 +28,9 @@ export const createSecurityHeadersPolicy = (
         includeSubdomains: false,
         override: true,
       },
-      xssProtection: { protection: true, modeBlock: true, override: true },
+      xssProtection: { protection: false, override: true },
     },
+    removeHeaders: ["Server"],
     customHeadersBehavior: {
       customHeaders: [{ header: "Permissions-Policy", value: PERMISSIONS_POLICY, override: true }],
     },

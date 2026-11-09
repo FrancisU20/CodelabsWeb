@@ -43,6 +43,7 @@ import {
   ObjectOwnership,
 } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
+import { buildCleanUrlHandler } from "./clean-url-handler";
 import type { StaticSiteConfig } from "./config";
 import { createSecurityHeadersPolicy } from "./security-headers-policy";
 
@@ -52,6 +53,8 @@ export interface StaticSiteStackProps extends StackProps {
 
 const githubActionsAudience = "sts.amazonaws.com";
 const githubOidcUrl = "https://token.actions.githubusercontent.com";
+const noncurrentVersionRetention = Duration.days(30);
+const incompleteUploadRetention = Duration.days(7);
 
 export class StaticSiteStack extends Stack {
   constructor(scope: Construct, id: string, props: StaticSiteStackProps) {
@@ -73,29 +76,20 @@ export class StaticSiteStack extends Stack {
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
       encryption: BucketEncryption.S3_MANAGED,
       enforceSSL: true,
+      lifecycleRules: [
+        {
+          abortIncompleteMultipartUploadAfter: incompleteUploadRetention,
+          expiredObjectDeleteMarker: true,
+          noncurrentVersionExpiration: noncurrentVersionRetention,
+        },
+      ],
       objectOwnership: ObjectOwnership.BUCKET_OWNER_ENFORCED,
       removalPolicy: RemovalPolicy.RETAIN,
       versioned: true,
     });
 
     const cleanUrlRewrite = new Function(this, "CleanUrlRewriteFunction", {
-      code: FunctionCode.fromInline(`
-function handler(event) {
-  var request = event.request;
-  var uri = request.uri;
-
-  if (uri.endsWith("/")) {
-    request.uri = uri + "index.html";
-    return request;
-  }
-
-  if (!uri.includes(".")) {
-    request.uri = uri + ".html";
-  }
-
-  return request;
-}
-`),
+      code: FunctionCode.fromInline(buildCleanUrlHandler(config.domainName)),
     });
 
     const securityHeadersPolicy = createSecurityHeadersPolicy(this, config.domainName);
