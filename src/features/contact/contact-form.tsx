@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
-import { LEGAL_PATHS } from "@/i18n/routing";
+import { legalPath } from "@/i18n/routing";
 import Icon from "@/shared/ui/icons/svg-icon";
 import ContactField from "./contact-field";
 import { useContactSubmission } from "./use-contact-submission";
 
-const ContactForm = ({ copy }: { copy: Messages["contact"] }) => {
+const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Locale }) => {
   const { whatsAppLink, submit } = useContactSubmission(copy.message);
 
   return (
@@ -18,7 +19,7 @@ const ContactForm = ({ copy }: { copy: Messages["contact"] }) => {
       <ContactField name="project" label={copy.labels.project} placeholder={copy.placeholders.project} multiline />
       <p className="m-0 text-[13px] text-dim">
         {copy.privacyNotice.text}{" "}
-        <Link href={LEGAL_PATHS.privacy} hrefLang="es" className="underline underline-offset-2 hover:text-fg">
+        <Link href={legalPath("privacy", locale)} className="underline underline-offset-2 hover:text-fg">
           {copy.privacyNotice.linkLabel}
         </Link>
         .

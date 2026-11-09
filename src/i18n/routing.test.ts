@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type { PageKey } from "./page-key";
-import { getAlternatePath, ROUTES } from "./routing";
+import { getAlternatePath, LEGAL_ROUTES, ROUTES } from "./routing";
 
-const pages = Object.entries(ROUTES) as [PageKey, (typeof ROUTES)[PageKey]][];
+const pages = [...Object.entries(ROUTES), ...Object.entries(LEGAL_ROUTES)] as [PageKey, (typeof ROUTES)[PageKey]][];
 
 describe("getAlternatePath", () => {
   it.each(pages)("getAlternatePath_%s_mapsBothLocales", (_page, paths) => {
@@ -11,6 +11,6 @@ describe("getAlternatePath", () => {
   });
 
   it("getAlternatePath_unknownPath_fallsBackToHome", () => {
-    expect(getAlternatePath("/privacidad", "en")).toBe(ROUTES.home.en);
+    expect(getAlternatePath("/no-existe", "en")).toBe(ROUTES.home.en);
   });
 });

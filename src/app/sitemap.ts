@@ -3,7 +3,7 @@ import { LOCALES } from "@/i18n/locale";
 import { absoluteUrl } from "@/i18n/page-metadata";
 import type { PageKey } from "@/i18n/page-key";
 import { SITE_URL } from "@/config/site";
-import { LEGAL_PATHS, ROUTES } from "@/i18n/routing";
+import { LEGAL_ROUTES, ROUTES } from "@/i18n/routing";
 
 export const dynamic = "force-static";
 
@@ -20,7 +20,14 @@ const entriesFor = (page: PageKey): MetadataRoute.Sitemap =>
   }));
 
 const legalEntries = (): MetadataRoute.Sitemap =>
-  Object.values(LEGAL_PATHS).map((path) => ({ url: `${SITE_URL}${path}`, changeFrequency: "yearly", priority: LEGAL_PRIORITY }));
+  Object.values(LEGAL_ROUTES).flatMap((paths) =>
+    LOCALES.map((locale) => ({
+      url: `${SITE_URL}${paths[locale]}`,
+      changeFrequency: "yearly",
+      priority: LEGAL_PRIORITY,
+      alternates: { languages: { es: `${SITE_URL}${paths.es}`, en: `${SITE_URL}${paths.en}` } },
+    })),
+  );
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [...(Object.keys(ROUTES) as PageKey[]).flatMap(entriesFor), ...legalEntries()];
