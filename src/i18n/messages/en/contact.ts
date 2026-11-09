@@ -1,13 +1,11 @@
 import type { Messages } from "../messages";
 
 export const contact: Messages["contact"] = {
-  titleLead: "Have an idea?",
-  titleAccent: "Let's make it happen.",
+  title: { lines: ["Have an idea?"], accent: "Let's make it happen." },
   body: "Tell us what you need. We reply in hours, not weeks, with a proposal tailored to your company.",
   emailLabel: "Email",
   phoneLabel: "Phone",
   officeLabel: "Office",
-  office: "Cascadas de Chorlaví, Ibarra, Ecuador",
   labels: { name: "Name", company: "Company", email: "Email", project: "What do you need?" },
   placeholders: {
     name: "Your name",
@@ -16,6 +14,10 @@ export const contact: Messages["contact"] = {
     project: "For example: a booking app for my business",
   },
   submit: "Send via WhatsApp",
+  privacyNotice: {
+    text: "Sending opens WhatsApp with your message. We use your data only to answer your request, under our",
+    linkLabel: "Privacy Policy (in Spanish)",
+  },
   ready: "Your message is ready.",
   openWhatsApp: "Open WhatsApp →",
   message: {

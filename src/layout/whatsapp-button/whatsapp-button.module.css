@@ -52,17 +52,6 @@
   pointer-events: none;
 }
 
-.badge {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #ff3b30;
-  border: 2px solid var(--ink);
-}
-
 @media (max-width: 760px) {
   .button {
     height: 52px;
@@ -79,11 +68,11 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .button::before {
-    animation: ring 2.6s var(--ease-out) infinite;
+    animation: ring 2.6s var(--ease-out) 0.9s 3;
   }
 
   .button {
-    animation: enter 0.8s var(--ease-out) 1.2s backwards;
+    animation: enter 0.5s var(--ease-out) 0.4s backwards;
   }
 
   @keyframes ring {

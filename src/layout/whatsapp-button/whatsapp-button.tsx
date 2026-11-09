@@ -18,7 +18,6 @@ const WhatsAppButton = ({ locale }: { locale: Locale }) => {
       >
         <Icon name="whatsapp" />
         <span className={styles.label}>{dict.label}</span>
-        <span className={styles.badge} aria-hidden="true" />
       </a>
     </aside>
   );

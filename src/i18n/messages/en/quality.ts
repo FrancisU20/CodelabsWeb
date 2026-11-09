@@ -3,8 +3,7 @@ import type { Messages } from "../messages";
 export const quality: Messages["quality"] = {
   ariaLabel: "Quality",
   eyebrow: "Quality",
-  titleLead: "What you don't see",
-  titleAccent: "is built right too.",
+  title: { lines: ["What you don't see"], accent: "is built right too." },
   body: "Before your customers see a change, it goes through these checks.",
   windowLabel: "quality control",
   meterTitle: "Ready to launch",

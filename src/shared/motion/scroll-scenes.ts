@@ -1,18 +1,13 @@
+import { measureTrack, TRACK_BREAKPOINT } from "./horizontal-track";
 import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
-import { activeIndex, clampUnit, pinProgress, scrubProgress } from "./progress";
+import { activeIndex, pinProgress, scrubProgress } from "./progress";
+import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
+import { renderCounters, showFinalCounters } from "./scroll-counters";
 
-const PENDING_REVEAL_CLASS = "is-pending";
 const STORY_SCREENS = 3;
-const TRACK_BREAKPOINT = "(min-width: 761px)";
-const TRACK_TAIL_VIEWPORTS = 1.2;
-const COUNTER_SPEED = 1.8;
-const REVEAL_THRESHOLD = 0.15;
 
 const queryAll = (selector: string): HTMLElement[] => [...document.querySelectorAll<HTMLElement>(selector)];
-
-const counterText = (counter: HTMLElement, value: number): string =>
-  `${counter.dataset.prefix ?? ""}${value}${counter.dataset.suffix ?? ""}`;
 
 const isStory = (section: HTMLElement): boolean => section.dataset.story !== undefined;
 
@@ -24,46 +19,30 @@ const writeProgress = (context: SceneContext, element: HTMLElement, progress: nu
   return true;
 };
 
-const measureTrack = (context: SceneContext, section: HTMLElement) => {
-  const rail = section.querySelector<HTMLElement>("[data-track-rail]");
-  section.style.removeProperty("height");
-  rail?.style.removeProperty("--dist");
-  if (!rail || !context.root.classList.contains(MOTION_CLASS) || !context.wideScreen.matches) return;
-  const distance = Math.max(0, rail.scrollWidth - window.innerWidth);
-  rail.style.setProperty("--dist", `${distance}px`);
-  section.style.height = `${distance + window.innerHeight * TRACK_TAIL_VIEWPORTS}px`;
-};
-
 const measure = (context: SceneContext) => {
-  context.tracks.forEach((section) => measureTrack(context, section));
+  const horizontal = context.root.classList.contains(MOTION_CLASS) && context.wideScreen.matches;
+  context.tracks.forEach((section) => measureTrack(section, horizontal));
   context.metrics = context.pins.map((section) => ({
     section,
     top: section.getBoundingClientRect().top + window.scrollY,
     length: section.offsetHeight - window.innerHeight,
+    counters: context.counters.filter((counter) => section.contains(counter)),
   }));
 };
 
-const updateCounters = (context: SceneContext, section: HTMLElement, progress: number) =>
-  context.counters
-    .filter((counter) => section.contains(counter))
-    .forEach((counter) => {
-      const target = Number(counter.dataset.count);
-      counter.textContent = counterText(counter, Math.round(target * clampUnit(progress * COUNTER_SPEED)));
-    });
-
 const renderScrubs = (context: SceneContext) =>
-  context.scrubs.forEach((element) => {
-    writeProgress(context, element, scrubProgress(element.getBoundingClientRect().top, window.innerHeight));
-  });
+  context.scrubs
+    .map((element) => ({ element, progress: scrubProgress(element.getBoundingClientRect().top, window.innerHeight) }))
+    .forEach(({ element, progress }) => writeProgress(context, element, progress));
 
 const renderPins = (context: SceneContext) =>
-  context.metrics.forEach(({ section, top, length }) => {
+  context.metrics.forEach(({ section, top, length, counters }) => {
     const progress = pinProgress(window.scrollY, top, length);
     if (!writeProgress(context, section, progress)) return;
     if (isStory(section)) {
       section.dataset.active = String(activeIndex(progress, STORY_SCREENS));
     }
-    updateCounters(context, section, progress);
+    renderCounters(counters, progress);
   });
 
 const render = (context: SceneContext) => {
@@ -84,9 +63,7 @@ const showStaticState = (context: SceneContext) => {
   context.pins.filter(isStory).forEach((section) => {
     section.dataset.active = "0";
   });
-  context.counters.forEach((counter) => {
-    counter.textContent = counterText(counter, Number(counter.dataset.count));
-  });
+  showFinalCounters(context.counters);
 };
 
 const applyMode = (context: SceneContext) => {
@@ -98,26 +75,6 @@ const applyMode = (context: SceneContext) => {
     return;
   }
   render(context);
-};
-
-const observeReveals = (reducedMotion: MediaQueryList): IntersectionObserver => {
-  const observer = new IntersectionObserver(
-    (entries) =>
-      entries
-        .filter((entry) => entry.isIntersecting)
-        .forEach((entry) => {
-          entry.target.classList.remove(PENDING_REVEAL_CLASS);
-          observer.unobserve(entry.target);
-        }),
-    { threshold: REVEAL_THRESHOLD },
-  );
-  queryAll("[data-reveal]")
-    .filter((element) => !reducedMotion.matches && element.getBoundingClientRect().top >= window.innerHeight)
-    .forEach((element) => {
-      element.classList.add(PENDING_REVEAL_CLASS);
-      observer.observe(element);
-    });
-  return observer;
 };
 
 const createContext = (): SceneContext => ({
@@ -143,7 +100,7 @@ export const startScrollScenes = (): (() => void) => {
     requestRender(context);
   };
   const onModeChange = () => applyMode(context);
-  const revealObserver = observeReveals(context.reducedMotion);
+  const revealObserver = observeReveals(queryAll("[data-reveal]"), context.reducedMotion.matches);
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onLayoutChange);
   window.addEventListener("load", onLayoutChange);

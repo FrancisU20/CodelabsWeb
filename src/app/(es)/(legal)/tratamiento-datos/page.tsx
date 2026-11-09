@@ -25,7 +25,7 @@ export default function TratamientoDatosPage() {
             usuarios del Sitio. Complementa nuestra Política de Privacidad y
             forma parte de nuestros Términos y Condiciones.
           </p>
-          <p className="text-sm text-dim">Última actualización: 29 de junio de 2026</p>
+          <p className="text-sm text-dim">Última actualización: 7 de noviembre de 2026</p>
         </div>
       </section>
 
@@ -34,8 +34,8 @@ export default function TratamientoDatosPage() {
           <article className="space-y-3">
             <h2 className="text-xl font-semibold text-fg">1. Responsable del tratamiento</h2>
             <p className="text-sm text-muted">
-              CodeLabs, operado por ULLOA TERAN FRANCISCO MATEO (identificación
-              1003368725), actúa como responsable del tratamiento de los datos
+              CodeLabs, operado por ULLOA TERAN FRANCISCO MATEO (RUC
+              1003368725001), actúa como responsable del tratamiento de los datos
               personales descritos en esta política. Para ejercer derechos o
               realizar consultas, escríbenos a{" "}
               <a className="font-semibold text-fg underline" href="mailto:info@codelabsecuador.com">

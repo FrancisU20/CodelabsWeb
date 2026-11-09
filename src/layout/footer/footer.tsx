@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_NAME } from "@/config/site";
+import { SITE_CITY, SITE_NAME } from "@/config/site";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { LEGAL_PATHS } from "@/i18n/routing";
@@ -19,7 +19,7 @@ const Footer = ({ locale }: { locale: Locale }) => {
       <div className="site-wrap flex flex-wrap items-center justify-between gap-4 text-[13px] text-muted">
         <Logo className="h-[22px] w-auto" />
         <span>
-          © {new Date().getFullYear()} {SITE_NAME}. {dict.location}
+          © {new Date().getFullYear()} {SITE_NAME}. {SITE_CITY}.
         </span>
         <nav aria-label={dict.legalAriaLabel} className="flex flex-wrap gap-x-6 gap-y-2">
           {legalLinks.map((link) => (

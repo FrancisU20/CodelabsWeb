@@ -2,7 +2,7 @@ import type { Messages } from "../messages";
 
 export const team: Messages["team"] = {
   eyebrow: "Equipo",
-  titleLines: ["Un equipo completo.", "Un solo responsable."],
+  title: { lines: ["Un equipo completo.", "Un solo responsable."] },
   body: "No contratas a un programador suelto. Contratas a una empresa con especialistas en cada etapa y una persona a cargo de tu proyecto de principio a fin.",
   roles: [
     { title: "Dirección de proyecto", body: "Tu contacto directo. Plazos claros y avances cada semana." },

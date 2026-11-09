@@ -1,4 +1,5 @@
 import StatusBar from "@/shared/devices/status-bar";
+import { cx } from "@/shared/lib/class-names";
 import Icon from "@/shared/ui/icons/svg-icon";
 import Avatar from "./avatar";
 import styles from "./mockups.module.css";
@@ -21,7 +22,7 @@ const CLASSES = [
 ];
 
 const NucleoApp = () => (
-  <div className={`${styles.app} ${appStyles.nucleo}`}>
+  <div className={cx(styles.app, appStyles.nucleo)}>
     <StatusBar />
     <div className={styles.row}>
       <div className={styles.brandline}>
@@ -43,7 +44,7 @@ const NucleoApp = () => (
     </div>
     <div className={appStyles.days}>
       {WEEK.map((day) => (
-        <span key={day.date} className={`${appStyles.day} ${day.date === ACTIVE_DATE ? appStyles.dayActive : ""}`}>
+        <span key={day.date} className={cx(appStyles.day, day.date === ACTIVE_DATE && appStyles.dayActive)}>
           {day.letter}
           <b>{day.date}</b>
         </span>

@@ -82,18 +82,17 @@
 }
 
 :global(.motion) .copy {
-  opacity: calc(1 - var(--p, 0) * 2.6);
+  opacity: calc(1 - var(--p, 0) * 1.6);
   transform: translateY(calc(var(--p, 0) * -100px)) scale(calc(1 - var(--p, 0) * 0.1));
 }
 
 :global(.motion) .fan {
-  --f: clamp(0, calc(var(--p, 0) * 2), 1);
+  --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   transform: translateY(calc(82svh - var(--f) * 66svh)) scale(calc(0.92 + var(--f) * 0.1));
-  animation-name: fadeIn;
 }
 
 :global(.motion) .fan .fanPhone {
@@ -101,14 +100,17 @@
 }
 
 :global(.motion) .fan .side {
-  --f: clamp(0, calc(var(--p, 0) * 2), 1);
+  --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
+@media (prefers-reduced-motion: no-preference) {
+  .fan {
+    animation: fade-in 0.6s var(--ease-out) 0.2s both;
   }
-  to {
-    opacity: 1;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
   }
 }

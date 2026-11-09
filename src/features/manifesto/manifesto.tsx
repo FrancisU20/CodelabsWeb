@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { cssVars } from "@/shared/lib/css-vars";
+import { cx } from "@/shared/lib/class-names";
+import { pinLength } from "@/shared/motion/pin-length";
 import styles from "./manifesto.module.css";
 
 const splitWords = (text: string): string[] => text.split(/\s+/).filter(Boolean);
@@ -16,13 +18,13 @@ const Manifesto = ({ locale }: { locale: Locale }) => {
   ];
 
   return (
-    <section aria-label={dict.ariaLabel} data-pin style={cssVars({ "--pin-height": "220vh" })}>
+    <section aria-label={dict.ariaLabel} data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <p className="sr-only">{`${dict.lead} ${dict.accent}`}</p>
         <p className={styles.text} style={cssVars({ "--n": words.length })} aria-hidden="true">
           {words.map((entry, index) => (
             <Fragment key={`${entry.word}-${index}`}>
-              <span className={`${styles.word} ${entry.accent ? styles.accent : ""}`} style={cssVars({ "--i": index })}>
+              <span className={cx(styles.word, entry.accent && styles.accent)} style={cssVars({ "--i": index })}>
                 {entry.word}
               </span>{" "}
             </Fragment>

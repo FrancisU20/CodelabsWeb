@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, EMAIL_LINK, PHONE_LINK } from "@/config/contact";
+import { SITE_OFFICE } from "@/config/site";
 import type { Messages } from "@/i18n/messages/messages";
 
 const LINK_CLASS = "underline decoration-line underline-offset-4 transition-colors hover:text-brand hover:decoration-brand";
@@ -7,7 +8,7 @@ const ContactDetails = ({ copy }: { copy: Messages["contact"] }) => {
   const channels = [
     { label: copy.emailLabel, value: CONTACT_EMAIL, href: EMAIL_LINK },
     { label: copy.phoneLabel, value: CONTACT_PHONE_DISPLAY, href: PHONE_LINK },
-    { label: copy.officeLabel, value: copy.office, href: undefined },
+    { label: copy.officeLabel, value: SITE_OFFICE, href: undefined },
   ];
 
   return (

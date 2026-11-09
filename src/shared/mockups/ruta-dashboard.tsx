@@ -1,3 +1,4 @@
+import WindowFrame from "@/shared/devices/window-frame";
 import Icon from "@/shared/ui/icons/svg-icon";
 import DashboardKpis from "./dashboard-kpis";
 import DashboardMap from "./dashboard-map";
@@ -5,14 +6,10 @@ import DashboardSidebar from "./dashboard-sidebar";
 import DashboardTable from "./dashboard-table";
 import styles from "./dashboard.module.css";
 
-const RutaDashboard = ({ className = "" }: { className?: string }) => (
-  <div className={`${styles.browser} ${className}`}>
-    <div className={styles.bar}>
-      <span className={styles.dot} />
-      <span className={styles.dot} />
-      <span className={styles.dot} />
-      <span className={styles.url}>app.rutaclara.com/embarques</span>
-    </div>
+const APP_ADDRESS = "app.rutaclara.com/embarques";
+
+const RutaDashboard = ({ className }: { className?: string }) => (
+  <WindowFrame kind="browser" caption={APP_ADDRESS} className={className}>
     <div className={styles.layout}>
       <DashboardSidebar />
       <div className={styles.main}>
@@ -33,7 +30,7 @@ const RutaDashboard = ({ className = "" }: { className?: string }) => (
         </div>
       </div>
     </div>
-  </div>
+  </WindowFrame>
 );
 
 export default RutaDashboard;

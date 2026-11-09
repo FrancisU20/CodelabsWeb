@@ -1,5 +1,6 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
+import SectionHeading from "@/shared/ui/section/section-heading";
 import RoleIcon from "./role-icon";
 
 const Team = ({ locale }: { locale: Locale }) => {
@@ -9,16 +10,7 @@ const Team = ({ locale }: { locale: Locale }) => {
     <section id="equipo" aria-labelledby="team-title" className="pt-[140px] pb-10">
       <div className="site-wrap">
         <div className="mb-14 grid items-end gap-x-16 gap-y-6 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]" data-reveal>
-          <div className="flex flex-col gap-[18px]">
-            <p className="eyebrow">{dict.eyebrow}</p>
-            <h2 id="team-title" className="section-title m-0">
-              {dict.titleLines.map((line) => (
-                <span key={line} className="block">
-                  {line}
-                </span>
-              ))}
-            </h2>
-          </div>
+          <SectionHeading className="flex flex-col gap-[18px]" eyebrow={dict.eyebrow} title={dict.title} titleId="team-title" />
           <p className="lede m-0">{dict.body}</p>
         </div>
         <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]" data-reveal>

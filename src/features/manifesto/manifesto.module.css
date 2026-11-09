@@ -30,6 +30,5 @@
   --shown: clamp(0, calc((var(--p, 0) * (var(--n) + 4) - var(--i)) * 1000), 1);
   opacity: var(--shown);
   transform: translateY(calc((1 - var(--shown)) * 0.35em));
-  filter: blur(calc((1 - var(--shown)) * 8px));
-  transition: opacity 0.45s var(--ease-out), transform 0.45s var(--ease-out), filter 0.45s var(--ease-out);
+  transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);
 }

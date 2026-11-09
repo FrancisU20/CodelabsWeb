@@ -2,7 +2,7 @@ import type { Messages } from "../messages";
 
 export const services: Messages["services"] = {
   eyebrow: "Services",
-  titleLines: ["What we can", "do for you."],
+  title: { lines: ["What we can", "do for you."] },
   body: "From a website to your company's entire system.",
   idealFor: "Ideal for",
   items: [
