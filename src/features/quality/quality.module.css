@@ -200,21 +200,4 @@
     font-size: 14px;
     padding: 10px 12px;
   }
-
-  :global(.motion) .stage {
-    padding-block: 96px;
-  }
-
-  :global(.motion) .window {
-    transform: none;
-  }
-
-  :global(.motion) .meter {
-    --done: 1;
-  }
-
-  :global(.motion) .check {
-    opacity: 1;
-    transform: none;
-  }
 }

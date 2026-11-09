@@ -1,5 +1,5 @@
-import { measureTrack, TRACK_BREAKPOINT } from "./horizontal-track";
-import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
+import { measureTrack } from "./horizontal-track";
+import { MOTION_CLASS, REDUCED_MOTION_QUERY, WIDE_SCREEN_QUERY } from "./motion-mode";
 import { activeIndex, pinProgress, scrubProgress } from "./progress";
 import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
@@ -11,6 +11,8 @@ const queryAll = (selector: string): HTMLElement[] => [...document.querySelector
 
 const isStory = (section: HTMLElement): boolean => section.dataset.story !== undefined;
 
+const isMotionActive = (context: SceneContext): boolean => context.root.classList.contains(MOTION_CLASS);
+
 const writeProgress = (context: SceneContext, element: HTMLElement, progress: number): boolean => {
   const value = progress.toFixed(4);
   if (context.renderedValues.get(element) === value) return false;
@@ -20,8 +22,7 @@ const writeProgress = (context: SceneContext, element: HTMLElement, progress: nu
 };
 
 const measure = (context: SceneContext) => {
-  const horizontal = context.root.classList.contains(MOTION_CLASS) && context.wideScreen.matches;
-  context.tracks.forEach((section) => measureTrack(section, horizontal));
+  context.tracks.forEach((section) => measureTrack(section, isMotionActive(context)));
   context.metrics = context.pins.map((section) => ({
     section,
     top: section.getBoundingClientRect().top + window.scrollY,
@@ -47,6 +48,7 @@ const renderPins = (context: SceneContext) =>
 
 const render = (context: SceneContext) => {
   context.frameRequested = false;
+  if (!isMotionActive(context)) return;
   renderScrubs(context);
   renderPins(context);
 };
@@ -67,7 +69,7 @@ const showStaticState = (context: SceneContext) => {
 };
 
 const applyMode = (context: SceneContext) => {
-  const motionOn = !context.reducedMotion.matches;
+  const motionOn = !context.reducedMotion.matches && context.wideScreen.matches;
   context.root.classList.toggle(MOTION_CLASS, motionOn);
   measure(context);
   if (!motionOn) {
@@ -80,7 +82,7 @@ const applyMode = (context: SceneContext) => {
 const createContext = (): SceneContext => ({
   root: document.documentElement,
   reducedMotion: window.matchMedia(REDUCED_MOTION_QUERY),
-  wideScreen: window.matchMedia(TRACK_BREAKPOINT),
+  wideScreen: window.matchMedia(WIDE_SCREEN_QUERY),
   pins: queryAll("[data-pin]"),
   scrubs: queryAll("[data-scrub]"),
   tracks: queryAll("[data-track]"),
@@ -105,7 +107,7 @@ export const startScrollScenes = (): (() => void) => {
   window.addEventListener("resize", onLayoutChange);
   window.addEventListener("load", onLayoutChange);
   context.reducedMotion.addEventListener("change", onModeChange);
-  context.wideScreen.addEventListener("change", onLayoutChange);
+  context.wideScreen.addEventListener("change", onModeChange);
   document.fonts?.ready.then(onLayoutChange);
   applyMode(context);
   return () => {
@@ -114,7 +116,7 @@ export const startScrollScenes = (): (() => void) => {
     window.removeEventListener("resize", onLayoutChange);
     window.removeEventListener("load", onLayoutChange);
     context.reducedMotion.removeEventListener("change", onModeChange);
-    context.wideScreen.removeEventListener("change", onLayoutChange);
+    context.wideScreen.removeEventListener("change", onModeChange);
     revealObserver.disconnect();
   };
 };
