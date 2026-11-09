@@ -1,5 +1,5 @@
 import type { LegalDocument } from "../legal-document";
-import { COURTESY_TRANSLATION_NOTICE, EMAIL, list, paragraph, PRIVACY_EMAIL } from "../legal-tokens";
+import { COURTESY_TRANSLATION_NOTICE, list, paragraph, PRIVACY_EMAIL } from "../legal-tokens";
 
 export const dataProcessing: LegalDocument = {
   layout: "articles",
