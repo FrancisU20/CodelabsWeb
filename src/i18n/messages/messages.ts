@@ -28,6 +28,8 @@ export type Messages = {
   clients: {
     eyebrow: string;
     title: string;
+    pause: string;
+    resume: string;
   };
   manifesto: {
     ariaLabel: string;

@@ -21,11 +21,11 @@ type NavbarProps = {
 
 const Navbar = ({ locale, copy, items }: NavbarProps) => {
   const pathname = usePathname();
-  const menu = useDismissibleMenu(pathname);
+  const menu = useDismissibleMenu(pathname, MOBILE_MENU_ID);
   const switchHref = getAlternatePath(pathname, locale === "es" ? "en" : "es");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-[var(--nav-bg)] backdrop-blur-xl backdrop-saturate-150">
+    <header ref={menu.containerRef} className="sticky top-0 z-50 border-b border-line bg-[var(--nav-bg)] backdrop-blur-xl backdrop-saturate-150">
       <div className="site-wrap flex min-h-14 items-center justify-between gap-4">
         <Link href={pagePath("home", locale)} aria-label={copy.homeAriaLabel}>
           <Logo />
@@ -39,7 +39,7 @@ const Navbar = ({ locale, copy, items }: NavbarProps) => {
             {copy.cta}
           </Link>
         </div>
-        <MenuToggle open={menu.open} controls={MOBILE_MENU_ID} openLabel={copy.openMenu} closeLabel={copy.closeMenu} onToggle={menu.toggle} />
+        <MenuToggle buttonRef={menu.toggleRef} open={menu.open} controls={MOBILE_MENU_ID} openLabel={copy.openMenu} closeLabel={copy.closeMenu} onToggle={menu.toggle} />
       </div>
       {menu.open && (
         <NavLinks
