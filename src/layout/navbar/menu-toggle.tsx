@@ -1,4 +1,7 @@
+import type { RefObject } from "react";
+
 type MenuToggleProps = {
+  buttonRef: RefObject<HTMLButtonElement>;
   open: boolean;
   controls: string;
   openLabel: string;
@@ -6,8 +9,9 @@ type MenuToggleProps = {
   onToggle: () => void;
 };
 
-const MenuToggle = ({ open, controls, openLabel, closeLabel, onToggle }: MenuToggleProps) => (
+const MenuToggle = ({ buttonRef, open, controls, openLabel, closeLabel, onToggle }: MenuToggleProps) => (
   <button
+    ref={buttonRef}
     type="button"
     aria-label={open ? closeLabel : openLabel}
     aria-expanded={open}
