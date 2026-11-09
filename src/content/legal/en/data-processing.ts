@@ -1,5 +1,5 @@
 import type { LegalDocument } from "../legal-document";
-import { COURTESY_TRANSLATION_NOTICE, EMAIL, list, paragraph } from "../legal-tokens";
+import { COURTESY_TRANSLATION_NOTICE, EMAIL, list, paragraph, PRIVACY_EMAIL } from "../legal-tokens";
 
 export const dataProcessing: LegalDocument = {
   layout: "articles",
@@ -9,13 +9,13 @@ export const dataProcessing: LegalDocument = {
   title: "Personal data processing policy",
   intro:
     "This policy describes, in compliance with Ecuador's Organic Law on Personal Data Protection (LOPDP), how CodeLabs processes the personal data of clients, prospects, suppliers and users of the Site. It complements our Privacy Policy and forms part of our Terms and Conditions.",
-  updated: "Last updated: November 7, 2026",
+  updated: "Last updated: November 9, 2026",
   notice: COURTESY_TRANSLATION_NOTICE,
   sections: [
     {
       heading: "1. Data controller",
       blocks: [
-        paragraph("CodeLabs, operated by ULLOA TERAN FRANCISCO MATEO (RUC 1003368725001), acts as the controller of the personal data described in this policy. To exercise your rights or make enquiries, write to us at ", EMAIL, "."),
+        paragraph("CodeLabs, operated by ULLOA TERAN FRANCISCO MATEO (RUC 1003368725001), acts as the controller of the personal data described in this policy. To exercise your rights or make enquiries, write to us at ", PRIVACY_EMAIL, "."),
       ],
     },
     {
@@ -64,7 +64,7 @@ export const dataProcessing: LegalDocument = {
     {
       heading: "8. Rights of data subjects",
       blocks: [
-        paragraph("You may at any time exercise your rights of access, rectification, updating, erasure, objection and portability of your personal data, and withdraw any consent given, where applicable. To do so, write to us at ", EMAIL, " clearly stating your request. We will respond to your request within the periods provided by applicable regulations and, if you are not satisfied with the response, you may contact the competent personal data protection authority in Ecuador."),
+        paragraph("You may at any time exercise your rights of access, rectification, updating, erasure, objection and portability of your personal data, and withdraw any consent given, where applicable. To do so, write to us at ", PRIVACY_EMAIL, " clearly stating your request. We will respond to your request within the periods provided by applicable regulations and, if you are not satisfied with the response, you may contact the competent personal data protection authority in Ecuador."),
       ],
     },
     {

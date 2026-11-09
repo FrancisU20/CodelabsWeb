@@ -11,6 +11,10 @@ const formData = (fields: Record<string, string>): FormData => {
 };
 
 describe("buildContactMessage", () => {
+  it("buildContactMessage_withReference_includesIt", () => {
+    expect(buildContactMessage(labels, formData({ name: "Ana" }), "CL-1")).toBe("Hola CodeLabs, soy Ana.\nReferencia: CL-1");
+  });
+
   it.each([
     [
       "allFields",

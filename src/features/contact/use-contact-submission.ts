@@ -1,21 +1,32 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
 import { buildWhatsAppLink } from "@/config/contact";
+import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
+import { buildLeadSubmission } from "./build-lead-submission";
 import { buildContactMessage } from "./contact-message";
+import { sendLead } from "./send-lead";
+import type { SubmissionState } from "./submission-state";
 
-const NEW_TAB = "_blank";
-const NEW_TAB_FEATURES = "noopener,noreferrer";
+export const useContactSubmission = (labels: Messages["contact"]["message"], locale: Locale) => {
+  const [state, setState] = useState<SubmissionState>({ status: "idle" });
+  const startedAt = useRef(0);
 
-export const useContactSubmission = (labels: Messages["contact"]["message"]) => {
-  const [whatsAppLink, setWhatsAppLink] = useState<string | null>(null);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const link = buildWhatsAppLink(buildContactMessage(labels, new FormData(event.currentTarget)));
-    window.open(link, NEW_TAB, NEW_TAB_FEATURES);
-    setWhatsAppLink(link);
+    const data = new FormData(event.currentTarget);
+    setState({ status: "submitting" });
+    try {
+      const reference = await sendLead(buildLeadSubmission(data, locale, Date.now() - startedAt.current));
+      setState({ status: "accepted", reference, whatsAppLink: buildWhatsAppLink(buildContactMessage(labels, data, reference)) });
+    } catch {
+      setState({ status: "failed", whatsAppLink: buildWhatsAppLink(buildContactMessage(labels, data)) });
+    }
   };
 
-  return { whatsAppLink, submit };
+  return { state, submit };
 };

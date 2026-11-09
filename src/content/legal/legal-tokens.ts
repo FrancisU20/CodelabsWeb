@@ -8,6 +8,8 @@ export const EMAIL: LegalInline = { kind: "email" };
 
 export const PHONE: LegalInline = { kind: "phone" };
 
+export const PRIVACY_EMAIL: LegalInline = { kind: "privacyEmail" };
+
 export const emailWithSubject = (subject: string): LegalInline => ({ kind: "email", subject });
 
 export const whatsApp = (message: string): LegalInline => ({ kind: "whatsapp", message });

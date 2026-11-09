@@ -1,5 +1,5 @@
 import type { LegalDocument } from "../legal-document";
-import { EMAIL, list, paragraph } from "../legal-tokens";
+import { list, paragraph, PRIVACY_EMAIL } from "../legal-tokens";
 
 export const dataProcessing: LegalDocument = {
   layout: "articles",
@@ -8,12 +8,12 @@ export const dataProcessing: LegalDocument = {
   eyebrow: "Política de tratamiento de datos",
   title: "Política de tratamiento de datos personales",
   intro: "Esta política describe, en cumplimiento de la Ley Orgánica de Protección de Datos Personales del Ecuador (LOPDP), cómo CodeLabs trata los datos personales de clientes, prospectos, proveedores y usuarios del Sitio. Complementa nuestra Política de Privacidad y forma parte de nuestros Términos y Condiciones.",
-  updated: "Última actualización: 7 de noviembre de 2026",
+  updated: "Última actualización: 9 de noviembre de 2026",
   sections: [
     {
       heading: "1. Responsable del tratamiento",
       blocks: [
-        paragraph("CodeLabs, operado por ULLOA TERAN FRANCISCO MATEO (RUC 1003368725001), actúa como responsable del tratamiento de los datos personales descritos en esta política. Para ejercer derechos o realizar consultas, escríbenos a ", EMAIL, "."),
+        paragraph("CodeLabs, operado por ULLOA TERAN FRANCISCO MATEO (RUC 1003368725001), actúa como responsable del tratamiento de los datos personales descritos en esta política. Para ejercer derechos o realizar consultas, escríbenos a ", PRIVACY_EMAIL, "."),
       ],
     },
     {
@@ -62,7 +62,7 @@ export const dataProcessing: LegalDocument = {
     {
       heading: "8. Derechos de los titulares",
       blocks: [
-        paragraph("Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, actualización, eliminación, oposición y portabilidad de tus datos personales, así como revocar el consentimiento otorgado, cuando aplique. Para ello, escríbenos a ", EMAIL, " indicando claramente tu solicitud. Atenderemos tu requerimiento dentro de los plazos previstos por la normativa aplicable y, de no quedar satisfecho con la respuesta, puedes acudir ante la autoridad de protección de datos personales competente en Ecuador."),
+        paragraph("Puedes ejercer en cualquier momento tus derechos de acceso, rectificación, actualización, eliminación, oposición y portabilidad de tus datos personales, así como revocar el consentimiento otorgado, cuando aplique. Para ello, escríbenos a ", PRIVACY_EMAIL, " indicando claramente tu solicitud. Atenderemos tu requerimiento dentro de los plazos previstos por la normativa aplicable y, de no quedar satisfecho con la respuesta, puedes acudir ante la autoridad de protección de datos personales competente en Ecuador."),
       ],
     },
     {

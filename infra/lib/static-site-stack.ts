@@ -44,6 +44,7 @@ import {
 } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 import { buildCleanUrlHandler } from "./clean-url-handler";
+import { addLeadIntakeRoute } from "./lead-intake-route";
 import type { StaticSiteConfig } from "./config";
 import { createSecurityHeadersPolicy } from "./security-headers-policy";
 
@@ -130,6 +131,8 @@ export class StaticSiteStack extends Stack {
       minimumProtocolVersion: SecurityPolicyProtocol.TLS_V1_2_2021,
       priceClass: PriceClass.PRICE_CLASS_100,
     });
+
+    addLeadIntakeRoute(this, distribution, securityHeadersPolicy);
 
     allDomainNames.forEach((recordName) => {
       const normalizedRecordName =

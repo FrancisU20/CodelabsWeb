@@ -1,5 +1,9 @@
 export const CONTACT_EMAIL = "info@codelabsecuador.com";
 
+export const CONTACT_PRIVACY_EMAIL = "privacy@codelabsecuador.com";
+
+export const LEAD_CONSENT_VERSION = "2026-11-09";
+
 export const CONTACT_PHONE_DISPLAY = "098 452 2092";
 
 export const WHATSAPP_NUMBER = "593984522092";

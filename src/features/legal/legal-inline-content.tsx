@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { buildWhatsAppLink, CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, EMAIL_LINK } from "@/config/contact";
+import { buildWhatsAppLink, CONTACT_EMAIL, CONTACT_PHONE_DISPLAY, CONTACT_PRIVACY_EMAIL, EMAIL_LINK } from "@/config/contact";
 import type { LegalInline } from "@/content/legal/legal-inline";
 import type { Locale } from "@/i18n/locale";
 import { legalPath } from "@/i18n/routing";
@@ -11,6 +11,13 @@ const emailHref = (subject?: string): string => (subject ? `${EMAIL_LINK}?subjec
 const InlinePart = ({ part, locale }: { part: LegalInline; locale: Locale }) => {
   if (typeof part === "string") return part;
   if (part.kind === "phone") return CONTACT_PHONE_DISPLAY;
+  if (part.kind === "privacyEmail") {
+    return (
+      <a className={LINK_CLASS} href={`mailto:${CONTACT_PRIVACY_EMAIL}`}>
+        {CONTACT_PRIVACY_EMAIL}
+      </a>
+    );
+  }
   if (part.kind === "email") {
     return (
       <a className={LINK_CLASS} href={emailHref(part.subject)}>
