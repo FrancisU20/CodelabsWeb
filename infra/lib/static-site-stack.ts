@@ -24,6 +24,7 @@ import {
 import { S3BucketOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 import {
   FederatedPrincipal,
+  type IOpenIdConnectProvider,
   OpenIdConnectProvider,
   PolicyDocument,
   PolicyStatement,
@@ -54,6 +55,8 @@ export interface StaticSiteStackProps extends StackProps {
 
 const githubActionsAudience = "sts.amazonaws.com";
 const githubOidcUrl = "https://token.actions.githubusercontent.com";
+const infraDeployRoleName = "codelabs-web-infra-deploy";
+const cdkRolePattern = "cdk-hnb659fds-*";
 const noncurrentVersionRetention = Duration.days(30);
 const incompleteUploadRetention = Duration.days(7);
 
@@ -151,7 +154,9 @@ export class StaticSiteStack extends Stack {
       });
     });
 
-    const deployRole = this.createGitHubDeployRole(config, siteBucket, distribution);
+    const oidcProvider = this.gitHubOidcProvider(config);
+    const deployRole = this.createGitHubDeployRole(config, siteBucket, distribution, oidcProvider);
+    this.createGitHubInfraRole(config, oidcProvider);
 
     new CfnOutput(this, "SiteUrl", {
       value: `https://${config.domainName}`,
@@ -174,18 +179,8 @@ export class StaticSiteStack extends Stack {
     config: StaticSiteConfig,
     bucket: Bucket,
     distribution: Distribution,
+    oidcProvider: IOpenIdConnectProvider,
   ): Role {
-    const oidcProvider = config.githubOidcProviderArn
-      ? OpenIdConnectProvider.fromOpenIdConnectProviderArn(
-          this,
-          "GitHubOidcProvider",
-          config.githubOidcProviderArn,
-        )
-      : new OpenIdConnectProvider(this, "GitHubOidcProvider", {
-          url: githubOidcUrl,
-          clientIds: [githubActionsAudience],
-        });
-
     const repositorySubjects = [
       `repo:${config.githubOwner}/${config.githubRepository}:ref:refs/heads/${config.githubBranch}`,
       `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
@@ -228,6 +223,42 @@ export class StaticSiteStack extends Stack {
     });
 
     return role;
+  }
+
+  private gitHubOidcProvider(config: StaticSiteConfig): IOpenIdConnectProvider {
+    return config.githubOidcProviderArn
+      ? OpenIdConnectProvider.fromOpenIdConnectProviderArn(
+          this,
+          "GitHubOidcProvider",
+          config.githubOidcProviderArn,
+        )
+      : new OpenIdConnectProvider(this, "GitHubOidcProvider", {
+          url: githubOidcUrl,
+          clientIds: [githubActionsAudience],
+        });
+  }
+
+  private createGitHubInfraRole(config: StaticSiteConfig, oidcProvider: IOpenIdConnectProvider): void {
+    const role = new Role(this, "GitHubInfraDeployRole", {
+      roleName: infraDeployRoleName,
+      assumedBy: new FederatedPrincipal(
+        oidcProvider.openIdConnectProviderArn,
+        {
+          StringEquals: {
+            "token.actions.githubusercontent.com:aud": githubActionsAudience,
+            "token.actions.githubusercontent.com:sub": `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
+          },
+        },
+        "sts:AssumeRoleWithWebIdentity",
+      ),
+      description: `Deploy ${config.domainName} infrastructure from GitHub Actions`,
+    });
+    role.addToPolicy(
+      new PolicyStatement({
+        actions: ["sts:AssumeRole"],
+        resources: [`arn:aws:iam::${this.account}:role/${cdkRolePattern}`],
+      }),
+    );
   }
 
   private toRecordId(domainName: string): string {

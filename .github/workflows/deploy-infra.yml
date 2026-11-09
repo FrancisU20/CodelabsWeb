@@ -1,0 +1,46 @@
+name: Deploy Infrastructure
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-infrastructure
+
+permissions:
+  contents: read
+
+env:
+  CDK_DEFAULT_ACCOUNT: "945849363651"
+  CDK_DEFAULT_REGION: us-east-1
+
+jobs:
+  deploy:
+    name: Deploy / Infrastructure
+    runs-on: ubuntu-24.04
+    if: github.ref == 'refs/heads/master'
+    environment: production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Setup infra
+        uses: ./.github/actions/setup-infra
+        with:
+          node-version: "22.23.3"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd
+        with:
+          role-to-assume: arn:aws:iam::${{ env.CDK_DEFAULT_ACCOUNT }}:role/codelabs-web-infra-deploy
+          role-session-name: codelabs-web-infra-${{ github.run_id }}
+          aws-region: us-east-1
+
+      - name: CDK deploy
+        working-directory: infra
+        run: npm run cdk -- deploy -c stage=prod --require-approval never
+
+      - name: Smoke test
+        run: scripts/smoke.sh

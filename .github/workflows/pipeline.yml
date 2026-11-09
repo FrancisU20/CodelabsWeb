@@ -64,7 +64,7 @@ env:
 jobs:
   changes:
     name: Plan / Detect Changes
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       web: ${{ steps.flags.outputs.web }}
       infra: ${{ steps.flags.outputs.infra }}
@@ -75,7 +75,7 @@ jobs:
       deploy_web: ${{ steps.flags.outputs.deploy_web }}
     steps:
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
 
@@ -186,12 +186,12 @@ jobs:
 
   web-quality:
     name: Web / Quality Gate
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [changes]
     if: needs.changes.outputs.validate_web == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Setup web
         uses: ./.github/actions/setup-web
@@ -217,7 +217,7 @@ jobs:
 
       - name: Upload web export artifact
         if: needs.changes.outputs.deploy_web == 'true'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: web-export-${{ github.sha }}
           path: out
@@ -226,12 +226,12 @@ jobs:
 
   infra-validate:
     name: Infra / Validate CDK
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [changes]
     if: needs.changes.outputs.validate_infra == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Setup infra
         uses: ./.github/actions/setup-infra
@@ -247,7 +247,7 @@ jobs:
         run: npm run synth -- -c stage=prod --quiet
 
       - name: Upload CloudFormation template
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: cfn-prod-${{ github.sha }}
           path: infra/cdk.out/*.template.json
@@ -256,7 +256,7 @@ jobs:
 
   deploy-web:
     name: Deploy / Static Site
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [changes, web-quality, infra-validate]
     if: |
       always() &&
@@ -269,7 +269,7 @@ jobs:
       id-token: write
     steps:
       - name: Download web export artifact
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
         with:
           name: web-export-${{ github.sha }}
           path: out
@@ -282,7 +282,7 @@ jobs:
           test -f out/index.html
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd
         with:
           role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
           role-session-name: codelabs-web-${{ github.run_id }}
@@ -309,9 +309,18 @@ jobs:
             --distribution-id "$CLOUDFRONT_DISTRIBUTION_ID" \
             --paths "/*"
 
+      - name: Checkout smoke test
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: smoke
+          sparse-checkout: scripts
+
+      - name: Smoke test
+        run: smoke/scripts/smoke.sh
+
   summary:
     name: Pipeline / Summary
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [changes, web-quality, infra-validate, deploy-web]
     if: always()
     steps:
