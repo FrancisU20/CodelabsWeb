@@ -1,17 +1,9 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import PhoneFrame from "@/shared/devices/phone-frame";
-import AuraApp from "@/shared/mockups/aura-app";
-import LexaApp from "@/shared/mockups/lexa-app";
-import NucleoApp from "@/shared/mockups/nucleo-app";
 import { pinLength } from "@/shared/motion/pin-length";
+import { SHOWCASE_APPS } from "@/showcase/showcase-apps";
 import styles from "./stories.module.css";
-
-const SCREENS = [
-  { id: "nucleo", Screen: NucleoApp },
-  { id: "aura", Screen: AuraApp },
-  { id: "lexa", Screen: LexaApp },
-];
 
 const Stories = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).stories;
@@ -36,7 +28,7 @@ const Stories = ({ locale }: { locale: Locale }) => {
         </div>
         <div className={styles.phoneWrap} aria-hidden="true">
           <PhoneFrame className={styles.storyPhone}>
-            {SCREENS.map(({ id, Screen }, index) => (
+            {Object.entries(SHOWCASE_APPS).map(([id, Screen], index) => (
               <div key={id} className={styles.layer} data-index={index}>
                 <Screen />
               </div>

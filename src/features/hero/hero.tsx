@@ -3,11 +3,11 @@ import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { pagePath } from "@/i18n/routing";
 import PhoneFrame from "@/shared/devices/phone-frame";
-import AuraApp from "@/shared/mockups/aura-app";
-import LexaApp from "@/shared/mockups/lexa-app";
-import NucleoApp from "@/shared/mockups/nucleo-app";
 import { pinLength } from "@/shared/motion/pin-length";
+import { SHOWCASE_APPS } from "@/showcase/showcase-apps";
 import styles from "./hero.module.css";
+
+const { aura: AuraScreen, nucleo: NucleoScreen, lexa: LexaScreen } = SHOWCASE_APPS;
 
 const Hero = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).hero;
@@ -33,13 +33,13 @@ const Hero = ({ locale }: { locale: Locale }) => {
         </div>
         <div className={styles.fan} aria-hidden="true">
           <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.left}`}>
-            <AuraApp />
+            <AuraScreen />
           </PhoneFrame>
           <PhoneFrame className={`${styles.fanPhone} ${styles.center}`}>
-            <NucleoApp />
+            <NucleoScreen />
           </PhoneFrame>
           <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.right}`}>
-            <LexaApp />
+            <LexaScreen />
           </PhoneFrame>
         </div>
       </div>

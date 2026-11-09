@@ -2,6 +2,7 @@ import StatusBar from "@/shared/devices/status-bar";
 import { cx } from "@/shared/lib/class-names";
 import Icon from "@/shared/ui/icons/svg-icon";
 import Avatar from "./avatar";
+import AppTabBar from "./app-tab-bar";
 import styles from "./mockups.module.css";
 import appStyles from "./nucleo.module.css";
 
@@ -60,12 +61,7 @@ const NucleoApp = () => (
         <span className={appStyles.seat}>{session.seats}</span>
       </div>
     ))}
-    <nav className={styles.tabs}>
-      <Icon name="home" />
-      <Icon name="calendar" />
-      <Icon name="card" />
-      <Icon name="user" />
-    </nav>
+    <AppTabBar icons={["home", "calendar", "card", "user"]} />
   </div>
 );
 

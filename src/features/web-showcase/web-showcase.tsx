@@ -1,8 +1,8 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import PhoneFrame from "@/shared/devices/phone-frame";
-import RutaApp from "@/shared/mockups/ruta-app";
-import RutaDashboard from "@/shared/mockups/ruta-dashboard";
+import RutaApp from "@/showcase/ruta-app";
+import RutaDashboard from "@/showcase/ruta-dashboard";
 import SectionHeading from "@/shared/ui/section/section-heading";
 import { pinLength } from "@/shared/motion/pin-length";
 import styles from "./web-showcase.module.css";
