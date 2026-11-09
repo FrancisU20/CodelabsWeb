@@ -51,8 +51,12 @@
 }
 
 .dots {
-  display: flex;
+  display: none;
   gap: 8px;
+}
+
+:global(.motion) .dots {
+  display: flex;
 }
 
 .dot {
@@ -120,21 +124,6 @@
 }
 
 @media (max-width: 760px) {
-  :global(.motion) .stage {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    align-content: start;
-    padding-top: 72px;
-  }
-
-  :global(.motion) .phoneWrap {
-    order: -1;
-  }
-
-  :global(.motion) .phoneWrap .storyPhone {
-    --w: min(46vw, 34svh);
-  }
-
   .itemTitle {
     font-size: 30px;
   }

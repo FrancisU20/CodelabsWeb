@@ -1,5 +1,3 @@
-export const TRACK_BREAKPOINT = "(min-width: 761px)";
-
 const TRACK_TAIL_VIEWPORTS = 1.2;
 
 const resetTrack = (section: HTMLElement, rail: HTMLElement | null) => {
