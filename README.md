@@ -44,10 +44,10 @@ Las dependencias entre capas fluyen `app → views → features/layout → share
 cd infra
 npm ci
 npm run build
-npm run synth -- -c stage=prod --profile codelabs
+npm run synth -- -c stage=prod --profile codelabs-prod
 ```
 
-El despliegue de infraestructura es manual. Antes de ejecutar `cdk deploy`, se deben confirmar perfil, cuenta, región y hosted zone; el perfil local esperado es `codelabs`.
+El despliegue de infraestructura es manual. Antes de ejecutar `cdk deploy`, se deben confirmar perfil, cuenta, región y hosted zone; el perfil local esperado es `codelabs-prod`.
 
 ## Documentación
 
