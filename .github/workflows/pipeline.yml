@@ -74,7 +74,7 @@ jobs:
       deploy_web: ${{ steps.flags.outputs.deploy_web }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
 
@@ -190,7 +190,7 @@ jobs:
     if: needs.changes.outputs.validate_web == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
       - name: Setup web
         uses: ./.github/actions/setup-web
@@ -216,7 +216,7 @@ jobs:
 
       - name: Upload web export artifact
         if: needs.changes.outputs.deploy_web == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: web-export-${{ github.sha }}
           path: out
@@ -230,7 +230,7 @@ jobs:
     if: needs.changes.outputs.validate_infra == 'true'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
       - name: Setup infra
         uses: ./.github/actions/setup-infra
@@ -246,7 +246,7 @@ jobs:
         run: npm run synth -- -c stage=prod --quiet
 
       - name: Upload CloudFormation template
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: cfn-prod-${{ github.sha }}
           path: infra/cdk.out/*.template.json
@@ -268,7 +268,7 @@ jobs:
       id-token: write
     steps:
       - name: Download web export artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           name: web-export-${{ github.sha }}
           path: out
@@ -281,7 +281,7 @@ jobs:
           test -f out/index.html
 
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a
         with:
           role-to-assume: ${{ vars.AWS_ROLE_TO_ASSUME }}
           role-session-name: codelabs-web-${{ github.run_id }}
