@@ -16,6 +16,6 @@
     "@types/node": "^20.19.25",
     "aws-cdk": "^2.1033.0",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^7.0.2"
   }
 }
