@@ -2,16 +2,16 @@ import Link from "next/link";
 import { SITE_CITY, SITE_NAME } from "@/config/site";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
-import { LEGAL_PATHS } from "@/i18n/routing";
+import { legalPath } from "@/i18n/routing";
 import Logo from "@/shared/ui/logo";
 
 const Footer = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).footer;
   const legalLinks = [
-    { href: LEGAL_PATHS.privacy, label: dict.privacy },
-    { href: LEGAL_PATHS.terms, label: dict.terms },
-    { href: LEGAL_PATHS.dataProcessing, label: dict.dataProcessing },
-    { href: LEGAL_PATHS.unsubscribe, label: dict.unsubscribe },
+    { href: legalPath("privacy", locale), label: dict.privacy },
+    { href: legalPath("terms", locale), label: dict.terms },
+    { href: legalPath("dataProcessing", locale), label: dict.dataProcessing },
+    { href: legalPath("unsubscribe", locale), label: dict.unsubscribe },
   ];
 
   return (

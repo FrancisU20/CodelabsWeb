@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL } from "@/config/site";
+import type { LegalDocumentKey } from "@/content/legal/legal-document-key";
+import { LEGAL_DOCUMENTS } from "@/content/legal/legal-documents";
 import type { Locale } from "./locale";
 import { getMessages } from "./messages/get-messages";
 import type { PageKey } from "./page-key";
-import { pagePath } from "./routing";
+import { LEGAL_ROUTES, pagePath } from "./routing";
 
 const OPEN_GRAPH_LOCALE: Record<Locale, string> = { es: "es_EC", en: "en_US" };
 const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
@@ -51,8 +53,16 @@ export const buildRootMetadata = (locale: Locale): Metadata => {
   };
 };
 
-export const buildLegalMetadata = (title: string, description: string, path: string): Metadata => ({
-  title: `${title} | ${SITE_NAME}`,
-  description,
-  alternates: { canonical: `${SITE_URL}${path}` },
-});
+export const buildLegalMetadata = (key: LegalDocumentKey, locale: Locale): Metadata => {
+  const { metaTitle, metaDescription } = LEGAL_DOCUMENTS[key][locale];
+  const spanishUrl = `${SITE_URL}${LEGAL_ROUTES[key].es}`;
+
+  return {
+    title: `${metaTitle} | ${SITE_NAME}`,
+    description: metaDescription,
+    alternates: {
+      canonical: `${SITE_URL}${LEGAL_ROUTES[key][locale]}`,
+      languages: { es: spanishUrl, en: `${SITE_URL}${LEGAL_ROUTES[key].en}`, "x-default": spanishUrl },
+    },
+  };
+};
