@@ -19,8 +19,13 @@ const restrictImports = (files, group, message) => ({
 const architectureBoundaries = [
   restrictImports(
     ["src/shared/**"],
-    ["@/app/**", "@/views/**", "@/layout/**", "@/features/**", "@/i18n/**", "@/config/**", "@/content/**"],
+    ["@/app/**", "@/views/**", "@/layout/**", "@/features/**", "@/showcase/**", "@/i18n/**", "@/config/**", "@/content/**"],
     "shared is business-agnostic: it receives copy and data through props.",
+  ),
+  restrictImports(
+    ["src/showcase/**"],
+    ["@/app/**", "@/views/**", "@/layout/**", "@/features/**", "@/i18n/**", "@/config/**", "@/content/**", "../**"],
+    "showcase holds self-contained product mockups; it only builds on shared.",
   ),
   restrictImports(
     ["src/features/**"],

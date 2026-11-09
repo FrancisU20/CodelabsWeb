@@ -1,3 +1,4 @@
+import type { RoleId } from "@/content/role-id";
 import type { ServiceId } from "@/content/service-id";
 import type { PageKey } from "../page-key";
 import type { SectionTitleCopy } from "./section-title-copy";
@@ -85,7 +86,7 @@ export type Messages = {
     eyebrow: string;
     title: SectionTitleCopy;
     body: string;
-    roles: { title: string; body: string }[];
+    roles: { id: RoleId; title: string; body: string }[];
   };
   howWeWork: {
     eyebrow: string;

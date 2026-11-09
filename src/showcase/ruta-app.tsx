@@ -3,6 +3,7 @@ import Icon from "@/shared/ui/icons/svg-icon";
 import { cx } from "@/shared/lib/class-names";
 import { RUTA_SHIPMENTS } from "./ruta-shipments";
 import StatusPill from "./status-pill";
+import AppTabBar from "./app-tab-bar";
 import styles from "./mockups.module.css";
 import appStyles from "./ruta.module.css";
 
@@ -42,12 +43,7 @@ const RutaApp = () => (
         <StatusPill status={shipment.status} />
       </div>
     ))}
-    <nav className={styles.tabs}>
-      <Icon name="box" />
-      <Icon name="search" />
-      <Icon name="chart" />
-      <Icon name="user" />
-    </nav>
+    <AppTabBar icons={["box", "search", "chart", "user"]} />
   </div>
 );
 

@@ -14,10 +14,10 @@ const Team = ({ locale }: { locale: Locale }) => {
           <p className="lede m-0">{dict.body}</p>
         </div>
         <div className="grid gap-4 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]" data-reveal>
-          {dict.roles.map((role, index) => (
-            <div key={role.title} className="flex items-start gap-[18px] rounded-3xl border border-line bg-panel p-7">
+          {dict.roles.map((role) => (
+            <div key={role.id} className="flex items-start gap-[18px] rounded-3xl border border-line bg-panel p-7">
               <span className="grid h-12 w-12 flex-none place-items-center rounded-[14px] bg-panel-2 text-brand [&>svg]:h-6 [&>svg]:w-6">
-                <RoleIcon index={index} />
+                <RoleIcon id={role.id} />
               </span>
               <div>
                 <b className="mb-1 block text-lg tracking-[-0.02em]">{role.title}</b>
