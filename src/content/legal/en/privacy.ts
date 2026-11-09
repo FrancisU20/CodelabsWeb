@@ -1,5 +1,5 @@
 import type { LegalDocument } from "../legal-document";
-import { COURTESY_TRANSLATION_NOTICE, documentLink, EMAIL, list, paragraph, PHONE } from "../legal-tokens";
+import { COURTESY_TRANSLATION_NOTICE, documentLink, EMAIL, list, paragraph, PHONE, PRIVACY_EMAIL } from "../legal-tokens";
 
 export const privacy: LegalDocument = {
   layout: "articles",
@@ -9,7 +9,7 @@ export const privacy: LegalDocument = {
   title: "Privacy policy",
   intro:
     "At CodeLabs we respect your privacy and process your personal data in accordance with Ecuador's Organic Law on Personal Data Protection (LOPDP) and other applicable regulations. This document explains what information we collect, for what purpose, on what basis we process it and what your rights are as a data subject.",
-  updated: "Last updated: November 7, 2026",
+  updated: "Last updated: November 9, 2026",
   notice: COURTESY_TRANSLATION_NOTICE,
   sections: [
     {
@@ -52,6 +52,7 @@ export const privacy: LegalDocument = {
       heading: "5. Retention periods",
       blocks: [
         paragraph("We retain your personal data only for as long as necessary to fulfil the purposes described, for the duration of the contractual relationship (if any) and, thereafter, for the periods required by tax, accounting or other regulations applicable in Ecuador, or for as long as necessary to address potential claims or requests from a competent authority. Once those periods have expired, the data is securely deleted or anonymized."),
+        paragraph("The data you send us through the contact form is kept for 12 months from receipt and is then deleted automatically, unless a contractual relationship or a legal obligation requires it to be kept longer."),
       ],
     },
     {
@@ -64,18 +65,20 @@ export const privacy: LegalDocument = {
       heading: "7. Sharing with third parties",
       blocks: [
         paragraph("We do not sell or market your personal data. We may share information with providers that supply services necessary for our operations (for example, cloud hosting, email or project management tools), who act as data processors under confidentiality and data protection agreements, and only to the extent necessary to provide those services. We may also disclose information when required by a competent authority in accordance with the law."),
+        paragraph("To operate the contact form we use Amazon Web Services (storage and processing) and Brevo (email delivery), which act as data processors."),
       ],
     },
     {
       heading: "8. International data transfers",
       blocks: [
         paragraph("Some of our technology providers (for example, cloud infrastructure services) may store or process data outside Ecuador. In those cases, we require such providers to maintain adequate levels of protection through contractual clauses, security certifications or other recognized mechanisms, as provided in the LOPDP for international transfers of personal data."),
+        paragraph("In particular, Amazon Web Services processes contact form data in the United States and Brevo processes it in the European Union."),
       ],
     },
     {
       heading: "9. Your rights as a data subject",
       blocks: [
-        paragraph("Under the LOPDP, you may at any time exercise your rights of access, rectification, updating, erasure, objection, portability and not to be subject to automated decisions producing legal effects concerning you, and you may withdraw any consent you have given. To exercise them, write to us at ", EMAIL, " stating your request and the details that allow us to identify you. We will respond to your request within the periods established by applicable regulations. If you believe your rights have not been properly addressed, you may contact the competent personal data protection authority in Ecuador."),
+        paragraph("Under the LOPDP, you may at any time exercise your rights of access, rectification, updating, erasure, objection, portability and not to be subject to automated decisions producing legal effects concerning you, and you may withdraw any consent you have given. To exercise them, write to us at ", PRIVACY_EMAIL, " stating your request and the details that allow us to identify you. We will respond to your request within the periods established by applicable regulations. If you believe your rights have not been properly addressed, you may contact the competent personal data protection authority in Ecuador."),
       ],
     },
     {
@@ -93,7 +96,7 @@ export const privacy: LegalDocument = {
     {
       heading: "12. Contact",
       blocks: [
-        paragraph("To exercise your rights or resolve questions about this policy, contact us at ", EMAIL, " or by telephone at ", PHONE, ". This policy is complemented by our ", documentLink("dataProcessing", "Data Processing Policy"), "."),
+        paragraph("To exercise your rights or resolve questions about this policy, contact us at ", PRIVACY_EMAIL, " or by telephone at ", PHONE, ". This policy is complemented by our ", documentLink("dataProcessing", "Data Processing Policy"), "."),
       ],
     },
   ],

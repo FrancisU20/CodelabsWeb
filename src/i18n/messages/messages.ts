@@ -102,10 +102,13 @@ export type Messages = {
     labels: { name: string; company: string; email: string; project: string };
     placeholders: { name: string; company: string; email: string; project: string };
     submit: string;
-    privacyNotice: { text: string; linkLabel: string };
-    ready: string;
+    submitting: string;
+    honeypotLabel: string;
+    consent: { text: string; linkLabel: string };
+    success: { title: string; body: string; referenceLabel: string; whatsApp: string };
+    failure: string;
     openWhatsApp: string;
-    message: { greeting: string; fallbackName: string; company: string; email: string; project: string };
+    message: { greeting: string; fallbackName: string; reference: string; company: string; email: string; project: string };
   };
   footer: {
     legalAriaLabel: string;
