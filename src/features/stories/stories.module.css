@@ -118,7 +118,16 @@
 }
 
 :global(.motion) .phoneWrap .storyPhone {
-  transform: rotateY(calc(-14deg + var(--p, 0) * 28deg)) rotateX(4deg);
+  animation-name: phone-turn;
+}
+
+@keyframes phone-turn {
+  from {
+    transform: rotateY(-14deg) rotateX(4deg);
+  }
+  to {
+    transform: rotateY(14deg) rotateX(4deg);
+  }
 }
 
 .itemPhone {

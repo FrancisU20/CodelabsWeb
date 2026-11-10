@@ -1,5 +1,24 @@
 .motion [data-pin] {
   height: var(--pin-height, 220vh);
+  view-timeline-name: --scene;
+  view-timeline-axis: block;
+}
+
+.motion .scene-motion {
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  animation-play-state: paused;
+  animation-delay: calc(var(--p, 0) * -1s);
+}
+
+@supports (animation-timeline: view()) {
+  .motion .scene-motion {
+    animation-play-state: running;
+    animation-delay: 0s;
+    animation-timeline: --scene;
+    animation-range: contain 0% contain 100%;
+  }
 }
 
 .motion [data-pin] > [data-stage] {

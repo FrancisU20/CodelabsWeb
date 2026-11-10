@@ -115,7 +115,7 @@
   margin: 0;
   padding-left: max(16px, calc((100vw - 1180px) / 2 + 16px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
-  transform: translateX(calc(var(--p, 0) * var(--dist, 0px) * -1));
+  animation-name: track-slide;
   will-change: transform;
 }
 
@@ -146,5 +146,14 @@
   :global(.motion) [data-track] .card {
     min-height: 0;
     padding: 24px;
+  }
+}
+
+@keyframes track-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(var(--dist, 0px) * -1));
   }
 }

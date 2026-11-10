@@ -15,8 +15,8 @@ const WebShowcase = ({ locale }: { locale: Locale }) => {
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <SectionHeading className={styles.head} eyebrow={dict.eyebrow} title={dict.title} titleId="web-showcase-title" body={dict.body} />
         <div className={styles.scene} aria-hidden="true">
-          <RutaDashboard className={styles.browser} />
-          <PhoneFrame className={styles.scenePhone}>
+          <RutaDashboard className={`${styles.browser} scene-motion`} />
+          <PhoneFrame className={`${styles.scenePhone} scene-motion`}>
             <RutaApp />
           </PhoneFrame>
         </div>

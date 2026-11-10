@@ -12,10 +12,10 @@ const Impact = ({ locale }: { locale: Locale }) => {
       <section aria-labelledby="impact-title" className={styles.band} data-pin style={pinLength("standard")}>
         <div className={`site-wrap ${styles.stage}`} data-stage>
           <p className="eyebrow">{dict.eyebrow}</p>
-          <div className={styles.stat} data-count={HEALTH_APPS_SPEED_GAIN_PERCENT} data-prefix="+" data-suffix="%">
+          <div className={`${styles.stat} scene-motion`} data-count={HEALTH_APPS_SPEED_GAIN_PERCENT} data-prefix="+" data-suffix="%">
             +{HEALTH_APPS_SPEED_GAIN_PERCENT}%
           </div>
-          <p id="impact-title" className={styles.caption} data-reveal>
+          <p id="impact-title" className={`${styles.caption} scene-motion`}>
             {dict.captionStrong} <span>{dict.captionMuted}</span>
           </p>
         </div>
