@@ -4,11 +4,11 @@
 
 .featured {
   background: var(--night);
-  color: #ffffff;
+  color: var(--on-dark);
 }
 
 .stage {
-  padding-block: clamp(56px, 8vw, 84px);
+  padding-block: var(--spacing-section);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +36,7 @@
   flex-direction: column;
   gap: 6px;
   padding: 14px 14px 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   background: var(--ink);
   color: var(--fg);
   min-width: 0;
@@ -54,7 +54,7 @@
 .label {
   margin: 0;
   padding-inline: 6px;
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--dim);
 }
@@ -62,7 +62,7 @@
 .name {
   margin: 0;
   padding-inline: 6px;
-  font-size: clamp(20px, 1.9vw, 23px);
+  font-size: var(--text-card);
   line-height: 1.22;
   letter-spacing: -0.015em;
   font-weight: 700;
@@ -87,7 +87,7 @@
 .more {
   margin-top: auto;
   padding: 8px 6px 0;
-  font-size: 15px;
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--brand);
 }
@@ -125,7 +125,7 @@
 }
 
 .list .name {
-  font-size: 24px;
+  font-size: var(--text-3xl);
 }
 
 .list .more {

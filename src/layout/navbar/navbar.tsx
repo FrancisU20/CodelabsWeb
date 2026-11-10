@@ -46,7 +46,7 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
             {serviceItems.map((service) => (
               <Link key={service.href} href={service.href} className="group block">
                 <b className="block font-display text-lg font-semibold transition-colors group-hover:text-brand">{service.label}</b>
-                <span className="mt-0.5 block text-[15px] leading-snug text-dim">{service.summary}</span>
+                <span className="mt-0.5 block text-md leading-snug text-dim">{service.summary}</span>
               </Link>
             ))}
             <Link href={pagePath("services", locale)} className="col-span-3 font-semibold text-brand">

@@ -1,5 +1,5 @@
 .stage {
-  padding-block: 120px;
+  padding-block: var(--spacing-section);
   display: flex;
   flex-direction: column;
   gap: 56px;
@@ -17,7 +17,7 @@
   align-items: center;
   gap: 20px;
   padding: 20px 28px;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--line);
   background: var(--panel);
   justify-self: start;
@@ -42,12 +42,12 @@
 }
 
 .badgeText strong {
-  font-size: 18px;
+  font-size: var(--text-lg);
   letter-spacing: -0.02em;
 }
 
 .badgeText span {
-  font-size: 14px;
+  font-size: var(--text-sm);
   color: var(--muted);
 }
 
@@ -69,8 +69,8 @@
 .nodeBox {
   width: 76px;
   height: 76px;
-  border-radius: 8px;
-  background: #ffffff;
+  border-radius: var(--radius-md);
+  background: var(--surface);
   border: 1px solid var(--tile-line);
   display: grid;
   place-items: center;
@@ -97,14 +97,14 @@
 }
 
 .nodeText span {
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 600;
   line-height: 1.25;
 }
 
 .nodeText small {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-3xs);
   color: var(--dim);
 }
 

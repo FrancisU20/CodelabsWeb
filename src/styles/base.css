@@ -40,6 +40,6 @@
 
   ::selection {
     background: var(--brand-strong);
-    color: #ffffff;
+    color: var(--on-dark);
   }
 }

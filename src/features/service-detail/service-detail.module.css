@@ -15,7 +15,7 @@
 
 .title {
   margin: 0;
-  font-size: clamp(36px, 4.6vw, 58px);
+  font-size: var(--text-display);
   line-height: 1.06;
   letter-spacing: -0.035em;
   font-weight: 800;
@@ -28,7 +28,7 @@
 
 .note {
   margin: 8px 0 0;
-  font-size: 13px;
+  font-size: var(--text-xs);
   color: var(--dim);
 }
 
@@ -39,7 +39,7 @@
 
 .details {
   background: var(--panel);
-  padding-block: clamp(48px, 8vw, 80px);
+  padding-block: var(--spacing-section);
 }
 
 .detailsGrid {
@@ -50,15 +50,15 @@
 }
 
 .fit {
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: clamp(22px, 3vw, 32px);
   background: var(--night);
-  color: #ffffff;
+  color: var(--on-dark);
 }
 
 .fitTitle {
   margin: 0 0 8px;
-  font-size: 22px;
+  font-size: var(--text-2xl);
   font-weight: 700;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .include {
-  border-radius: 10px;
+  border-radius: var(--radius-lg);
   padding: 22px;
   background: var(--ink);
   min-width: 0;
@@ -89,7 +89,7 @@
 
 .include h3 {
   margin: 0 0 6px;
-  font-size: 20px;
+  font-size: var(--text-xl);
   font-weight: 700;
   letter-spacing: -0.015em;
 }
@@ -100,7 +100,7 @@
 }
 
 .others {
-  padding-block: clamp(40px, 6vw, 64px);
+  padding-block: var(--spacing-section-tight);
 }
 
 .chips {
@@ -113,9 +113,9 @@
 .chip {
   padding: 9px 16px;
   border: 1.5px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--text-md);
   transition: border-color 0.15s, color 0.15s;
 }
 

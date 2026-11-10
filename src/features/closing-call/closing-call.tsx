@@ -13,7 +13,7 @@ const ClosingCall = ({ locale }: { locale: Locale }) => {
           <h2 id="closing-call-title" className="section-title m-0">
             {copy.title}
           </h2>
-          <p className="mt-3 mb-0 text-lg text-[#e2e0ff]">{copy.body}</p>
+          <p className="mt-3 mb-0 text-lg text-brand-on">{copy.body}</p>
         </div>
         <Link className="btn btn-light" href={pagePath("contact", locale)}>
           {copy.cta}

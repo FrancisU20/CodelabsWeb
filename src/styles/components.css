@@ -7,20 +7,20 @@
   }
 
   .eyebrow {
-    font-size: 17px;
+    font-size: var(--text-body);
     font-weight: 600;
     color: var(--brand);
   }
 
   .section-title {
-    font-size: clamp(32px, 3.8vw, 46px);
+    font-size: var(--text-title);
     line-height: 1.12;
     letter-spacing: -0.03em;
     font-weight: 700;
   }
 
   .lede {
-    font-size: clamp(17px, 1.5vw, 20px);
+    font-size: var(--text-lede);
     color: var(--muted);
     max-width: 54ch;
   }
@@ -32,9 +32,9 @@
     gap: 10px;
     min-height: 52px;
     padding: 0 26px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     font-weight: 600;
-    font-size: 17px;
+    font-size: var(--text-body);
     border: 0;
     cursor: pointer;
     font-family: inherit;
@@ -43,7 +43,7 @@
 
   .btn-primary {
     background: var(--brand-strong);
-    color: #ffffff;
+    color: var(--on-dark);
   }
 
   .btn-primary:hover {
@@ -51,7 +51,7 @@
   }
 
   .btn-light {
-    background: #ffffff;
+    background: var(--surface);
     color: var(--brand-deep);
   }
 
@@ -66,7 +66,7 @@
 
   .btn-outline:hover {
     background: var(--fg);
-    color: #ffffff;
+    color: var(--on-dark);
   }
 
   .btn-whatsapp {

@@ -15,8 +15,8 @@ const ContactDetails = ({ copy }: { copy: Messages["contact"] }) => {
     <dl className="m-0 flex flex-col gap-5">
       {channels.map((channel) => (
         <div key={channel.label} className="flex flex-col gap-0.5">
-          <dt className="text-[15px] font-medium text-dim">{channel.label}</dt>
-          <dd className="m-0 text-[19px]">
+          <dt className="text-md font-medium text-dim">{channel.label}</dt>
+          <dd className="m-0 text-lg">
             {channel.href ? (
               <a href={channel.href} className={LINK_CLASS}>
                 {channel.value}

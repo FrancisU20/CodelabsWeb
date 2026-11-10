@@ -34,7 +34,7 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
         <div className={styles.rail}>
           <div className={`${styles.track} scene-motion`} data-track-rail>
             {dict.items.map((service) => (
-              <article key={service.id} className={styles.card} data-reveal>
+              <article key={service.id} className={styles.card} data-reveal={scrollTrack ? undefined : true}>
                 <ServiceVignette kind={SERVICE_VIGNETTES[service.id]} lines={service.vignette.lines} state={service.vignette.state} className={styles.vignette} />
                 {scrollTrack && <p className={styles.label}>{service.title}</p>}
                 <h3 className={styles.name}>

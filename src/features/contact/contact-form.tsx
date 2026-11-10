@@ -29,7 +29,7 @@ const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Loca
           <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
         </label>
       </div>
-      <label className="flex items-start gap-3 text-[13px] text-dim">
+      <label className="flex items-start gap-3 text-xs text-dim">
         <input type="checkbox" name="consent" required className="mt-0.5 h-4 w-4 flex-none accent-[var(--brand-strong)]" />
         <span>
           {copy.consent.text}{" "}
@@ -44,7 +44,7 @@ const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Loca
       </button>
       <div aria-live="polite">
         {state.status === "failed" && (
-          <p className="m-0 flex flex-col gap-3 rounded-2xl bg-panel-2 p-4">
+          <p className="m-0 flex flex-col gap-3 rounded-xl bg-panel-2 p-4">
             <span>{copy.failure}</span>
             <a href={state.whatsAppLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand">
               {copy.openWhatsApp}
