@@ -1,5 +1,5 @@
 import ClosingCall from "@/features/closing-call/closing-call";
-import Services from "@/features/services/services";
+import ServicesList from "@/features/services/services-list";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import PageIntro from "@/layout/page-intro/page-intro";
@@ -11,7 +11,7 @@ const ServicesView = ({ locale }: { locale: Locale }) => {
   return (
     <>
       <PageIntro {...messages.pages.services} aside={<ChatWindow {...messages.services.helpChat} />} />
-      <Services locale={locale} />
+      <ServicesList locale={locale} />
       <ClosingCall locale={locale} />
     </>
   );

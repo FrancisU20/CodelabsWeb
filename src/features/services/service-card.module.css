@@ -1,0 +1,111 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.2s var(--ease-out);
+}
+
+.vignette {
+  margin-bottom: 10px;
+}
+
+.label {
+  margin: 0;
+  padding-inline: 6px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--dim);
+}
+
+.name {
+  margin: 0;
+  padding-inline: 6px;
+  font-size: var(--text-card);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  font-weight: 700;
+}
+
+.name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card:hover .name {
+  color: var(--brand);
+}
+
+.summary {
+  margin: 0;
+  padding-inline: 6px;
+  color: var(--muted);
+}
+
+.more {
+  margin-top: auto;
+  padding: 8px 6px 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.stacked {
+  padding-bottom: 20px;
+}
+
+.stacked:hover {
+  transform: translateY(-4px);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) auto;
+  gap: 4px 32px;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--rule-strong);
+  border-radius: 0;
+  background: transparent;
+}
+
+.row .vignette {
+  grid-row: 1 / span 2;
+  height: 100px;
+  margin: 0;
+}
+
+.row .name,
+.row .summary {
+  grid-column: 2;
+  padding: 0;
+}
+
+.row .name {
+  font-size: var(--text-3xl);
+}
+
+.row .more {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .row .vignette {
+    display: none;
+  }
+
+  .row .name,
+  .row .summary,
+  .row .more {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
