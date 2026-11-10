@@ -11,6 +11,11 @@ export const pages: Messages["pages"] = {
     title: "Projects that are already up and running.",
     description: "Apps, web platforms and systems for companies across industries.",
   },
+  howWeWork: {
+    eyebrow: "How we work",
+    title: "How we run your project, from the first meeting to launch.",
+    description: "The four stages it goes through and the checks the team runs before every delivery.",
+  },
   about: {
     eyebrow: "About",
     title: "We are a software company from Ibarra, Ecuador.",

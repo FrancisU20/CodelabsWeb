@@ -11,6 +11,11 @@ export const pages: Messages["pages"] = {
     title: "Proyectos que ya están funcionando.",
     description: "Apps, plataformas web y sistemas para empresas de distintos sectores.",
   },
+  howWeWork: {
+    eyebrow: "Cómo trabajamos",
+    title: "Así llevamos tu proyecto, de la primera reunión al lanzamiento.",
+    description: "Las cuatro etapas por las que pasa y las revisiones que hace el equipo antes de cada entrega.",
+  },
   about: {
     eyebrow: "Nosotros",
     title: "Somos una empresa de software de Ibarra, Ecuador.",

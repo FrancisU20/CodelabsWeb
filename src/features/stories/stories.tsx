@@ -12,13 +12,22 @@ const Stories = ({ locale }: { locale: Locale }) => {
     <section className={styles.story} data-pin data-story data-active="0" style={pinLength("extended")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <div className={styles.texts}>
-          {dict.items.map((item, index) => (
-            <div key={item.title} className={styles.item} data-index={index}>
-              <span className={styles.tag}>{item.tag}</span>
-              <h2 className={styles.itemTitle}>{item.title}</h2>
-              <p className={styles.itemBody}>{item.body}</p>
-            </div>
-          ))}
+          {dict.items.map((item, index) => {
+            const Screen = Object.values(SHOWCASE_APPS)[index];
+
+            return (
+              <div key={item.title} className={styles.item} data-index={index} data-reveal>
+                <span className={styles.tag}>{item.tag}</span>
+                <h2 className={styles.itemTitle}>{item.title}</h2>
+                <p className={styles.itemBody}>{item.body}</p>
+                <div className={styles.itemPhone} aria-hidden="true">
+                  <PhoneFrame className={styles.compactPhone}>
+                    <Screen />
+                  </PhoneFrame>
+                </div>
+              </div>
+            );
+          })}
           <div className={styles.dots} aria-hidden="true">
             {dict.items.map((item, index) => (
               <i key={item.title} className={styles.dot} data-index={index} />

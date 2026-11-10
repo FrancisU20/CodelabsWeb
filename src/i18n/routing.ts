@@ -7,13 +7,12 @@ export const ROUTES: Record<PageKey, Record<Locale, string>> = {
   home: { es: "/", en: "/en" },
   services: { es: "/servicios", en: "/en/services" },
   work: { es: "/casos", en: "/en/case-studies" },
+  howWeWork: { es: "/como-trabajamos", en: "/en/how-we-work" },
   about: { es: "/nosotros", en: "/en/about" },
   contact: { es: "/contacto", en: "/en/contact" },
 };
 
 export const CLIENTS_ANCHOR: Record<Locale, string> = { es: "clientes", en: "clients" };
-
-const PROCESS_ANCHOR = "proceso";
 
 export const SERVICE_ROUTES: Record<ServiceId, Record<Locale, string>> = {
   mobile: { es: "/servicios/apps-moviles", en: "/en/services/mobile-apps" },
@@ -45,8 +44,6 @@ export const serviceSlugs = (locale: Locale): string[] => Object.values(SERVICE_
 
 export const serviceIdFromSlug = (slug: string, locale: Locale): ServiceId | undefined =>
   (Object.keys(SERVICE_ROUTES) as ServiceId[]).find((service) => slugOf(SERVICE_ROUTES[service][locale]) === slug);
-
-export const processPath = (locale: Locale): string => `${ROUTES.about[locale]}#${PROCESS_ANCHOR}`;
 
 export const getAlternatePath = (pathname: string, target: Locale): string =>
   (ALL_ROUTES.find((paths) => Object.values(paths).includes(pathname)) ?? ROUTES.home)[target];

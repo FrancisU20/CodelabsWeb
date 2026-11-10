@@ -1,1 +1,1 @@
-export type PageKey = "home" | "services" | "work" | "about" | "contact";
+export type PageKey = "home" | "services" | "work" | "howWeWork" | "about" | "contact";

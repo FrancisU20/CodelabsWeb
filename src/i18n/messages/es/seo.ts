@@ -13,6 +13,10 @@ export const seo: Messages["seo"] = {
     title: "Casos de éxito en apps y sistemas | CodeLabs",
     description: "Apps de reservas, citas y pagos, registro seguro y plataformas web para empresas de distintos sectores.",
   },
+  howWeWork: {
+    title: "Cómo trabajamos | CodeLabs",
+    description: "Hablamos, te mostramos el diseño, construimos por partes y seguimos contigo después del lanzamiento.",
+  },
   about: {
     title: "Empresa de desarrollo de software en Ibarra | CodeLabs",
     description: "Somos una empresa de software de Ibarra, Ecuador. Una persona del equipo se hace cargo de tu proyecto de principio a fin.",

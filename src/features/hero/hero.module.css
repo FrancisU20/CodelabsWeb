@@ -143,9 +143,25 @@
   --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
 }
 
+@property --f {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .fan {
     animation: fade-in 0.6s var(--ease-out) 0.2s both;
+  }
+
+  :global(html:not(.motion)) .fan .side {
+    animation: fan-out 1s var(--ease-out) 0.35s both;
+  }
+
+  @keyframes fan-out {
+    from {
+      --f: 0;
+    }
   }
 
   @keyframes fade-in {

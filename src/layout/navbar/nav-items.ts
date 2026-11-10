@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
-import { pagePath, processPath, servicePath } from "@/i18n/routing";
+import { pagePath, servicePath } from "@/i18n/routing";
 import type { NavItem, ServiceNavItem } from "./nav-item";
 
 export const buildNavItems = (locale: Locale): NavItem[] => {
@@ -8,7 +8,7 @@ export const buildNavItems = (locale: Locale): NavItem[] => {
 
   return [
     { href: pagePath("work", locale), label: labels.work },
-    { href: processPath(locale), label: labels.howWeWork },
+    { href: pagePath("howWeWork", locale), label: labels.howWeWork },
     { href: pagePath("about", locale), label: labels.about },
   ];
 };
