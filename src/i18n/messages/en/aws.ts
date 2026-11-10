@@ -1,16 +1,16 @@
 import type { Messages } from "../messages";
 
 export const aws: Messages["aws"] = {
-  eyebrow: "Backed by Amazon Web Services",
-  title: { lines: ["The same cloud", "Amazon runs on."] },
+  eyebrow: "Amazon Web Services",
+  title: { lines: ["Your systems run", "on Amazon's cloud."] },
   badgeTitle: "Official AWS partners",
   badgeCaption: "Amazon-certified team",
-  body: "AWS is Amazon's cloud, the same one banks and major brands use worldwide. That is where we build and look after your systems.",
+  body: "It's the same infrastructure banks and major brands use. We set it up and maintain it for you.",
   benefits: [
-    { title: "Always online", body: "Your business never stops, not even in peak season." },
-    { title: "Protected information", body: "Your data under lock and key; only the right people get in." },
-    { title: "Grows with you", body: "If your sales multiply, so does the system." },
-    { title: "Pay for what you use", body: "No servers to buy and nothing to pay for that you don't use." },
+    { title: "Handles peak season", body: "If far more people show up at once, the system adds capacity on its own." },
+    { title: "Protected information", body: "Each person only gets into what they should." },
+    { title: "Grows with your business", body: "You can start small and expand when you need to." },
+    { title: "Pay for what you use", body: "You don't have to buy servers." },
   ],
   flowAriaLabel:
     "How a request travels: your customers, self-scaling servers, automated processes, everything connected, nothing gets lost and protected data",

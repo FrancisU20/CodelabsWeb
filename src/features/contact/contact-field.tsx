@@ -9,7 +9,7 @@ type ContactFieldProps = {
 };
 
 const FIELD_CLASS =
-  "w-full rounded-[14px] border border-line bg-ink px-4 py-3.5 text-base text-fg transition-colors focus:border-brand focus:outline-none";
+  "w-full rounded-lg border border-[var(--rule-strong)] bg-ink px-4 py-3.5 text-base text-fg transition-colors focus:border-brand focus:outline-none";
 
 const ContactField = ({ name, label, placeholder, type = "text", autoComplete, required = false, multiline = false }: ContactFieldProps) => {
   const fieldId = `contact-${name}`;

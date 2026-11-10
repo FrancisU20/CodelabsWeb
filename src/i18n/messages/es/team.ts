@@ -1,15 +1,14 @@
 import type { Messages } from "../messages";
 
 export const team: Messages["team"] = {
-  eyebrow: "Equipo",
-  title: { lines: ["Un equipo completo.", "Un solo responsable."] },
-  body: "No contratas a un programador suelto. Contratas a una empresa con especialistas en cada etapa y una persona a cargo de tu proyecto de principio a fin.",
+  title: { lines: ["Quiénes van a trabajar", "en tu proyecto"] },
+  body: "Detrás hay diseño, desarrollo, nube, pruebas y soporte. Tú hablas con una sola persona y ella coordina al resto.",
   roles: [
-    { id: "manager", title: "Dirección de proyecto", body: "Tu contacto directo. Plazos claros y avances cada semana." },
-    { id: "design", title: "Diseño de experiencia", body: "Pantallas fáciles de usar que reflejan tu marca." },
-    { id: "development", title: "Desarrollo móvil y web", body: "Ingenieros con experiencia que construyen tu app o tu web." },
-    { id: "cloud", title: "Nube y seguridad", body: "Cuidan tu información y que nada se caiga." },
-    { id: "quality", title: "Control de calidad", body: "Revisan cada pantalla y cada botón antes de entregarte." },
-    { id: "support", title: "Soporte", body: "Te responden rápido cuando tengas una duda o un pedido." },
+    { id: "manager", title: "Dirección de proyecto", body: "Es tu contacto. Te cuenta cada semana cómo va todo." },
+    { id: "design", title: "Diseño", body: "Hace las pantallas y cuida que se entiendan a la primera." },
+    { id: "development", title: "Desarrollo móvil y web", body: "Programa tu app o tu página." },
+    { id: "cloud", title: "Nube y seguridad", body: "Se encarga de los servidores y de proteger tu información." },
+    { id: "quality", title: "Pruebas", body: "Prueba cada pantalla antes de que te la entreguemos." },
+    { id: "support", title: "Soporte", body: "Atiende tus dudas y pedidos cuando ya está en uso." },
   ],
 };

@@ -1,6 +1,8 @@
-import { Cormorant_Garamond, Inter, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garamond, Hanken_Grotesk, JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const hanken = Hanken_Grotesk({ subsets: ["latin"], variable: "--font-hanken", display: "swap" });
+
+const schibsted = Schibsted_Grotesk({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-schibsted", display: "swap" });
 
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap" });
 
@@ -11,4 +13,4 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-export const FONT_VARIABLES = `${inter.variable} ${jetbrainsMono.variable} ${cormorant.variable}`;
+export const FONT_VARIABLES = `${hanken.variable} ${schibsted.variable} ${jetbrainsMono.variable} ${cormorant.variable}`;

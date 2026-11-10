@@ -14,7 +14,7 @@ const SectionTitle = ({ title, id, className }: SectionTitleProps) => (
         {line}
       </span>
     ))}
-    {title.accent && <span className="text-glow">{title.accent}</span>}
+    {title.accent && <span className="text-accent">{title.accent}</span>}
   </h2>
 );
 

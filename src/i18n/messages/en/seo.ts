@@ -12,8 +12,8 @@ export const seo: Messages["seo"] = {
       "Mobile apps, websites and online stores, custom systems, cloud and security on AWS, modernization and ongoing support.",
   },
   work: {
-    title: "Work | CodeLabs",
-    description: "Booking, appointment and payment apps, secure sign-up and web platforms: digital products that help our clients grow.",
+    title: "Case studies | CodeLabs",
+    description: "Booking, appointment and payment apps, secure sign-up and web platforms for companies across industries.",
   },
   about: {
     title: "About | CodeLabs",
@@ -21,6 +21,6 @@ export const seo: Messages["seo"] = {
   },
   contact: {
     title: "Contact | CodeLabs",
-    description: "Tell us your idea on WhatsApp, email or phone. We reply within hours with a tailored proposal.",
+    description: "Tell us your idea on WhatsApp, email or phone. We usually reply the same day.",
   },
 };

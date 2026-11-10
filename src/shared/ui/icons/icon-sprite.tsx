@@ -54,10 +54,6 @@ const IconSprite = () => (
     <symbol id="icon-shield" viewBox="0 0 24 24">
       <path {...stroke} d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z" />
     </symbol>
-    <symbol id="icon-shield-check" viewBox="0 0 24 24">
-      <path {...stroke} d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z" />
-      <path {...stroke} d="m9 12 2 2 4-4" />
-    </symbol>
     <symbol id="icon-search" viewBox="0 0 24 24">
       <circle {...stroke} cx="11" cy="11" r="6.5" strokeWidth={2} />
       <path {...stroke} d="m16 16 4.5 4.5" strokeWidth={2} />

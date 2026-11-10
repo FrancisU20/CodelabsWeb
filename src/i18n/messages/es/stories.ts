@@ -3,20 +3,20 @@ import type { Messages } from "../messages";
 export const stories: Messages["stories"] = {
   items: [
     {
-      tag: "App de reservas · Estudio de pilates",
-      title: "Sus clientes reservan clase en segundos.",
-      body: "Una app propia con horarios, cupos y membresías. Menos mensajes para coordinar y más clases llenas.",
+      tag: "Estudio de pilates",
+      title: "Sus clientes reservan la clase desde el celular.",
+      body: "Horarios, cupos y membresías en una app propia. El estudio recibe menos mensajes para coordinar y llena más clases.",
     },
     {
-      tag: "Citas y pagos · Estudio de belleza",
-      title: "Una agenda abierta las 24 horas.",
-      body: "Sus clientas eligen servicio, horario y pagan desde el celular. El estudio dedica su tiempo a atender, no a contestar llamadas.",
+      tag: "Estudio de belleza",
+      title: "Las citas se agendan a cualquier hora.",
+      body: "Sus clientas eligen servicio y horario, y pagan desde el celular. El equipo contesta menos llamadas y atiende más.",
     },
     {
-      tag: "Registro seguro · Servicios legales",
-      title: "Clientes verificados sin papeleo.",
-      body: "Registro y validación de identidad paso a paso, desde el celular, con pagos integrados. Seguro para la empresa y sencillo para el usuario.",
+      tag: "Servicios legales",
+      title: "Registro de clientes sin papeles.",
+      body: "Validan su identidad paso a paso desde el celular y pagan en la misma app.",
     },
   ],
-  note: "Pantallas de referencia basadas en proyectos reales. Por confidencialidad no mostramos las apps de nuestros clientes.",
+  note: "Las pantallas son de referencia y se basan en proyectos reales. Las apps de nuestros clientes no las mostramos por confidencialidad.",
 };

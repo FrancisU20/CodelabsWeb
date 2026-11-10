@@ -1,7 +1,7 @@
 import type { Messages } from "../messages";
 
 export const webShowcase: Messages["webShowcase"] = {
-  eyebrow: "Web platform · Foreign trade",
-  title: { lines: ["Your whole operation,"], accent: "on a single screen." },
-  body: "For a foreign trade company we built a platform that tracks every shipment and every audit. It works the same at the office and on the phone.",
+  eyebrow: "Web platform for foreign trade",
+  title: { lines: ["Every shipment and every audit"], accent: "in one place." },
+  body: "We built it for a foreign trade company. It works the same from the office or from a phone.",
 };

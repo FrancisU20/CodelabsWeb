@@ -1,16 +1,21 @@
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
-import { clientsPath, pagePath } from "@/i18n/routing";
-import type { NavItem } from "./nav-item";
+import { pagePath, processPath, servicePath } from "@/i18n/routing";
+import type { NavItem, ServiceNavItem } from "./nav-item";
 
 export const buildNavItems = (locale: Locale): NavItem[] => {
   const labels = getMessages(locale).nav;
 
   return [
-    { href: clientsPath(locale), label: labels.clients },
     { href: pagePath("work", locale), label: labels.work },
-    { href: pagePath("services", locale), label: labels.services },
+    { href: processPath(locale), label: labels.howWeWork },
     { href: pagePath("about", locale), label: labels.about },
-    { href: pagePath("contact", locale), label: labels.contact },
   ];
 };
+
+export const buildServiceNavItems = (locale: Locale): ServiceNavItem[] =>
+  getMessages(locale).services.items.map((service) => ({
+    href: servicePath(service.id, locale),
+    label: service.title,
+    summary: service.summary,
+  }));

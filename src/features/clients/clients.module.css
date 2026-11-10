@@ -1,25 +1,24 @@
 .clients {
   border-block: 1px solid var(--line);
-  padding-block: 72px;
+  padding-block: 48px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 26px;
 }
 
 .head {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 12px;
 }
 
 .title {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 40px);
-  letter-spacing: -0.035em;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 1.5vw, 19px);
+  color: var(--dim);
+  font-weight: 500;
 }
 
 .rows {
@@ -45,10 +44,10 @@
 .control {
   align-self: center;
   min-height: 44px;
-  margin-top: -20px;
+  margin-top: -6px;
   padding: 0 18px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 8px;
   background: transparent;
   color: var(--muted);
   font-size: 13px;
@@ -62,9 +61,9 @@
 }
 
 .tile {
-  width: 240px;
+  width: 200px;
   aspect-ratio: 2 / 1;
-  border-radius: 24px;
+  border-radius: 8px;
   background: #ffffff;
   border: 1px solid var(--tile-line);
   overflow: hidden;
@@ -84,8 +83,8 @@
 
 @media (max-width: 760px) {
   .tile {
-    width: 180px;
-    border-radius: 18px;
+    width: 150px;
+    border-radius: 8px;
   }
 }
 

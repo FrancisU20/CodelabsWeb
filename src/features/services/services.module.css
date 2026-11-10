@@ -1,9 +1,13 @@
+.section {
+  background: var(--panel);
+}
+
 .stage {
-  padding-block: 96px;
+  padding-block: 64px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 48px;
+  gap: 36px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -13,79 +17,95 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 24px;
-}
-
-.track {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-.card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  padding: 32px;
+.rail {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.track {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  min-height: 380px;
+  max-width: 1148px;
+  margin-inline: auto;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-block: 22px;
+  border-top: 1px solid var(--rule-strong);
   min-width: 0;
 }
 
-.art {
-  height: 130px;
-  display: flex;
-  align-items: center;
-  color: var(--brand);
-}
-
-.art svg {
-  width: 108px;
-  height: 108px;
-}
-
-.cardTitle {
+.service {
   margin: 0;
-  font-size: 28px;
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dim);
 }
 
-.cardBody {
+.need {
+  margin: 0;
+  font-size: clamp(22px, 2.2vw, 27px);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.body {
   margin: 0;
   color: var(--muted);
-  font-size: 16px;
-}
-
-.audience {
-  margin: auto 0 0;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.audience span {
-  color: var(--dim);
-  font-weight: 400;
+  font-size: 17px;
 }
 
 @media (min-width: 761px) {
-  :global(.motion) .stage {
-    padding-block: 0;
+  .list .card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 4px 56px;
   }
 
-  :global(.motion) .track {
-    display: flex;
+  .list .body {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+
+  :global(.motion) [data-track] .stage {
+    padding-block: 72px 0;
+  }
+
+  :global(.motion) [data-track] .rail {
+    padding: 0;
+  }
+
+  :global(.motion) [data-track] .track {
+    flex-direction: row;
+    gap: 16px;
     width: max-content;
+    max-width: none;
+    margin: 0;
     padding-left: max(16px, calc((100vw - 1180px) / 2 + 16px));
     padding-right: max(16px, env(safe-area-inset-right, 0px));
     transform: translateX(calc(var(--p, 0) * var(--dist, 0px) * -1));
     will-change: transform;
   }
 
-  :global(.motion) .card {
-    width: min(380px, 78vw);
+  :global(.motion) [data-track] .card {
+    width: min(390px, 78vw);
     flex: none;
+    min-height: 300px;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--ink);
+  }
+
+  :global(.motion) [data-track] .need {
+    margin-bottom: 12px;
   }
 }

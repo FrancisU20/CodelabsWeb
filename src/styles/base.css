@@ -25,7 +25,13 @@
   h1,
   h2,
   h3 {
+    font-family: var(--font-display);
     text-wrap: balance;
+  }
+
+  section[id],
+  article[id] {
+    scroll-margin-top: 88px;
   }
 
   :focus-visible {

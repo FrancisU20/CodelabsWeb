@@ -13,7 +13,6 @@ const Clients = ({ locale }: { locale: Locale }) => {
   return (
     <section id={CLIENTS_ANCHOR[locale]} className={styles.clients} aria-labelledby="clients-title">
       <div className={`site-wrap ${styles.head}`}>
-        <p className="eyebrow">{dict.eyebrow}</p>
         <h2 id="clients-title" className={styles.title}>
           {dict.title}
         </h2>

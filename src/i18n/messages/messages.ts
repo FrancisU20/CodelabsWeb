@@ -7,16 +7,17 @@ export type Messages = {
   nav: {
     homeAriaLabel: string;
     menuAriaLabel: string;
-    clients: string;
     work: string;
+    howWeWork: string;
     services: string;
     about: string;
-    contact: string;
     cta: string;
     openMenu: string;
     closeMenu: string;
     skipToContent: string;
-    switchLanguage: string;
+    languageAriaLabel: string;
+    currentLanguage: string;
+    otherLanguage: string;
   };
   hero: {
     eyebrow: string;
@@ -25,9 +26,9 @@ export type Messages = {
     subtitle: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    note: string;
   };
   clients: {
-    eyebrow: string;
     title: string;
     pause: string;
     resume: string;
@@ -47,15 +48,12 @@ export type Messages = {
     body: string;
   };
   services: {
-    eyebrow: string;
     title: SectionTitleCopy;
     body: string;
-    idealFor: string;
-    items: { id: ServiceId; title: string; body: string; audience: string }[];
+    items: { id: ServiceId; title: string; need: string; body: string; summary: string }[];
   };
   quality: {
     ariaLabel: string;
-    eyebrow: string;
     title: SectionTitleCopy;
     body: string;
     windowLabel: string;
@@ -83,13 +81,11 @@ export type Messages = {
     flow: { label: string; detail: string }[];
   };
   team: {
-    eyebrow: string;
     title: SectionTitleCopy;
     body: string;
     roles: { id: RoleId; title: string; body: string }[];
   };
   howWeWork: {
-    eyebrow: string;
     title: SectionTitleCopy;
     steps: { title: string; body: string }[];
   };

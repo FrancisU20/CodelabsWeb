@@ -6,12 +6,10 @@ type PageIntroProps = {
 
 const PageIntro = ({ eyebrow, title, description }: PageIntroProps) => (
   <section className="border-b border-line">
-    <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-5 px-4 py-24 text-center sm:py-32">
-      <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-brand">{eyebrow}</p>
-      <h1 className="lift-in max-w-4xl text-[clamp(38px,6vw,76px)] font-bold leading-[1.02] tracking-[-0.045em]">
-        {title}
-      </h1>
-      <p className="max-w-2xl text-[clamp(17px,1.6vw,21px)] text-muted">{description}</p>
+    <div className="site-wrap flex flex-col items-start gap-4 py-16 sm:py-24">
+      <p className="eyebrow m-0">{eyebrow}</p>
+      <h1 className="lift-in m-0 max-w-[20ch] text-[clamp(36px,5vw,62px)] font-bold leading-[1.08] tracking-[-0.035em]">{title}</h1>
+      <p className="m-0 max-w-2xl text-[clamp(17px,1.5vw,20px)] text-muted">{description}</p>
     </div>
   </section>
 );

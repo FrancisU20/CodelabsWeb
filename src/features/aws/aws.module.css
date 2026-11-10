@@ -17,7 +17,7 @@
   align-items: center;
   gap: 20px;
   padding: 20px 28px;
-  border-radius: 24px;
+  border-radius: 8px;
   border: 1px solid var(--line);
   background: var(--panel);
   justify-self: start;
@@ -62,7 +62,7 @@
   flex-direction: column;
   gap: 8px;
   padding: 24px;
-  border-radius: 22px;
+  border-radius: 8px;
   border: 1px solid var(--line);
 }
 
@@ -101,7 +101,7 @@
 .nodeBox {
   width: 76px;
   height: 76px;
-  border-radius: 22px;
+  border-radius: 8px;
   background: #ffffff;
   border: 1px solid var(--tile-line);
   display: grid;

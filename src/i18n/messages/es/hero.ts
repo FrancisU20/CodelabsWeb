@@ -1,11 +1,11 @@
 import type { Messages } from "../messages";
 
 export const hero: Messages["hero"] = {
-  eyebrow: "Apps · Webs · Sistemas a la medida",
-  titleLead: "Hacemos la tecnología",
-  titleAccent: "que hace crecer tu negocio.",
-  subtitle:
-    "Diseñamos, construimos y mantenemos las apps y plataformas de empresas en todo Ecuador. Tú te enfocas en vender; nosotros, en que todo funcione.",
-  ctaPrimary: "Cotiza tu proyecto",
-  ctaSecondary: "Ver nuestros trabajos →",
+  eyebrow: "Apps, páginas web y sistemas para empresas en Ecuador",
+  titleLead: "Hacemos las apps y los sistemas",
+  titleAccent: "con los que trabaja tu empresa.",
+  subtitle: "Nos cuentas cómo funciona tu negocio, te proponemos qué construir y después nos quedamos a cargo de que siga funcionando.",
+  ctaPrimary: "Cuéntanos tu idea",
+  ctaSecondary: "Ver casos de éxito",
+  note: "Normalmente contestamos el mismo día.",
 };
