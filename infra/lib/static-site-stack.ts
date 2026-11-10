@@ -54,10 +54,13 @@ export interface StaticSiteStackProps extends StackProps {
 }
 
 const githubActionsAudience = "sts.amazonaws.com";
-const githubOidcUrl = "https://token.actions.githubusercontent.com";
+const githubOidcHost = "token.actions.githubusercontent.com";
 const infraDeployRoleName = "codelabs-web-infra-deploy";
 const cdkRolePattern = "cdk-hnb659fds-*";
 const noncurrentVersionRetention = Duration.days(30);
+
+const productionSubject = (config: StaticSiteConfig): string =>
+  `repo:${config.githubOwner}/${config.githubRepository}:environment:production`;
 const incompleteUploadRetention = Duration.days(7);
 
 export class StaticSiteStack extends Stack {
@@ -154,7 +157,7 @@ export class StaticSiteStack extends Stack {
       });
     });
 
-    const oidcProvider = this.gitHubOidcProvider(config);
+    const oidcProvider = this.gitHubOidcProvider();
     const deployRole = this.createGitHubDeployRole(config, siteBucket, distribution, oidcProvider);
     this.createGitHubInfraRole(config, oidcProvider);
 
@@ -181,10 +184,6 @@ export class StaticSiteStack extends Stack {
     distribution: Distribution,
     oidcProvider: IOpenIdConnectProvider,
   ): Role {
-    const repositorySubjects = [
-      `repo:${config.githubOwner}/${config.githubRepository}:ref:refs/heads/${config.githubBranch}`,
-      `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
-    ];
 
     const role = new Role(this, "GitHubActionsDeployRole", {
       assumedBy: new FederatedPrincipal(
@@ -192,7 +191,7 @@ export class StaticSiteStack extends Stack {
         {
           StringEquals: {
             "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": repositorySubjects,
+            "token.actions.githubusercontent.com:sub": productionSubject(config),
           },
         },
         "sts:AssumeRoleWithWebIdentity",
@@ -225,17 +224,12 @@ export class StaticSiteStack extends Stack {
     return role;
   }
 
-  private gitHubOidcProvider(config: StaticSiteConfig): IOpenIdConnectProvider {
-    return config.githubOidcProviderArn
-      ? OpenIdConnectProvider.fromOpenIdConnectProviderArn(
-          this,
-          "GitHubOidcProvider",
-          config.githubOidcProviderArn,
-        )
-      : new OpenIdConnectProvider(this, "GitHubOidcProvider", {
-          url: githubOidcUrl,
-          clientIds: [githubActionsAudience],
-        });
+  private gitHubOidcProvider(): IOpenIdConnectProvider {
+    return OpenIdConnectProvider.fromOpenIdConnectProviderArn(
+      this,
+      "GitHubOidcProvider",
+      `arn:aws:iam::${this.account}:oidc-provider/${githubOidcHost}`,
+    );
   }
 
   private createGitHubInfraRole(config: StaticSiteConfig, oidcProvider: IOpenIdConnectProvider): void {
@@ -246,7 +240,7 @@ export class StaticSiteStack extends Stack {
         {
           StringEquals: {
             "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
+            "token.actions.githubusercontent.com:sub": productionSubject(config),
           },
         },
         "sts:AssumeRoleWithWebIdentity",

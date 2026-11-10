@@ -6,7 +6,7 @@
 #
 # Stages:
 #   Plan / Detect Changes
-#     ├─ Web / Quality Gate       (solo si cambia app/public/config web)
+#     ├─ Web / Quality Gate       (solo si cambia src/public/config web)
 #     ├─ Infra / Validate CDK     (solo si cambia infra/pipeline)
 #     └─ Deploy / Static Site     (solo master/manual, solo si cambia web)
 #
@@ -119,7 +119,7 @@ jobs:
               .github/workflows/*|.github/actions/*)
                 pipeline=true
                 ;;
-              AGENTS.md|CLAUDE.md|README.md|docs/exec-plans/*|*.md)
+              *.md)
                 docs=true
                 ;;
               *)
