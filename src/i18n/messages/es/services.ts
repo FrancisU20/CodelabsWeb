@@ -37,7 +37,7 @@ export const services: Messages["services"] = {
       id: "cloud",
       title: "Nube y seguridad",
       need: "Necesito que mi sistema no se caiga",
-      body: "Lo pasamos a la nube de Amazon (AWS) y controlamos quién entra a qué. No tienes que comprar servidores.",
+      body: "Lo pasamos a la nube de Amazon (AWS) y controlamos quién entra a qué.",
       summary: "Tus sistemas en la nube de Amazon (AWS).",
     },
     {

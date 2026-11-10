@@ -1,6 +1,6 @@
 import { measureTrack } from "./horizontal-track";
 import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
-import { activeIndex, pinProgress, scrubProgress } from "./progress";
+import { activeIndex, entryProgress, pinProgress, scrubProgress } from "./progress";
 import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
 import { countUpOnView, renderCounters, showFinalCounters } from "./scroll-counters";
@@ -38,12 +38,12 @@ const renderScrubs = (context: SceneContext) =>
 
 const renderPins = (context: SceneContext) =>
   context.metrics.forEach(({ section, top, length, counters }) => {
+    renderCounters(counters, entryProgress(window.scrollY, top, window.innerHeight));
     const progress = pinProgress(window.scrollY, top, length);
     if (!writeProgress(context, section, progress)) return;
     if (isStory(section)) {
       section.dataset.active = String(activeIndex(progress, STORY_SCREENS));
     }
-    renderCounters(counters, progress);
   });
 
 const render = (context: SceneContext) => {

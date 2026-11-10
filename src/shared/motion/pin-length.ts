@@ -2,8 +2,9 @@ import type { CSSProperties } from "react";
 import { cssVars } from "@/shared/lib/css-vars";
 
 const PIN_HEIGHT = {
-  standard: "160vh",
-  extended: "220vh",
+  short: "130vh",
+  standard: "150vh",
+  long: "320vh",
 } as const;
 
 export type PinLength = keyof typeof PIN_HEIGHT;

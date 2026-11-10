@@ -9,4 +9,7 @@ export const pinProgress = (scrollY: number, top: number, length: number): numbe
 export const scrubProgress = (elementTop: number, viewportHeight: number): number =>
   clampUnit((viewportHeight * SCRUB_START_VIEWPORT - elementTop) / (viewportHeight * SCRUB_LENGTH_VIEWPORTS));
 
+export const entryProgress = (scrollY: number, top: number, viewportHeight: number): number =>
+  clampUnit((scrollY + viewportHeight - top) / viewportHeight);
+
 export const activeIndex = (progress: number, count: number): number => Math.min(count - 1, Math.floor(progress * count));

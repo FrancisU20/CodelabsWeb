@@ -2,7 +2,7 @@ import type { Messages } from "../messages";
 
 export const team: Messages["team"] = {
   title: { lines: ["Quiénes van a trabajar", "en tu proyecto"] },
-  body: "Detrás hay diseño, desarrollo, nube, pruebas y soporte. Tú hablas con una sola persona y ella coordina al resto.",
+  body: "Cada parte de tu proyecto la cubre alguien que sabe de eso.",
   roles: [
     { id: "manager", title: "Dirección de proyecto", body: "Es tu contacto. Te cuenta cada semana cómo va todo." },
     { id: "design", title: "Diseño", body: "Hace las pantallas y cuida que se entiendan a la primera." },

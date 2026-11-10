@@ -12,7 +12,7 @@ const ContactDetails = ({ copy }: { copy: Messages["contact"] }) => {
   ];
 
   return (
-    <dl className="mt-8 flex flex-col gap-5">
+    <dl className="m-0 flex flex-col gap-5">
       {channels.map((channel) => (
         <div key={channel.label} className="flex flex-col gap-0.5">
           <dt className="text-[15px] font-medium text-dim">{channel.label}</dt>

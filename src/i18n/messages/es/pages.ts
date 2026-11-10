@@ -19,7 +19,7 @@ export const pages: Messages["pages"] = {
   about: {
     eyebrow: "Nosotros",
     title: "Somos una empresa de software de Ibarra, Ecuador.",
-    description: "Diseñamos, programamos y mantenemos apps y sistemas. Una persona del equipo se hace cargo de tu proyecto.",
+    description: "Diseñamos, programamos y mantenemos apps y sistemas para empresas.",
   },
   contact: {
     eyebrow: "Contacto",

@@ -17,25 +17,28 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
   return (
     <section
       id="servicios"
-      aria-labelledby="services-title"
+      aria-labelledby={scrollTrack ? "services-title" : undefined}
+      aria-label={scrollTrack ? undefined : getMessages(locale).nav.services}
       className={cx(styles.section, !scrollTrack && styles.list)}
       data-pin={scrollTrack || undefined}
       data-track={scrollTrack || undefined}
     >
       <div className={styles.stage} data-stage>
-        <div className={`site-wrap w-full ${styles.head}`}>
-          <SectionHeading className="flex flex-col gap-4" title={dict.title} titleId="services-title" />
-          <p className="lede m-0 max-w-[34ch]">{dict.body}</p>
-        </div>
+        {scrollTrack && (
+          <div className={`site-wrap w-full ${styles.head}`}>
+            <SectionHeading className="flex flex-col gap-4" title={dict.title} titleId="services-title" />
+            <p className="lede m-0 max-w-[34ch]">{dict.body}</p>
+          </div>
+        )}
         <div className={styles.rail}>
           <div className={`${styles.track} scene-motion`} data-track-rail>
             {dict.items.map((service) => (
               <article key={service.id} className={styles.card} data-reveal>
-                <p className={styles.service}>{service.title}</p>
+                <p className={styles.service}>{scrollTrack ? service.title : service.need}</p>
                 <h3 className={styles.need}>
-                  <Link href={servicePath(service.id, locale)}>{service.need}</Link>
+                  <Link href={servicePath(service.id, locale)}>{scrollTrack ? service.need : service.title}</Link>
                 </h3>
-                <p className={styles.body}>{service.body}</p>
+                <p className={styles.body}>{scrollTrack ? service.summary : service.body}</p>
                 <span className={styles.more} aria-hidden="true">
                   {dict.more}
                 </span>

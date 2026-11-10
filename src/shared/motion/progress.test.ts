@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { activeIndex, pinProgress } from "./progress";
+import { activeIndex, entryProgress, pinProgress } from "./progress";
 
 describe("pinProgress", () => {
   it.each([
@@ -12,6 +12,16 @@ describe("pinProgress", () => {
 
   it("pinProgress_sectionShorterThanViewport_returnsComplete", () => {
     expect(pinProgress(0, 100, -50)).toBe(1);
+  });
+});
+
+describe("entryProgress", () => {
+  it.each([
+    ["belowViewport", 0, 0],
+    ["halfEntered", 500, 0.5],
+    ["reachedTop", 1000, 1],
+  ])("entryProgress_%s_returns%s", (_case, scrollY, expected) => {
+    expect(entryProgress(scrollY, 1000, 1000)).toBe(expected);
   });
 });
 

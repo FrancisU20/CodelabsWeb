@@ -18,7 +18,7 @@ import { notFound } from "./not-found";
 import { pages } from "./pages";
 import { seo } from "./seo";
 import { servicePages } from "./service-pages";
-import { caseDetails } from "./case-details";
+import { closingCall } from "./closing-call";
 
 export const enMessages: Messages = {
   nav,
@@ -40,5 +40,5 @@ export const enMessages: Messages = {
   pages,
   seo,
   servicePages,
-  caseDetails,
+  closingCall,
 };
