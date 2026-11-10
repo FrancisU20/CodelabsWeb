@@ -15,7 +15,7 @@ const Hero = ({ locale }: { locale: Locale }) => {
   return (
     <section id="inicio" className={styles.hero} aria-labelledby="hero-title" data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
-        <div className={styles.copy}>
+        <div className={`${styles.copy} scene-motion`}>
           <p className="eyebrow m-0">{dict.eyebrow}</p>
           <h1 id="hero-title" className={styles.title}>
             <span className={`${styles.line} lift-in`}>{dict.titleLead}</span>
@@ -33,14 +33,15 @@ const Hero = ({ locale }: { locale: Locale }) => {
           <p className={styles.note}>{dict.note}</p>
         </div>
         <div className={styles.showcase} aria-hidden="true">
-          <div className={styles.fan}>
-            <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.left}`}>
+          <div className={`${styles.panel} scene-motion`} />
+          <div className={`${styles.fan} scene-motion`}>
+            <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.left} scene-motion`}>
               <AuraScreen />
             </PhoneFrame>
             <PhoneFrame className={`${styles.fanPhone} ${styles.center}`}>
               <NucleoScreen />
             </PhoneFrame>
-            <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.right}`}>
+            <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.right} scene-motion`}>
               <LexaScreen />
             </PhoneFrame>
           </div>

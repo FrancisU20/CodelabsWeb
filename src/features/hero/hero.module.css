@@ -55,13 +55,11 @@
   overflow: hidden;
 }
 
-.showcase::before {
-  content: "";
+.panel {
   position: absolute;
   inset: 0;
   border-radius: 6px;
   background: var(--panel);
-  opacity: calc(1 - var(--p, 0) * 2.4);
 }
 
 .fan {
@@ -78,11 +76,10 @@
 
 .fan .side {
   --spread: min(170px, 25vw);
-  --f: 1;
   position: absolute;
   top: 0;
-  transform: translateX(calc(var(--side) * var(--spread) * (0.45 + 0.55 * var(--f)))) translateY(calc(var(--f) * 6%))
-    rotateY(calc(var(--side) * -18deg * var(--f))) rotateZ(calc(var(--side) * 5deg * var(--f))) scale(0.9);
+  transform: translateX(calc(var(--side) * var(--spread))) translateY(6%) rotateY(calc(var(--side) * -18deg))
+    rotateZ(calc(var(--side) * 5deg)) scale(0.9);
 }
 
 .fan .left {
@@ -122,8 +119,11 @@
   }
 
   :global(.motion) .copy {
-    opacity: calc(1 - var(--p, 0) * 1.8);
-    transform: translateX(calc(var(--p, 0) * -70px));
+    animation-name: copy-aside;
+  }
+
+  :global(.motion) .panel {
+    animation-name: panel-out;
   }
 
   :global(.motion) .showcase {
@@ -131,8 +131,7 @@
   }
 
   :global(.motion) .fan {
-    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
-    transform: translateX(calc(var(--f) * min(100vw, 1180px) * -0.255)) scale(calc(1 + var(--f) * 0.12));
+    animation-name: fan-center;
   }
 
   :global(.motion) .fan .fanPhone {
@@ -141,7 +140,7 @@
 
   :global(.motion) .fan .side {
     --spread: min(300px, 26vw);
-    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
+    animation-name: fan-open;
   }
 }
 
@@ -152,8 +151,7 @@
   }
 
   :global(.motion) .copy {
-    opacity: calc(1 - var(--p, 0) * 2);
-    transform: translateY(calc(var(--p, 0) * -80px));
+    animation-name: copy-up;
   }
 
   :global(.motion) .showcase {
@@ -163,13 +161,12 @@
     overflow: visible;
   }
 
-  :global(.motion) .showcase::before {
+  :global(.motion) .panel {
     display: none;
   }
 
   :global(.motion) .fan {
-    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
-    transform: translateY(calc(86svh - var(--f) * 58svh)) scale(calc(1 + var(--f) * 0.12));
+    animation-name: fan-rise;
   }
 
   :global(.motion) .fan .fanPhone {
@@ -178,12 +175,81 @@
 
   :global(.motion) .fan .side {
     --spread: 27vw;
-    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
+    animation-name: fan-open;
+  }
+}
+
+@keyframes copy-aside {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  55% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+}
+
+@keyframes copy-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+}
+
+@keyframes panel-out {
+  0% {
+    opacity: 1;
+  }
+  42%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fan-center {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  80%,
+  100% {
+    transform: translateX(calc(min(100vw, 1180px) * -0.255)) scale(1.12);
+  }
+}
+
+@keyframes fan-rise {
+  0% {
+    transform: translateY(86svh) scale(1);
+  }
+  80%,
+  100% {
+    transform: translateY(28svh) scale(1.12);
+  }
+}
+
+@keyframes fan-open {
+  0% {
+    transform: translateX(calc(var(--side) * var(--spread) * 0.45)) translateY(0) rotateY(0deg) rotateZ(0deg) scale(0.9);
+  }
+  80%,
+  100% {
+    transform: translateX(calc(var(--side) * var(--spread))) translateY(6%) rotateY(calc(var(--side) * -18deg))
+      rotateZ(calc(var(--side) * 5deg)) scale(0.9);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .fan {
+  :global(html:not(.motion)) .fan {
     animation: fade-in 0.6s var(--ease-out) 0.2s both;
   }
 

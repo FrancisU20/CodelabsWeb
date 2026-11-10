@@ -50,11 +50,30 @@
 }
 
 :global(.motion) .browser {
-  --e: clamp(0, calc(var(--p, 0) * 1.8), 1);
-  transform: perspective(1600px) rotateX(calc((1 - var(--e)) * 30deg)) scale(calc(0.8 + var(--e) * 0.2));
+  animation-name: browser-rise;
 }
 
 :global(.motion) .scene .scenePhone {
-  --e: clamp(0, calc(var(--p, 0) * 2.2 - 0.6), 1);
-  transform: translateX(calc((1 - var(--e)) * 60vw)) rotate(calc((1 - var(--e)) * 12deg));
+  animation-name: phone-slide-in;
+}
+
+@keyframes browser-rise {
+  0% {
+    transform: perspective(1600px) rotateX(30deg) scale(0.8);
+  }
+  55%,
+  100% {
+    transform: perspective(1600px) rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes phone-slide-in {
+  0%,
+  27% {
+    transform: translateX(60vw) rotate(12deg);
+  }
+  73%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
 }

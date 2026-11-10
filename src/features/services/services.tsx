@@ -28,7 +28,7 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
           <p className="lede m-0 max-w-[34ch]">{dict.body}</p>
         </div>
         <div className={styles.rail}>
-          <div className={styles.track} data-track-rail>
+          <div className={`${styles.track} scene-motion`} data-track-rail>
             {dict.items.map((service) => (
               <article key={service.id} className={styles.card} data-reveal>
                 <p className={styles.service}>{service.title}</p>

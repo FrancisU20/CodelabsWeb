@@ -19,7 +19,7 @@ const Quality = ({ locale }: { locale: Locale }) => {
     <section aria-label={dict.ariaLabel} data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <SectionHeading className={styles.head} title={dict.title} body={dict.body} />
-        <div className={styles.window} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>
+        <div className={`${styles.window} scene-motion`} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>
           <WindowFrame kind="app" caption={dict.windowLabel}>
             <div className={styles.body}>
               <div className={styles.meterWrap}>

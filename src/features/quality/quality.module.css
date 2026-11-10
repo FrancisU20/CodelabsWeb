@@ -145,8 +145,17 @@
 }
 
 :global(.motion) .window {
-  --e: clamp(0, calc(var(--p, 0) * 1.7), 1);
-  transform: perspective(1600px) rotateX(calc((1 - var(--e)) * 32deg)) scale(calc(0.8 + var(--e) * 0.2));
+  animation-name: window-rise;
+}
+
+@keyframes window-rise {
+  0% {
+    transform: perspective(1600px) rotateX(32deg) scale(0.8);
+  }
+  59%,
+  100% {
+    transform: perspective(1600px) rotateX(0deg) scale(1);
+  }
 }
 
 :global(.motion) .meter {

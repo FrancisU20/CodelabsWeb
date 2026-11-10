@@ -36,7 +36,7 @@ const Stories = ({ locale }: { locale: Locale }) => {
           <p className={styles.note}>{dict.note}</p>
         </div>
         <div className={styles.phoneWrap} aria-hidden="true">
-          <PhoneFrame className={styles.storyPhone}>
+          <PhoneFrame className={`${styles.storyPhone} scene-motion`}>
             {Object.entries(SHOWCASE_APPS).map(([id, Screen], index) => (
               <div key={id} className={styles.layer} data-index={index}>
                 <Screen />
