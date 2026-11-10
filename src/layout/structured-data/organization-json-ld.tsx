@@ -1,5 +1,5 @@
 import { CONTACT_EMAIL, WHATSAPP_NUMBER } from "@/config/contact";
-import { SITE_LOCATION, SITE_LOGO_PATH, SITE_NAME, SITE_URL } from "@/config/site";
+import { ORGANIZATION_ID, SITE_LOCATION, SITE_LOGO_PATH, SITE_NAME, SITE_URL } from "@/config/site";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 
@@ -7,6 +7,7 @@ const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
   const organization = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
+    "@id": ORGANIZATION_ID,
     name: SITE_NAME,
     url: SITE_URL,
     logo: `${SITE_URL}${SITE_LOGO_PATH}`,

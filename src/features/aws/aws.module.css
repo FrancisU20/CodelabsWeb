@@ -76,13 +76,6 @@
   font-size: 15px;
 }
 
-.benefitMark {
-  width: 28px;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--aws-orange);
-}
-
 .flow {
   display: flex;
   align-items: center;

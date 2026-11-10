@@ -17,6 +17,8 @@ import { whatsapp } from "./whatsapp";
 import { notFound } from "./not-found";
 import { pages } from "./pages";
 import { seo } from "./seo";
+import { servicePages } from "./service-pages";
+import { caseDetails } from "./case-details";
 
 export const enMessages: Messages = {
   nav,
@@ -37,4 +39,6 @@ export const enMessages: Messages = {
   notFound,
   pages,
   seo,
+  servicePages,
+  caseDetails,
 };

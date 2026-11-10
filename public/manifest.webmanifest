@@ -1,10 +1,10 @@
 {
   "name": "CodeLabs",
   "short_name": "CodeLabs",
-  "description": "Apps, webs y sistemas a la medida para empresas en Ecuador.",
+  "description": "Apps, páginas web y sistemas para empresas en Ecuador.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050507",
+  "background_color": "#FFFFFF",
   "theme_color": "#4F46E5",
   "icons": [
     {

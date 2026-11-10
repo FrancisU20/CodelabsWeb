@@ -135,7 +135,7 @@
 }
 
 :global(.motion) .fan .fanPhone {
-  --w: min(clamp(150px, 17vw, 230px), 29svh);
+  --w: min(clamp(150px, 20vw, 230px), 29svh);
 }
 
 :global(.motion) .fan .side {

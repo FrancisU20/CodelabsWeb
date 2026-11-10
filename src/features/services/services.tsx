@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
+import { servicePath } from "@/i18n/routing";
 import { cx } from "@/shared/lib/class-names";
 import SectionHeading from "@/shared/ui/section/section-heading";
 import styles from "./services.module.css";
@@ -28,10 +30,15 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
         <div className={styles.rail}>
           <div className={styles.track} data-track-rail>
             {dict.items.map((service) => (
-              <article key={service.id} id={service.id} className={styles.card}>
+              <article key={service.id} className={styles.card}>
                 <p className={styles.service}>{service.title}</p>
-                <h3 className={styles.need}>{service.need}</h3>
+                <h3 className={styles.need}>
+                  <Link href={servicePath(service.id, locale)}>{service.need}</Link>
+                </h3>
                 <p className={styles.body}>{service.body}</p>
+                <span className={styles.more} aria-hidden="true">
+                  {dict.more}
+                </span>
               </article>
             ))}
           </div>

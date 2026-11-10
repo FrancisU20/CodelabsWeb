@@ -39,6 +39,7 @@
   padding-block: 22px;
   border-top: 1px solid var(--rule-strong);
   min-width: 0;
+  position: relative;
 }
 
 .service {
@@ -56,10 +57,27 @@
   font-weight: 600;
 }
 
+.need a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.card:hover .need {
+  color: var(--brand);
+}
+
 .body {
   margin: 0;
   color: var(--muted);
   font-size: 17px;
+}
+
+.more {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand);
 }
 
 @media (min-width: 761px) {
@@ -73,6 +91,11 @@
     grid-column: 2;
     grid-row: 1 / span 2;
     align-self: center;
+  }
+
+  .list .more {
+    grid-column: 2;
+    margin-top: 0;
   }
 
   :global(.motion) [data-track] .stage {
@@ -107,5 +130,9 @@
 
   :global(.motion) [data-track] .need {
     margin-bottom: 12px;
+  }
+
+  :global(.motion) [data-track] .more {
+    margin-top: auto;
   }
 }

@@ -27,7 +27,6 @@ const Aws = ({ locale }: { locale: Locale }) => {
         <div className={styles.benefits}>
           {dict.benefits.map((benefit) => (
             <div key={benefit.title} className={styles.benefit}>
-              <i className={styles.benefitMark} />
               <b>{benefit.title}</b>
               <span>{benefit.body}</span>
             </div>
