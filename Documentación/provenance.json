@@ -1,9 +1,0 @@
-{
-  "repo": "CodelabsWeb",
-  "source": "origin/master",
-  "sha": "51c55321ef036b5896a219709ab88539fdf76c04",
-  "source_worktree": "detached",
-  "source_clean": true,
-  "framework": "Next.js/React",
-  "source_count": 48
-}

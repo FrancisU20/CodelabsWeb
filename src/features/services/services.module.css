@@ -166,7 +166,7 @@
 
 @media (max-width: 760px) {
   :global(.motion) [data-track] .stage {
-    padding-top: 84px;
+    padding-top: var(--spacing-stage);
     gap: 24px;
   }
 }

@@ -30,7 +30,7 @@
   }
 
   section[id] {
-    scroll-margin-top: 88px;
+    scroll-margin-top: var(--spacing-stage);
   }
 
   :focus-visible {

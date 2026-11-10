@@ -1,6 +1,6 @@
 # Infraestructura de CodeLabs Web
 
-Guía operativa de la aplicación AWS CDK v2 que publica `codelabsecuador.com`. La arquitectura y la entrega se documentan en el [resumen técnico](../Documentación/resumen_tecnico_codelabs_web.adoc) y el [anexo de arquitectura y flujos](../Documentación/modules/arquitectura_y_flujos.adoc).
+Guía operativa de la aplicación AWS CDK v2 que publica `codelabsecuador.com`.
 
 ## Validación
 

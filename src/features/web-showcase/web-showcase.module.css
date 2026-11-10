@@ -32,7 +32,7 @@
   }
 
   :global(.motion) .stage {
-    padding-top: 84px;
+    padding-top: var(--spacing-stage);
     gap: 28px;
   }
 

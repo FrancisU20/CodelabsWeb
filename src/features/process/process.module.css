@@ -9,7 +9,7 @@
 
 .step {
   position: sticky;
-  top: calc(88px + var(--i) * 20px);
+  top: calc(var(--spacing-stage) + var(--i) * 20px);
   background: var(--ink);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);

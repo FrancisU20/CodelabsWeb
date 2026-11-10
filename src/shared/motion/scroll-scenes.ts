@@ -3,7 +3,7 @@ import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
 import { activeIndex, entryProgress, pinProgress, scrubProgress } from "./progress";
 import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
-import { countUpOnView, renderCounters, showFinalCounters } from "./scroll-counters";
+import { renderCounters, showFinalCounters } from "./scroll-counters";
 
 const queryAll = (selector: string): HTMLElement[] => [...document.querySelectorAll<HTMLElement>(selector)];
 
@@ -63,22 +63,12 @@ const showStaticState = (context: SceneContext) => {
   context.pins.filter(isStory).forEach((section) => {
     section.dataset.active = "0";
   });
-  if (context.reducedMotion.matches) {
-    showFinalCounters(context.counters);
-    return;
-  }
-  context.countObserver = countUpOnView(context.counters);
-};
-
-const stopCountUp = (context: SceneContext) => {
-  context.countObserver?.disconnect();
-  context.countObserver = null;
+  showFinalCounters(context.counters);
 };
 
 const applyMode = (context: SceneContext) => {
   const motionOn = !context.reducedMotion.matches;
   context.root.classList.toggle(MOTION_CLASS, motionOn);
-  stopCountUp(context);
   measure(context);
   if (!motionOn) {
     showStaticState(context);
@@ -98,7 +88,6 @@ const createContext = (): SceneContext => ({
   metrics: [],
   renderedValues: new Map(),
   frameRequested: false,
-  countObserver: null,
 });
 
 export const startScrollScenes = (): (() => void) => {
@@ -130,6 +119,5 @@ export const startScrollScenes = (): (() => void) => {
     window.removeEventListener("load", onLayoutChange);
     context.reducedMotion.removeEventListener("change", onModeChange);
     revealObserver.disconnect();
-    stopCountUp(context);
   };
 };

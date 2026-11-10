@@ -161,7 +161,7 @@
 
 @media (min-width: 761px) {
   :global(.motion) .stage {
-    padding-block: 88px 32px;
+    padding-block: var(--spacing-stage) 32px;
     align-items: stretch;
   }
 
@@ -195,7 +195,7 @@
 
 @media (max-width: 760px) {
   :global(.motion) .stage {
-    padding-block: 88px 0;
+    padding-block: var(--spacing-stage) 0;
     position: relative;
   }
 
