@@ -8,7 +8,7 @@
 }
 
 .stage {
-  padding-block: 96px;
+  padding-block: clamp(56px, 9vw, 96px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +41,7 @@
 }
 
 .results {
-  padding-block: 56px 88px;
+  padding-block: clamp(32px, 6vw, 56px) clamp(48px, 9vw, 88px);
 }
 
 .grid {

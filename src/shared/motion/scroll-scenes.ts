@@ -1,5 +1,5 @@
 import { measureTrack } from "./horizontal-track";
-import { MOTION_CLASS, REDUCED_MOTION_QUERY, WIDE_SCREEN_QUERY } from "./motion-mode";
+import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
 import { activeIndex, pinProgress, scrubProgress } from "./progress";
 import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
@@ -78,7 +78,7 @@ const stopCountUp = (context: SceneContext) => {
 };
 
 const applyMode = (context: SceneContext) => {
-  const motionOn = !context.reducedMotion.matches && context.wideScreen.matches;
+  const motionOn = !context.reducedMotion.matches;
   context.root.classList.toggle(MOTION_CLASS, motionOn);
   stopCountUp(context);
   measure(context);
@@ -92,7 +92,7 @@ const applyMode = (context: SceneContext) => {
 const createContext = (): SceneContext => ({
   root: document.documentElement,
   reducedMotion: window.matchMedia(REDUCED_MOTION_QUERY),
-  wideScreen: window.matchMedia(WIDE_SCREEN_QUERY),
+  viewportWidth: window.innerWidth,
   pins: queryAll("[data-pin]"),
   scrubs: queryAll("[data-scrub]"),
   tracks: queryAll("[data-track]"),
@@ -112,22 +112,25 @@ export const startScrollScenes = (): (() => void) => {
     measure(context);
     requestRender(context);
   };
+  const onResize = () => {
+    if (window.innerWidth === context.viewportWidth) return;
+    context.viewportWidth = window.innerWidth;
+    onLayoutChange();
+  };
   const onModeChange = () => applyMode(context);
   const revealObserver = observeReveals(queryAll("[data-reveal]"), context.reducedMotion.matches);
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onLayoutChange);
+  window.addEventListener("resize", onResize);
   window.addEventListener("load", onLayoutChange);
   context.reducedMotion.addEventListener("change", onModeChange);
-  context.wideScreen.addEventListener("change", onModeChange);
   document.fonts?.ready.then(onLayoutChange);
   applyMode(context);
   return () => {
     active = false;
     window.removeEventListener("scroll", onScroll);
-    window.removeEventListener("resize", onLayoutChange);
+    window.removeEventListener("resize", onResize);
     window.removeEventListener("load", onLayoutChange);
     context.reducedMotion.removeEventListener("change", onModeChange);
-    context.wideScreen.removeEventListener("change", onModeChange);
     revealObserver.disconnect();
     stopCountUp(context);
   };

@@ -1,5 +1,5 @@
 .stage {
-  padding-block: 120px;
+  padding-block: clamp(56px, 10vw, 120px);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -28,7 +28,7 @@
 }
 
 :global(.motion) .word {
-  --shown: clamp(0, calc((var(--p, 0) * (var(--n) + 4) - var(--i)) * 1000), 1);
+  --shown: clamp(0, calc((var(--p, 0) * (var(--n) + 2) + 3 - var(--i)) * 1000), 1);
   opacity: var(--shown);
   transform: translateY(calc((1 - var(--shown)) * 0.35em));
   transition: opacity 0.2s var(--ease-out), transform 0.2s var(--ease-out);

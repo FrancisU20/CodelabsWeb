@@ -41,25 +41,6 @@
   flex: none;
 }
 
-.control {
-  align-self: center;
-  min-height: 44px;
-  margin-top: -6px;
-  padding: 0 18px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: transparent;
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color 0.2s var(--ease-out);
-}
-
-.control:hover {
-  color: var(--fg);
-}
-
 .tile {
   width: 200px;
   aspect-ratio: 2 / 1;
@@ -98,8 +79,7 @@
     animation-duration: 64s;
   }
 
-  .rows:hover .marquee,
-  .paused .marquee {
+  .rows:hover .marquee {
     animation-play-state: paused;
   }
 
@@ -111,10 +91,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .control {
-    display: none;
-  }
-
   .marquee {
     width: auto;
     flex-wrap: wrap;

@@ -3,7 +3,7 @@ import type { PinMetric } from "./pin-metric";
 export type SceneContext = {
   root: HTMLElement;
   reducedMotion: MediaQueryList;
-  wideScreen: MediaQueryList;
+  viewportWidth: number;
   pins: HTMLElement[];
   scrubs: HTMLElement[];
   tracks: HTMLElement[];

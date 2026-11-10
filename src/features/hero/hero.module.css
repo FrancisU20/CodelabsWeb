@@ -115,53 +115,76 @@
   }
 }
 
-:global(.motion) .stage {
-  padding-block: 88px 32px;
-  align-items: stretch;
+@media (min-width: 761px) {
+  :global(.motion) .stage {
+    padding-block: 88px 32px;
+    align-items: stretch;
+  }
+
+  :global(.motion) .copy {
+    opacity: calc(1 - var(--p, 0) * 1.8);
+    transform: translateX(calc(var(--p, 0) * -70px));
+  }
+
+  :global(.motion) .showcase {
+    overflow: visible;
+  }
+
+  :global(.motion) .fan {
+    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
+    transform: translateX(calc(var(--f) * min(100vw, 1180px) * -0.255)) scale(calc(1 + var(--f) * 0.12));
+  }
+
+  :global(.motion) .fan .fanPhone {
+    --w: min(clamp(150px, 20vw, 230px), 29svh);
+  }
+
+  :global(.motion) .fan .side {
+    --spread: min(300px, 26vw);
+    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
+  }
 }
 
-:global(.motion) .copy {
-  opacity: calc(1 - var(--p, 0) * 1.8);
-  transform: translateX(calc(var(--p, 0) * -70px));
-}
+@media (max-width: 760px) {
+  :global(.motion) .stage {
+    padding-block: 88px 0;
+    position: relative;
+  }
 
-:global(.motion) .showcase {
-  overflow: visible;
-}
+  :global(.motion) .copy {
+    opacity: calc(1 - var(--p, 0) * 2);
+    transform: translateY(calc(var(--p, 0) * -80px));
+  }
 
-:global(.motion) .fan {
-  --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
-  transform: translateX(calc(var(--f) * min(100vw, 1180px) * -0.255)) scale(calc(1 + var(--f) * 0.12));
-}
+  :global(.motion) .showcase {
+    position: absolute;
+    inset: 0 0 auto;
+    padding: 0;
+    overflow: visible;
+  }
 
-:global(.motion) .fan .fanPhone {
-  --w: min(clamp(150px, 20vw, 230px), 29svh);
-}
+  :global(.motion) .showcase::before {
+    display: none;
+  }
 
-:global(.motion) .fan .side {
-  --spread: min(300px, 26vw);
-  --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
-}
+  :global(.motion) .fan {
+    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
+    transform: translateY(calc(86svh - var(--f) * 58svh)) scale(calc(1 + var(--f) * 0.12));
+  }
 
-@property --f {
-  syntax: "<number>";
-  inherits: true;
-  initial-value: 1;
+  :global(.motion) .fan .fanPhone {
+    --w: min(36vw, 21svh);
+  }
+
+  :global(.motion) .fan .side {
+    --spread: 27vw;
+    --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .fan {
     animation: fade-in 0.6s var(--ease-out) 0.2s both;
-  }
-
-  :global(html:not(.motion)) .fan .side {
-    animation: fan-out 1s var(--ease-out) 0.35s both;
-  }
-
-  @keyframes fan-out {
-    from {
-      --f: 0;
-    }
   }
 
   @keyframes fade-in {

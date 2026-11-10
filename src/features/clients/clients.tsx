@@ -4,7 +4,6 @@ import type { Locale } from "@/i18n/locale";
 import { CLIENTS_ANCHOR } from "@/i18n/routing";
 import { cx } from "@/shared/lib/class-names";
 import ClientLogoGroup from "./client-logo-group";
-import ClientLogoRows from "./client-logo-rows";
 import styles from "./clients.module.css";
 
 const Clients = ({ locale }: { locale: Locale }) => {
@@ -17,14 +16,14 @@ const Clients = ({ locale }: { locale: Locale }) => {
           {dict.title}
         </h2>
       </div>
-      <ClientLogoRows pauseLabel={dict.pause} resumeLabel={dict.resume}>
+      <div className={styles.rows}>
         {clientLogoRows.map((logos, rowIndex) => (
           <div key={logos[0].src} className={cx(styles.marquee, rowIndex % 2 === 1 && styles.reverse)}>
             <ClientLogoGroup logos={logos} />
             <ClientLogoGroup logos={logos} duplicate />
           </div>
         ))}
-      </ClientLogoRows>
+      </div>
     </section>
   );
 };

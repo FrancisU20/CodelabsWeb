@@ -27,6 +27,15 @@
 }
 
 @media (max-width: 760px) {
+  .stage {
+    padding-block: 56px;
+  }
+
+  :global(.motion) .stage {
+    padding-top: 84px;
+    gap: 28px;
+  }
+
   .scene .scenePhone {
     --w: 120px;
     right: -4%;

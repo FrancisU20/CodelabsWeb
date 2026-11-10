@@ -1,5 +1,5 @@
 .stage {
-  padding-block: 120px;
+  padding-block: clamp(56px, 10vw, 120px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 48px 72px;
@@ -126,11 +126,11 @@
 }
 
 @media (max-width: 760px) {
-  .phoneWrap {
+  :global(html:not(.motion)) .phoneWrap {
     display: none;
   }
 
-  .itemPhone {
+  :global(html:not(.motion)) .itemPhone {
     display: flex;
     justify-content: center;
     padding-top: 12px;
@@ -150,6 +150,25 @@
 
   .itemTitle {
     font-size: 30px;
+  }
+
+  :global(.motion) .stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding-top: 84px;
+    align-content: start;
+  }
+
+  :global(.motion) .texts {
+    gap: 16px;
+  }
+
+  :global(.motion) .note {
+    display: none;
+  }
+
+  :global(.motion) .phoneWrap .storyPhone {
+    --w: min(48vw, 19svh);
   }
 
   .itemBody {
