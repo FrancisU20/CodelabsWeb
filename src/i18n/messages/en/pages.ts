@@ -3,27 +3,27 @@ import type { Messages } from "../messages";
 export const pages: Messages["pages"] = {
   services: {
     eyebrow: "Services",
-    title: "Apps, websites and systems for your company.",
-    description: "One team does all of it, so you don't have to coordinate between vendors.",
+    title: "What we can do for your business.",
+    description: "Pick where to start. If you're not sure which one you need, tell us what you want to solve and we'll recommend one.",
   },
   work: {
     eyebrow: "Case studies",
-    title: "Projects that are already up and running.",
-    description: "Apps, web platforms and systems for companies across industries.",
+    title: "What we have already built for other businesses.",
+    description: "Projects that are in use today. For confidentiality we don't show names or our clients' apps; the screens are references.",
   },
   howWeWork: {
     eyebrow: "How we work",
-    title: "How we run your project, from the first meeting to launch.",
-    description: "The four stages it goes through and the checks the team runs before every delivery.",
+    title: "How we work with you, from the first conversation to launch.",
+    description: "No jargon, and progress you can try every few weeks.",
   },
   about: {
     eyebrow: "About",
-    title: "We are a software company from Ibarra, Ecuador.",
-    description: "We design, program and maintain apps and systems for companies.",
+    title: "We are CodeLabs, a software company from Ibarra, Ecuador.",
+    description: "We help companies, entrepreneurs and small businesses organize their operation, reach more customers and save time with technology.",
   },
   contact: {
     eyebrow: "Contact",
-    title: "Let's talk about your project.",
-    description: "On WhatsApp, email or phone. The team that will build it is the one that answers.",
+    title: "Tell us what you want to improve in your business.",
+    description: "Write to us here, on WhatsApp or by email. The team that will build it is the one that answers, usually the same day.",
   },
 };

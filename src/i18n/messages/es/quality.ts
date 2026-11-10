@@ -1,19 +1,18 @@
 import type { Messages } from "../messages";
 
 export const quality: Messages["quality"] = {
-  ariaLabel: "Revisiones de calidad",
-  title: { lines: ["Antes de publicar un cambio,"], accent: "pasa por estas revisiones." },
-  body: "Así evitamos que un error llegue a tus clientes.",
+  ariaLabel: "Revisiones antes de cada entrega",
+  title: { lines: ["Antes de cada entrega,"], accent: "lo revisamos así." },
   windowLabel: "revisión de entrega",
-  meterTitle: "Listo para publicar",
+  meterTitle: "Todo en orden",
   meterCaption: "5 de 5 revisiones",
   checks: [
     "Aprobaste el diseño",
     "Lo revisó otro ingeniero",
     "Pasó las pruebas automáticas",
     "Revisamos la seguridad",
-    "Funciona en iPhone, Android y web",
+    "Funciona en celular, computador y tablet",
   ],
   approved: "Listo",
-  live: "Publicado",
+  live: "Listo para publicar",
 };

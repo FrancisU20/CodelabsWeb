@@ -16,9 +16,9 @@ const Quality = ({ locale }: { locale: Locale }) => {
   const liveAt = FIRST_CHECK_AT + dict.checks.length * CHECK_STEP;
 
   return (
-    <section aria-label={dict.ariaLabel} data-pin style={pinLength("standard")}>
+    <section aria-label={dict.ariaLabel} className={styles.band} data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
-        <SectionHeading className={styles.head} title={dict.title} body={dict.body} />
+        <SectionHeading className={styles.head} title={dict.title} />
         <div className={`${styles.window} scene-motion`} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>
           <WindowFrame kind="app" caption={dict.windowLabel}>
             <div className={styles.body}>

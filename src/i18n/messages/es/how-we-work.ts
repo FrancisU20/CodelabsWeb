@@ -3,21 +3,9 @@ import type { Messages } from "../messages";
 export const howWeWork: Messages["howWeWork"] = {
   title: { lines: ["Cómo trabajamos"] },
   steps: [
-    {
-      title: "Hablamos",
-      body: "Nos cuentas qué necesitas y qué te está dando problemas. De ahí sale una propuesta con alcance y tiempos.",
-    },
-    {
-      title: "Te mostramos el diseño",
-      body: "Antes de programar ves las pantallas y nos dices qué cambiar.",
-    },
-    {
-      title: "Construimos por partes",
-      body: "Cada pocas semanas puedes probar lo que ya está hecho.",
-    },
-    {
-      title: "Publicamos y seguimos",
-      body: "Cuando sale al público vemos cómo lo usan tus clientes y lo seguimos ajustando contigo.",
-    },
+    { title: "Conversamos", body: "Nos cuentas qué quieres mejorar en tu negocio y te enviamos una propuesta con alcance, tiempo y costo." },
+    { title: "Lo ves antes de construirlo", body: "Te mostramos las pantallas o el flujo y nos dices qué cambiar." },
+    { title: "Construimos por partes", body: "Cada pocas semanas puedes probar lo que ya está listo." },
+    { title: "Lanzamos y te acompañamos", body: "Lo ponemos en marcha, enseñamos a tu equipo a usarlo y lo seguimos mejorando contigo." },
   ],
 };

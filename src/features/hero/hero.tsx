@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { pagePath } from "@/i18n/routing";
+import ChatWindow from "@/shared/devices/chat-window";
 import PhoneFrame from "@/shared/devices/phone-frame";
 import { pinLength } from "@/shared/motion/pin-length";
 import { SHOWCASE_APPS } from "@/showcase/showcase-apps";
@@ -32,7 +33,7 @@ const Hero = ({ locale }: { locale: Locale }) => {
           </div>
           <p className={styles.note}>{dict.note}</p>
         </div>
-        <div className={styles.showcase} aria-hidden="true">
+        <div className={styles.showcase} role="img" aria-label={dict.chatLabel}>
           <div className={`${styles.panel} scene-motion`} />
           <div className={`${styles.fan} scene-motion`}>
             <PhoneFrame className={`${styles.fanPhone} ${styles.side} ${styles.left} scene-motion`}>
@@ -45,6 +46,14 @@ const Hero = ({ locale }: { locale: Locale }) => {
               <LexaScreen />
             </PhoneFrame>
           </div>
+          <div className={`${styles.toast} scene-motion`}>
+            <i>✓</i>
+            <span>
+              <b>{dict.toast.title}</b>
+              <small>{dict.toast.detail}</small>
+            </span>
+          </div>
+          <ChatWindow {...dict.chat} typing className={`${styles.heroChat} scene-motion`} />
         </div>
       </div>
     </section>

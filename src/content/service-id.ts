@@ -1,1 +1,1 @@
-export type ServiceId = "mobile" | "web" | "custom" | "cloud" | "modernization" | "support";
+export type ServiceId = "web" | "mobile" | "automation" | "ai" | "custom" | "cloud";

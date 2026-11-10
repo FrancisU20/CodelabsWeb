@@ -12,14 +12,13 @@ const OtherServices = ({ service, locale }: { service: ServiceId; locale: Locale
   return (
     <section className={styles.others} aria-labelledby="other-services">
       <div className="site-wrap">
-        <h2 id="other-services" className="section-title m-0">
+        <h2 id="other-services" className="m-0 text-2xl font-bold">
           {messages.servicePages.labels.otherTitle}
         </h2>
-        <div className={styles.othersGrid}>
+        <div className={styles.chips}>
           {others.map((item) => (
-            <Link key={item.id} href={servicePath(item.id, locale)} className={styles.other}>
-              <b>{item.title}</b>
-              <span>{item.summary}</span>
+            <Link key={item.id} href={servicePath(item.id, locale)} className={styles.chip}>
+              {item.title}
             </Link>
           ))}
         </div>

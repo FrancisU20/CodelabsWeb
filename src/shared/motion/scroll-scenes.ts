@@ -5,8 +5,6 @@ import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
 import { countUpOnView, renderCounters, showFinalCounters } from "./scroll-counters";
 
-const STORY_SCREENS = 3;
-
 const queryAll = (selector: string): HTMLElement[] => [...document.querySelectorAll<HTMLElement>(selector)];
 
 const isStory = (section: HTMLElement): boolean => section.dataset.story !== undefined;
@@ -42,7 +40,7 @@ const renderPins = (context: SceneContext) =>
     const progress = pinProgress(window.scrollY, top, length);
     if (!writeProgress(context, section, progress)) return;
     if (isStory(section)) {
-      section.dataset.active = String(activeIndex(progress, STORY_SCREENS));
+      section.dataset.active = String(activeIndex(progress, Number(section.dataset.storyCount)));
     }
   });
 

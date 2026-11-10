@@ -17,10 +17,10 @@ export const CLIENTS_ANCHOR: Record<Locale, string> = { es: "clientes", en: "cli
 export const SERVICE_ROUTES: Record<ServiceId, Record<Locale, string>> = {
   mobile: { es: "/servicios/apps-moviles", en: "/en/services/mobile-apps" },
   web: { es: "/servicios/paginas-web-y-tiendas", en: "/en/services/websites-and-online-stores" },
+  automation: { es: "/servicios/automatizacion", en: "/en/services/automation" },
+  ai: { es: "/servicios/inteligencia-artificial", en: "/en/services/artificial-intelligence" },
   custom: { es: "/servicios/sistemas-a-la-medida", en: "/en/services/custom-systems" },
   cloud: { es: "/servicios/nube-y-seguridad", en: "/en/services/cloud-and-security" },
-  modernization: { es: "/servicios/modernizacion", en: "/en/services/modernization" },
-  support: { es: "/servicios/soporte-y-mantenimiento", en: "/en/services/support-and-maintenance" },
 };
 
 export const LEGAL_ROUTES: Record<LegalDocumentKey, Record<Locale, string>> = {

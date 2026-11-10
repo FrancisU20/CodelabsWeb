@@ -1,3 +1,12 @@
+.band {
+  background: var(--night);
+  color: #ffffff;
+}
+
+.band :global(.text-accent) {
+  color: var(--night-accent);
+}
+
 .stage {
   padding-block: 120px;
   display: flex;
@@ -14,6 +23,7 @@
 }
 
 .window {
+  color: var(--fg);
   width: min(1000px, 100%);
   margin-inline: auto;
   transform-origin: 50% 0%;
@@ -139,7 +149,16 @@
   }
 }
 
-:global(.motion) .stage {
+:global(.motion) .band {
+  background: var(--night);
+  color: #ffffff;
+}
+
+.band :global(.text-accent) {
+  color: var(--night-accent);
+}
+
+.stage {
   padding-block: 64px 0;
   justify-content: flex-start;
 }
@@ -197,7 +216,16 @@
     padding: 10px 12px;
   }
 
-  :global(.motion) .stage {
+  :global(.motion) .band {
+  background: var(--night);
+  color: #ffffff;
+}
+
+.band :global(.text-accent) {
+  color: var(--night-accent);
+}
+
+.stage {
     padding-top: 84px;
     gap: 24px;
   }

@@ -9,7 +9,7 @@ const Impact = ({ locale }: { locale: Locale }) => {
 
   return (
     <>
-      <section aria-labelledby="impact-title" className={styles.band} data-pin style={pinLength("short")}>
+      <section aria-labelledby="impact-title" data-pin style={pinLength("short")}>
         <div className={`site-wrap ${styles.stage}`} data-stage>
           <p className="eyebrow">{dict.eyebrow}</p>
           <div className={`${styles.stat} scene-motion`} data-count={HEALTH_APPS_SPEED_GAIN_PERCENT} data-prefix="+" data-suffix="%">
