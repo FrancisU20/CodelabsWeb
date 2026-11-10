@@ -58,6 +58,9 @@ const githubOidcHost = "token.actions.githubusercontent.com";
 const infraDeployRoleName = "codelabs-web-infra-deploy";
 const cdkRolePattern = "cdk-hnb659fds-*";
 const noncurrentVersionRetention = Duration.days(30);
+
+const productionSubject = (config: StaticSiteConfig): string =>
+  `repo:${config.githubOwner}/${config.githubRepository}:environment:production`;
 const incompleteUploadRetention = Duration.days(7);
 
 export class StaticSiteStack extends Stack {
@@ -181,10 +184,6 @@ export class StaticSiteStack extends Stack {
     distribution: Distribution,
     oidcProvider: IOpenIdConnectProvider,
   ): Role {
-    const repositorySubjects = [
-      `repo:${config.githubOwner}/${config.githubRepository}:ref:refs/heads/${config.githubBranch}`,
-      `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
-    ];
 
     const role = new Role(this, "GitHubActionsDeployRole", {
       assumedBy: new FederatedPrincipal(
@@ -192,7 +191,7 @@ export class StaticSiteStack extends Stack {
         {
           StringEquals: {
             "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": repositorySubjects,
+            "token.actions.githubusercontent.com:sub": productionSubject(config),
           },
         },
         "sts:AssumeRoleWithWebIdentity",
@@ -241,7 +240,7 @@ export class StaticSiteStack extends Stack {
         {
           StringEquals: {
             "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": `repo:${config.githubOwner}/${config.githubRepository}:environment:production`,
+            "token.actions.githubusercontent.com:sub": productionSubject(config),
           },
         },
         "sts:AssumeRoleWithWebIdentity",

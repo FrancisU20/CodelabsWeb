@@ -9,7 +9,6 @@ export interface StaticSiteConfig {
   readonly hostedZoneDomainName: string;
   readonly githubOwner: string;
   readonly githubRepository: string;
-  readonly githubBranch: string;
 }
 
 const prodConfig: StaticSiteConfig = {
@@ -24,7 +23,6 @@ const prodConfig: StaticSiteConfig = {
   hostedZoneDomainName: "codelabsecuador.com",
   githubOwner: "FrancisU20",
   githubRepository: "CodelabsWeb",
-  githubBranch: "master",
 };
 
 export const getEnvironmentConfig = (stage: string): StaticSiteConfig => {
