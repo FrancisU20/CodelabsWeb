@@ -14,17 +14,17 @@ type NavDropdownProps = {
 };
 
 const NavDropdown = ({ id, label, ariaLabel, pathname, className, panelClassName, children }: NavDropdownProps) => {
-  const menu = useDismissibleMenu<HTMLDivElement>(pathname, id);
+  const { open, containerRef, toggleRef, toggle, close } = useDismissibleMenu<HTMLDivElement>(pathname, id);
 
   return (
-    <div ref={menu.containerRef} className={className}>
+    <div ref={containerRef} className={className}>
       <button
-        ref={menu.toggleRef}
+        ref={toggleRef}
         type="button"
         aria-label={ariaLabel}
-        aria-expanded={menu.open}
+        aria-expanded={open}
         aria-controls={id}
-        onClick={menu.toggle}
+        onClick={toggle}
         className="inline-flex min-h-11 cursor-pointer items-center gap-1.5 font-medium text-muted transition-colors hover:text-brand"
       >
         {label}
@@ -32,8 +32,8 @@ const NavDropdown = ({ id, label, ariaLabel, pathname, className, panelClassName
           ▾
         </span>
       </button>
-      {menu.open && (
-        <div id={id} className={panelClassName} onClick={menu.close}>
+      {open && (
+        <div id={id} className={panelClassName} onClick={close}>
           {children}
         </div>
       )}

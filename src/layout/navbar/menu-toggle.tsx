@@ -1,7 +1,7 @@
 import type { RefObject } from "react";
 
 type MenuToggleProps = {
-  buttonRef: RefObject<HTMLButtonElement>;
+  buttonRef: RefObject<HTMLButtonElement | null>;
   open: boolean;
   controls: string;
   openLabel: string;

@@ -30,13 +30,13 @@ type NavbarProps = {
 
 const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
   const pathname = usePathname();
-  const menu = useDismissibleMenu(pathname, MOBILE_MENU_ID);
+  const { open, containerRef, toggleRef, toggle, close } = useDismissibleMenu(pathname, MOBILE_MENU_ID);
   const otherLocale: Locale = locale === "es" ? "en" : "es";
   const switchHref = getAlternatePath(pathname, otherLocale);
   const contactHref = pagePath("contact", locale);
 
   return (
-    <header ref={menu.containerRef} className="sticky top-0 z-50 border-b border-line bg-ink">
+    <header ref={containerRef} className="sticky top-0 z-50 border-b border-line bg-ink">
       <div className="site-wrap relative flex min-h-[72px] items-center gap-8">
         <Link href={pagePath("home", locale)} aria-label={copy.homeAriaLabel}>
           <Logo />
@@ -75,23 +75,23 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
             {copy.cta}
           </Link>
         </div>
-        <MenuToggle buttonRef={menu.toggleRef} open={menu.open} controls={MOBILE_MENU_ID} openLabel={copy.openMenu} closeLabel={copy.closeMenu} onToggle={menu.toggle} />
+        <MenuToggle buttonRef={toggleRef} open={open} controls={MOBILE_MENU_ID} openLabel={copy.openMenu} closeLabel={copy.closeMenu} onToggle={toggle} />
       </div>
-      {menu.open && (
+      {open && (
         <div id={MOBILE_MENU_ID} className="site-wrap border-t border-line pb-5 lg:hidden">
           <NavLinks
             items={[{ href: pagePath("services", locale), label: copy.services }, ...items]}
             pathname={pathname}
             ariaLabel={copy.menuAriaLabel}
-            onNavigate={menu.close}
+            onNavigate={close}
             className="flex flex-col"
             linkClassName="flex min-h-[54px] items-center border-b border-line text-lg font-medium"
           />
           <div className="flex flex-wrap items-center justify-between gap-3 pt-4">
-            <Link href={switchHref} hrefLang={otherLocale} lang={otherLocale} onClick={menu.close} className="inline-flex min-h-11 items-center font-medium underline underline-offset-4">
+            <Link href={switchHref} hrefLang={otherLocale} lang={otherLocale} onClick={close} className="inline-flex min-h-11 items-center font-medium underline underline-offset-4">
               {copy.otherLanguage}
             </Link>
-            <Link href={contactHref} onClick={menu.close} className="btn btn-primary min-h-11 px-5 text-base">
+            <Link href={contactHref} onClick={close} className="btn btn-primary min-h-11 px-5 text-base">
               {copy.cta}
             </Link>
           </div>
