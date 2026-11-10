@@ -18,12 +18,7 @@ Antes de desplegar se deben confirmar el perfil, la cuenta, la región y la host
 npm run cdk -- deploy -c stage=prod --profile codelabs-prod
 ```
 
-El stack importa por defecto el proveedor OIDC de GitHub desde la cuenta CDK actual. Solo si debe sobrescribirse:
-
-```bash
-GITHUB_OIDC_PROVIDER_ARN=arn:aws:iam::<account-id>:oidc-provider/token.actions.githubusercontent.com \
-  npm run cdk -- deploy -c stage=prod --profile codelabs-prod
-```
+El stack usa el proveedor OIDC de GitHub que ya existe en la cuenta.
 
 ## Variables del repositorio GitHub
 

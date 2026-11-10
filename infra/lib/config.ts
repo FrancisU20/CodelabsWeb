@@ -10,7 +10,6 @@ export interface StaticSiteConfig {
   readonly githubOwner: string;
   readonly githubRepository: string;
   readonly githubBranch: string;
-  readonly githubOidcProviderArn?: string;
 }
 
 const prodConfig: StaticSiteConfig = {
@@ -26,11 +25,6 @@ const prodConfig: StaticSiteConfig = {
   githubOwner: "FrancisU20",
   githubRepository: "CodelabsWeb",
   githubBranch: "master",
-  githubOidcProviderArn:
-    process.env.GITHUB_OIDC_PROVIDER_ARN ??
-    (process.env.CDK_DEFAULT_ACCOUNT
-      ? `arn:aws:iam::${process.env.CDK_DEFAULT_ACCOUNT}:oidc-provider/token.actions.githubusercontent.com`
-      : undefined),
 };
 
 export const getEnvironmentConfig = (stage: string): StaticSiteConfig => {

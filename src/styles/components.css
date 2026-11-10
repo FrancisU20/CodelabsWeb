@@ -75,11 +75,6 @@
     color: var(--on-dark);
   }
 
-  .btn-whatsapp {
-    background: var(--wa);
-    color: var(--wa-ink);
-  }
-
   .text-accent {
     color: var(--brand);
   }

@@ -54,7 +54,7 @@ export interface StaticSiteStackProps extends StackProps {
 }
 
 const githubActionsAudience = "sts.amazonaws.com";
-const githubOidcUrl = "https://token.actions.githubusercontent.com";
+const githubOidcHost = "token.actions.githubusercontent.com";
 const infraDeployRoleName = "codelabs-web-infra-deploy";
 const cdkRolePattern = "cdk-hnb659fds-*";
 const noncurrentVersionRetention = Duration.days(30);
@@ -154,7 +154,7 @@ export class StaticSiteStack extends Stack {
       });
     });
 
-    const oidcProvider = this.gitHubOidcProvider(config);
+    const oidcProvider = this.gitHubOidcProvider();
     const deployRole = this.createGitHubDeployRole(config, siteBucket, distribution, oidcProvider);
     this.createGitHubInfraRole(config, oidcProvider);
 
@@ -225,17 +225,12 @@ export class StaticSiteStack extends Stack {
     return role;
   }
 
-  private gitHubOidcProvider(config: StaticSiteConfig): IOpenIdConnectProvider {
-    return config.githubOidcProviderArn
-      ? OpenIdConnectProvider.fromOpenIdConnectProviderArn(
-          this,
-          "GitHubOidcProvider",
-          config.githubOidcProviderArn,
-        )
-      : new OpenIdConnectProvider(this, "GitHubOidcProvider", {
-          url: githubOidcUrl,
-          clientIds: [githubActionsAudience],
-        });
+  private gitHubOidcProvider(): IOpenIdConnectProvider {
+    return OpenIdConnectProvider.fromOpenIdConnectProviderArn(
+      this,
+      "GitHubOidcProvider",
+      `arn:aws:iam::${this.account}:oidc-provider/${githubOidcHost}`,
+    );
   }
 
   private createGitHubInfraRole(config: StaticSiteConfig, oidcProvider: IOpenIdConnectProvider): void {
