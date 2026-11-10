@@ -5,6 +5,10 @@ import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath } from "@/i18n/routing";
 import ChatWindow from "@/shared/devices/chat-window";
+import ButtonLink from "@/shared/ui/button/button-link";
+import Card from "@/shared/ui/card/card";
+import Section from "@/shared/ui/section/section";
+import { cx } from "@/shared/lib/class-names";
 import ServiceVignette from "@/showcase/service-vignette";
 import styles from "./service-detail.module.css";
 
@@ -26,9 +30,7 @@ const ServiceDetail = ({ service, locale }: { service: ServiceId; locale: Locale
               {detail.title}
             </h1>
             <p className="lede m-0">{detail.description}</p>
-            <Link className="btn btn-primary" href={pagePath("contact", locale)}>
-              {labels.cta}
-            </Link>
+            <ButtonLink href={pagePath("contact", locale)}>{labels.cta}</ButtonLink>
           </div>
           <div className={styles.art}>
             {detail.example ? (
@@ -42,9 +44,9 @@ const ServiceDetail = ({ service, locale }: { service: ServiceId; locale: Locale
           </div>
         </div>
       </section>
-      <section className={styles.details} aria-labelledby="service-includes">
+      <Section tone="mist" space="section" aria-labelledby="service-includes">
         <div className={`site-wrap ${styles.detailsGrid}`}>
-          <div className={styles.fit}>
+          <div className={cx("tone-night", styles.fit)}>
             <h2 className={styles.fitTitle}>{labels.fitTitle}</h2>
             <ul className={styles.fitList}>
               {detail.fit.map((reason) => (
@@ -58,15 +60,15 @@ const ServiceDetail = ({ service, locale }: { service: ServiceId; locale: Locale
             </h2>
             <div className={styles.includes} data-reveal>
               {detail.includes.map((entry) => (
-                <div key={entry.title} className={styles.include}>
+                <Card key={entry.title} className={styles.include}>
                   <h3>{entry.title}</h3>
                   <p>{entry.body}</p>
-                </div>
+                </Card>
               ))}
             </div>
           </div>
         </div>
-      </section>
+      </Section>
     </>
   );
 };

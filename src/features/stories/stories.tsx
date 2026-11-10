@@ -2,6 +2,7 @@ import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import PhoneFrame from "@/shared/devices/phone-frame";
 import { pinLength } from "@/shared/motion/pin-length";
+import Kicker from "@/shared/ui/kicker";
 import { SHOWCASE_APPS } from "@/showcase/showcase-apps";
 import styles from "./stories.module.css";
 
@@ -25,9 +26,9 @@ const Stories = ({ locale }: { locale: Locale }) => {
     >
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <div className={styles.texts}>
-          <h2 id="stories-title" className={styles.label}>
+          <Kicker as="h2" id="stories-title" className={styles.label}>
             {dict.label}
-          </h2>
+          </Kicker>
           {dict.items.map((item, index) => {
             const { Screen } = STORY_SCREENS[index];
 

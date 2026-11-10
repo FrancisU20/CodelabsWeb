@@ -37,11 +37,6 @@
   transform-origin: center;
 }
 
-.details {
-  background: var(--panel);
-  padding-block: var(--spacing-section);
-}
-
 .detailsGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -52,8 +47,6 @@
 .fit {
   border-radius: var(--radius-lg);
   padding: clamp(22px, 3vw, 32px);
-  background: var(--night);
-  color: var(--on-dark);
 }
 
 .fitTitle {
@@ -80,11 +73,8 @@
   gap: 16px;
 }
 
-.include {
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  background: var(--ink);
-  min-width: 0;
+.include h3 + p {
+  margin: 0;
 }
 
 .include h3 {

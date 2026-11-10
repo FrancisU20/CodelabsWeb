@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
 import { legalPath } from "@/i18n/routing";
 import { HONEYPOT_FIELD } from "./build-lead-submission";
+import Button from "@/shared/ui/button/button";
 import ContactField from "./contact-field";
 import ContactSuccess from "./contact-success";
 import { useContactSubmission } from "./use-contact-submission";
@@ -39,9 +40,9 @@ const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Loca
           .
         </span>
       </label>
-      <button type="submit" className="btn btn-primary" disabled={submitting} aria-busy={submitting}>
+      <Button type="submit" disabled={submitting} aria-busy={submitting}>
         {submitting ? copy.submitting : copy.submit}
-      </button>
+      </Button>
       <div aria-live="polite">
         {state.status === "failed" && (
           <p className="m-0 flex flex-col gap-3 rounded-xl bg-panel-2 p-4">

@@ -4,6 +4,8 @@ import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { servicePath } from "@/i18n/routing";
 import { cx } from "@/shared/lib/class-names";
+import Card from "@/shared/ui/card/card";
+import Section from "@/shared/ui/section/section";
 import SectionHeading from "@/shared/ui/section/section-heading";
 import ServiceVignette from "@/showcase/service-vignette";
 import styles from "./services.module.css";
@@ -17,11 +19,12 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
   const dict = getMessages(locale).services;
 
   return (
-    <section
+    <Section
+      tone={scrollTrack ? "night" : "mist"}
       id="servicios"
       aria-labelledby={scrollTrack ? "services-title" : undefined}
       aria-label={scrollTrack ? undefined : getMessages(locale).nav.services}
-      className={cx(styles.section, scrollTrack ? styles.featured : styles.list)}
+      className={cx(!scrollTrack && styles.list)}
       data-pin={scrollTrack || undefined}
       data-track={scrollTrack || undefined}
     >
@@ -34,7 +37,7 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
         <div className={styles.rail}>
           <div className={`${styles.track} scene-motion`} data-track-rail>
             {dict.items.map((service) => (
-              <article key={service.id} className={styles.card} data-reveal={scrollTrack ? undefined : true}>
+              <Card key={service.id} as="article" padding="sm" className={styles.card} reveal={!scrollTrack}>
                 <ServiceVignette kind={SERVICE_VIGNETTES[service.id]} lines={service.vignette.lines} state={service.vignette.state} className={styles.vignette} />
                 {scrollTrack && <p className={styles.label}>{service.title}</p>}
                 <h3 className={styles.name}>
@@ -44,12 +47,12 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
                 <span className={styles.more} aria-hidden="true">
                   {dict.more}
                 </span>
-              </article>
+              </Card>
             ))}
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath } from "@/i18n/routing";
+import ButtonLink from "@/shared/ui/button/button-link";
 import Logo from "@/shared/ui/logo";
 
 const NOT_FOUND_CODE = "404";
@@ -16,12 +16,10 @@ const NotFoundView = () => {
       <h1 className="m-0 text-title font-bold tracking-[-0.04em]">{spanish.title}</h1>
       <p className="lede m-0">{spanish.body}</p>
       <div className="flex flex-wrap items-center justify-center gap-3">
-        <Link href={pagePath("home", "es")} className="btn btn-primary">
-          {spanish.cta}
-        </Link>
-        <Link href={pagePath("home", "en")} className="btn btn-outline" lang="en">
-          {english.cta} →
-        </Link>
+        <ButtonLink href={pagePath("home", "es")}>{spanish.cta}</ButtonLink>
+        <ButtonLink href={pagePath("home", "en")} variant="outline" lang="en">
+          {english.cta}
+        </ButtonLink>
       </div>
     </main>
   );

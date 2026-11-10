@@ -50,6 +50,12 @@
     background: var(--brand-deep);
   }
 
+  .btn-sm {
+    min-height: 44px;
+    padding: 0 20px;
+    font-size: var(--text-base);
+  }
+
   .btn-light {
     background: var(--surface);
     color: var(--brand-deep);
@@ -75,6 +81,56 @@
   }
 
   .text-accent {
+    color: var(--brand);
+  }
+
+  .card {
+    border-radius: var(--radius-lg);
+    padding: 22px;
+    background: var(--surface);
+    color: var(--fg);
+    min-width: 0;
+  }
+
+  .card-sm {
+    padding: 14px;
+  }
+
+  .tone-mist {
+    background: var(--panel);
+  }
+
+  .tone-night {
+    background: var(--night);
+    color: var(--on-dark);
+  }
+
+  .tone-brand {
+    background: var(--brand-strong);
+    color: var(--on-dark);
+  }
+
+  .tone-night .eyebrow,
+  .tone-night .kicker,
+  .tone-night .text-accent {
+    color: var(--night-accent);
+  }
+
+  .space-section {
+    padding-block: var(--spacing-section);
+  }
+
+  .space-tight {
+    padding-block: var(--spacing-section-tight);
+  }
+
+
+  .kicker {
+    margin: 0;
+    font-size: var(--text-md);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--brand);
   }
 }

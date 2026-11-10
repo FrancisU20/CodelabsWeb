@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { pagePath } from "@/i18n/routing";
 import ChatWindow from "@/shared/devices/chat-window";
+import ButtonLink from "@/shared/ui/button/button-link";
 import Icon from "@/shared/ui/icons/svg-icon";
 import PhoneFrame from "@/shared/devices/phone-frame";
 import { pinLength } from "@/shared/motion/pin-length";
@@ -25,12 +25,12 @@ const Hero = ({ locale }: { locale: Locale }) => {
           </h1>
           <p className="lede m-0 rise-in [animation-delay:0.12s]">{dict.subtitle}</p>
           <div className={`${styles.actions} rise-in [animation-delay:0.18s]`}>
-            <Link className="btn btn-primary" href={pagePath("contact", locale)}>
+            <ButtonLink href={pagePath("contact", locale)}>
               {dict.ctaPrimary}
-            </Link>
-            <Link className="btn btn-outline" href={pagePath("work", locale)}>
+            </ButtonLink>
+            <ButtonLink variant="outline" href={pagePath("work", locale)}>
               {dict.ctaSecondary}
-            </Link>
+            </ButtonLink>
           </div>
           <p className={styles.note}>{dict.note}</p>
         </div>

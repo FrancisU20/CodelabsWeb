@@ -1,32 +1,35 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import ChatWindow from "@/shared/devices/chat-window";
+import Card from "@/shared/ui/card/card";
+import Kicker from "@/shared/ui/kicker";
+import Section from "@/shared/ui/section/section";
 import styles from "./ai-cases.module.css";
 
 const AiCases = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).aiCases;
 
   return (
-    <section className={styles.section} aria-labelledby="ai-cases-title">
+    <Section tone="mist" space="section" aria-labelledby="ai-cases-title">
       <div className="site-wrap">
-        <h2 id="ai-cases-title" className={styles.label}>
+        <Kicker as="h2" id="ai-cases-title" className="mb-[18px]">
           {dict.label}
-        </h2>
+        </Kicker>
         <div className={styles.grid}>
           {dict.items.map((item) => (
-            <article key={item.title} className={styles.card} data-reveal>
+            <Card key={item.title} as="article" padding="sm" className={styles.card} reveal>
               <ChatWindow {...item.chat} />
               <div className={styles.copy}>
                 <p className={styles.sector}>{item.sector}</p>
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
               </div>
-            </article>
+            </Card>
           ))}
         </div>
         <p className={styles.note}>{dict.note}</p>
       </div>
-    </section>
+    </Section>
   );
 };
 

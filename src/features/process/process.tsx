@@ -1,6 +1,7 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { cssVars } from "@/shared/lib/css-vars";
+import Section from "@/shared/ui/section/section";
 import styles from "./process.module.css";
 
 const stepNumber = (index: number): string => String(index + 1);
@@ -9,11 +10,7 @@ const Process = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).howWeWork;
 
   return (
-    <section
-      id="proceso"
-      aria-label={dict.title.lines.join(" ")}
-      className="bg-panel pt-14 pb-16 sm:pt-[88px] sm:pb-[120px]"
-    >
+    <Section id="proceso" tone="mist" space="section" aria-label={dict.title.lines.join(" ")}>
       <div className="site-wrap">
         <ol className={styles.steps}>
           {dict.steps.map((step, index) => (
@@ -27,7 +24,7 @@ const Process = ({ locale }: { locale: Locale }) => {
           ))}
         </ol>
       </div>
-    </section>
+    </Section>
   );
 };
 

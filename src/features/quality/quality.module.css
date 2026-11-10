@@ -1,12 +1,3 @@
-.band {
-  background: var(--night);
-  color: var(--on-dark);
-}
-
-.band :global(.text-accent) {
-  color: var(--night-accent);
-}
-
 .stage {
   padding-block: var(--spacing-section);
   display: flex;
@@ -149,16 +140,7 @@
   }
 }
 
-:global(.motion) .band {
-  background: var(--night);
-  color: var(--on-dark);
-}
-
-.band :global(.text-accent) {
-  color: var(--night-accent);
-}
-
-.stage {
+:global(.motion) .stage {
   padding-block: 64px 0;
   justify-content: flex-start;
 }
@@ -216,16 +198,7 @@
     padding: 10px 12px;
   }
 
-  :global(.motion) .band {
-  background: var(--night);
-  color: var(--on-dark);
-}
-
-.band :global(.text-accent) {
-  color: var(--night-accent);
-}
-
-.stage {
+  :global(.motion) .stage {
     padding-top: 84px;
     gap: 24px;
   }

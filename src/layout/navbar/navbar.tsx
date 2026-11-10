@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
 import { getAlternatePath, pagePath } from "@/i18n/routing";
+import ButtonLink from "@/shared/ui/button/button-link";
 import Logo from "@/shared/ui/logo";
 import MenuToggle from "./menu-toggle";
 import NavDropdown from "./nav-dropdown";
@@ -71,9 +72,9 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
               {copy.otherLanguage}
             </Link>
           </NavDropdown>
-          <Link href={contactHref} className="btn btn-primary min-h-11 px-5 text-base">
+          <ButtonLink href={contactHref} size="sm">
             {copy.cta}
-          </Link>
+          </ButtonLink>
         </div>
         <MenuToggle buttonRef={toggleRef} open={open} controls={MOBILE_MENU_ID} openLabel={copy.openMenu} closeLabel={copy.closeMenu} onToggle={toggle} />
       </div>
@@ -102,9 +103,9 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
             <Link href={switchHref} hrefLang={otherLocale} lang={otherLocale} onClick={close} className="inline-flex min-h-11 items-center font-medium underline underline-offset-4">
               {copy.otherLanguage}
             </Link>
-            <Link href={contactHref} onClick={close} className="btn btn-primary min-h-11 px-5 text-base">
+            <ButtonLink href={contactHref} onClick={close} size="sm">
               {copy.cta}
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       )}
