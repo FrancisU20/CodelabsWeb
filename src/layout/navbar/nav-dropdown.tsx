@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Icon from "@/shared/ui/icons/svg-icon";
 import { useDismissibleMenu } from "./use-dismissible-menu";
 
 type NavDropdownProps = {
@@ -28,9 +29,7 @@ const NavDropdown = ({ id, label, ariaLabel, pathname, className, panelClassName
         className="inline-flex min-h-11 cursor-pointer items-center gap-1.5 font-medium text-muted transition-colors hover:text-brand"
       >
         {label}
-        <span aria-hidden="true" className="text-[11px]">
-          ▾
-        </span>
+        <Icon name="chevron-down" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && (
         <div id={id} className={panelClassName} onClick={close}>

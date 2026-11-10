@@ -13,6 +13,7 @@ export type IconName =
   | "search"
   | "sun"
   | "check"
+  | "chevron-down"
   | "users"
   | "mark-nucleo"
   | "mark-aura"

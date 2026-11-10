@@ -83,16 +83,13 @@
   line-height: 1.3;
 }
 
-.toast i {
+.toastIcon {
   width: 24px;
   height: 24px;
+  padding: 6px;
   border-radius: 50%;
   background: var(--ok);
   color: #ffffff;
-  display: grid;
-  place-items: center;
-  font-style: normal;
-  font-size: 13px;
   flex: none;
 }
 

@@ -3,6 +3,7 @@ import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { pagePath } from "@/i18n/routing";
 import ChatWindow from "@/shared/devices/chat-window";
+import Icon from "@/shared/ui/icons/svg-icon";
 import PhoneFrame from "@/shared/devices/phone-frame";
 import { pinLength } from "@/shared/motion/pin-length";
 import { SHOWCASE_APPS } from "@/showcase/showcase-apps";
@@ -47,7 +48,7 @@ const Hero = ({ locale }: { locale: Locale }) => {
             </PhoneFrame>
           </div>
           <div className={`${styles.toast} scene-motion`}>
-            <i>✓</i>
+            <Icon name="check" className={styles.toastIcon} />
             <span>
               <b>{dict.toast.title}</b>
               <small>{dict.toast.detail}</small>
