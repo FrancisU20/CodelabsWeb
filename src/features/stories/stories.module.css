@@ -121,7 +121,33 @@
   transform: rotateY(calc(-14deg + var(--p, 0) * 28deg)) rotateX(4deg);
 }
 
+.itemPhone {
+  display: none;
+}
+
 @media (max-width: 760px) {
+  .phoneWrap {
+    display: none;
+  }
+
+  .itemPhone {
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+  }
+
+  .itemPhone .compactPhone {
+    --w: min(220px, 58vw);
+  }
+
+  .item[data-reveal] .itemPhone {
+    transition: transform 0.8s var(--ease-out) 0.15s;
+  }
+
+  .item[data-reveal].is-pending .itemPhone {
+    transform: translateY(40px) rotate(-4deg);
+  }
+
   .itemTitle {
     font-size: 30px;
   }

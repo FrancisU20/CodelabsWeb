@@ -6,13 +6,11 @@ type NavLinksProps = {
   pathname: string;
   className: string;
   linkClassName: string;
-  ariaLabel?: string;
-  id?: string;
   onNavigate?: () => void;
 };
 
-const NavLinks = ({ items, pathname, className, linkClassName, ariaLabel, id, onNavigate }: NavLinksProps) => (
-  <nav id={id} aria-label={ariaLabel} className={className}>
+const NavLinks = ({ items, pathname, className, linkClassName, onNavigate }: NavLinksProps) => (
+  <div className={className}>
     {items.map((item) => (
       <Link
         key={item.href}
@@ -24,7 +22,7 @@ const NavLinks = ({ items, pathname, className, linkClassName, ariaLabel, id, on
         {item.label}
       </Link>
     ))}
-  </nav>
+  </div>
 );
 
 export default NavLinks;

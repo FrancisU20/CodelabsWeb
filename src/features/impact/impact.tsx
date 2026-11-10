@@ -15,7 +15,7 @@ const Impact = ({ locale }: { locale: Locale }) => {
           <div className={styles.stat} data-count={HEALTH_APPS_SPEED_GAIN_PERCENT} data-prefix="+" data-suffix="%">
             +{HEALTH_APPS_SPEED_GAIN_PERCENT}%
           </div>
-          <p id="impact-title" className={styles.caption}>
+          <p id="impact-title" className={styles.caption} data-reveal>
             {dict.captionStrong} <span>{dict.captionMuted}</span>
           </p>
         </div>

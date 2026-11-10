@@ -11,4 +11,5 @@ export type SceneContext = {
   metrics: PinMetric[];
   renderedValues: Map<HTMLElement, string>;
   frameRequested: boolean;
+  countObserver: IntersectionObserver | null;
 };

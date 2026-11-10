@@ -30,6 +30,9 @@
     "node": "22.23.3"
   },
   "overrides": {
-    "compression": "1.8.2"
+    "compression": "1.8.2",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.1"
+    }
   }
 }

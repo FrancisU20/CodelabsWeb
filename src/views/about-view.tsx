@@ -1,6 +1,6 @@
+import Clients from "@/features/clients/clients";
 import Contact from "@/features/contact/contact";
-import Process from "@/features/process/process";
-import Quality from "@/features/quality/quality";
+import Manifesto from "@/features/manifesto/manifesto";
 import Team from "@/features/team/team";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
@@ -10,8 +10,8 @@ const AboutView = ({ locale }: { locale: Locale }) => (
   <>
     <PageIntro {...getMessages(locale).pages.about} />
     <Team locale={locale} />
-    <Process locale={locale} />
-    <Quality locale={locale} />
+    <Manifesto locale={locale} />
+    <Clients locale={locale} />
     <Contact locale={locale} />
   </>
 );

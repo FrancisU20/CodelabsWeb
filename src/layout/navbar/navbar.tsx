@@ -79,14 +79,25 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
       </div>
       {open && (
         <div id={MOBILE_MENU_ID} className="site-wrap border-t border-line pb-5 lg:hidden">
-          <NavLinks
-            items={[{ href: pagePath("services", locale), label: copy.services }, ...items]}
-            pathname={pathname}
-            ariaLabel={copy.menuAriaLabel}
-            onNavigate={close}
-            className="flex flex-col"
-            linkClassName="flex min-h-[54px] items-center border-b border-line text-lg font-medium"
-          />
+          <nav aria-label={copy.menuAriaLabel} className="flex flex-col">
+            <Link href={pagePath("services", locale)} onClick={close} className="flex min-h-[54px] items-center text-lg font-medium">
+              {copy.services}
+            </Link>
+            <NavLinks
+              items={serviceItems}
+              pathname={pathname}
+              onNavigate={close}
+              className="flex flex-col border-b border-line pb-2 pl-4"
+              linkClassName="flex min-h-11 items-center text-base text-muted"
+            />
+            <NavLinks
+              items={items}
+              pathname={pathname}
+              onNavigate={close}
+              className="flex flex-col"
+              linkClassName="flex min-h-[54px] items-center border-b border-line text-lg font-medium"
+            />
+          </nav>
           <div className="flex flex-wrap items-center justify-between gap-3 pt-4">
             <Link href={switchHref} hrefLang={otherLocale} lang={otherLocale} onClick={close} className="inline-flex min-h-11 items-center font-medium underline underline-offset-4">
               {copy.otherLanguage}

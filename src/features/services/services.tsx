@@ -30,7 +30,7 @@ const Services = ({ locale, scrollTrack = false }: ServicesProps) => {
         <div className={styles.rail}>
           <div className={styles.track} data-track-rail>
             {dict.items.map((service) => (
-              <article key={service.id} className={styles.card}>
+              <article key={service.id} className={styles.card} data-reveal>
                 <p className={styles.service}>{service.title}</p>
                 <h3 className={styles.need}>
                   <Link href={servicePath(service.id, locale)}>{service.need}</Link>
