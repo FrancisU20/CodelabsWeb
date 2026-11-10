@@ -1,51 +1,23 @@
 import type { Messages } from "../messages";
 
 export const services: Messages["services"] = {
-  title: { lines: ["What does your", "company need?"] },
-  body: "These are the things we get asked for most. If yours isn't here, ask us anyway.",
+  title: { lines: ["What do you want to", "improve in your business?"] },
   more: "Learn more",
+  helpChat: {
+    name: "CodeLabs",
+    initial: "C",
+    status: "online",
+    messages: [
+      { from: "customer", text: "I'm not sure if I need an app or a website." },
+      { from: "assistant", text: "Tell us what you want to achieve and we'll recommend just what your business needs." },
+    ],
+  },
   items: [
-    {
-      id: "mobile",
-      title: "Mobile apps",
-      need: "I want an app for my customers",
-      body: "For iPhone and Android, with bookings, orders, payments or whatever your business uses.",
-      summary: "iPhone and Android, with bookings, orders or payments.",
-    },
-    {
-      id: "web",
-      title: "Websites and online stores",
-      need: "I want to sell more online",
-      body: "A site or store that loads fast on a phone and that people can find on Google.",
-      summary: "Fast on a phone and easy to find on Google.",
-    },
-    {
-      id: "custom",
-      title: "Custom systems",
-      need: "I want to get my processes in order",
-      body: "Inventory, invoicing and reports, set up around how your people work. If you run it on Excel today, that's where we start.",
-      summary: "Inventory, invoicing and reports.",
-    },
-    {
-      id: "modernization",
-      title: "Modernization",
-      need: "My system can't keep up anymore",
-      body: "We rebuild it piece by piece, so your team can keep working in the meantime.",
-      summary: "We rebuild your system piece by piece.",
-    },
-    {
-      id: "cloud",
-      title: "Cloud and security",
-      need: "I need my system to stay up",
-      body: "We move it to Amazon's cloud (AWS) and control who can get into what.",
-      summary: "Your systems on Amazon's cloud (AWS).",
-    },
-    {
-      id: "support",
-      title: "Ongoing support",
-      need: "I need someone to look after it",
-      body: "If you already have an app or a system, we review it, update it and add what's missing.",
-      summary: "We review, update and add what's missing.",
-    },
+    { id: "web", title: "Websites and online stores", need: "Get found online", summary: "Get found on Google and sell.", vignette: { lines: [] } },
+    { id: "mobile", title: "Mobile apps", need: "Let my customers buy from their phone", summary: "Your business on your customers' phones.", vignette: { lines: [] } },
+    { id: "automation", title: "Automation", need: "Stop doing repetitive tasks by hand", summary: "Let repetitive tasks run on their own.", vignette: { lines: ["Order", "Invoice", "Email"] } },
+    { id: "ai", title: "Artificial intelligence", need: "Answer my customers at any hour", summary: "Assistants that answer your customers at any hour.", vignette: { lines: ["Do you ship to Quito?", "Yes, within 48 hours."] } },
+    { id: "custom", title: "Custom systems", need: "Keep everything in one system", summary: "Inventory, sales and invoicing in one place.", vignette: { lines: [] } },
+    { id: "cloud", title: "Cloud, security and support", need: "Keep my systems from going down", summary: "Everything running, with someone looking after it.", vignette: { lines: ["Online store", "Invoicing", "Daily backup"], state: "Online" } },
   ],
 };

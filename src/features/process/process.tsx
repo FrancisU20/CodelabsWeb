@@ -15,7 +15,7 @@ const Process = ({ locale }: { locale: Locale }) => {
       className="bg-panel pt-14 pb-16 sm:pt-[88px] sm:pb-[120px]"
     >
       <div className="site-wrap">
-        <ol className="m-0 flex list-none flex-col gap-5 p-0">
+        <ol className={styles.steps}>
           {dict.steps.map((step, index) => (
             <li key={step.title} className={styles.step} style={cssVars({ "--i": index })} data-reveal>
               <span className={styles.number} data-number={stepNumber(index)} aria-hidden="true" />

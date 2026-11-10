@@ -4,7 +4,7 @@ import { cssVars } from "@/shared/lib/css-vars";
 const PIN_HEIGHT = {
   short: "130vh",
   standard: "150vh",
-  long: "320vh",
+  long: "240vh",
 } as const;
 
 export type PinLength = keyof typeof PIN_HEIGHT;

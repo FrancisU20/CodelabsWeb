@@ -1,22 +1,29 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
+import { cx } from "@/shared/lib/class-names";
 import SectionHeading from "@/shared/ui/section/section-heading";
+import styles from "./team.module.css";
+
+const LEAD_ROLE = "manager";
 
 const Team = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).team;
 
   return (
-    <section id="equipo" aria-labelledby="team-title" className="pt-16 pb-6 sm:pt-[100px] sm:pb-10">
+    <section id="equipo" aria-labelledby="team-title" className={styles.section}>
       <div className="site-wrap">
-        <div className="mb-12 grid items-end gap-x-16 gap-y-6 [grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))]" data-reveal>
-          <SectionHeading className="flex flex-col gap-[18px]" title={dict.title} titleId="team-title" />
+        <div className={styles.head} data-reveal>
+          <SectionHeading title={dict.title} titleId="team-title" />
           <p className="lede m-0">{dict.body}</p>
         </div>
-        <div className="grid gap-x-12 [grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))]" data-reveal>
+        <div className={styles.grid} data-reveal>
           {dict.roles.map((role) => (
-            <div key={role.id} className="border-t border-line py-5">
-              <b className="mb-1 block font-display text-xl font-semibold tracking-[-0.015em]">{role.title}</b>
-              <span className="text-[17px] text-muted">{role.body}</span>
+            <div key={role.id} className={cx(styles.role, role.id === LEAD_ROLE && styles.lead)}>
+              <div>
+                <b>{role.title}</b>
+                <span>{role.body}</span>
+              </div>
+              {role.id === LEAD_ROLE && <em>{dict.leadBadge}</em>}
             </div>
           ))}
         </div>

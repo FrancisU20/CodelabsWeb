@@ -1,6 +1,7 @@
 import type { RoleId } from "@/content/role-id";
 import type { ServiceId } from "@/content/service-id";
 import type { PageKey } from "../page-key";
+import type { ChatCopy } from "./chat-copy";
 import type { SectionTitleCopy } from "./section-title-copy";
 
 export type Messages = {
@@ -28,6 +29,9 @@ export type Messages = {
     ctaPrimary: string;
     ctaSecondary: string;
     note: string;
+    chat: ChatCopy;
+    chatLabel: string;
+    toast: { title: string; detail: string };
   };
   clients: {
     title: string;
@@ -38,8 +42,17 @@ export type Messages = {
     accent: string;
   };
   stories: {
+    label: string;
     items: { tag: string; title: string; body: string }[];
+  };
+  aiCases: {
+    label: string;
     note: string;
+    items: { sector: string; title: string; body: string; chat: ChatCopy }[];
+  };
+  caseFigures: {
+    label: string;
+    items: { value: string; body: string }[];
   };
   webShowcase: {
     eyebrow: string;
@@ -48,14 +61,13 @@ export type Messages = {
   };
   services: {
     title: SectionTitleCopy;
-    body: string;
     more: string;
-    items: { id: ServiceId; title: string; need: string; body: string; summary: string }[];
+    helpChat: ChatCopy;
+    items: { id: ServiceId; title: string; need: string; summary: string; vignette: { lines: string[]; state?: string } }[];
   };
   quality: {
     ariaLabel: string;
     title: SectionTitleCopy;
-    body: string;
     windowLabel: string;
     meterTitle: string;
     meterCaption: string;
@@ -82,6 +94,7 @@ export type Messages = {
   team: {
     title: SectionTitleCopy;
     body: string;
+    leadBadge: string;
     roles: { id: RoleId; title: string; body: string }[];
   };
   howWeWork: {
@@ -102,6 +115,7 @@ export type Messages = {
     failure: string;
     openWhatsApp: string;
     message: { greeting: string; fallbackName: string; reference: string; company: string; email: string; project: string };
+    whatsAppCard: { title: string; body: string };
   };
   footer: {
     legalAriaLabel: string;
@@ -119,7 +133,7 @@ export type Messages = {
   pages: Record<Exclude<PageKey, "home">, { eyebrow: string; title: string; description: string }>;
   seo: Record<PageKey, { title: string; description: string }>;
   servicePages: {
-    labels: { back: string; cta: string; fitTitle: string; includesTitle: string; otherTitle: string };
+    labels: { back: string; cta: string; fitTitle: string; includesTitle: string; otherTitle: string; exampleNote: string };
     items: Record<
       ServiceId,
       {
@@ -129,6 +143,7 @@ export type Messages = {
         description: string;
         fit: string[];
         includes: { title: string; body: string }[];
+        example?: ChatCopy;
       }
     >;
   };

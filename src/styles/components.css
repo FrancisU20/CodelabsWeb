@@ -50,6 +50,15 @@
     background: var(--brand-deep);
   }
 
+  .btn-light {
+    background: #ffffff;
+    color: var(--brand-deep);
+  }
+
+  .btn-light:hover {
+    background: var(--lav);
+  }
+
   .btn-outline {
     border: 1.5px solid var(--fg);
     color: var(--fg);

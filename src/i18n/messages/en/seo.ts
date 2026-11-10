@@ -2,27 +2,27 @@ import type { Messages } from "../messages";
 
 export const seo: Messages["seo"] = {
   home: {
-    title: "App, web and system development in Ecuador | CodeLabs",
-    description: "We build mobile apps, websites and systems for companies in Ecuador, and stay on to keep them running.",
+    title: "Software, automation and AI for businesses in Ecuador | CodeLabs",
+    description: "Websites, apps, automations and artificial intelligence for companies, entrepreneurs and small businesses in Ecuador.",
   },
   services: {
-    title: "Software development services in Ecuador | CodeLabs",
-    description: "Mobile apps, websites and online stores, custom systems, cloud and security on AWS, modernization and support.",
+    title: "Software, automation and AI services | CodeLabs",
+    description: "Websites and online stores, apps, automation, artificial intelligence, custom systems, cloud, security and support.",
   },
   work: {
-    title: "App and system case studies | CodeLabs",
-    description: "Booking, appointment and payment apps, secure sign-up and web platforms for companies across industries.",
+    title: "Case studies: AI, apps and platforms | CodeLabs",
+    description: "AI assistants on WhatsApp, booking apps, digital contract signing and web platforms for companies in Ecuador.",
   },
   howWeWork: {
     title: "How we work | CodeLabs",
     description: "We talk, show you the design, build in parts and stay with you after launch.",
   },
   about: {
-    title: "Software development company in Ibarra | CodeLabs",
-    description: "We are a software company from Ibarra, Ecuador. One person on the team takes charge of your project from start to finish.",
+    title: "Software company in Ibarra, Ecuador | CodeLabs",
+    description: "We help companies, entrepreneurs and small businesses organize their operation, reach more customers and save time with technology.",
   },
   contact: {
     title: "Contact | CodeLabs",
-    description: "Tell us your idea on WhatsApp, email or phone. We usually reply the same day.",
+    description: "Tell us what you want to improve in your business on WhatsApp, email or phone. We usually reply the same day.",
   },
 };

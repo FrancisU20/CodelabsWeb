@@ -4,12 +4,12 @@ export const contact: Messages["contact"] = {
   emailLabel: "Email",
   phoneLabel: "Phone",
   officeLabel: "Office",
-  labels: { name: "Name", company: "Company", email: "Email", project: "What do you need?" },
+  labels: { name: "Name", company: "Company or business", email: "Email", project: "What do you want to improve?" },
   placeholders: {
     name: "Your name",
-    company: "Your company name",
+    company: "Your company or business name",
     email: "name@company.com",
-    project: "For example: a booking app for my business",
+    project: "I want an assistant to answer my customers on WhatsApp",
   },
   submit: "Send",
   submitting: "Sending…",
@@ -19,8 +19,8 @@ export const contact: Messages["contact"] = {
     linkLabel: "Privacy Policy",
   },
   success: {
-    title: "We received your request!",
-    body: "We sent a confirmation to your email and will reply soon.",
+    title: "We received your message!",
+    body: "We sent a confirmation to your email and will write to you soon.",
     referenceLabel: "Your reference number",
     whatsApp: "If you'd rather talk now, message us on WhatsApp",
   },
@@ -34,4 +34,5 @@ export const contact: Messages["contact"] = {
     email: "Email:",
     project: "I need:",
   },
+  whatsAppCard: { title: "Prefer WhatsApp?", body: "Message us and the team will reply." },
 };

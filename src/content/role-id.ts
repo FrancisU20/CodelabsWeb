@@ -1,1 +1,1 @@
-export type RoleId = "manager" | "design" | "development" | "cloud" | "quality" | "support";
+export type RoleId = "manager" | "design" | "development" | "automation" | "cloud" | "support";

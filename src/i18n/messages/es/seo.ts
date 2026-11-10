@@ -2,27 +2,28 @@ import type { Messages } from "../messages";
 
 export const seo: Messages["seo"] = {
   home: {
-    title: "Desarrollo de apps, webs y sistemas en Ecuador | CodeLabs",
-    description: "Creamos apps móviles, páginas web y sistemas para empresas en Ecuador, y nos quedamos a cargo de que sigan funcionando.",
+    title: "Software, automatización e IA para negocios en Ecuador | CodeLabs",
+    description:
+      "Páginas web, apps, automatizaciones e inteligencia artificial para empresas, emprendedores y pequeños negocios en Ecuador.",
   },
   services: {
-    title: "Servicios de desarrollo de software en Ecuador | CodeLabs",
-    description: "Apps para celular, páginas web y tiendas, sistemas a la medida, nube y seguridad en AWS, modernización y soporte.",
+    title: "Servicios de software, automatización e IA | CodeLabs",
+    description: "Páginas web y tiendas, apps, automatización, inteligencia artificial, sistemas a la medida, nube, seguridad y soporte.",
   },
   work: {
-    title: "Casos de éxito en apps y sistemas | CodeLabs",
-    description: "Apps de reservas, citas y pagos, registro seguro y plataformas web para empresas de distintos sectores.",
+    title: "Casos de éxito: IA, apps y plataformas | CodeLabs",
+    description: "Asistentes con IA por WhatsApp, apps de reservas, firma digital de contratos y plataformas web para empresas en Ecuador.",
   },
   howWeWork: {
     title: "Cómo trabajamos | CodeLabs",
-    description: "Hablamos, te mostramos el diseño, construimos por partes y seguimos contigo después del lanzamiento.",
+    description: "Conversamos, te mostramos el diseño, construimos por partes y te acompañamos después del lanzamiento.",
   },
   about: {
-    title: "Empresa de desarrollo de software en Ibarra | CodeLabs",
-    description: "Somos una empresa de software de Ibarra, Ecuador. Una persona del equipo se hace cargo de tu proyecto de principio a fin.",
+    title: "Empresa de software en Ibarra, Ecuador | CodeLabs",
+    description: "Ayudamos a empresas, emprendedores y pequeños negocios a ordenar su operación, llegar a más clientes y ahorrar tiempo con tecnología.",
   },
   contact: {
     title: "Contacto | CodeLabs",
-    description: "Cuéntanos tu idea por WhatsApp, correo o teléfono. Normalmente contestamos el mismo día.",
+    description: "Cuéntanos qué quieres mejorar en tu negocio por WhatsApp, correo o teléfono. Normalmente contestamos el mismo día.",
   },
 };

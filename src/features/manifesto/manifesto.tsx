@@ -18,7 +18,7 @@ const Manifesto = ({ locale }: { locale: Locale }) => {
   ];
 
   return (
-    <section aria-label={dict.ariaLabel} data-pin style={pinLength("standard")}>
+    <section aria-label={dict.ariaLabel} className={styles.band} data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <p className="sr-only">{`${dict.lead} ${dict.accent}`}</p>
         <p className={styles.text} style={cssVars({ "--n": words.length })} aria-hidden="true">

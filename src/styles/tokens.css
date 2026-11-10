@@ -7,9 +7,15 @@
   --fg: #17182c;
   --muted: #474a60;
   --dim: #5f6277;
-  --night: #17182c;
-  --night-text: #dfe1f0;
-  --night-accent: #b9bcff;
+  --night: #1b1a4a;
+  --night-soft: #2e2c78;
+  --night-text: #d9d8f5;
+  --night-accent: #b9b6ff;
+  --lav: #e8e6ff;
+  --ok: #16a34a;
+  --chat-bg: #efeae2;
+  --chat-out: #d9fdd3;
+  --chat-head: #075e54;
   --brand: #4f46e5;
   --brand-strong: #4f46e5;
   --brand-deep: #3f37c9;

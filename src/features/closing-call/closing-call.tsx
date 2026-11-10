@@ -7,15 +7,15 @@ const ClosingCall = ({ locale }: { locale: Locale }) => {
   const copy = getMessages(locale).closingCall;
 
   return (
-    <section aria-labelledby="closing-call-title" className="border-t border-line">
-      <div className="site-wrap flex flex-wrap items-end justify-between gap-6 py-14 sm:py-20" data-reveal>
+    <section aria-labelledby="closing-call-title" className="bg-brand-strong text-white">
+      <div className="site-wrap flex flex-wrap items-center justify-between gap-6 py-14 sm:py-16" data-reveal>
         <div>
           <h2 id="closing-call-title" className="section-title m-0">
             {copy.title}
           </h2>
-          <p className="lede mt-3 mb-0">{copy.body}</p>
+          <p className="mt-3 mb-0 text-lg text-[#e2e0ff]">{copy.body}</p>
         </div>
-        <Link className="btn btn-primary" href={pagePath("contact", locale)}>
+        <Link className="btn btn-light" href={pagePath("contact", locale)}>
           {copy.cta}
         </Link>
       </div>

@@ -41,11 +41,13 @@
   font-size: 18px;
 }
 
-.note {
+.label {
   margin: 0;
-  font-size: 13px;
-  color: var(--dim);
-  max-width: 46ch;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
 }
 
 .dots {
@@ -106,6 +108,10 @@
 }
 
 :global(.motion) .item {
+  grid-area: 2 / 1;
+}
+
+:global(.motion) .label {
   grid-area: 1 / 1;
 }
 
@@ -170,10 +176,6 @@
 
   :global(.motion) .texts {
     gap: 16px;
-  }
-
-  :global(.motion) .note {
-    display: none;
   }
 
   :global(.motion) .phoneWrap .storyPhone {

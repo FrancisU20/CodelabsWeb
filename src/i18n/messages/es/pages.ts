@@ -3,27 +3,28 @@ import type { Messages } from "../messages";
 export const pages: Messages["pages"] = {
   services: {
     eyebrow: "Servicios",
-    title: "Apps, páginas web y sistemas para tu empresa.",
-    description: "Todo lo hace el mismo equipo, así no tienes que coordinar entre varios proveedores.",
+    title: "Lo que podemos hacer por tu negocio.",
+    description: "Elige por dónde empezar. Si no sabes cuál necesitas, cuéntanos qué quieres resolver y te recomendamos.",
   },
   work: {
     eyebrow: "Casos de éxito",
-    title: "Proyectos que ya están funcionando.",
-    description: "Apps, plataformas web y sistemas para empresas de distintos sectores.",
+    title: "Lo que ya construimos para otros negocios.",
+    description:
+      "Proyectos que hoy están en uso. Por confidencialidad no mostramos nombres ni las apps de nuestros clientes; las pantallas son de referencia.",
   },
   howWeWork: {
     eyebrow: "Cómo trabajamos",
-    title: "Así llevamos tu proyecto, de la primera reunión al lanzamiento.",
-    description: "Las cuatro etapas por las que pasa y las revisiones que hace el equipo antes de cada entrega.",
+    title: "Así trabajamos contigo, de la primera conversación al lanzamiento.",
+    description: "Sin tecnicismos y con avances que puedes probar cada pocas semanas.",
   },
   about: {
     eyebrow: "Nosotros",
-    title: "Somos una empresa de software de Ibarra, Ecuador.",
-    description: "Diseñamos, programamos y mantenemos apps y sistemas para empresas.",
+    title: "Somos CodeLabs, una empresa de software de Ibarra, Ecuador.",
+    description: "Ayudamos a empresas, emprendedores y pequeños negocios a ordenar su operación, llegar a más clientes y ahorrar tiempo con tecnología.",
   },
   contact: {
     eyebrow: "Contacto",
-    title: "Hablemos de tu proyecto.",
-    description: "Por WhatsApp, correo o teléfono. Contesta el equipo que lo va a construir.",
+    title: "Cuéntanos qué quieres mejorar en tu negocio.",
+    description: "Escríbenos por aquí, por WhatsApp o por correo. Te contesta el equipo que lo va a construir, normalmente el mismo día.",
   },
 };

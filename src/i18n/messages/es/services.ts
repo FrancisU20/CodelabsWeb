@@ -1,51 +1,23 @@
 import type { Messages } from "../messages";
 
 export const services: Messages["services"] = {
-  title: { lines: ["¿Qué necesita", "tu empresa?"] },
-  body: "Esto es lo que más nos piden. Si lo tuyo no está aquí, pregúntanos igual.",
+  title: { lines: ["¿Qué quieres mejorar", "en tu negocio?"] },
   more: "Ver más",
+  helpChat: {
+    name: "CodeLabs",
+    initial: "C",
+    status: "en línea",
+    messages: [
+      { from: "customer", text: "No sé si necesito una app o una página web." },
+      { from: "assistant", text: "Cuéntanos qué quieres lograr y te recomendamos lo justo para tu negocio." },
+    ],
+  },
   items: [
-    {
-      id: "mobile",
-      title: "Apps para celular",
-      need: "Quiero una app para mis clientes",
-      body: "Para iPhone y Android, con reservas, pedidos, pagos o lo que tu negocio use.",
-      summary: "iPhone y Android, con reservas, pedidos o pagos.",
-    },
-    {
-      id: "web",
-      title: "Páginas web y tiendas",
-      need: "Quiero vender más por internet",
-      body: "Una página o tienda que cargue rápido en el celular y que la gente encuentre en Google.",
-      summary: "Rápidas en el celular y fáciles de encontrar en Google.",
-    },
-    {
-      id: "custom",
-      title: "Sistemas a la medida",
-      need: "Quiero ordenar mis procesos",
-      body: "Inventarios, facturación y reportes, armados según cómo trabaja tu gente. Si hoy lo llevas en Excel, empezamos por ahí.",
-      summary: "Inventarios, facturación y reportes.",
-    },
-    {
-      id: "modernization",
-      title: "Modernización",
-      need: "Mi sistema ya se quedó corto",
-      body: "Lo renovamos por partes, para que tu equipo pueda seguir trabajando mientras tanto.",
-      summary: "Renovamos tu sistema por partes.",
-    },
-    {
-      id: "cloud",
-      title: "Nube y seguridad",
-      need: "Necesito que mi sistema no se caiga",
-      body: "Lo pasamos a la nube de Amazon (AWS) y controlamos quién entra a qué.",
-      summary: "Tus sistemas en la nube de Amazon (AWS).",
-    },
-    {
-      id: "support",
-      title: "Soporte continuo",
-      need: "Necesito a alguien que lo mantenga",
-      body: "Si ya tienes una app o un sistema, lo revisamos, lo actualizamos y le agregamos lo que haga falta.",
-      summary: "Revisamos, actualizamos y agregamos lo que falte.",
-    },
+    { id: "web", title: "Páginas web y tiendas", need: "Que me encuentren en internet", summary: "Que te encuentren en Google y te compren.", vignette: { lines: [] } },
+    { id: "mobile", title: "Apps para celular", need: "Que mis clientes me compren desde el celular", summary: "Tu negocio en el celular de tus clientes.", vignette: { lines: [] } },
+    { id: "automation", title: "Automatización", need: "Dejar de hacer tareas repetitivas a mano", summary: "Que las tareas repetitivas se hagan solas.", vignette: { lines: ["Pedido", "Factura", "Correo"] } },
+    { id: "ai", title: "Inteligencia artificial", need: "Responder a mis clientes a cualquier hora", summary: "Asistentes que responden a tus clientes a cualquier hora.", vignette: { lines: ["¿Hacen envíos a Quito?", "Sí, llegan en 48 horas."] } },
+    { id: "custom", title: "Sistemas a la medida", need: "Tener todo ordenado en un solo sistema", summary: "Inventario, ventas y facturación en un solo lugar.", vignette: { lines: [] } },
+    { id: "cloud", title: "Nube, seguridad y soporte", need: "Que mis sistemas no se caigan", summary: "Que todo funcione siempre y alguien lo cuide.", vignette: { lines: ["Tienda en línea", "Facturación", "Respaldo diario"], state: "En línea" } },
   ],
 };
