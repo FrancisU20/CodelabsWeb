@@ -1,24 +1,23 @@
 import type { Messages } from "../messages";
 
 export const howWeWork: Messages["howWeWork"] = {
-  eyebrow: "Cómo trabajamos",
-  title: { lines: ["Cuatro pasos.", "Cero sorpresas."] },
+  title: { lines: ["Cómo trabajamos"] },
   steps: [
     {
-      title: "Te escuchamos",
-      body: "Entendemos tu negocio y lo que quieres lograr. Sales de la primera reunión con una propuesta clara de alcance y tiempos.",
+      title: "Hablamos",
+      body: "Nos cuentas qué necesitas y qué te está dando problemas. De ahí sale una propuesta con alcance y tiempos.",
     },
     {
-      title: "Diseñamos",
-      body: "Ves cómo lucirá tu app o tu web antes de construirla, y la ajustamos contigo hasta que te encante.",
+      title: "Te mostramos el diseño",
+      body: "Antes de programar ves las pantallas y nos dices qué cambiar.",
     },
     {
-      title: "Construimos",
-      body: "Entregas cortas y frecuentes. Pruebas avances reales cada pocas semanas, sin esperar al final.",
+      title: "Construimos por partes",
+      body: "Cada pocas semanas puedes probar lo que ya está hecho.",
     },
     {
-      title: "Lanzamos y te acompañamos",
-      body: "Publicamos tu app o tu web, vemos cómo la usan tus clientes y seguimos mejorándola contigo.",
+      title: "Publicamos y seguimos",
+      body: "Cuando sale al público vemos cómo lo usan tus clientes y lo seguimos ajustando contigo.",
     },
   ],
 };

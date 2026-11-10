@@ -6,7 +6,7 @@ type NavLinksProps = {
   pathname: string;
   className: string;
   linkClassName: string;
-  ariaLabel: string;
+  ariaLabel?: string;
   id?: string;
   onNavigate?: () => void;
 };
@@ -19,7 +19,7 @@ const NavLinks = ({ items, pathname, className, linkClassName, ariaLabel, id, on
         href={item.href}
         onClick={onNavigate}
         aria-current={item.href === pathname ? "page" : undefined}
-        className={`${linkClassName} transition-colors hover:text-fg aria-[current=page]:text-fg`}
+        className={`${linkClassName} transition-colors`}
       >
         {item.label}
       </Link>

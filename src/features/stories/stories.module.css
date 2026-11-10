@@ -21,18 +21,16 @@
 }
 
 .tag {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--dim);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--brand);
 }
 
 .itemTitle {
   margin: 0;
-  font-size: clamp(32px, 4.4vw, 60px);
-  line-height: 1.02;
-  letter-spacing: -0.045em;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
   font-weight: 700;
 }
 

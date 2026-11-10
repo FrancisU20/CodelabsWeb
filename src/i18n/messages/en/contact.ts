@@ -1,8 +1,8 @@
 import type { Messages } from "../messages";
 
 export const contact: Messages["contact"] = {
-  title: { lines: ["Have an idea?"], accent: "Let's make it happen." },
-  body: "Tell us what you need. We reply in hours, not weeks, with a proposal tailored to your company.",
+  title: { lines: ["Have an idea?"], accent: "Let's talk." },
+  body: "Write to us about what you need, even if it isn't fully clear yet. We usually reply the same day.",
   emailLabel: "Email",
   phoneLabel: "Phone",
   officeLabel: "Office",
@@ -13,7 +13,7 @@ export const contact: Messages["contact"] = {
     email: "name@company.com",
     project: "For example: a booking app for my business",
   },
-  submit: "Send request",
+  submit: "Send",
   submitting: "Sending…",
   honeypotLabel: "Do not fill in this field",
   consent: {
@@ -24,10 +24,10 @@ export const contact: Messages["contact"] = {
     title: "We received your request!",
     body: "We sent a confirmation to your email and will reply soon.",
     referenceLabel: "Your reference number",
-    whatsApp: "Prefer to talk now? Continue on WhatsApp →",
+    whatsApp: "If you'd rather talk now, message us on WhatsApp",
   },
   failure: "We could not send your request. Write to us on WhatsApp and we will help you right away.",
-  openWhatsApp: "Open WhatsApp →",
+  openWhatsApp: "Open WhatsApp",
   message: {
     greeting: "Hi CodeLabs, I'm",
     fallbackName: "a visitor",

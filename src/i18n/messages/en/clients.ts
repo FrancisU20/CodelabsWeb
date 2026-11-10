@@ -1,8 +1,7 @@
 import type { Messages } from "../messages";
 
 export const clients: Messages["clients"] = {
-  eyebrow: "Clients",
-  title: "More than 20 leading companies in Ecuador trust us",
+  title: "We have worked with more than 20 companies in Ecuador, including:",
   pause: "Pause carousel",
   resume: "Resume carousel",
 };

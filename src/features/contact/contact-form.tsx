@@ -18,7 +18,7 @@ const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Loca
   }
 
   return (
-    <form onSubmit={submit} className="flex min-w-0 flex-col gap-[18px] rounded-[28px] border border-line bg-panel p-[clamp(24px,3vw,36px)]" data-reveal data-floating-cover>
+    <form onSubmit={submit} className="flex min-w-0 flex-col gap-[18px] rounded-lg bg-panel p-[clamp(24px,3vw,36px)]" data-reveal data-floating-cover>
       <ContactField name="name" label={copy.labels.name} placeholder={copy.placeholders.name} autoComplete="name" required />
       <ContactField name="company" label={copy.labels.company} placeholder={copy.placeholders.company} autoComplete="organization" />
       <ContactField name="email" type="email" label={copy.labels.email} placeholder={copy.placeholders.email} autoComplete="email" required />

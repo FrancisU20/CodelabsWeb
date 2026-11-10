@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 const ESCAPE_KEY = "Escape";
 const FIRST_MENU_ITEM = "a";
 
-export const useDismissibleMenu = (pathname: string, menuId: string) => {
+export const useDismissibleMenu = <TContainer extends HTMLElement = HTMLElement>(pathname: string, menuId: string) => {
   const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<TContainer>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => setOpen(false), [pathname]);

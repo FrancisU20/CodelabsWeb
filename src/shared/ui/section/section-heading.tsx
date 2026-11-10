@@ -2,7 +2,7 @@ import SectionTitle from "./section-title";
 import type { SectionTitleText } from "./section-title-text";
 
 type SectionHeadingProps = {
-  eyebrow: string;
+  eyebrow?: string;
   title: SectionTitleText;
   titleId?: string;
   body?: string;
@@ -12,7 +12,7 @@ type SectionHeadingProps = {
 
 const SectionHeading = ({ eyebrow, title, titleId, body, className, reveal = false }: SectionHeadingProps) => (
   <div className={className} data-reveal={reveal || undefined}>
-    <p className="eyebrow">{eyebrow}</p>
+    {eyebrow && <p className="eyebrow m-0">{eyebrow}</p>}
     <SectionTitle id={titleId} title={title} />
     {body && <p className="lede m-0">{body}</p>}
   </div>

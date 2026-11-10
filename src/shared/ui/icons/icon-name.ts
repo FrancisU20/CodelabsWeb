@@ -10,7 +10,6 @@ export type IconName =
   | "box"
   | "chart"
   | "shield"
-  | "shield-check"
   | "search"
   | "sun"
   | "check"

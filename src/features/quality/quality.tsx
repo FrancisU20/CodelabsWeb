@@ -18,14 +18,13 @@ const Quality = ({ locale }: { locale: Locale }) => {
   return (
     <section aria-label={dict.ariaLabel} data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
-        <SectionHeading className={styles.head} eyebrow={dict.eyebrow} title={dict.title} body={dict.body} />
+        <SectionHeading className={styles.head} title={dict.title} body={dict.body} />
         <div className={styles.window} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>
           <WindowFrame kind="app" caption={dict.windowLabel}>
             <div className={styles.body}>
               <div className={styles.meterWrap}>
                 <div className={styles.meter}>
                   <div className={styles.meterCore}>
-                    <Icon name="shield-check" />
                     <b>{dict.meterTitle}</b>
                     <span>{dict.meterCaption}</span>
                   </div>

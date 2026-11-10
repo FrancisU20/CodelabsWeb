@@ -2,9 +2,7 @@
   padding-block: 120px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 48px;
+  gap: 40px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -12,12 +10,12 @@
 .head {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  align-items: center;
+  gap: 16px;
 }
 
 .window {
   width: min(1000px, 100%);
+  margin-inline: auto;
   transform-origin: 50% 0%;
 }
 
@@ -58,12 +56,6 @@
   text-align: center;
 }
 
-.meterCore svg {
-  width: 40px;
-  height: 40px;
-  color: var(--brand);
-}
-
 .meterCore b {
   font-size: 20px;
   letter-spacing: -0.02em;
@@ -88,8 +80,8 @@
   align-items: center;
   gap: 14px;
   padding: 12px 14px;
-  border-radius: 14px;
-  background: var(--panel-2);
+  border-radius: 6px;
+  background: var(--panel);
   font-size: 15px;
   font-weight: 500;
 }

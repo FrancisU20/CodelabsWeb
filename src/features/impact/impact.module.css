@@ -1,24 +1,30 @@
+.band {
+  background: var(--night);
+  color: #ffffff;
+}
+
+.band :global(.eyebrow) {
+  color: var(--night-accent);
+}
+
 .stage {
-  padding-block: 120px;
+  padding-block: 96px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
   gap: 24px;
   box-sizing: border-box;
 }
 
 .stat {
-  font-size: clamp(110px, 24vw, 340px);
+  font-size: clamp(100px, 20vw, 280px);
   line-height: 0.85;
   letter-spacing: -0.07em;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(180deg, var(--fg) 25%, var(--brand) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-family: var(--font-display);
+  color: #ffffff;
 }
 
 .caption {
@@ -26,46 +32,43 @@
   font-size: clamp(20px, 2.4vw, 32px);
   font-weight: 600;
   letter-spacing: -0.025em;
-  max-width: 24ch;
+  max-width: 30ch;
 }
 
 .caption span {
-  color: var(--muted);
+  color: var(--night-text);
   font-weight: 500;
 }
 
 .results {
-  padding-block: 24px 140px;
+  padding-block: 56px 88px;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 28px;
-  overflow: hidden;
+  gap: 0 40px;
 }
 
 .result {
-  background: var(--ink);
-  padding: 36px 28px;
+  border-top: 1px solid var(--line);
+  padding-block: 24px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   min-width: 0;
 }
 
 .result strong {
-  font-size: clamp(24px, 2.2vw, 30px);
-  letter-spacing: -0.035em;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2vw, 27px);
+  letter-spacing: -0.02em;
   font-weight: 700;
 }
 
 .result span {
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 :global(.motion) .stage {
@@ -74,7 +77,8 @@
 }
 
 :global(.motion) .stat {
-  transform: scale(calc(1.5 - clamp(0, calc(var(--p, 0) * 1.8), 1) * 0.5));
+  transform-origin: 0 50%;
+  transform: scale(calc(1.4 - clamp(0, calc(var(--p, 0) * 1.8), 1) * 0.4));
 }
 
 :global(.motion) .caption {

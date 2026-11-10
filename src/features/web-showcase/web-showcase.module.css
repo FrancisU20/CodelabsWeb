@@ -3,8 +3,6 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
-  align-items: center;
-  text-align: center;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -13,12 +11,12 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
-  align-items: center;
 }
 
 .scene {
   position: relative;
   width: min(1040px, 100%);
+  margin-inline: auto;
 }
 
 .scene .scenePhone {

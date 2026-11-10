@@ -1,7 +1,7 @@
 import type { Messages } from "../messages";
 
 export const manifesto: Messages["manifesto"] = {
-  ariaLabel: "Our promise",
-  lead: "Fast or well built. You are almost always told to choose.",
-  accent: "With us you get both.",
+  ariaLabel: "How we look after you",
+  lead: "One person on our team runs your project from start to finish.",
+  accent: "If something breaks, you know who to write to.",
 };

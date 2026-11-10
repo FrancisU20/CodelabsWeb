@@ -12,8 +12,8 @@ export const seo: Messages["seo"] = {
       "Apps para celular, páginas web y tiendas, sistemas a la medida, nube y seguridad en AWS, modernización y soporte continuo.",
   },
   work: {
-    title: "Trabajos | CodeLabs",
-    description: "Apps de reservas, citas y pagos, registro seguro y plataformas web: productos digitales que hacen crecer a nuestros clientes.",
+    title: "Casos de éxito | CodeLabs",
+    description: "Apps de reservas, citas y pagos, registro seguro y plataformas web para empresas de distintos sectores.",
   },
   about: {
     title: "Nosotros | CodeLabs",
@@ -21,6 +21,6 @@ export const seo: Messages["seo"] = {
   },
   contact: {
     title: "Contacto | CodeLabs",
-    description: "Cuéntanos tu idea por WhatsApp, correo o teléfono. Te respondemos en horas con una propuesta a la medida.",
+    description: "Cuéntanos tu idea por WhatsApp, correo o teléfono. Normalmente contestamos el mismo día.",
   },
 };

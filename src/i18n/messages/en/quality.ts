@@ -1,20 +1,19 @@
 import type { Messages } from "../messages";
 
 export const quality: Messages["quality"] = {
-  ariaLabel: "Quality",
-  eyebrow: "Quality",
-  title: { lines: ["What you don't see"], accent: "is built right too." },
-  body: "Before your customers see a change, it goes through these checks.",
-  windowLabel: "quality control",
-  meterTitle: "Ready to launch",
+  ariaLabel: "Quality checks",
+  title: { lines: ["Before a change goes live,"], accent: "it goes through these checks." },
+  body: "You approve the design and we take care of the rest.",
+  windowLabel: "delivery check",
+  meterTitle: "Ready to publish",
   meterCaption: "5 of 5 checks",
   checks: [
-    "Design approved by you",
-    "Reviewed by a second engineer",
-    "Automated tests",
-    "Security review",
+    "You approved the design",
+    "Another engineer reviewed it",
+    "It passed the automated tests",
+    "We checked security",
     "Works on iPhone, Android and web",
   ],
-  approved: "Approved",
-  live: "Live for your customers",
+  approved: "Done",
+  live: "Published",
 };

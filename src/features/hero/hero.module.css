@@ -3,12 +3,10 @@
 }
 
 .stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 48px;
-  padding-block: 72px 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  padding-block: 32px 56px;
   overflow: hidden;
   box-sizing: border-box;
 }
@@ -16,18 +14,19 @@
 .copy {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 22px;
+  align-items: flex-start;
+  gap: 20px;
   position: relative;
   z-index: 2;
+  min-width: 0;
 }
 
 .title {
   margin: 0;
-  font-size: clamp(40px, 6.4vw, 92px);
-  line-height: 0.98;
-  letter-spacing: -0.05em;
-  font-weight: 800;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.07;
+  letter-spacing: -0.035em;
+  font-weight: 700;
 }
 
 .line {
@@ -37,9 +36,32 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 16px;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.note {
+  margin: 0;
+  font-size: 16px;
+  color: var(--dim);
+}
+
+.showcase {
+  position: relative;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  padding: 28px 12px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.showcase::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--panel);
+  opacity: calc(1 - var(--p, 0) * 2.4);
 }
 
 .fan {
@@ -51,11 +73,11 @@
 }
 
 .fan .fanPhone {
-  --w: clamp(140px, 24vw, 270px);
+  --w: clamp(130px, 24vw, 190px);
 }
 
 .fan .side {
-  --spread: min(300px, 30vw);
+  --spread: min(170px, 25vw);
   --f: 1;
   position: absolute;
   top: 0;
@@ -76,30 +98,48 @@
   z-index: 2;
 }
 
+@media (min-width: 761px) {
+  .stage {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 56px;
+    align-items: stretch;
+    padding-block: 44px 72px;
+  }
+
+  .copy {
+    align-self: center;
+  }
+
+  .showcase {
+    align-items: center;
+  }
+}
+
 :global(.motion) .stage {
-  justify-content: flex-start;
-  padding-block: 56px 0;
+  padding-block: 88px 32px;
+  align-items: stretch;
 }
 
 :global(.motion) .copy {
-  opacity: calc(1 - var(--p, 0) * 1.6);
-  transform: translateY(calc(var(--p, 0) * -100px)) scale(calc(1 - var(--p, 0) * 0.1));
+  opacity: calc(1 - var(--p, 0) * 1.8);
+  transform: translateX(calc(var(--p, 0) * -70px));
+}
+
+:global(.motion) .showcase {
+  overflow: visible;
 }
 
 :global(.motion) .fan {
   --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  transform: translateY(calc(82svh - var(--f) * 66svh)) scale(calc(0.92 + var(--f) * 0.1));
+  transform: translateX(calc(var(--f) * min(100vw, 1180px) * -0.255)) scale(calc(1 + var(--f) * 0.12));
 }
 
 :global(.motion) .fan .fanPhone {
-  --w: min(clamp(160px, 24vw, 270px), 33svh);
+  --w: min(clamp(150px, 17vw, 230px), 29svh);
 }
 
 :global(.motion) .fan .side {
+  --spread: min(300px, 26vw);
   --f: clamp(0, calc(var(--p, 0) * 1.25), 1);
 }
 
