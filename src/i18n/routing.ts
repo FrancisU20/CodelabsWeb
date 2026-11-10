@@ -15,6 +15,15 @@ export const CLIENTS_ANCHOR: Record<Locale, string> = { es: "clientes", en: "cli
 
 const PROCESS_ANCHOR = "proceso";
 
+export const SERVICE_ROUTES: Record<ServiceId, Record<Locale, string>> = {
+  mobile: { es: "/servicios/apps-moviles", en: "/en/services/mobile-apps" },
+  web: { es: "/servicios/paginas-web-y-tiendas", en: "/en/services/websites-and-online-stores" },
+  custom: { es: "/servicios/sistemas-a-la-medida", en: "/en/services/custom-systems" },
+  cloud: { es: "/servicios/nube-y-seguridad", en: "/en/services/cloud-and-security" },
+  modernization: { es: "/servicios/modernizacion", en: "/en/services/modernization" },
+  support: { es: "/servicios/soporte-y-mantenimiento", en: "/en/services/support-and-maintenance" },
+};
+
 export const LEGAL_ROUTES: Record<LegalDocumentKey, Record<Locale, string>> = {
   privacy: { es: "/privacidad", en: "/en/privacy" },
   terms: { es: "/terminos", en: "/en/terms" },
@@ -22,13 +31,20 @@ export const LEGAL_ROUTES: Record<LegalDocumentKey, Record<Locale, string>> = {
   unsubscribe: { es: "/desuscripcion", en: "/en/unsubscribe" },
 };
 
-const ALL_ROUTES = [...Object.values(ROUTES), ...Object.values(LEGAL_ROUTES)];
+const ALL_ROUTES = [...Object.values(ROUTES), ...Object.values(SERVICE_ROUTES), ...Object.values(LEGAL_ROUTES)];
 
 export const pagePath = (page: PageKey, locale: Locale): string => ROUTES[page][locale];
 
 export const legalPath = (document: LegalDocumentKey, locale: Locale): string => LEGAL_ROUTES[document][locale];
 
-export const servicePath = (service: ServiceId, locale: Locale): string => `${ROUTES.services[locale]}#${service}`;
+export const servicePath = (service: ServiceId, locale: Locale): string => SERVICE_ROUTES[service][locale];
+
+const slugOf = (path: string): string => path.slice(path.lastIndexOf("/") + 1);
+
+export const serviceSlugs = (locale: Locale): string[] => Object.values(SERVICE_ROUTES).map((paths) => slugOf(paths[locale]));
+
+export const serviceIdFromSlug = (slug: string, locale: Locale): ServiceId | undefined =>
+  (Object.keys(SERVICE_ROUTES) as ServiceId[]).find((service) => slugOf(SERVICE_ROUTES[service][locale]) === slug);
 
 export const processPath = (locale: Locale): string => `${ROUTES.about[locale]}#${PROCESS_ANCHOR}`;
 

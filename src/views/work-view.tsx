@@ -1,3 +1,4 @@
+import CaseDetails from "@/features/case-details/case-details";
 import Contact from "@/features/contact/contact";
 import Impact from "@/features/impact/impact";
 import Stories from "@/features/stories/stories";
@@ -10,6 +11,7 @@ const WorkView = ({ locale }: { locale: Locale }) => (
   <>
     <PageIntro {...getMessages(locale).pages.work} />
     <Stories locale={locale} />
+    <CaseDetails locale={locale} />
     <WebShowcase locale={locale} />
     <Impact locale={locale} />
     <Contact locale={locale} />

@@ -6,6 +6,7 @@ export const nav: Messages["nav"] = {
   work: "Casos de éxito",
   howWeWork: "Cómo trabajamos",
   services: "Servicios",
+  allServices: "Ver todos los servicios",
   about: "Nosotros",
   cta: "Cuéntanos tu idea",
   openMenu: "Abrir menú",

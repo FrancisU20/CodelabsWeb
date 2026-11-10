@@ -10,6 +10,7 @@ export type Messages = {
     work: string;
     howWeWork: string;
     services: string;
+    allServices: string;
     about: string;
     cta: string;
     openMenu: string;
@@ -50,6 +51,7 @@ export type Messages = {
   services: {
     title: SectionTitleCopy;
     body: string;
+    more: string;
     items: { id: ServiceId; title: string; need: string; body: string; summary: string }[];
   };
   quality: {
@@ -121,4 +123,23 @@ export type Messages = {
   notFound: { title: string; body: string; cta: string };
   pages: Record<Exclude<PageKey, "home">, { eyebrow: string; title: string; description: string }>;
   seo: Record<PageKey, { title: string; description: string }>;
+  servicePages: {
+    labels: { back: string; cta: string; fitTitle: string; includesTitle: string; otherTitle: string };
+    items: Record<
+      ServiceId,
+      {
+        seoTitle: string;
+        seoDescription: string;
+        title: string;
+        description: string;
+        fit: string[];
+        includes: { title: string; body: string }[];
+      }
+    >;
+  };
+  caseDetails: {
+    title: SectionTitleCopy;
+    labels: { need: string; built: string; changed: string };
+    items: { sector: string; need: string; built: string; changed: string }[];
+  };
 };

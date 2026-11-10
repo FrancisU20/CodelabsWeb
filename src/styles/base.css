@@ -29,8 +29,7 @@
     text-wrap: balance;
   }
 
-  section[id],
-  article[id] {
+  section[id] {
     scroll-margin-top: 88px;
   }
 

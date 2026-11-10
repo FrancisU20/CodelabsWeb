@@ -3,6 +3,7 @@ import type { Messages } from "../messages";
 export const services: Messages["services"] = {
   title: { lines: ["What does your", "company need?"] },
   body: "These are the things we get asked for most. If yours isn't here, ask us anyway.",
+  more: "Learn more",
   items: [
     {
       id: "mobile",

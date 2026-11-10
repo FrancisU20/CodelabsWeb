@@ -49,6 +49,9 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
                 <span className="mt-0.5 block text-[15px] leading-snug text-dim">{service.summary}</span>
               </Link>
             ))}
+            <Link href={pagePath("services", locale)} className="col-span-3 font-semibold text-brand">
+              {copy.allServices}
+            </Link>
           </NavDropdown>
           <NavLinks items={items} pathname={pathname} className="contents" linkClassName="font-medium text-muted hover:text-brand aria-[current=page]:text-brand" />
         </nav>
