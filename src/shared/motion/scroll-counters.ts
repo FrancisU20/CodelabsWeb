@@ -1,6 +1,6 @@
 import { clampUnit } from "./progress";
 
-const COUNTER_SPEED = 1.8;
+const COUNTER_SPEED = 1.25;
 const COUNT_UP_DURATION_MS = 1200;
 const COUNT_UP_THRESHOLD = 0.4;
 

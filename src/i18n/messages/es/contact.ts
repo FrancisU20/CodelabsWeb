@@ -1,8 +1,6 @@
 import type { Messages } from "../messages";
 
 export const contact: Messages["contact"] = {
-  title: { lines: ["¿Tienes una idea?"], accent: "Hablemos." },
-  body: "Escríbenos qué necesitas, aunque todavía no lo tengas claro. Normalmente contestamos el mismo día.",
   emailLabel: "Correo",
   phoneLabel: "Teléfono",
   officeLabel: "Oficina",

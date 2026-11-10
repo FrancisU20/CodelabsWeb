@@ -37,7 +37,7 @@ export const services: Messages["services"] = {
       id: "cloud",
       title: "Cloud and security",
       need: "I need my system to stay up",
-      body: "We move it to Amazon's cloud (AWS) and control who can get into what. You don't have to buy servers.",
+      body: "We move it to Amazon's cloud (AWS) and control who can get into what.",
       summary: "Your systems on Amazon's cloud (AWS).",
     },
     {

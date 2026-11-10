@@ -24,14 +24,6 @@ const Aws = ({ locale }: { locale: Locale }) => {
             <p className="lede m-0">{dict.body}</p>
           </div>
         </div>
-        <div className={styles.benefits}>
-          {dict.benefits.map((benefit) => (
-            <div key={benefit.title} className={styles.benefit}>
-              <b>{benefit.title}</b>
-              <span>{benefit.body}</span>
-            </div>
-          ))}
-        </div>
         <AwsFlow ariaLabel={dict.flowAriaLabel} steps={dict.flow} />
       </div>
     </section>

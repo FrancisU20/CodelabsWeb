@@ -19,7 +19,7 @@ export const pages: Messages["pages"] = {
   about: {
     eyebrow: "About",
     title: "We are a software company from Ibarra, Ecuador.",
-    description: "We design, program and maintain apps and systems. One person on the team takes charge of your project.",
+    description: "We design, program and maintain apps and systems for companies.",
   },
   contact: {
     eyebrow: "Contact",

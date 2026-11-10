@@ -1,5 +1,4 @@
-import Aws from "@/features/aws/aws";
-import Contact from "@/features/contact/contact";
+import ClosingCall from "@/features/closing-call/closing-call";
 import Services from "@/features/services/services";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
@@ -9,8 +8,7 @@ const ServicesView = ({ locale }: { locale: Locale }) => (
   <>
     <PageIntro {...getMessages(locale).pages.services} />
     <Services locale={locale} />
-    <Aws locale={locale} />
-    <Contact locale={locale} />
+    <ClosingCall locale={locale} />
   </>
 );
 

@@ -9,7 +9,7 @@ const Stories = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).stories;
 
   return (
-    <section className={styles.story} data-pin data-story data-active="0" style={pinLength("extended")}>
+    <section className={styles.story} data-pin data-story data-active="0" style={pinLength("long")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <div className={styles.texts}>
           {dict.items.map((item, index) => {

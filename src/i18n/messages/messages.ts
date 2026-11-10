@@ -76,7 +76,6 @@ export type Messages = {
     badgeTitle: string;
     badgeCaption: string;
     body: string;
-    benefits: { title: string; body: string }[];
     flowAriaLabel: string;
     flow: { label: string; detail: string }[];
   };
@@ -90,8 +89,6 @@ export type Messages = {
     steps: { title: string; body: string }[];
   };
   contact: {
-    title: SectionTitleCopy;
-    body: string;
     emailLabel: string;
     phoneLabel: string;
     officeLabel: string;
@@ -135,9 +132,9 @@ export type Messages = {
       }
     >;
   };
-  caseDetails: {
-    title: SectionTitleCopy;
-    labels: { need: string; built: string; changed: string };
-    items: { sector: string; need: string; built: string; changed: string }[];
+  closingCall: {
+    title: string;
+    body: string;
+    cta: string;
   };
 };

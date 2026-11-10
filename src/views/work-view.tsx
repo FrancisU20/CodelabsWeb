@@ -1,6 +1,4 @@
-import CaseDetails from "@/features/case-details/case-details";
-import Contact from "@/features/contact/contact";
-import Impact from "@/features/impact/impact";
+import ClosingCall from "@/features/closing-call/closing-call";
 import Stories from "@/features/stories/stories";
 import WebShowcase from "@/features/web-showcase/web-showcase";
 import type { Locale } from "@/i18n/locale";
@@ -11,10 +9,8 @@ const WorkView = ({ locale }: { locale: Locale }) => (
   <>
     <PageIntro {...getMessages(locale).pages.work} />
     <Stories locale={locale} />
-    <CaseDetails locale={locale} />
     <WebShowcase locale={locale} />
-    <Impact locale={locale} />
-    <Contact locale={locale} />
+    <ClosingCall locale={locale} />
   </>
 );
 
