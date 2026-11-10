@@ -1,5 +1,6 @@
 import { CONTACT_EMAIL, WHATSAPP_NUMBER } from "@/config/contact";
-import { ORGANIZATION_ID, SITE_LOCATION, SITE_LOGO_PATH, SITE_NAME, SITE_URL } from "@/config/site";
+import { ORGANIZATION_ID, SITE_LOCATION, SITE_NAME, SITE_URL } from "@/config/site";
+import { IMAGES } from "@/content/images";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 
@@ -10,8 +11,8 @@ const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
     "@id": ORGANIZATION_ID,
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}${SITE_LOGO_PATH}`,
-    image: `${SITE_URL}${SITE_LOGO_PATH}`,
+    logo: `${SITE_URL}${IMAGES.brand.icon512}`,
+    image: `${SITE_URL}${IMAGES.brand.icon512}`,
     description: getMessages(locale).seo.home.description,
     email: CONTACT_EMAIL,
     telephone: `+${WHATSAPP_NUMBER}`,

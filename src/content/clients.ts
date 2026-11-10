@@ -1,6 +1,7 @@
 import type { ClientLogo } from "./client-logo";
+import { clientLogoPath } from "./images";
 
-const logo = (name: string, file: string): ClientLogo => ({ name, src: `/clients/${file}.webp` });
+const logo = (name: string, file: string): ClientLogo => ({ name, src: clientLogoPath(file) });
 
 export const clientLogoRows: ClientLogo[][] = [
   [

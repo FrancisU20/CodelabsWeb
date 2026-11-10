@@ -1,18 +1,8 @@
-import { getImageProps } from "next/image";
+import Image from "next/image";
+import { IMAGES } from "@/content/images";
 
 const LOGO = { alt: "Amazon Web Services", width: 240, height: 141 };
-const DARK_SCHEME = "(prefers-color-scheme: dark)";
 
-const AwsLogo = () => {
-  const { props: darkProps } = getImageProps({ ...LOGO, src: "/aws/aws-logo-dark.webp" });
-  const { props: lightProps } = getImageProps({ ...LOGO, src: "/aws/aws-logo-light.webp" });
-
-  return (
-    <picture>
-      <source media={DARK_SCHEME} srcSet={darkProps.srcSet ?? darkProps.src} />
-      <img {...lightProps} alt={LOGO.alt} />
-    </picture>
-  );
-};
+const AwsLogo = () => <Image src={IMAGES.aws.logo} alt={LOGO.alt} width={LOGO.width} height={LOGO.height} />;
 
 export default AwsLogo;

@@ -4,8 +4,6 @@ export const SITE_NAME = "CodeLabs";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
-export const SITE_LOGO_PATH = "/icon-512.png";
-
 export const SITE_LOCATION = {
   neighborhood: "Cascadas de Chorlaví",
   locality: "Ibarra",

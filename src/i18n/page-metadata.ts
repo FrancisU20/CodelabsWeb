@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL } from "@/config/site";
 import type { LegalDocumentKey } from "@/content/legal/legal-document-key";
 import { LEGAL_DOCUMENTS } from "@/content/legal/legal-documents";
+import { IMAGES } from "@/content/images";
 import type { ServiceId } from "@/content/service-id";
 import type { Locale } from "./locale";
 import { getMessages } from "./messages/get-messages";
@@ -11,7 +12,7 @@ import { LEGAL_ROUTES, ROUTES, SERVICE_ROUTES } from "./routing";
 const OPEN_GRAPH_LOCALE: Record<Locale, string> = { es: "es_EC", en: "en_US" };
 const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
 
-const shareImage = (locale: Locale, alt: string) => ({ url: `/og/share-${locale}.png`, ...SHARE_IMAGE_SIZE, alt });
+const shareImage = (locale: Locale, alt: string) => ({ url: IMAGES.share[locale], ...SHARE_IMAGE_SIZE, alt });
 
 type LocalizedPage = {
   title: string;
@@ -54,13 +55,13 @@ export const buildRootMetadata = (locale: Locale): Metadata => {
     applicationName: SITE_NAME,
     icons: {
       icon: [
-        { url: "/favicon.ico" },
-        { url: "/icon-256.png", type: "image/png", sizes: "256x256" },
-        { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
-        { url: "/codelabs-mark.svg", type: "image/svg+xml" },
+        { url: IMAGES.brand.favicon },
+        { url: IMAGES.brand.icon256, type: "image/png", sizes: "256x256" },
+        { url: IMAGES.brand.icon512, type: "image/png", sizes: "512x512" },
+        { url: IMAGES.brand.mark, type: "image/svg+xml" },
       ],
-      shortcut: ["/favicon.ico"],
-      apple: ["/apple-touch-icon.png"],
+      shortcut: [IMAGES.brand.favicon],
+      apple: [IMAGES.brand.appleTouch],
     },
     manifest: "/manifest.webmanifest",
   };
