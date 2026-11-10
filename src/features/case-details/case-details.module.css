@@ -1,6 +1,6 @@
 .section {
   background: var(--panel);
-  padding-block: 80px;
+  padding-block: clamp(48px, 9vw, 80px);
 }
 
 .rows {

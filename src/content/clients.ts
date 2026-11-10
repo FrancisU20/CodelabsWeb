@@ -14,9 +14,9 @@ export const clientLogoRows: ClientLogo[][] = [
     logo("Grupo KFC", "kfc"),
     logo("Pronaca", "pronaca"),
     logo("Farmaenlace", "farmaenlace"),
-    logo("Corporación GPF", "gpf"),
   ],
   [
+    logo("Corporación GPF", "gpf"),
     logo("Grupo Difare", "difare"),
     logo("Salud S.A.", "saludsa"),
     logo("Confiamed", "confiamed"),
@@ -24,7 +24,6 @@ export const clientLogoRows: ClientLogo[][] = [
     logo("Kywi", "kywi"),
     logo("Grupo Tramaco", "tramaco"),
     logo("BASC", "basc"),
-    logo("TodoLegal", "todolegal"),
     logo("Curve Pilates", "curve-pilates"),
     logo("Emilia Beauty Bar", "emilia-beauty"),
   ],

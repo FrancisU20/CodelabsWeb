@@ -97,42 +97,54 @@
     grid-column: 2;
     margin-top: 0;
   }
+}
 
+:global(.motion) [data-track] .stage {
+  padding-block: 72px 0;
+}
+
+:global(.motion) [data-track] .rail {
+  padding: 0;
+}
+
+:global(.motion) [data-track] .track {
+  flex-direction: row;
+  gap: 16px;
+  width: max-content;
+  max-width: none;
+  margin: 0;
+  padding-left: max(16px, calc((100vw - 1180px) / 2 + 16px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  transform: translateX(calc(var(--p, 0) * var(--dist, 0px) * -1));
+  will-change: transform;
+}
+
+:global(.motion) [data-track] .card {
+  width: min(390px, 78vw);
+  flex: none;
+  min-height: 300px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--ink);
+}
+
+:global(.motion) [data-track] .need {
+  margin-bottom: 12px;
+}
+
+:global(.motion) [data-track] .more {
+  margin-top: auto;
+}
+
+@media (max-width: 760px) {
   :global(.motion) [data-track] .stage {
-    padding-block: 72px 0;
-  }
-
-  :global(.motion) [data-track] .rail {
-    padding: 0;
-  }
-
-  :global(.motion) [data-track] .track {
-    flex-direction: row;
-    gap: 16px;
-    width: max-content;
-    max-width: none;
-    margin: 0;
-    padding-left: max(16px, calc((100vw - 1180px) / 2 + 16px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    transform: translateX(calc(var(--p, 0) * var(--dist, 0px) * -1));
-    will-change: transform;
+    padding-top: 84px;
+    gap: 24px;
   }
 
   :global(.motion) [data-track] .card {
-    width: min(390px, 78vw);
-    flex: none;
-    min-height: 300px;
-    padding: 30px;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--ink);
-  }
-
-  :global(.motion) [data-track] .need {
-    margin-bottom: 12px;
-  }
-
-  :global(.motion) [data-track] .more {
-    margin-top: auto;
+    min-height: 0;
+    padding: 24px;
   }
 }

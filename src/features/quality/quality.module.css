@@ -170,11 +170,6 @@
     width: 170px;
   }
 
-  .meterCore svg {
-    width: 28px;
-    height: 28px;
-  }
-
   .meterCore b {
     font-size: 16px;
   }
@@ -191,5 +186,14 @@
   .check {
     font-size: 14px;
     padding: 10px 12px;
+  }
+
+  :global(.motion) .stage {
+    padding-top: 84px;
+    gap: 24px;
+  }
+
+  :global(.motion) .meterWrap {
+    display: none;
   }
 }

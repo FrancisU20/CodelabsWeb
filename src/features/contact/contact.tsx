@@ -8,7 +8,7 @@ const Contact = ({ locale }: { locale: Locale }) => {
   const copy = getMessages(locale).contact;
 
   return (
-    <section id="contacto" aria-labelledby="contact-title" className="pt-[96px] pb-[100px]">
+    <section id="contacto" aria-labelledby="contact-title" className="pt-16 pb-16 sm:pt-[96px] sm:pb-[100px]">
       <div className="site-wrap grid items-start gap-14 [grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))]">
         <div data-reveal>
           <SectionTitle

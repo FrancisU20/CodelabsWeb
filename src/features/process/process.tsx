@@ -19,7 +19,7 @@ const Process = ({ locale, showHeading = true }: ProcessProps) => {
       id="proceso"
       aria-labelledby={showHeading ? "process-title" : undefined}
       aria-label={showHeading ? undefined : dict.title.lines.join(" ")}
-      className="bg-panel pt-[88px] pb-[120px]"
+      className="bg-panel pt-14 pb-16 sm:pt-[88px] sm:pb-[120px]"
     >
       <div className="site-wrap">
         {showHeading && <SectionHeading className="mb-12 flex flex-col gap-5" title={dict.title} titleId="process-title" reveal />}

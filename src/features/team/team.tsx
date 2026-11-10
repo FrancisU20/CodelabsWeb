@@ -6,7 +6,7 @@ const Team = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).team;
 
   return (
-    <section id="equipo" aria-labelledby="team-title" className="pt-[100px] pb-10">
+    <section id="equipo" aria-labelledby="team-title" className="pt-16 pb-6 sm:pt-[100px] sm:pb-10">
       <div className="site-wrap">
         <div className="mb-12 grid items-end gap-x-16 gap-y-6 [grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))]" data-reveal>
           <SectionHeading className="flex flex-col gap-[18px]" title={dict.title} titleId="team-title" />

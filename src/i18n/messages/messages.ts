@@ -31,8 +31,6 @@ export type Messages = {
   };
   clients: {
     title: string;
-    pause: string;
-    resume: string;
   };
   manifesto: {
     ariaLabel: string;
