@@ -25,8 +25,58 @@
   --aws-orange: #ff9900;
   --wa: #25d366;
   --wa-ink: #062b14;
+  --on-dark: #ffffff;
+  --surface: #ffffff;
+  --brand-on: #e2e0ff;
+  --mask: #000000;
+  --chat-text: #111b21;
+  --chat-muted: #8a8f98;
+  --device-metal: linear-gradient(150deg, #4a4d57 0%, #1b1d23 30%, #0c0d10 60%, #3a3d46 100%);
+  --device-rim: rgba(255, 255, 255, 0.14);
+  --device-bezel: #0a0a0c;
+  --device-button: #2c2e35;
+  --device-island: #000000;
+  --window-bar: #eef1f6;
+  --window-rule: #dde3ec;
+  --window-dot: #c9d1dd;
+  --window-caption: #56677f;
+  --radius-round: 50%;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
+}
+
+@theme static {
+  --text-3xs: 11px;
+  --text-2xs: 12px;
+  --text-xs: 13px;
+  --text-sm: 14px;
+  --text-md: 15px;
+  --text-base: 16px;
+  --text-body: 17px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 22px;
+  --text-3xl: 24px;
+  --text-4xl: 28px;
+  --text-lede: clamp(17px, 1.5vw, 20px);
+  --text-card: clamp(20px, 2vw, 24px);
+  --text-subtitle: clamp(22px, 2.6vw, 32px);
+  --text-title: clamp(30px, 3.6vw, 44px);
+  --text-statement: clamp(30px, 4.4vw, 58px);
+  --text-display: clamp(36px, 5vw, 62px);
+  --text-number: clamp(56px, 7vw, 84px);
+  --text-figure: clamp(100px, 20vw, 280px);
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --radius-pill: 999px;
+  --spacing-section: clamp(56px, 8vw, 88px);
+  --spacing-section-tight: clamp(40px, 6vw, 64px);
+  --spacing-stage: 88px;
+  --shadow-float: 0 18px 40px -18px rgba(27, 26, 74, 0.45);
+  --shadow-hairline: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
 
 @theme inline {
@@ -40,6 +90,8 @@
   --color-brand: var(--brand);
   --color-brand-strong: var(--brand-strong);
   --color-wa: var(--wa);
+  --color-wa-ink: var(--wa-ink);
+  --color-brand-on: var(--brand-on);
   --font-sans: var(--font-hanken), -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
   --font-display: var(--font-schibsted), "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", Menlo, monospace;

@@ -7,6 +7,6 @@ const PIN_HEIGHT = {
   long: "240vh",
 } as const;
 
-export type PinLength = keyof typeof PIN_HEIGHT;
+type PinLength = keyof typeof PIN_HEIGHT;
 
 export const pinLength = (length: PinLength): CSSProperties => cssVars({ "--pin-height": PIN_HEIGHT[length] });

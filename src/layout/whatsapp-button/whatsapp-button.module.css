@@ -17,7 +17,7 @@
   gap: 0;
   height: 60px;
   padding: 0 14px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--wa);
   color: var(--wa-ink);
   box-shadow: 0 8px 20px -8px var(--shadow-deep);
@@ -35,7 +35,7 @@
   overflow: hidden;
   white-space: nowrap;
   font-weight: 600;
-  font-size: 15px;
+  font-size: var(--text-md);
   transition: max-width 0.5s var(--ease-out);
 }
 

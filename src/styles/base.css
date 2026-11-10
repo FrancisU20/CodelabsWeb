@@ -30,7 +30,7 @@
   }
 
   section[id] {
-    scroll-margin-top: 88px;
+    scroll-margin-top: var(--spacing-stage);
   }
 
   :focus-visible {
@@ -40,6 +40,6 @@
 
   ::selection {
     background: var(--brand-strong);
-    color: #ffffff;
+    color: var(--on-dark);
   }
 }

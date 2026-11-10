@@ -42,10 +42,6 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTypescript,
   ...architectureBoundaries,
-  {
-    files: ["src/features/aws/aws-logo.tsx"],
-    rules: { "@next/next/no-img-element": "off" },
-  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

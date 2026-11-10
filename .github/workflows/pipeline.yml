@@ -119,7 +119,7 @@ jobs:
               .github/workflows/*|.github/actions/*)
                 pipeline=true
                 ;;
-              AGENTS.md|CLAUDE.md|README.md|docs/exec-plans/*|Documentación/*|*.md)
+              AGENTS.md|CLAUDE.md|README.md|docs/exec-plans/*|*.md)
                 docs=true
                 ;;
               *)

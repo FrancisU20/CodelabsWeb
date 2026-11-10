@@ -50,10 +50,6 @@ export type Messages = {
     note: string;
     items: { sector: string; title: string; body: string; chat: ChatCopy }[];
   };
-  caseFigures: {
-    label: string;
-    items: { value: string; body: string }[];
-  };
   webShowcase: {
     eyebrow: string;
     title: SectionTitleCopy;

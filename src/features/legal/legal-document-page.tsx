@@ -14,7 +14,7 @@ const LAYOUT_STYLES = {
   },
   cards: {
     container: "space-y-6 text-sm text-muted",
-    section: "rounded-3xl border border-line bg-panel p-6",
+    section: "rounded-xl border border-line bg-panel p-6",
     heading: "text-lg font-semibold text-fg",
     paragraph: "mt-2",
     list: "mt-3 space-y-2",
@@ -53,7 +53,7 @@ const LegalDocumentPage = ({ document, locale }: { document: LegalDocument; loca
         <div className="mx-auto flex max-w-5xl flex-col gap-4 px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-brand">{document.eyebrow}</p>
           <h1 className="text-3xl font-semibold tracking-tight text-fg sm:text-4xl">{document.title}</h1>
-          {document.notice && <p className="max-w-3xl rounded-2xl border border-line bg-panel px-4 py-3 text-sm text-muted">{document.notice}</p>}
+          {document.notice && <p className="max-w-3xl rounded-xl border border-line bg-panel px-4 py-3 text-sm text-muted">{document.notice}</p>}
           <p className="max-w-3xl text-base text-muted">{document.intro}</p>
           <p className="text-sm text-dim">{document.updated}</p>
         </div>

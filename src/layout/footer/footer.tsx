@@ -16,8 +16,8 @@ const Footer = ({ locale }: { locale: Locale }) => {
 
   return (
     <footer className="border-t border-line pt-10 pb-[110px]">
-      <div className="site-wrap flex flex-wrap items-center justify-between gap-4 text-[13px] text-muted">
-        <Logo className="h-[22px] w-auto" />
+      <div className="site-wrap flex flex-wrap items-center justify-between gap-4 text-xs text-muted">
+        <Logo className="h-7 w-auto" />
         <span>
           © {new Date().getFullYear()} {SITE_NAME}. {SITE_CITY}.
         </span>

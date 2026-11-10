@@ -1,5 +1,5 @@
 .stage {
-  padding-block: clamp(56px, 10vw, 120px);
+  padding-block: var(--spacing-section);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 48px 72px;
@@ -21,14 +21,14 @@
 }
 
 .tag {
-  font-size: 17px;
+  font-size: var(--text-body);
   font-weight: 600;
   color: var(--brand);
 }
 
 .itemTitle {
   margin: 0;
-  font-size: clamp(30px, 3.6vw, 48px);
+  font-size: var(--text-title);
   line-height: 1.12;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -38,16 +38,7 @@
   margin: 0;
   color: var(--muted);
   max-width: 40ch;
-  font-size: 18px;
-}
-
-.label {
-  margin: 0;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
+  font-size: var(--text-lg);
 }
 
 .dots {
@@ -62,7 +53,7 @@
 .dot {
   width: 8px;
   height: 8px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--line);
   transition: width 0.3s var(--ease-out), background-color 0.3s;
 }
@@ -164,13 +155,13 @@
   }
 
   .itemTitle {
-    font-size: 30px;
+    font-size: var(--text-4xl);
   }
 
   :global(.motion) .stage {
     grid-template-columns: minmax(0, 1fr);
     gap: 20px;
-    padding-top: 84px;
+    padding-top: var(--spacing-stage);
     align-content: start;
   }
 
@@ -183,6 +174,6 @@
   }
 
   .itemBody {
-    font-size: 16px;
+    font-size: var(--text-base);
   }
 }

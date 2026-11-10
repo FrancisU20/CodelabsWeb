@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 import Image from "next/image";
+import { IMAGES } from "@/content/images";
 import { cssVars } from "@/shared/lib/css-vars";
 import Icon from "@/shared/ui/icons/svg-icon";
 import styles from "./aws.module.css";
 
 const SERVICE_ICON_SIZE = 152;
-const SERVICE_ICONS = ["/aws/ecs.webp", "/aws/lambda.webp", "/aws/eventbridge.webp", "/aws/sqs.webp", "/aws/rds.webp"];
 
 type AwsFlowProps = {
   ariaLabel: string;
@@ -22,7 +22,7 @@ const AwsFlow = ({ ariaLabel, steps }: AwsFlowProps) => (
             {index === 0 ? (
               <Icon name="users" />
             ) : (
-              <Image src={SERVICE_ICONS[index - 1]} alt="" width={SERVICE_ICON_SIZE} height={SERVICE_ICON_SIZE} />
+              <Image src={IMAGES.aws.services[index - 1]} alt="" width={SERVICE_ICON_SIZE} height={SERVICE_ICON_SIZE} />
             )}
           </div>
           <div className={styles.nodeText}>

@@ -1,5 +1,4 @@
 import AiCases from "@/features/ai-cases/ai-cases";
-import CaseFigures from "@/features/case-figures/case-figures";
 import ClosingCall from "@/features/closing-call/closing-call";
 import Stories from "@/features/stories/stories";
 import WebShowcase from "@/features/web-showcase/web-showcase";
@@ -13,7 +12,6 @@ const WorkView = ({ locale }: { locale: Locale }) => (
     <AiCases locale={locale} />
     <Stories locale={locale} />
     <WebShowcase locale={locale} />
-    <CaseFigures locale={locale} />
     <ClosingCall locale={locale} />
   </>
 );

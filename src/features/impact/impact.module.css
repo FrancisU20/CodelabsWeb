@@ -1,5 +1,5 @@
 .stage {
-  padding-block: clamp(56px, 9vw, 96px);
+  padding-block: var(--spacing-section);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,7 @@
 }
 
 .stat {
-  font-size: clamp(100px, 20vw, 280px);
+  font-size: var(--text-figure);
   line-height: 0.85;
   letter-spacing: -0.07em;
   font-weight: 800;
@@ -20,7 +20,7 @@
 
 .caption {
   margin: 0;
-  font-size: clamp(20px, 2.4vw, 32px);
+  font-size: var(--text-subtitle);
   font-weight: 600;
   letter-spacing: -0.025em;
   max-width: 30ch;
@@ -52,14 +52,14 @@
 
 .result strong {
   font-family: var(--font-display);
-  font-size: clamp(22px, 2vw, 27px);
+  font-size: var(--text-card);
   letter-spacing: -0.02em;
   font-weight: 700;
 }
 
 .result span {
   color: var(--muted);
-  font-size: 17px;
+  font-size: var(--text-body);
 }
 
 :global(.motion) .stage {

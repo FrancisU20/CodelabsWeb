@@ -17,7 +17,7 @@ const Contact = ({ locale }: { locale: Locale }) => {
             href={buildWhatsAppLink(messages.whatsapp.message)}
             target="_blank"
             rel="noopener noreferrer"
-            className="block rounded-[10px] bg-wa p-6 text-[var(--wa-ink)] transition-transform hover:-translate-y-0.5"
+            className="block rounded-lg bg-wa p-6 text-wa-ink transition-transform hover:-translate-y-0.5"
           >
             <b className="block font-display text-xl">{copy.whatsAppCard.title}</b>
             <span>{copy.whatsAppCard.body}</span>

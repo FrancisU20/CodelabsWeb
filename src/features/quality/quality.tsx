@@ -4,6 +4,7 @@ import WindowFrame from "@/shared/devices/window-frame";
 import { cx } from "@/shared/lib/class-names";
 import { cssVars } from "@/shared/lib/css-vars";
 import Icon from "@/shared/ui/icons/svg-icon";
+import Section from "@/shared/ui/section/section";
 import SectionHeading from "@/shared/ui/section/section-heading";
 import { pinLength } from "@/shared/motion/pin-length";
 import styles from "./quality.module.css";
@@ -16,7 +17,7 @@ const Quality = ({ locale }: { locale: Locale }) => {
   const liveAt = FIRST_CHECK_AT + dict.checks.length * CHECK_STEP;
 
   return (
-    <section aria-label={dict.ariaLabel} className={styles.band} data-pin style={pinLength("standard")}>
+    <Section tone="night" aria-label={dict.ariaLabel} data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <SectionHeading className={styles.head} title={dict.title} />
         <div className={`${styles.window} scene-motion`} role="img" aria-label={`${dict.meterTitle}: ${dict.checks.join(", ")}`}>
@@ -49,7 +50,7 @@ const Quality = ({ locale }: { locale: Locale }) => {
           </WindowFrame>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };
 

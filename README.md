@@ -1,11 +1,10 @@
 # CodeLabs Web
 
-Sitio corporativo estático de CodeLabs Ecuador, construido con Next.js, React, TypeScript y Tailwind CSS. El mismo repositorio contiene la infraestructura AWS CDK y el pipeline de publicación.
+Sitio corporativo estático de CodeLabs Ecuador (`codelabsecuador.com`), con Next.js, React, TypeScript y Tailwind CSS. El repositorio incluye la infraestructura AWS CDK y el pipeline de publicación. El historial de cambios es Git.
 
 ## Requisitos
 
-- Node.js 22.23.3, fijado mediante Volta.
-- npm.
+- Node.js 22.23.3 (fijado con Volta) y npm.
 
 ## Uso local
 
@@ -18,49 +17,23 @@ npm run build
 npm start
 ```
 
-`npm start` sirve el export generado en `out/`; requiere ejecutar primero `npm run build`.
+`npm start` sirve el export de `out/` generado por `npm run build`.
 
 ## Estructura
 
-- `src/app/`: solo rutas de Next.js (layouts, páginas y metadata).
-- `src/views/`: composición de cada página a partir de features.
-- `src/features/`: una carpeta por sección del sitio, con sus componentes y estilos.
-- `src/layout/`: piezas comunes a todo el sitio (menú, pie, WhatsApp, encabezado de subpáginas).
-- `src/shared/`: UI reutilizable sin conocimiento del negocio (íconos, dispositivos, mockups, animaciones, utilidades).
-- `src/i18n/`: idiomas, rutas, metadata SEO y mensajes por sección en español e inglés.
-- `src/config/` y `src/content/`: configuración del sitio y datos de negocio.
-- `src/styles/`: tokens de diseño, base, componentes y animaciones globales.
-- `public/`: identidad visual, logos, manifest e iconos.
+- `src/app/`: rutas de Next.js.
+- `src/views/`: arma cada página con secciones.
+- `src/features/`: una carpeta por sección del sitio.
+- `src/layout/`: menú, pie, botón de WhatsApp y encabezado de subpáginas.
+- `src/shared/`: componentes reutilizables sin conocimiento del negocio (botones, secciones, tarjetas, íconos, dispositivos, animaciones).
+- `src/showcase/`: pantallas de ejemplo de apps ficticias.
+- `src/i18n/`: idiomas, rutas, SEO y textos en español e inglés.
+- `src/config/` y `src/content/`: datos del sitio, contacto, clientes, textos legales e imágenes.
+- `src/styles/`: tokens de diseño, fuentes y estilos globales.
+- `infra/`: infraestructura AWS CDK.
 
-Las dependencias entre capas fluyen `app → views → features/layout → shared` y las verifica ESLint (`no-restricted-imports`).
-- `infra/`: aplicación AWS CDK y su guía operativa.
-- `.github/`: workflow y acciones compuestas de CI/CD.
-- `Documentación/`: documentación técnica formal y canónica.
-- `docs/exec-plans/`: planes locales de continuidad para trabajo asistido, excluidos de Git.
+ESLint hace cumplir la dirección de dependencias `app → views → features/layout → showcase → shared`, y una prueba mantiene colores, botones e imágenes en sus módulos centrales.
 
-## Infraestructura
+## Publicación
 
-```bash
-cd infra
-npm ci
-npm run build
-npm run synth -- -c stage=prod --profile codelabs-prod
-```
-
-El despliegue de infraestructura es manual. Antes de ejecutar `cdk deploy`, se deben confirmar perfil, cuenta, región y hosted zone; el perfil local esperado es `codelabs-prod`.
-
-## Documentación
-
-La rama remota `origin/master`, después de `git fetch origin master`, es la fuente de verdad del código y de los cambios integrados. El estado de Git identifica el trabajo local pendiente; los planes de continuidad y la memoria de las herramientas de IA son auxiliares.
-
-La fuente formal es [Documentación/resumen_tecnico_codelabs_web.adoc](Documentación/resumen_tecnico_codelabs_web.adoc); sus derivados publicables son [HTML](Documentación/resumen_tecnico_codelabs_web.html) y [PDF](Documentación/resumen_tecnico_codelabs_web.pdf). El detalle selectivo se mantiene en `Documentación/modules/` y `Documentación/matrices/`.
-
-La documentación formal se genera desde `origin/master` refrescado, en un worktree detached limpio, y se regenera después de integrar cambios. `Documentación/provenance.json` identifica el commit documentado.
-
-Este README es una guía de entrada y no reemplaza la documentación técnica canónica.
-
-## Contexto multi-IA
-
-Este repositorio adopta el protocolo global 2.2. Codex carga `AGENTS.md`; Claude Code carga `CLAUDE.md`, cuyo único contenido es `@AGENTS.md`. Las instrucciones globales de ambas herramientas mantienen el mismo protocolo.
-
-`AGENTS.md`, `CLAUDE.md` y `docs/exec-plans/` son estado local de trabajo y se excluyen mediante el archivo privado de Git `info/exclude`; no se versionan ni se añaden a `.gitignore`.
+Un merge a `master` publica el sitio. La infraestructura se despliega con el workflow manual `Deploy Infrastructure`.

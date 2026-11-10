@@ -1,48 +1,20 @@
 import { measureTrack } from "./horizontal-track";
 import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
-import { activeIndex, entryProgress, pinProgress, scrubProgress } from "./progress";
+import { measurePins, renderPins, resetStories } from "./pin-scenes";
 import { observeReveals } from "./reveal-observer";
 import type { SceneContext } from "./scene-context";
-import { countUpOnView, renderCounters, showFinalCounters } from "./scroll-counters";
+import { clearProgress } from "./scene-progress";
+import { showFinalCounters } from "./scroll-counters";
+import { renderScrubs } from "./scrub-scenes";
 
 const queryAll = (selector: string): HTMLElement[] => [...document.querySelectorAll<HTMLElement>(selector)];
 
-const isStory = (section: HTMLElement): boolean => section.dataset.story !== undefined;
-
 const isMotionActive = (context: SceneContext): boolean => context.root.classList.contains(MOTION_CLASS);
-
-const writeProgress = (context: SceneContext, element: HTMLElement, progress: number): boolean => {
-  const value = progress.toFixed(4);
-  if (context.renderedValues.get(element) === value) return false;
-  context.renderedValues.set(element, value);
-  element.style.setProperty("--p", value);
-  return true;
-};
 
 const measure = (context: SceneContext) => {
   context.tracks.forEach((section) => measureTrack(section, isMotionActive(context)));
-  context.metrics = context.pins.map((section) => ({
-    section,
-    top: section.getBoundingClientRect().top + window.scrollY,
-    length: section.offsetHeight - window.innerHeight,
-    counters: context.counters.filter((counter) => section.contains(counter)),
-  }));
+  measurePins(context);
 };
-
-const renderScrubs = (context: SceneContext) =>
-  context.scrubs
-    .map((element) => ({ element, progress: scrubProgress(element.getBoundingClientRect().top, window.innerHeight) }))
-    .forEach(({ element, progress }) => writeProgress(context, element, progress));
-
-const renderPins = (context: SceneContext) =>
-  context.metrics.forEach(({ section, top, length, counters }) => {
-    renderCounters(counters, entryProgress(window.scrollY, top, window.innerHeight));
-    const progress = pinProgress(window.scrollY, top, length);
-    if (!writeProgress(context, section, progress)) return;
-    if (isStory(section)) {
-      section.dataset.active = String(activeIndex(progress, Number(section.dataset.storyCount)));
-    }
-  });
 
 const render = (context: SceneContext) => {
   context.frameRequested = false;
@@ -58,27 +30,14 @@ const requestRender = (context: SceneContext) => {
 };
 
 const showStaticState = (context: SceneContext) => {
-  context.renderedValues.clear();
-  [...context.pins, ...context.scrubs].forEach((element) => element.style.removeProperty("--p"));
-  context.pins.filter(isStory).forEach((section) => {
-    section.dataset.active = "0";
-  });
-  if (context.reducedMotion.matches) {
-    showFinalCounters(context.counters);
-    return;
-  }
-  context.countObserver = countUpOnView(context.counters);
-};
-
-const stopCountUp = (context: SceneContext) => {
-  context.countObserver?.disconnect();
-  context.countObserver = null;
+  clearProgress(context, [...context.pins, ...context.scrubs]);
+  resetStories(context);
+  showFinalCounters(context.counters);
 };
 
 const applyMode = (context: SceneContext) => {
   const motionOn = !context.reducedMotion.matches;
   context.root.classList.toggle(MOTION_CLASS, motionOn);
-  stopCountUp(context);
   measure(context);
   if (!motionOn) {
     showStaticState(context);
@@ -98,7 +57,6 @@ const createContext = (): SceneContext => ({
   metrics: [],
   renderedValues: new Map(),
   frameRequested: false,
-  countObserver: null,
 });
 
 export const startScrollScenes = (): (() => void) => {
@@ -130,6 +88,5 @@ export const startScrollScenes = (): (() => void) => {
     window.removeEventListener("load", onLayoutChange);
     context.reducedMotion.removeEventListener("change", onModeChange);
     revealObserver.disconnect();
-    stopCountUp(context);
   };
 };

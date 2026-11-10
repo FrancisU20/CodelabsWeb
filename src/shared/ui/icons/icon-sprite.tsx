@@ -62,6 +62,9 @@ const IconSprite = () => (
       <circle {...stroke} cx="12" cy="12" r="4" />
       <path {...stroke} d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" />
     </symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24">
+      <path {...stroke} strokeWidth={2.4} d="m6 9 6 6 6-6" />
+    </symbol>
     <symbol id="icon-check" viewBox="0 0 24 24">
       <path {...stroke} strokeWidth={3} d="m5 12 5 5 9-10" />
     </symbol>

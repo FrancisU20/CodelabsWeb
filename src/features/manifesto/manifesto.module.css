@@ -1,10 +1,5 @@
-.band {
-  background: var(--night);
-  color: #ffffff;
-}
-
 .stage {
-  padding-block: clamp(56px, 10vw, 120px);
+  padding-block: var(--spacing-section);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -13,7 +8,7 @@
 .text {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(30px, 4.4vw, 58px);
+  font-size: var(--text-statement);
   line-height: 1.14;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -24,12 +19,7 @@
   color: var(--night-accent);
 }
 
-:global(.motion) .band {
-  background: var(--night);
-  color: #ffffff;
-}
-
-.stage {
+:global(.motion) .stage {
   padding-block: 0;
 }
 

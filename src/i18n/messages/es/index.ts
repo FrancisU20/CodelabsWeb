@@ -20,7 +20,6 @@ import { seo } from "./seo";
 import { servicePages } from "./service-pages";
 import { closingCall } from "./closing-call";
 import { aiCases } from "./ai-cases";
-import { caseFigures } from "./case-figures";
 
 export const esMessages: Messages = {
   nav,
@@ -44,5 +43,4 @@ export const esMessages: Messages = {
   servicePages,
   closingCall,
   aiCases,
-  caseFigures,
 };
