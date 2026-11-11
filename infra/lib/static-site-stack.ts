@@ -34,6 +34,7 @@ import {
   ARecord,
   AaaaRecord,
   HostedZone,
+  type IHostedZone,
   RecordTarget,
 } from "aws-cdk-lib/aws-route53";
 import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
@@ -58,28 +59,38 @@ const githubOidcHost = "token.actions.githubusercontent.com";
 const infraDeployRoleName = "codelabs-web-infra-deploy";
 const cdkRolePattern = "cdk-hnb659fds-*";
 const noncurrentVersionRetention = Duration.days(30);
+const incompleteUploadRetention = Duration.days(7);
+const notFoundPage = "/404.html";
+const notFoundCacheTtl = Duration.minutes(5);
 
 const productionSubject = (config: StaticSiteConfig): string =>
   `repo:${config.githubOwner}/${config.githubRepository}:environment:production`;
-const incompleteUploadRetention = Duration.days(7);
 
 export class StaticSiteStack extends Stack {
   constructor(scope: Construct, id: string, props: StaticSiteStackProps) {
     super(scope, id, props);
 
     const { config } = props;
-    const allDomainNames = [config.domainName, ...config.alternateDomainNames];
-    const hostedZone = HostedZone.fromLookup(this, "HostedZone", {
-      domainName: config.hostedZoneDomainName,
-    });
+    const hostedZone = HostedZone.fromLookup(this, "HostedZone", { domainName: config.hostedZoneDomainName });
+    const siteBucket = this.createSiteBucket();
+    const distribution = this.createDistribution(config, siteBucket, this.createCertificate(config, hostedZone));
+    this.createAliasRecords(config, hostedZone, distribution);
+    const oidcProvider = this.gitHubOidcProvider();
+    const deployRole = this.createGitHubDeployRole(config, siteBucket, distribution, oidcProvider);
+    this.createGitHubInfraRole(config, oidcProvider);
+    this.createOutputs(config, siteBucket, distribution, deployRole);
+  }
 
-    const certificate = new Certificate(this, "Certificate", {
+  private createCertificate(config: StaticSiteConfig, hostedZone: IHostedZone): Certificate {
+    return new Certificate(this, "Certificate", {
       domainName: config.domainName,
       subjectAlternativeNames: [...config.alternateDomainNames],
       validation: CertificateValidation.fromDns(hostedZone),
     });
+  }
 
-    const siteBucket = new Bucket(this, "SiteBucket", {
+  private createSiteBucket(): Bucket {
+    return new Bucket(this, "SiteBucket", {
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
       encryption: BucketEncryption.S3_MANAGED,
       enforceSSL: true,
@@ -94,87 +105,83 @@ export class StaticSiteStack extends Stack {
       removalPolicy: RemovalPolicy.RETAIN,
       versioned: true,
     });
+  }
 
+  private createDistribution(config: StaticSiteConfig, siteBucket: Bucket, certificate: Certificate): Distribution {
     const cleanUrlRewrite = new Function(this, "CleanUrlRewriteFunction", {
       code: FunctionCode.fromInline(buildCleanUrlHandler(config.domainName)),
     });
-
     const securityHeadersPolicy = createSecurityHeadersPolicy(this, config.domainName);
-
     const distribution = new Distribution(this, "Distribution", {
       certificate,
       comment: `${config.domainName} static website`,
       defaultBehavior: {
         allowedMethods: AllowedMethods.ALLOW_GET_HEAD_OPTIONS,
         cachePolicy: CachePolicy.CACHING_OPTIMIZED,
-        functionAssociations: [
-          {
-            eventType: FunctionEventType.VIEWER_REQUEST,
-            function: cleanUrlRewrite,
-          },
-        ],
+        functionAssociations: [{ eventType: FunctionEventType.VIEWER_REQUEST, function: cleanUrlRewrite }],
         origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
         responseHeadersPolicy: securityHeadersPolicy,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
       defaultRootObject: "index.html",
-      domainNames: allDomainNames,
-      errorResponses: [
-        {
-          httpStatus: 403,
-          responseHttpStatus: 404,
-          responsePagePath: "/404.html",
-          ttl: Duration.minutes(5),
-        },
-        {
-          httpStatus: 404,
-          responseHttpStatus: 404,
-          responsePagePath: "/404.html",
-          ttl: Duration.minutes(5),
-        },
-      ],
+      domainNames: [config.domainName, ...config.alternateDomainNames],
+      errorResponses: [403, 404].map((httpStatus) => ({
+        httpStatus,
+        responseHttpStatus: 404,
+        responsePagePath: notFoundPage,
+        ttl: notFoundCacheTtl,
+      })),
       httpVersion: HttpVersion.HTTP2_AND_3,
       minimumProtocolVersion: SecurityPolicyProtocol.TLS_V1_2_2021,
       priceClass: PriceClass.PRICE_CLASS_100,
     });
-
     addLeadIntakeRoute(this, distribution, securityHeadersPolicy);
+    return distribution;
+  }
 
-    allDomainNames.forEach((recordName) => {
-      const normalizedRecordName =
-        recordName === config.hostedZoneDomainName ? undefined : recordName;
+  private createAliasRecords(config: StaticSiteConfig, hostedZone: IHostedZone, distribution: Distribution): void {
+    const target = RecordTarget.fromAlias(new CloudFrontTarget(distribution));
+    [config.domainName, ...config.alternateDomainNames].forEach((domainName) => {
+      const recordName = domainName === config.hostedZoneDomainName ? undefined : domainName;
+      const recordId = this.toRecordId(domainName);
+      new ARecord(this, `${recordId}AliasA`, { zone: hostedZone, recordName, target });
+      new AaaaRecord(this, `${recordId}AliasAAAA`, { zone: hostedZone, recordName, target });
+    });
+  }
 
-      new ARecord(this, `${this.toRecordId(recordName)}AliasA`, {
-        zone: hostedZone,
-        recordName: normalizedRecordName,
-        target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-      });
+  private createOutputs(config: StaticSiteConfig, siteBucket: Bucket, distribution: Distribution, deployRole: Role): void {
+    new CfnOutput(this, "SiteUrl", { value: `https://${config.domainName}` });
+    new CfnOutput(this, "SiteBucketName", { value: siteBucket.bucketName });
+    new CfnOutput(this, "CloudFrontDistributionId", { value: distribution.distributionId });
+    new CfnOutput(this, "CloudFrontDomainName", { value: distribution.distributionDomainName });
+    new CfnOutput(this, "GitHubActionsRoleArn", { value: deployRole.roleArn });
+  }
 
-      new AaaaRecord(this, `${this.toRecordId(recordName)}AliasAAAA`, {
-        zone: hostedZone,
-        recordName: normalizedRecordName,
-        target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
-      });
-    });
+  private gitHubPrincipal(config: StaticSiteConfig, oidcProvider: IOpenIdConnectProvider): FederatedPrincipal {
+    return new FederatedPrincipal(
+      oidcProvider.openIdConnectProviderArn,
+      {
+        StringEquals: {
+          [`${githubOidcHost}:aud`]: githubActionsAudience,
+          [`${githubOidcHost}:sub`]: productionSubject(config),
+        },
+      },
+      "sts:AssumeRoleWithWebIdentity",
+    );
+  }
 
-    const oidcProvider = this.gitHubOidcProvider();
-    const deployRole = this.createGitHubDeployRole(config, siteBucket, distribution, oidcProvider);
-    this.createGitHubInfraRole(config, oidcProvider);
-
-    new CfnOutput(this, "SiteUrl", {
-      value: `https://${config.domainName}`,
-    });
-    new CfnOutput(this, "SiteBucketName", {
-      value: siteBucket.bucketName,
-    });
-    new CfnOutput(this, "CloudFrontDistributionId", {
-      value: distribution.distributionId,
-    });
-    new CfnOutput(this, "CloudFrontDomainName", {
-      value: distribution.distributionDomainName,
-    });
-    new CfnOutput(this, "GitHubActionsRoleArn", {
-      value: deployRole.roleArn,
+  private deployPolicy(bucket: Bucket, distribution: Distribution): PolicyDocument {
+    return new PolicyDocument({
+      statements: [
+        new PolicyStatement({
+          actions: ["s3:DeleteObject", "s3:GetBucketLocation", "s3:ListBucket", "s3:PutObject", "s3:PutObjectTagging"],
+          resources: [bucket.bucketArn, bucket.arnForObjects("*")],
+        }),
+        new PolicyStatement({
+          actions: ["cloudfront:CreateInvalidation"],
+          resources: [`arn:aws:cloudfront::${this.account}:distribution/${distribution.distributionId}`],
+        }),
+      ],
     });
   }
 
@@ -184,44 +191,11 @@ export class StaticSiteStack extends Stack {
     distribution: Distribution,
     oidcProvider: IOpenIdConnectProvider,
   ): Role {
-
-    const role = new Role(this, "GitHubActionsDeployRole", {
-      assumedBy: new FederatedPrincipal(
-        oidcProvider.openIdConnectProviderArn,
-        {
-          StringEquals: {
-            "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": productionSubject(config),
-          },
-        },
-        "sts:AssumeRoleWithWebIdentity",
-      ),
+    return new Role(this, "GitHubActionsDeployRole", {
+      assumedBy: this.gitHubPrincipal(config, oidcProvider),
       description: `Deploy ${config.domainName} from GitHub Actions`,
-      inlinePolicies: {
-        DeployStaticSite: new PolicyDocument({
-          statements: [
-            new PolicyStatement({
-              actions: [
-                "s3:DeleteObject",
-                "s3:GetBucketLocation",
-                "s3:ListBucket",
-                "s3:PutObject",
-                "s3:PutObjectTagging",
-              ],
-              resources: [bucket.bucketArn, bucket.arnForObjects("*")],
-            }),
-            new PolicyStatement({
-              actions: ["cloudfront:CreateInvalidation"],
-              resources: [
-                `arn:aws:cloudfront::${this.account}:distribution/${distribution.distributionId}`,
-              ],
-            }),
-          ],
-        }),
-      },
+      inlinePolicies: { DeployStaticSite: this.deployPolicy(bucket, distribution) },
     });
-
-    return role;
   }
 
   private gitHubOidcProvider(): IOpenIdConnectProvider {
@@ -235,16 +209,7 @@ export class StaticSiteStack extends Stack {
   private createGitHubInfraRole(config: StaticSiteConfig, oidcProvider: IOpenIdConnectProvider): void {
     const role = new Role(this, "GitHubInfraDeployRole", {
       roleName: infraDeployRoleName,
-      assumedBy: new FederatedPrincipal(
-        oidcProvider.openIdConnectProviderArn,
-        {
-          StringEquals: {
-            "token.actions.githubusercontent.com:aud": githubActionsAudience,
-            "token.actions.githubusercontent.com:sub": productionSubject(config),
-          },
-        },
-        "sts:AssumeRoleWithWebIdentity",
-      ),
+      assumedBy: this.gitHubPrincipal(config, oidcProvider),
       description: `Deploy ${config.domainName} infrastructure from GitHub Actions`,
     });
     role.addToPolicy(

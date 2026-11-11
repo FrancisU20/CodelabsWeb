@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Messages } from "@/i18n/messages/messages";
 import ButtonLink from "@/shared/ui/button/button-link";
 import type { LanguageLink } from "./language-link";
-import type { NavItem, ServiceNavItem } from "./nav-item";
+import type { NavItem } from "./nav-item";
+import type { ServiceNavItem } from "./service-nav-item";
 import NavLinks from "./nav-links";
 import { MOBILE_MENU_ID } from "./navbar-ids";
 
