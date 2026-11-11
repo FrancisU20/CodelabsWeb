@@ -1,7 +1,8 @@
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath, servicePath } from "@/i18n/routing";
-import type { NavItem, ServiceNavItem } from "./nav-item";
+import type { NavItem } from "./nav-item";
+import type { ServiceNavItem } from "./service-nav-item";
 
 export const buildNavItems = (locale: Locale): NavItem[] => {
   const labels = getMessages(locale).nav;

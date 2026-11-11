@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Messages } from "@/i18n/messages/messages";
 import NavDropdown from "./nav-dropdown";
-import type { NavItem, ServiceNavItem } from "./nav-item";
+import type { NavItem } from "./nav-item";
+import type { ServiceNavItem } from "./service-nav-item";
 import NavLinks from "./nav-links";
 import { SERVICES_MENU_ID } from "./navbar-ids";
 

@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
-import { legalPath } from "@/i18n/routing";
-import { HONEYPOT_FIELD } from "./build-lead-submission";
 import Button from "@/shared/ui/button/button";
+import ConsentField from "./consent-field";
 import ContactField from "./contact-field";
 import ContactSuccess from "./contact-success";
+import HoneypotField from "./honeypot-field";
+import SubmissionFailure from "./submission-failure";
 import { useContactSubmission } from "./use-contact-submission";
 
 const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Locale }) => {
@@ -24,34 +24,13 @@ const ContactForm = ({ copy, locale }: { copy: Messages["contact"]; locale: Loca
       <ContactField name="company" label={copy.labels.company} placeholder={copy.placeholders.company} autoComplete="organization" />
       <ContactField name="email" type="email" label={copy.labels.email} placeholder={copy.placeholders.email} autoComplete="email" required />
       <ContactField name="project" label={copy.labels.project} placeholder={copy.placeholders.project} multiline />
-      <div aria-hidden="true" className="absolute left-[-9999px]">
-        <label>
-          {copy.honeypotLabel}
-          <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
-        </label>
-      </div>
-      <label className="flex items-start gap-3 text-xs text-dim">
-        <input type="checkbox" name="consent" required className="mt-0.5 h-4 w-4 flex-none accent-[var(--brand-strong)]" />
-        <span>
-          {copy.consent.text}{" "}
-          <Link href={legalPath("privacy", locale)} className="underline underline-offset-2 hover:text-fg">
-            {copy.consent.linkLabel}
-          </Link>
-          .
-        </span>
-      </label>
+      <HoneypotField label={copy.honeypotLabel} />
+      <ConsentField copy={copy.consent} locale={locale} />
       <Button type="submit" disabled={submitting} aria-busy={submitting}>
         {submitting ? copy.submitting : copy.submit}
       </Button>
       <div aria-live="polite">
-        {state.status === "failed" && (
-          <p className="m-0 flex flex-col gap-3 rounded-xl bg-panel-2 p-4">
-            <span>{copy.failure}</span>
-            <a href={state.whatsAppLink} target="_blank" rel="noopener noreferrer" className="font-semibold text-brand">
-              {copy.openWhatsApp}
-            </a>
-          </p>
-        )}
+        {state.status === "failed" && <SubmissionFailure message={copy.failure} actionLabel={copy.openWhatsApp} whatsAppLink={state.whatsAppLink} />}
       </div>
     </form>
   );

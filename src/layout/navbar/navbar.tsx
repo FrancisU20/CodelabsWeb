@@ -11,7 +11,8 @@ import DesktopNav from "./desktop-nav";
 import LanguageMenu from "./language-menu";
 import MenuToggle from "./menu-toggle";
 import MobileMenu from "./mobile-menu";
-import type { NavItem, ServiceNavItem } from "./nav-item";
+import type { NavItem } from "./nav-item";
+import type { ServiceNavItem } from "./service-nav-item";
 import { MOBILE_MENU_ID } from "./navbar-ids";
 import { useDismissibleMenu } from "./use-dismissible-menu";
 
