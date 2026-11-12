@@ -1,8 +1,8 @@
 import Link from "next/link";
 import type { Messages } from "@/i18n/messages/messages";
-import ButtonLink from "@/shared/ui/button/button-link";
-import type { LanguageLink } from "./language-link";
+import MobileMenuFooter from "./mobile-menu-footer";
 import type { NavItem } from "./nav-item";
+import type { NavbarLinks } from "./navbar-links";
 import type { ServiceNavItem } from "./service-nav-item";
 import NavLinks from "./nav-links";
 import { MOBILE_MENU_ID } from "./navbar-ids";
@@ -11,17 +11,15 @@ type MobileMenuProps = {
   copy: Messages["nav"];
   items: NavItem[];
   serviceItems: ServiceNavItem[];
-  servicesHref: string;
-  contactHref: string;
-  alternate: LanguageLink;
+  links: NavbarLinks;
   pathname: string;
   onNavigate: () => void;
 };
 
-const MobileMenu = ({ copy, items, serviceItems, servicesHref, contactHref, alternate, pathname, onNavigate }: MobileMenuProps) => (
+const MobileMenu = ({ copy, items, serviceItems, links, pathname, onNavigate }: MobileMenuProps) => (
   <div id={MOBILE_MENU_ID} className="site-wrap border-t border-line pb-5 lg:hidden">
     <nav aria-label={copy.menuAriaLabel} className="flex flex-col">
-      <Link href={servicesHref} onClick={onNavigate} className="flex min-h-[54px] items-center text-lg font-medium">
+      <Link href={links.servicesHref} onClick={onNavigate} className="flex min-h-[54px] items-center text-lg font-medium">
         {copy.services}
       </Link>
       <NavLinks
@@ -39,20 +37,7 @@ const MobileMenu = ({ copy, items, serviceItems, servicesHref, contactHref, alte
         linkClassName="flex min-h-[54px] items-center border-b border-line text-lg font-medium"
       />
     </nav>
-    <div className="flex flex-wrap items-center justify-between gap-3 pt-4">
-      <Link
-        href={alternate.href}
-        hrefLang={alternate.locale}
-        lang={alternate.locale}
-        onClick={onNavigate}
-        className="inline-flex min-h-11 items-center font-medium underline underline-offset-4"
-      >
-        {copy.otherLanguage}
-      </Link>
-      <ButtonLink href={contactHref} onClick={onNavigate} size="sm">
-        {copy.cta}
-      </ButtonLink>
-    </div>
+    <MobileMenuFooter copy={copy} links={links} onNavigate={onNavigate} />
   </div>
 );
 

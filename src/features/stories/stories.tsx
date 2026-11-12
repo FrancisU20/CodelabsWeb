@@ -3,6 +3,7 @@ import type { Locale } from "@/i18n/locale";
 import { pinLength } from "@/shared/motion/pin-length";
 import Kicker from "@/shared/ui/kicker";
 import StoryItem from "./story-item";
+import StoryDots from "./story-dots";
 import StoryPhone from "./story-phone";
 import styles from "./stories.module.css";
 
@@ -27,11 +28,7 @@ const Stories = ({ locale }: { locale: Locale }) => {
           {dict.items.map((item, index) => (
             <StoryItem key={item.title} item={item} index={index} />
           ))}
-          <div className={styles.dots} aria-hidden="true">
-            {dict.items.map((item, index) => (
-              <i key={item.title} className={styles.dot} data-index={index} />
-            ))}
-          </div>
+          <StoryDots titles={dict.items.map((item) => item.title)} />
         </div>
         <StoryPhone />
       </div>

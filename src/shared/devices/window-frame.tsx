@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import type { WindowKind } from "./window-kind";
 import styles from "./window.module.css";
 
@@ -13,7 +13,7 @@ type WindowFrameProps = {
 };
 
 const WindowFrame = ({ kind, caption, className, children }: WindowFrameProps) => (
-  <div className={cx(styles.frame, styles[kind], className)}>
+  <div className={joinClassNames(styles.frame, styles[kind], className)}>
     <div className={styles.bar}>
       {CONTROL_DOTS.map((control) => (
         <span key={control} className={styles.dot} />

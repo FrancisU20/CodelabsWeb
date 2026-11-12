@@ -1,19 +1,15 @@
 import Link from "next/link";
 import type { ServiceId } from "@/content/service-id";
-import { SERVICE_VIGNETTES } from "@/content/service-vignettes";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath } from "@/i18n/routing";
-import ChatWindow from "@/shared/devices/chat-window";
 import ButtonLink from "@/shared/ui/button/button-link";
-import ServiceVignette from "@/showcase/service-vignette";
+import ServiceArt from "./service-art";
 import styles from "./service-detail.module.css";
 
 const ServiceIntro = ({ service, locale }: { service: ServiceId; locale: Locale }) => {
-  const messages = getMessages(locale);
-  const { labels, items } = messages.servicePages;
+  const { labels, items } = getMessages(locale).servicePages;
   const detail = items[service];
-  const summary = messages.services.items.find((item) => item.id === service);
 
   return (
     <section className={styles.intro} aria-labelledby="service-title">
@@ -28,16 +24,7 @@ const ServiceIntro = ({ service, locale }: { service: ServiceId; locale: Locale 
           <p className="lede m-0">{detail.description}</p>
           <ButtonLink href={pagePath("contact", locale)}>{labels.cta}</ButtonLink>
         </div>
-        <div className={styles.art}>
-          {detail.example ? (
-            <>
-              <ChatWindow {...detail.example} />
-              <p className={styles.note}>{labels.exampleNote}</p>
-            </>
-          ) : (
-            <ServiceVignette kind={SERVICE_VIGNETTES[service]} lines={summary?.vignette.lines ?? []} state={summary?.vignette.state} className={styles.bigVignette} />
-          )}
-        </div>
+        <ServiceArt service={service} locale={locale} />
       </div>
     </section>
   );

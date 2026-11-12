@@ -1,5 +1,5 @@
 import StatusBar from "@/shared/devices/status-bar";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import Icon from "@/shared/ui/icons/svg-icon";
 import styles from "./mockups.module.css";
 import appStyles from "./aura.module.css";
@@ -15,7 +15,7 @@ const SERVICES = [
 ];
 
 const AuraApp = () => (
-  <div className={cx(styles.app, appStyles.aura)}>
+  <div className={joinClassNames(styles.app, appStyles.aura)}>
     <StatusBar />
     <div className={appStyles.auraLogo}>
       <Icon name="mark-aura" className={styles.mark} />
@@ -31,14 +31,14 @@ const AuraApp = () => (
     </div>
     <div className={appStyles.pills}>
       {CATEGORIES.map((category) => (
-        <span key={category} className={cx(appStyles.category, category === ACTIVE_CATEGORY && appStyles.categoryActive)}>
+        <span key={category} className={joinClassNames(appStyles.category, category === ACTIVE_CATEGORY && appStyles.categoryActive)}>
           {category}
         </span>
       ))}
     </div>
     <div>
       {SERVICES.map((service) => (
-        <div key={service.name} className={cx(appStyles.serviceRow, service.active && appStyles.serviceRowActive)}>
+        <div key={service.name} className={joinClassNames(appStyles.serviceRow, service.active && appStyles.serviceRowActive)}>
           <div>
             {service.name}
             <small>{service.detail}</small>
@@ -49,7 +49,7 @@ const AuraApp = () => (
     </div>
     <div className={appStyles.pills}>
       {SLOTS.map((slot) => (
-        <span key={slot} className={cx(appStyles.slot, slot === ACTIVE_SLOT && appStyles.slotActive)}>
+        <span key={slot} className={joinClassNames(appStyles.slot, slot === ACTIVE_SLOT && appStyles.slotActive)}>
           {slot}
         </span>
       ))}

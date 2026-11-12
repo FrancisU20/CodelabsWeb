@@ -1,4 +1,4 @@
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import type { ShipmentStatus } from "./shipment-status";
 import styles from "./mockups.module.css";
 
@@ -20,7 +20,7 @@ type StatusPillProps = {
 };
 
 const StatusPill = ({ status, className }: StatusPillProps) => (
-  <span className={cx(styles.pill, STATUS_CLASS[status], className)}>{STATUS_LABEL[status]}</span>
+  <span className={joinClassNames(styles.pill, STATUS_CLASS[status], className)}>{STATUS_LABEL[status]}</span>
 );
 
 export default StatusPill;

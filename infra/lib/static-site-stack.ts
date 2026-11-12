@@ -3,7 +3,6 @@ import {
   Duration,
   RemovalPolicy,
   Stack,
-  type StackProps,
 } from "aws-cdk-lib";
 import {
   Certificate,
@@ -49,10 +48,7 @@ import { buildCleanUrlHandler } from "./clean-url-handler";
 import { addLeadIntakeRoute } from "./lead-intake-route";
 import type { StaticSiteConfig } from "./config";
 import { createSecurityHeadersPolicy } from "./security-headers-policy";
-
-export interface StaticSiteStackProps extends StackProps {
-  readonly config: StaticSiteConfig;
-}
+import type { StaticSiteStackProps } from "./static-site-stack-props";
 
 const githubActionsAudience = "sts.amazonaws.com";
 const githubOidcHost = "token.actions.githubusercontent.com";
@@ -67,8 +63,8 @@ const productionSubject = (config: StaticSiteConfig): string =>
   `repo:${config.githubOwner}/${config.githubRepository}:environment:production`;
 
 export class StaticSiteStack extends Stack {
-  constructor(scope: Construct, id: string, props: StaticSiteStackProps) {
-    super(scope, id, props);
+  constructor(scope: Construct, stackId: string, props: StaticSiteStackProps) {
+    super(scope, stackId, props);
 
     const { config } = props;
     const hostedZone = HostedZone.fromLookup(this, "HostedZone", { domainName: config.hostedZoneDomainName });

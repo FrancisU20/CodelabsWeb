@@ -2,11 +2,12 @@ import { describe, expect, it } from "vitest";
 import { enMessages } from "./en";
 import { esMessages } from "./es";
 
+type MessageTree = string | number | boolean | readonly MessageTree[] | { readonly [key: string]: MessageTree };
 type Shape = string | Shape[] | { [key: string]: Shape };
 
-const shapeOf = (value: unknown): Shape => {
+const shapeOf = (value: MessageTree): Shape => {
   if (Array.isArray(value)) return value.map(shapeOf);
-  if (value !== null && typeof value === "object") {
+  if (typeof value === "object") {
     return Object.fromEntries(Object.entries(value).map(([key, nested]) => [key, shapeOf(nested)]));
   }
   return typeof value;

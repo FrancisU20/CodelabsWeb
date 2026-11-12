@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import Card from "@/shared/ui/card/card";
 import ServiceVignette from "@/showcase/service-vignette";
 import type { VignetteKind } from "@/showcase/vignette-kind";
@@ -17,7 +17,7 @@ type ServiceCardProps = {
 };
 
 const ServiceCard = ({ href, title, label, summary, more, vignette, layout, className }: ServiceCardProps) => (
-  <Card as="article" padding="sm" className={cx(styles.card, styles[layout], className)} reveal={layout === "row"}>
+  <Card as="article" padding="sm" className={joinClassNames(styles.card, styles[layout], className)} reveal={layout === "row"}>
     <ServiceVignette {...vignette} className={styles.vignette} />
     {label && <p className={styles.label}>{label}</p>}
     <h3 className={styles.name}>

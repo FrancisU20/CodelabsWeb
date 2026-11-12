@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import { cssVars } from "@/shared/lib/css-vars";
 import type { VignetteKind } from "./vignette-kind";
 import styles from "./vignettes.module.css";
@@ -42,7 +42,7 @@ const RENDERERS: Record<VignetteKind, (lines: string[], state?: string) => React
   ),
   chat: (lines) =>
     lines.map((line, index) => (
-      <span key={line} className={cx(styles.bubble, index % 2 === 0 && styles.customer)}>
+      <span key={line} className={joinClassNames(styles.bubble, index % 2 === 0 && styles.customer)}>
         {line}
       </span>
     )),
@@ -58,7 +58,7 @@ const RENDERERS: Record<VignetteKind, (lines: string[], state?: string) => React
 };
 
 const ServiceVignette = ({ kind, lines, state, className }: ServiceVignetteProps) => (
-  <div className={cx(styles.vignette, styles[kind], className)} aria-hidden="true">
+  <div className={joinClassNames(styles.vignette, styles[kind], className)} aria-hidden="true">
     {RENDERERS[kind](lines, state)}
   </div>
 );

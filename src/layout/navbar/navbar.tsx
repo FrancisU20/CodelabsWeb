@@ -4,16 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
-import { getAlternatePath, pagePath } from "@/i18n/routing";
-import ButtonLink from "@/shared/ui/button/button-link";
+import { pagePath } from "@/i18n/routing";
 import Logo from "@/shared/ui/logo";
+import DesktopActions from "./desktop-actions";
 import DesktopNav from "./desktop-nav";
-import LanguageMenu from "./language-menu";
 import MenuToggle from "./menu-toggle";
 import MobileMenu from "./mobile-menu";
 import type { NavItem } from "./nav-item";
 import type { ServiceNavItem } from "./service-nav-item";
 import { MOBILE_MENU_ID } from "./navbar-ids";
+import { navbarLinks } from "./navbar-links";
 import { useDismissibleMenu } from "./use-dismissible-menu";
 
 type NavbarProps = {
@@ -26,10 +26,7 @@ type NavbarProps = {
 const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
   const pathname = usePathname();
   const { open, containerRef, toggleRef, toggle, close } = useDismissibleMenu(pathname, MOBILE_MENU_ID);
-  const otherLocale: Locale = locale === "es" ? "en" : "es";
-  const alternate = { locale: otherLocale, href: getAlternatePath(pathname, otherLocale) };
-  const contactHref = pagePath("contact", locale);
-  const servicesHref = pagePath("services", locale);
+  const links = navbarLinks(locale, pathname);
 
   return (
     <header ref={containerRef} className="sticky top-0 z-50 border-b border-line bg-ink">
@@ -37,27 +34,11 @@ const Navbar = ({ locale, copy, items, serviceItems }: NavbarProps) => {
         <Link href={pagePath("home", locale)} aria-label={copy.homeAriaLabel}>
           <Logo />
         </Link>
-        <DesktopNav copy={copy} items={items} serviceItems={serviceItems} servicesHref={servicesHref} pathname={pathname} />
-        <div className="hidden items-center gap-5 lg:flex">
-          <LanguageMenu copy={copy} pathname={pathname} alternate={alternate} />
-          <ButtonLink href={contactHref} size="sm">
-            {copy.cta}
-          </ButtonLink>
-        </div>
+        <DesktopNav copy={copy} items={items} serviceItems={serviceItems} servicesHref={links.servicesHref} pathname={pathname} />
+        <DesktopActions copy={copy} links={links} pathname={pathname} />
         <MenuToggle buttonRef={toggleRef} open={open} controls={MOBILE_MENU_ID} openLabel={copy.openMenu} closeLabel={copy.closeMenu} onToggle={toggle} />
       </div>
-      {open && (
-        <MobileMenu
-          copy={copy}
-          items={items}
-          serviceItems={serviceItems}
-          servicesHref={servicesHref}
-          contactHref={contactHref}
-          alternate={alternate}
-          pathname={pathname}
-          onNavigate={close}
-        />
-      )}
+      {open && <MobileMenu copy={copy} items={items} serviceItems={serviceItems} links={links} pathname={pathname} onNavigate={close} />}
     </header>
   );
 };

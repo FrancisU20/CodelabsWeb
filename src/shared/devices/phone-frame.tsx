@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import styles from "./phone.module.css";
 
 type PhoneFrameProps = {
@@ -8,7 +8,7 @@ type PhoneFrameProps = {
 };
 
 const PhoneFrame = ({ className, children }: PhoneFrameProps) => (
-  <div className={cx(styles.phone, className)}>
+  <div className={joinClassNames(styles.phone, className)}>
     <div className={styles.screen}>
       <span className={styles.island} />
       {children}
