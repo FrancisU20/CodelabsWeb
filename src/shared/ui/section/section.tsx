@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef } from "react";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import type { SectionSpace } from "./section-space";
 import type { SectionTone } from "./section-tone";
 
@@ -22,7 +22,7 @@ type SectionProps = ComponentPropsWithoutRef<"section"> & {
 };
 
 const Section = ({ tone = "default", space = "none", className, ...props }: SectionProps) => (
-  <section {...props} className={cx(TONE_CLASS[tone], SPACE_CLASS[space], className)} />
+  <section {...props} className={joinClassNames(TONE_CLASS[tone], SPACE_CLASS[space], className)} />
 );
 
 export default Section;

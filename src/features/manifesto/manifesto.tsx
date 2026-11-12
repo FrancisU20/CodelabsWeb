@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { cssVars } from "@/shared/lib/css-vars";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import { pinLength } from "@/shared/motion/pin-length";
 import Section from "@/shared/ui/section/section";
 import styles from "./manifesto.module.css";
@@ -25,7 +25,7 @@ const Manifesto = ({ locale }: { locale: Locale }) => {
         <p className={styles.text} style={cssVars({ "--n": words.length })} aria-hidden="true">
           {words.map((entry, index) => (
             <Fragment key={`${entry.word}-${index}`}>
-              <span className={cx(styles.word, entry.accent && styles.accent)} style={cssVars({ "--i": index })}>
+              <span className={joinClassNames(styles.word, entry.accent && styles.accent)} style={cssVars({ "--i": index })}>
                 {entry.word}
               </span>{" "}
             </Fragment>

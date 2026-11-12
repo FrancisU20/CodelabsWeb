@@ -1,6 +1,6 @@
 import StatusBar from "@/shared/devices/status-bar";
 import Icon from "@/shared/ui/icons/svg-icon";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import styles from "./mockups.module.css";
 import appStyles from "./lexa.module.css";
 
@@ -9,7 +9,7 @@ const CURRENT_STEP = 2;
 const SAMPLE_MRZ = "IDECU1723456789<<<<<<<<";
 
 const LexaApp = () => (
-  <div className={cx(styles.app, appStyles.lexa)}>
+  <div className={joinClassNames(styles.app, appStyles.lexa)}>
     <StatusBar />
     <div className={styles.row}>
       <div className={styles.brandline}>

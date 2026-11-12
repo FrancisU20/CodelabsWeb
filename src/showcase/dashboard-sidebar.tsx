@@ -1,6 +1,6 @@
 import Icon from "@/shared/ui/icons/svg-icon";
 import type { IconName } from "@/shared/ui/icons/icon-name";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import Avatar from "./avatar";
 import styles from "./dashboard.module.css";
 
@@ -20,7 +20,7 @@ const DashboardSidebar = () => (
       </b>
     </div>
     {NAV_ITEMS.map((item) => (
-      <span key={item.label} className={cx(styles.navItem, item.active && styles.navItemActive)}>
+      <span key={item.label} className={joinClassNames(styles.navItem, item.active && styles.navItemActive)}>
         <Icon name={item.icon} />
         {item.label}
       </span>

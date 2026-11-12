@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 
 type KickerProps = {
   as?: "p" | "h2";
@@ -9,7 +9,7 @@ type KickerProps = {
 };
 
 const Kicker = ({ as: Element = "p", id, className, children }: KickerProps) => (
-  <Element id={id} className={cx("kicker", className)}>
+  <Element id={id} className={joinClassNames("kicker", className)}>
     {children}
   </Element>
 );

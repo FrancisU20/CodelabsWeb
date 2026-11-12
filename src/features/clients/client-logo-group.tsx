@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { ClientLogo } from "@/content/client-logo";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import styles from "./clients.module.css";
 
 const LOGO_WIDTH = 480;
@@ -12,7 +12,7 @@ type ClientLogoGroupProps = {
 };
 
 const ClientLogoGroup = ({ logos, duplicate = false }: ClientLogoGroupProps) => (
-  <div className={cx(styles.group, duplicate && styles.duplicate)} aria-hidden={duplicate || undefined}>
+  <div className={joinClassNames(styles.group, duplicate && styles.duplicate)} aria-hidden={duplicate || undefined}>
     {logos.map((client) => (
       <span key={client.src} className={styles.tile}>
         <Image src={client.src} alt={duplicate ? "" : client.name} width={LOGO_WIDTH} height={LOGO_HEIGHT} />

@@ -1,6 +1,6 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
-import { cx } from "@/shared/lib/class-names";
+import { joinClassNames } from "@/shared/lib/class-names";
 import Card from "@/shared/ui/card/card";
 import Section from "@/shared/ui/section/section";
 import SectionHeading from "@/shared/ui/section/section-heading";
@@ -20,7 +20,7 @@ const Team = ({ locale }: { locale: Locale }) => {
         </div>
         <div className={styles.grid} data-reveal>
           {dict.roles.map((role) => (
-            <Card key={role.id} className={cx(styles.role, role.id === LEAD_ROLE && cx("tone-brand", styles.lead))}>
+            <Card key={role.id} className={joinClassNames(styles.role, role.id === LEAD_ROLE && joinClassNames("tone-brand", styles.lead))}>
               <div>
                 <b>{role.title}</b>
                 <span>{role.body}</span>
