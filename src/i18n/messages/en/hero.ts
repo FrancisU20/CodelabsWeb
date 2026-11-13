@@ -9,15 +9,5 @@ export const hero: Messages["hero"] = {
   ctaPrimary: "Tell us your idea",
   ctaSecondary: "See case studies",
   note: "We usually reply the same day.",
-  chatLabel: "Example of an assistant replying on WhatsApp",
-  chat: {
-    name: "Your business assistant",
-    initial: "A",
-    status: "online",
-    messages: [
-      { from: "customer", text: "Hi, do you have a slot on Saturday morning?" },
-      { from: "assistant", text: "Hi! Yes, at 9:00 and 10:30. Which one should I book for you?" },
-    ],
-  },
-  toast: { title: "Invoice sent", detail: "Automation · 1 min ago" },
+  showcaseLabel: "Screens from apps built by CodeLabs: appointment booking, classes and customer sign-up",
 };
