@@ -7,6 +7,7 @@ const TONE_CLASS: Record<SectionTone, string | undefined> = {
   default: undefined,
   mist: "tone-mist",
   night: "tone-night",
+  deep: "tone-deep",
   brand: "tone-brand",
 };
 

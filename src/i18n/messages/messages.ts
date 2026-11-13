@@ -29,9 +29,7 @@ export type Messages = {
     ctaPrimary: string;
     ctaSecondary: string;
     note: string;
-    chat: ChatCopy;
-    chatLabel: string;
-    toast: { title: string; detail: string };
+    showcaseLabel: string;
   };
   clients: {
     title: string;
