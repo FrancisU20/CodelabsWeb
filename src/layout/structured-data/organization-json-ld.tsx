@@ -1,8 +1,10 @@
 import { CONTACT_EMAIL, WHATSAPP_NUMBER } from "@/config/contact";
 import { GOOGLE_BUSINESS_URL, LINKEDIN_URL, ORGANIZATION_ID, SITE_LOCATION, SITE_NAME, SITE_URL } from "@/config/site";
+import { FOUNDING_YEAR } from "@/content/company-figures";
 import { IMAGES } from "@/content/images";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
+import { servedCountries } from "./served-countries";
 
 const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
   const organization = {
@@ -16,7 +18,8 @@ const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
     description: getMessages(locale).seo.home.description,
     email: CONTACT_EMAIL,
     telephone: `+${WHATSAPP_NUMBER}`,
-    areaServed: SITE_LOCATION.country,
+    foundingDate: String(FOUNDING_YEAR),
+    areaServed: servedCountries(locale),
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE_LOCATION.street,

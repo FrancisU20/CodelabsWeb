@@ -33,6 +33,7 @@ export type Messages = {
   };
   clients: {
     title: string;
+    figures: { label: string; founded: string; projects: string; apps: string; countries: string };
     reviewsLabel: string;
     reviewSource: string;
     reviewsLink: string;
