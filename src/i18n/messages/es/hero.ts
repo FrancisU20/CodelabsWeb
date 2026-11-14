@@ -1,12 +1,12 @@
 import type { Messages } from "../messages";
 
 export const hero: Messages["hero"] = {
-  eyebrow: "Software, automatización e inteligencia artificial para negocios en Ecuador",
-  titleLead: "Ponemos la tecnología a",
-  titleAccent: "trabajar para tu negocio.",
+  eyebrow: "Desarrollo de software, IA y nube AWS · Ecuador y la región",
+  titleLead: "Construimos el software",
+  titleAccent: "que mueve tu empresa.",
   subtitle:
-    "Páginas web, apps, automatizaciones e inteligencia artificial para empresas, emprendedores y pequeños negocios. Te ayudamos a elegir lo que de verdad necesitas, lo construimos y lo mantenemos funcionando.",
-  ctaPrimary: "Cuéntanos tu idea",
+    "Software a la medida, apps, automatización con IA y plataformas en AWS para bancos, aseguradoras, retail y empresas en crecimiento. Por proyecto o con un equipo dedicado.",
+  ctaPrimary: "Cuéntanos tu proyecto",
   ctaSecondary: "Ver casos de éxito",
   note: "Normalmente contestamos el mismo día.",
   showcaseLabel: "Pantallas de apps hechas por CodeLabs: reservas de citas, clases y registro de clientes",

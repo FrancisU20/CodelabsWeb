@@ -2,12 +2,12 @@ import type { Messages } from "../messages";
 
 export const seo: Messages["seo"] = {
   home: {
-    title: "Software, automation and AI for businesses in Ecuador | CodeLabs",
-    description: "Websites, apps, automations and artificial intelligence for companies, entrepreneurs and small businesses in Ecuador.",
+    title: "Software development, AI and AWS cloud for companies | CodeLabs",
+    description: "Custom software, apps, AI automation and AWS cloud for banks, insurers, retailers and growing companies in Ecuador and the region.",
   },
   services: {
-    title: "Software, automation and AI services | CodeLabs",
-    description: "Websites and online stores, apps, automation, artificial intelligence, custom systems, cloud, security and support.",
+    title: "Software development, AI and cloud services | CodeLabs",
+    description: "Custom software, mobile apps, websites and e-commerce, automation, artificial intelligence, AWS cloud and support. As a fixed project or with a dedicated team.",
   },
   work: {
     title: "Case studies: AI, apps and platforms | CodeLabs",
@@ -18,11 +18,11 @@ export const seo: Messages["seo"] = {
     description: "We talk, show you the design, build in parts and stay with you after launch.",
   },
   about: {
-    title: "Software company in Ibarra, Ecuador | CodeLabs",
-    description: "We help companies, entrepreneurs and small businesses organize their operation, reach more customers and save time with technology.",
+    title: "Software development company in Ecuador | CodeLabs",
+    description: "Since 2018 we have built software for banks, insurers, retail chains and growing companies in Ecuador, Peru, Colombia and Mexico.",
   },
   contact: {
     title: "Contact | CodeLabs",
-    description: "Tell us what you want to improve in your business on WhatsApp, email or phone. We usually reply the same day.",
+    description: "Tell us what your company needs on WhatsApp, email or phone. We usually reply the same day.",
   },
 };

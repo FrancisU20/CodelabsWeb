@@ -1,3 +1,4 @@
+import type { IndustryId } from "@/content/industry-id";
 import type { RoleId } from "@/content/role-id";
 import type { ServiceId } from "@/content/service-id";
 import type { PageKey } from "../page-key";
@@ -33,7 +34,7 @@ export type Messages = {
   };
   clients: {
     title: string;
-    figures: { label: string; founded: string; projects: string; apps: string; countries: string };
+    industries: { title: string; items: Record<IndustryId, string> };
     reviewsLabel: string;
     reviewSource: string;
     reviewsLink: string;
@@ -63,6 +64,7 @@ export type Messages = {
     more: string;
     helpChat: ChatCopy;
     items: { id: ServiceId; title: string; need: string; summary: string; vignette: { lines: string[]; state?: string } }[];
+    engagement: { title: SectionTitleCopy; items: { title: string; body: string }[] };
   };
   quality: {
     ariaLabel: string;
@@ -78,14 +80,15 @@ export type Messages = {
     eyebrow: string;
     captionStrong: string;
     captionMuted: string;
-    resultsAriaLabel: string;
-    results: { title: string; body: string }[];
+    figuresLabel: string;
+    figures: { founded: string; apps: string; awsPartner: string; awsCertifications: string };
   };
   aws: {
     eyebrow: string;
     title: SectionTitleCopy;
     badgeTitle: string;
-    badgeCaption: string;
+    badgeCertifications: string;
+    badgeAccreditations: string;
     body: string;
     flowAriaLabel: string;
     flow: { label: string; detail: string }[];

@@ -2,13 +2,13 @@ import type { Messages } from "../messages";
 
 export const seo: Messages["seo"] = {
   home: {
-    title: "Software, automatización e IA para negocios en Ecuador | CodeLabs",
+    title: "Desarrollo de software, IA y nube AWS para empresas | CodeLabs",
     description:
-      "Páginas web, apps, automatizaciones e inteligencia artificial para empresas, emprendedores y pequeños negocios en Ecuador.",
+      "Software a la medida, apps, automatización con IA y nube AWS para bancos, aseguradoras, retail y empresas en crecimiento de Ecuador y la región.",
   },
   services: {
-    title: "Servicios de software, automatización e IA | CodeLabs",
-    description: "Páginas web y tiendas, apps, automatización, inteligencia artificial, sistemas a la medida, nube, seguridad y soporte.",
+    title: "Servicios de desarrollo de software, IA y nube | CodeLabs",
+    description: "Software a la medida, apps móviles, webs y comercio electrónico, automatización, inteligencia artificial, nube AWS y soporte. Por proyecto o con equipo dedicado.",
   },
   work: {
     title: "Casos de éxito: IA, apps y plataformas | CodeLabs",
@@ -19,11 +19,11 @@ export const seo: Messages["seo"] = {
     description: "Conversamos, te mostramos el diseño, construimos por partes y te acompañamos después del lanzamiento.",
   },
   about: {
-    title: "Empresa de software en Ibarra, Ecuador | CodeLabs",
-    description: "Ayudamos a empresas, emprendedores y pequeños negocios a ordenar su operación, llegar a más clientes y ahorrar tiempo con tecnología.",
+    title: "Empresa de desarrollo de software en Ecuador | CodeLabs",
+    description: "Desde 2018 desarrollamos software para bancos, aseguradoras, cadenas de retail y empresas en crecimiento de Ecuador, Perú, Colombia y México.",
   },
   contact: {
     title: "Contacto | CodeLabs",
-    description: "Cuéntanos qué quieres mejorar en tu negocio por WhatsApp, correo o teléfono. Normalmente contestamos el mismo día.",
+    description: "Cuéntanos qué necesita tu empresa por WhatsApp, correo o teléfono. Normalmente contestamos el mismo día.",
   },
 };

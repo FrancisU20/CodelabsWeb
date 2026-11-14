@@ -1,1 +1,0 @@
-export const HEALTH_APPS_SPEED_GAIN_PERCENT = 40;

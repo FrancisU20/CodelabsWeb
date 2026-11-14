@@ -3,8 +3,9 @@ import type { Messages } from "../messages";
 export const aws: Messages["aws"] = {
   eyebrow: "Amazon Web Services",
   title: { lines: ["Your systems run", "on Amazon's cloud."] },
-  badgeTitle: "Official AWS partners",
-  badgeCaption: "Amazon-certified team",
+  badgeTitle: "AWS Select Tier partners",
+  badgeCertifications: "AWS certifications and",
+  badgeAccreditations: "AWS accreditations on the team",
   body: "It's the same infrastructure banks and major brands use. We set it up and maintain it for you.",
   flowAriaLabel:
     "How a request travels: your customers, self-scaling servers, automated processes, everything connected, nothing gets lost and protected data",

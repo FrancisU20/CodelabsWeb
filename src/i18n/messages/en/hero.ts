@@ -1,12 +1,12 @@
 import type { Messages } from "../messages";
 
 export const hero: Messages["hero"] = {
-  eyebrow: "Software, automation and artificial intelligence for businesses in Ecuador",
-  titleLead: "We put technology to",
-  titleAccent: "work for your business.",
+  eyebrow: "Software development, AI and AWS cloud · Ecuador and the region",
+  titleLead: "We build the software",
+  titleAccent: "that runs your company.",
   subtitle:
-    "Websites, apps, automations and artificial intelligence for companies, entrepreneurs and small businesses. We help you choose what you really need, build it and keep it running.",
-  ctaPrimary: "Tell us your idea",
+    "Custom software, apps, AI automation and AWS platforms for banks, insurers, retailers and growing companies. As a fixed project or with a dedicated team.",
+  ctaPrimary: "Tell us about your project",
   ctaSecondary: "See case studies",
   note: "We usually reply the same day.",
   showcaseLabel: "Screens from apps built by CodeLabs: appointment booking, classes and customer sign-up",

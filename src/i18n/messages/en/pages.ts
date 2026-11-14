@@ -3,12 +3,12 @@ import type { Messages } from "../messages";
 export const pages: Messages["pages"] = {
   services: {
     eyebrow: "Services",
-    title: "What we can do for your business.",
-    description: "Pick where to start. If you're not sure which one you need, tell us what you want to solve and we'll recommend one.",
+    title: "What we build for your company.",
+    description: "Pick where to start. If you're not sure what you need, tell us the problem and we'll propose the solution.",
   },
   work: {
     eyebrow: "Case studies",
-    title: "What we have already built for other businesses.",
+    title: "What we have already built for other companies.",
     description: "Projects that are in use today. For confidentiality we don't show names or our clients' apps; the screens are references.",
   },
   howWeWork: {
@@ -19,11 +19,11 @@ export const pages: Messages["pages"] = {
   about: {
     eyebrow: "About",
     title: "We are CodeLabs, a software company from Ibarra, Ecuador.",
-    description: "We help companies, entrepreneurs and small businesses organize their operation, reach more customers and save time with technology.",
+    description: "Since 2018 we have built software for banks, insurers, retail chains and growing companies in Ecuador, Peru, Colombia and Mexico.",
   },
   contact: {
     eyebrow: "Contact",
-    title: "Tell us what you want to improve in your business.",
+    title: "Tell us what your company needs.",
     description: "Write to us here, on WhatsApp or by email. The team that will build it is the one that answers, usually the same day.",
   },
 };
