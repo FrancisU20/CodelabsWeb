@@ -35,6 +35,7 @@ export type Messages = {
     title: string;
     reviewsLabel: string;
     reviewSource: string;
+    reviewsLink: string;
     reviews: { quote: string; author: string }[];
   };
   manifesto: {
@@ -116,6 +117,7 @@ export type Messages = {
   };
   footer: {
     legalAriaLabel: string;
+    linkedin: string;
     privacy: string;
     terms: string;
     dataProcessing: string;

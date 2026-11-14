@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE_CITY, SITE_NAME } from "@/config/site";
+import { LINKEDIN_URL, SITE_CITY, SITE_NAME } from "@/config/site";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { legalPath } from "@/i18n/routing";
@@ -21,6 +21,9 @@ const Footer = ({ locale }: { locale: Locale }) => {
         <span>
           © {new Date().getFullYear()} {SITE_NAME}. {SITE_CITY}.
         </span>
+        <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="py-1 hover:text-fg">
+          {dict.linkedin}
+        </a>
         <nav aria-label={dict.legalAriaLabel} className="flex flex-wrap gap-x-6 gap-y-2">
           {legalLinks.map((link) => (
             <Link key={link.href} href={link.href} className="py-1 hover:text-fg">
