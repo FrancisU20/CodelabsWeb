@@ -2,13 +2,6 @@ import type { Messages } from "../messages";
 
 export const clients: Messages["clients"] = {
   title: "Empresas con las que hemos trabajado",
-  figures: {
-    label: "CodeLabs en cifras",
-    founded: "Desarrollando software",
-    projects: "Proyectos entregados",
-    apps: "Apps publicadas",
-    countries: "países",
-  },
   reviewsLabel: "Reseñas de clientes en Google, 5 de 5 estrellas",
   reviewSource: "Reseña en Google",
   reviewsLink: "Ver las reseñas en Google",

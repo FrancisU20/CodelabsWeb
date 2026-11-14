@@ -33,7 +33,6 @@ export type Messages = {
   };
   clients: {
     title: string;
-    figures: { label: string; founded: string; projects: string; apps: string; countries: string };
     reviewsLabel: string;
     reviewSource: string;
     reviewsLink: string;
@@ -78,8 +77,8 @@ export type Messages = {
     eyebrow: string;
     captionStrong: string;
     captionMuted: string;
-    resultsAriaLabel: string;
-    results: { title: string; body: string }[];
+    figuresLabel: string;
+    figures: { founded: string; apps: string };
   };
   aws: {
     eyebrow: string;

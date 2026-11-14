@@ -36,8 +36,9 @@
 }
 
 .grid {
+  margin-block: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 40px;
 }
 
@@ -45,21 +46,33 @@
   border-top: 1px solid var(--line);
   padding-block: 24px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
   gap: 6px;
   min-width: 0;
 }
 
-.result strong {
+.result dd {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: var(--text-card);
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  font-size: var(--text-number);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--fg);
 }
 
-.result span {
+.result dt {
   color: var(--muted);
   font-size: var(--text-body);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    gap: 0 20px;
+  }
 }
 
 :global(.motion) .stage {
