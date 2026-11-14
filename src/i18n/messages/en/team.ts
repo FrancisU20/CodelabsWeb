@@ -8,7 +8,7 @@ export const team: Messages["team"] = {
     { id: "manager", title: "Project management", body: "Your contact, who tells you every week how it's going." },
     { id: "design", title: "Design", body: "Makes the screens and sees that they're clear the first time." },
     { id: "development", title: "Web and mobile development", body: "Programs your website, your app or your system." },
-    { id: "automation", title: "Automation and AI", body: "Connects your programs and sets up the assistants with your business information." },
+    { id: "automation", title: "Automation and AI", body: "Integrates your systems and sets up the assistants with your company information." },
     { id: "cloud", title: "Cloud and security", body: "Looks after the servers and protects your information." },
     { id: "support", title: "Testing and support", body: "Checks everything before delivery and helps you once it's in use." },
   ],

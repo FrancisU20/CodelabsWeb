@@ -3,12 +3,12 @@ import type { Messages } from "../messages";
 export const pages: Messages["pages"] = {
   services: {
     eyebrow: "Servicios",
-    title: "Lo que podemos hacer por tu negocio.",
-    description: "Elige por dónde empezar. Si no sabes cuál necesitas, cuéntanos qué quieres resolver y te recomendamos.",
+    title: "Lo que construimos para tu empresa.",
+    description: "Elige por dónde empezar. Si no tienes claro qué necesitas, cuéntanos el problema y te proponemos la solución.",
   },
   work: {
     eyebrow: "Casos de éxito",
-    title: "Lo que ya construimos para otros negocios.",
+    title: "Lo que ya construimos para otras empresas.",
     description:
       "Proyectos que hoy están en uso. Por confidencialidad no mostramos nombres ni las apps de nuestros clientes; las pantallas son de referencia.",
   },
@@ -20,11 +20,11 @@ export const pages: Messages["pages"] = {
   about: {
     eyebrow: "Nosotros",
     title: "Somos CodeLabs, una empresa de software de Ibarra, Ecuador.",
-    description: "Ayudamos a empresas, emprendedores y pequeños negocios a ordenar su operación, llegar a más clientes y ahorrar tiempo con tecnología.",
+    description: "Desde 2018 desarrollamos software para bancos, aseguradoras, cadenas de retail y empresas en crecimiento de Ecuador, Perú, Colombia y México.",
   },
   contact: {
     eyebrow: "Contacto",
-    title: "Cuéntanos qué quieres mejorar en tu negocio.",
+    title: "Cuéntanos qué necesita tu empresa.",
     description: "Escríbenos por aquí, por WhatsApp o por correo. Te contesta el equipo que lo va a construir, normalmente el mismo día.",
   },
 };

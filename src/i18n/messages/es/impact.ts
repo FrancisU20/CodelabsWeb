@@ -8,5 +8,7 @@ export const impact: Messages["impact"] = {
   figures: {
     founded: "Desarrollando software",
     apps: "Apps publicadas",
+    awsPartner: "Socios de nivel Select",
+    awsCertifications: "certificaciones en el equipo",
   },
 };

@@ -1,4 +1,5 @@
 import ClosingCall from "@/features/closing-call/closing-call";
+import EngagementModels from "@/features/services/engagement-models";
 import ServicesList from "@/features/services/services-list";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
@@ -12,6 +13,7 @@ const ServicesView = ({ locale }: { locale: Locale }) => {
     <>
       <PageIntro {...messages.pages.services} aside={<ChatWindow {...messages.services.helpChat} />} />
       <ServicesList locale={locale} />
+      <EngagementModels locale={locale} />
       <ClosingCall locale={locale} />
     </>
   );

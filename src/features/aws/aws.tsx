@@ -1,3 +1,4 @@
+import { AWS_ACCREDITATIONS, AWS_CERTIFICATIONS } from "@/content/company-figures";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import SectionHeading from "@/shared/ui/section/section-heading";
@@ -18,7 +19,7 @@ const Aws = ({ locale }: { locale: Locale }) => {
               <AwsLogo />
               <div className={styles.badgeText}>
                 <strong>{dict.badgeTitle}</strong>
-                <span>{dict.badgeCaption}</span>
+                <span>{`${AWS_CERTIFICATIONS} ${dict.badgeCertifications} ${AWS_ACCREDITATIONS} ${dict.badgeAccreditations}`}</span>
               </div>
             </div>
             <p className="lede m-0">{dict.body}</p>

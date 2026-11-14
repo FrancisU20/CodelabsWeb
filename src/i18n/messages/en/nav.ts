@@ -8,7 +8,7 @@ export const nav: Messages["nav"] = {
   services: "Services",
   allServices: "See all services",
   about: "About",
-  cta: "Tell us your idea",
+  cta: "Tell us about your project",
   openMenu: "Open menu",
   closeMenu: "Close menu",
   skipToContent: "Skip to content",

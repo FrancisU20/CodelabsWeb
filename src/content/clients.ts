@@ -1,31 +1,34 @@
 import type { ClientLogo } from "./client-logo";
+import type { IndustryId } from "./industry-id";
 import { clientLogoPath } from "./images";
 
-const logo = (name: string, file: string): ClientLogo => ({ name, src: clientLogoPath(file) });
+const logo = (name: string, file: string, industry: IndustryId): ClientLogo => ({ name, src: clientLogoPath(file), industry });
 
 export const clientLogoRows: ClientLogo[][] = [
   [
-    logo("Corporación Favorita", "favorita"),
-    logo("Banco Pichincha", "pichincha"),
-    logo("Banco Guayaquil", "guayaquil"),
-    logo("Produbanco", "produbanco"),
-    logo("Diners Club", "diners"),
-    logo("Banco Bolivariano", "bolivariano"),
-    logo("Corporación El Rosado", "rosado"),
-    logo("Grupo KFC", "kfc"),
-    logo("Pronaca", "pronaca"),
-    logo("Farmaenlace", "farmaenlace"),
+    logo("Corporación Favorita", "favorita", "retail"),
+    logo("Banco Pichincha", "pichincha", "banking"),
+    logo("Banco Guayaquil", "guayaquil", "banking"),
+    logo("Produbanco", "produbanco", "banking"),
+    logo("Diners Club", "diners", "banking"),
+    logo("Banco Bolivariano", "bolivariano", "banking"),
+    logo("Corporación El Rosado", "rosado", "retail"),
+    logo("Grupo KFC", "kfc", "retail"),
+    logo("Pronaca", "pronaca", "retail"),
+    logo("Farmaenlace", "farmaenlace", "pharma"),
   ],
   [
-    logo("Corporación GPF", "gpf"),
-    logo("Grupo Difare", "difare"),
-    logo("Salud S.A.", "saludsa"),
-    logo("Confiamed", "confiamed"),
-    logo("Marathon Sports", "marathon"),
-    logo("Kywi", "kywi"),
-    logo("Grupo Tramaco", "tramaco"),
-    logo("BASC", "basc"),
-    logo("Curve Pilates", "curve-pilates"),
-    logo("Emilia Beauty Bar", "emilia-beauty"),
+    logo("Corporación GPF", "gpf", "pharma"),
+    logo("Grupo Difare", "difare", "pharma"),
+    logo("Salud S.A.", "saludsa", "health"),
+    logo("Confiamed", "confiamed", "health"),
+    logo("Marathon Sports", "marathon", "retail"),
+    logo("Kywi", "kywi", "retail"),
+    logo("Grupo Tramaco", "tramaco", "logistics"),
+    logo("BASC", "basc", "logistics"),
+    logo("Curve Pilates", "curve-pilates", "growth"),
+    logo("Emilia Beauty Bar", "emilia-beauty", "growth"),
   ],
 ];
+
+export const clientLogos: readonly ClientLogo[] = clientLogoRows.flat();
