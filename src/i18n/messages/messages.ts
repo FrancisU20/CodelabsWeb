@@ -29,12 +29,15 @@ export type Messages = {
     ctaPrimary: string;
     ctaSecondary: string;
     note: string;
-    chat: ChatCopy;
-    chatLabel: string;
-    toast: { title: string; detail: string };
+    showcaseLabel: string;
   };
   clients: {
     title: string;
+    figures: { label: string; founded: string; projects: string; apps: string; countries: string };
+    reviewsLabel: string;
+    reviewSource: string;
+    reviewsLink: string;
+    reviews: { quote: string; author: string }[];
   };
   manifesto: {
     ariaLabel: string;
@@ -115,6 +118,7 @@ export type Messages = {
   };
   footer: {
     legalAriaLabel: string;
+    linkedin: string;
     privacy: string;
     terms: string;
     dataProcessing: string;

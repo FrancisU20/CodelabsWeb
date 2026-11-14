@@ -1,8 +1,9 @@
-import { ORGANIZATION_ID, SITE_LOCATION, SITE_NAME, SITE_URL } from "@/config/site";
+import { ORGANIZATION_ID, SITE_NAME, SITE_URL } from "@/config/site";
 import type { ServiceId } from "@/content/service-id";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath, servicePath } from "@/i18n/routing";
+import { servedCountries } from "./served-countries";
 
 const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale }) => {
   const messages = getMessages(locale);
@@ -22,7 +23,7 @@ const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale
         description: detail.seoDescription,
         url,
         provider: { "@id": ORGANIZATION_ID },
-        areaServed: { "@type": "Country", name: SITE_LOCATION.countryName },
+        areaServed: servedCountries(locale),
       },
       {
         "@type": "BreadcrumbList",

@@ -8,6 +8,7 @@
   --muted: #474a60;
   --dim: #5f6277;
   --night: #1b1a4a;
+  --night-deep: #0e0d2b;
   --night-soft: #2e2c78;
   --night-text: #d9d8f5;
   --night-accent: #b9b6ff;
@@ -21,6 +22,7 @@
   --brand-deep: #3f37c9;
   --shadow-deep: rgba(20, 20, 50, 0.22);
   --shadow-glow: rgba(20, 20, 50, 0.14);
+  --shadow-stage: rgba(0, 0, 0, 0.55);
   --tile-line: #dfe1ec;
   --aws-orange: #ff9900;
   --wa: #25d366;

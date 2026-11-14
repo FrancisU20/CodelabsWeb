@@ -1,1 +1,1 @@
-export type SectionTone = "default" | "mist" | "night" | "brand";
+export type SectionTone = "default" | "mist" | "night" | "deep" | "brand";

@@ -17,7 +17,7 @@ const Process = ({ locale }: { locale: Locale }) => {
             <li key={step.title} className={styles.step} style={cssVars({ "--i": index })} data-reveal>
               <span className={styles.number} data-number={stepNumber(index)} aria-hidden="true" />
               <div>
-                <h3 className={styles.title}>{step.title}</h3>
+                <h2 className={styles.title}>{step.title}</h2>
                 <p className={styles.body}>{step.body}</p>
               </div>
             </li>
