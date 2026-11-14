@@ -4,6 +4,7 @@ import type { Locale } from "@/i18n/locale";
 import { CLIENTS_ANCHOR } from "@/i18n/routing";
 import { joinClassNames } from "@/shared/lib/class-names";
 import ClientLogoGroup from "./client-logo-group";
+import ClientReviews from "./client-reviews";
 import styles from "./clients.module.css";
 
 const Clients = ({ locale }: { locale: Locale }) => {
@@ -24,6 +25,7 @@ const Clients = ({ locale }: { locale: Locale }) => {
           </div>
         ))}
       </div>
+      <ClientReviews copy={dict} />
     </section>
   );
 };

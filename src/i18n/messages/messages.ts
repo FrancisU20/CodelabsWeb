@@ -33,6 +33,9 @@ export type Messages = {
   };
   clients: {
     title: string;
+    reviewsLabel: string;
+    reviewSource: string;
+    reviews: { quote: string; author: string }[];
   };
   manifesto: {
     ariaLabel: string;
