@@ -171,7 +171,11 @@
   }
 
   .figure {
-    padding-block: 18px 22px;
+    padding-block: 18px 12px;
+  }
+
+  .reviewsBlock {
+    margin-top: 0;
   }
 
   .tile {
