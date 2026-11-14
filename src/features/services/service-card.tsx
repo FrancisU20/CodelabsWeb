@@ -13,16 +13,17 @@ type ServiceCardProps = {
   more: string;
   vignette: { kind: VignetteKind; lines: string[]; state?: string };
   layout: "stacked" | "row";
+  headingLevel?: "h2" | "h3";
   className?: string;
 };
 
-const ServiceCard = ({ href, title, label, summary, more, vignette, layout, className }: ServiceCardProps) => (
+const ServiceCard = ({ href, title, label, summary, more, vignette, layout, headingLevel: Heading = "h3", className }: ServiceCardProps) => (
   <Card as="article" padding="sm" className={joinClassNames(styles.card, styles[layout], className)} reveal={layout === "row"}>
     <ServiceVignette {...vignette} className={styles.vignette} />
     {label && <p className={styles.label}>{label}</p>}
-    <h3 className={styles.name}>
+    <Heading className={styles.name}>
       <Link href={href}>{title}</Link>
-    </h3>
+    </Heading>
     {summary && <p className={styles.summary}>{summary}</p>}
     <span className={styles.more} aria-hidden="true">
       {more}
