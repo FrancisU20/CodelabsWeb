@@ -1,3 +1,4 @@
+import { BOOKING_URL } from "@/config/contact";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath } from "@/i18n/routing";
@@ -16,9 +17,14 @@ const ClosingCall = ({ locale }: { locale: Locale }) => {
           </h2>
           <p className="mt-3 mb-0 text-lg text-brand-on">{copy.body}</p>
         </div>
-        <ButtonLink variant="light" href={pagePath("contact", locale)}>
-          {copy.cta}
-        </ButtonLink>
+        <div className="flex flex-wrap gap-3">
+          <ButtonLink variant="light" href={pagePath("contact", locale)}>
+            {copy.cta}
+          </ButtonLink>
+          <ButtonLink variant="outline" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+            {copy.bookingCta}
+          </ButtonLink>
+        </div>
       </div>
     </Section>
   );

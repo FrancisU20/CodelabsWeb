@@ -8,6 +8,9 @@ export const CONTACT_PHONE_DISPLAY = "098 452 2092";
 
 export const WHATSAPP_NUMBER = "593984522092";
 
+export const BOOKING_URL =
+  "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3WuhM8JhhcjoUDA3x390onizwad9dD32VUKZpM4KUFAMpoHftJGlP-KAN8O1sHAiC44T2H3pPm";
+
 export const PHONE_LINK = `tel:+${WHATSAPP_NUMBER}`;
 
 export const EMAIL_LINK = `mailto:${CONTACT_EMAIL}`;
