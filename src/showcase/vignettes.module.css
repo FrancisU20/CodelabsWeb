@@ -177,7 +177,7 @@
   margin-left: auto;
   padding-left: 6px;
   font-style: normal;
-  color: var(--ok);
+  color: var(--ok-text);
 }
 
 @media (prefers-reduced-motion: no-preference) {

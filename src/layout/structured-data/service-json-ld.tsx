@@ -4,6 +4,7 @@ import type { ServiceId } from "@/content/service-id";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath, servicePath } from "@/i18n/routing";
+import { serviceFaqs } from "@/i18n/service-faqs";
 import { servedCountries } from "./served-countries";
 
 const PRICE_CURRENCY = "USD";
@@ -32,6 +33,14 @@ const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale
           priceCurrency: PRICE_CURRENCY,
           priceSpecification: { "@type": "PriceSpecification", minPrice: SERVICE_PRICES[service].from, priceCurrency: PRICE_CURRENCY },
         },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: serviceFaqs(service, locale).map((entry) => ({
+          "@type": "Question",
+          name: entry.question,
+          acceptedAnswer: { "@type": "Answer", text: entry.answer },
+        })),
       },
       {
         "@type": "BreadcrumbList",

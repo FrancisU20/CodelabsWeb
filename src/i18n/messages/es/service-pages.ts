@@ -1,7 +1,7 @@
 import type { Messages } from "../messages";
 
 export const servicePages: Messages["servicePages"] = {
-  labels: { back: "Todos los servicios", cta: "Cuéntanos tu proyecto", fitTitle: "Te conviene si…", includesTitle: "Qué incluye", otherTitle: "Otros servicios", exampleNote: "Conversación de ejemplo" },
+  labels: { back: "Todos los servicios", cta: "Cuéntanos tu proyecto", fitTitle: "Te conviene si…", includesTitle: "Qué incluye", otherTitle: "Otros servicios" },
   items: {
     web: {
       seoTitle: "Desarrollo web y comercio electrónico en Ecuador | CodeLabs",
@@ -15,10 +15,10 @@ export const servicePages: Messages["servicePages"] = {
         "Necesitas aparecer cuando te buscan en Google.",
       ],
       includes: [
-        { title: "Sitio corporativo", body: "Quiénes son, qué ofrecen y cómo contactarlos." },
-        { title: "Comercio electrónico", body: "Catálogo, carrito, pagos y seguimiento de pedidos." },
-        { title: "Integraciones", body: "Con tu inventario, tu facturación y tu CRM." },
-        { title: "Posicionamiento en Google", body: "Estructura y textos pensados en lo que buscan tus clientes." },
+        { title: "Sitio corporativo", body: "Páginas claras sobre quiénes son y qué ofrecen, rápidas en el celular y fáciles de actualizar." },
+        { title: "Comercio electrónico", body: "Catálogo, carrito, pagos con tarjeta, cupones y seguimiento de pedidos." },
+        { title: "Integraciones", body: "Con tu inventario, facturación electrónica, CRM y WhatsApp." },
+        { title: "Posicionamiento en Google", body: "Datos estructurados, velocidad, sitemap y textos pensados en las búsquedas de tus clientes." },
       ],
     },
     mobile: {
@@ -33,10 +33,10 @@ export const servicePages: Messages["servicePages"] = {
         "Necesitas validar identidad o firmar documentos en línea.",
       ],
       includes: [
-        { title: "Apps para clientes", body: "Compras, reservas, pagos y trámites." },
-        { title: "Apps para equipos", body: "Visitas, entregas, inventario y auditorías." },
-        { title: "Identidad y firma digital", body: "Biometría y firma electrónica certificada." },
-        { title: "Publicación y soporte", body: "En App Store y Google Play, con actualizaciones." },
+        { title: "Apps para clientes", body: "Catálogo, carrito, pagos con tarjeta, reservas, seguimiento de pedidos y perfil." },
+        { title: "Apps para equipos", body: "Visitas, entregas, inventario, auditorías y firma del cliente en el celular." },
+        { title: "Identidad y firma digital", body: "Validación con cédula y reconocimiento facial, y firma electrónica certificada." },
+        { title: "Publicación y soporte", body: "Publicamos en App Store y Google Play y mantenemos la app al día con cada versión de iOS y Android." },
       ],
     },
     automation: {
@@ -51,10 +51,10 @@ export const servicePages: Messages["servicePages"] = {
         "Los reportes tardan días en estar listos.",
       ],
       includes: [
-        { title: "Avisos y recordatorios automáticos", body: "Por correo o WhatsApp." },
-        { title: "Integración entre sistemas", body: "ERP, facturación, CRM y tienda en línea conectados." },
-        { title: "Reportes automáticos", body: "Los indicadores listos sin armarlos a mano." },
-        { title: "Flujos de aprobación", body: "Cada solicitud pasa por las personas correctas." },
+        { title: "Avisos y recordatorios automáticos", body: "Por correo o WhatsApp: cobros, vencimientos, citas y estados de pedidos." },
+        { title: "Integración entre sistemas", body: "ERP, facturación electrónica, CRM y tienda en línea compartiendo los mismos datos." },
+        { title: "Reportes automáticos", body: "Tus indicadores listos cada mañana, sin armarlos en Excel." },
+        { title: "Flujos de aprobación", body: "Compras, gastos o pedidos que pasan por las personas correctas, con registro de cada paso." },
       ],
     },
     ai: {
@@ -69,10 +69,10 @@ export const servicePages: Messages["servicePages"] = {
         "Revisas facturas, formularios o contratos a mano.",
       ],
       includes: [
-        { title: "Asistentes para WhatsApp y web", body: "Responden, toman pedidos y agendan." },
-        { title: "Lectura de documentos", body: "Extraen datos de facturas, formularios y cédulas." },
-        { title: "Consultas a tus datos", body: "Inventario, ventas o indicadores, preguntando por chat." },
-        { title: "Reglas claras", body: "Decides con nosotros qué responde el asistente y cuándo pasa a una persona." },
+        { title: "Asistentes para WhatsApp y web", body: "Responden con la información de tu empresa, toman pedidos, cotizan y agendan." },
+        { title: "Lectura de documentos", body: "Extraen datos de facturas, recetas, formularios y cédulas y los pasan a tus sistemas." },
+        { title: "Consultas a tus datos", body: "Inventario, ventas o indicadores en lenguaje natural, por chat." },
+        { title: "Reglas claras", body: "Defines con nosotros qué responde el asistente, qué no y cuándo pasa a una persona." },
       ],
       example: {
         name: "Asistente de tu tienda",
@@ -98,10 +98,10 @@ export const servicePages: Messages["servicePages"] = {
         "Tu sistema actual es lento o ya nadie lo mantiene.",
       ],
       includes: [
-        { title: "Plataformas operativas", body: "Inventario, ventas, auditorías o lo que tu operación necesite." },
-        { title: "Integraciones y APIs", body: "Con tu ERP, tu facturación y sistemas de terceros." },
-        { title: "Reportes e indicadores", body: "Para decidir con datos." },
-        { title: "Modernización de sistemas", body: "Por etapas y sin perder información." },
+        { title: "Plataformas operativas", body: "Inventario, ventas, logística, auditorías o lo que tu operación necesite, con accesos por rol." },
+        { title: "Integraciones y APIs", body: "Con tu ERP, facturación electrónica, bancos y sistemas de terceros." },
+        { title: "Reportes e indicadores", body: "Tableros con los números que importan, actualizados en tiempo real." },
+        { title: "Modernización de sistemas", body: "Renovamos sistemas antiguos por etapas, sin detener la operación ni perder información." },
       ],
     },
     cloud: {
@@ -116,10 +116,10 @@ export const servicePages: Messages["servicePages"] = {
         "Nadie se hace cargo de tu infraestructura.",
       ],
       includes: [
-        { title: "Migración a AWS", body: "Desde donde estén hoy tus sistemas." },
-        { title: "Accesos controlados", body: "Cada persona entra solo a lo que le corresponde." },
-        { title: "Respaldos y monitoreo", body: "Vigilamos que todo funcione." },
-        { title: "Soporte y mejoras", body: "Atendemos dudas y agregamos lo que haga falta." },
+        { title: "Migración a AWS", body: "Desde servidores propios u otros proveedores, por etapas y sin detener la operación." },
+        { title: "Accesos controlados", body: "Cada persona entra solo a lo que le corresponde, con registro de cada acceso." },
+        { title: "Respaldos y monitoreo", body: "Respaldos automáticos y alertas si algo falla, de día o de noche." },
+        { title: "Soporte y mejoras", body: "Atendemos incidentes, aplicamos actualizaciones y optimizamos los costos de AWS." },
       ],
     },
   },
