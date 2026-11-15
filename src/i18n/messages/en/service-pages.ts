@@ -1,7 +1,7 @@
 import type { Messages } from "../messages";
 
 export const servicePages: Messages["servicePages"] = {
-  labels: { back: "All services", cta: "Tell us about your project", fitTitle: "It makes sense if…", includesTitle: "What's included", otherTitle: "Other services", exampleNote: "Example conversation" },
+  labels: { back: "All services", cta: "Tell us about your project", fitTitle: "It makes sense if…", includesTitle: "What's included", otherTitle: "Other services" },
   items: {
     web: {
       seoTitle: "Web development and e-commerce in Ecuador | CodeLabs",
@@ -15,10 +15,10 @@ export const servicePages: Messages["servicePages"] = {
         "You need to show up when people search for you on Google.",
       ],
       includes: [
-        { title: "Corporate website", body: "Who you are, what you offer and how to reach you." },
-        { title: "E-commerce", body: "Catalog, cart, payments and order tracking." },
-        { title: "Integrations", body: "With your inventory, invoicing and CRM." },
-        { title: "Google visibility", body: "Structure and copy built around what your customers search for." },
+        { title: "Corporate website", body: "Clear pages about who you are and what you offer, fast on mobile and easy to update." },
+        { title: "E-commerce", body: "Catalog, cart, card payments, coupons and order tracking." },
+        { title: "Integrations", body: "With your inventory, electronic invoicing, CRM and WhatsApp." },
+        { title: "Google visibility", body: "Structured data, speed, sitemap and copy built around your customers' searches." },
       ],
     },
     mobile: {
@@ -33,10 +33,10 @@ export const servicePages: Messages["servicePages"] = {
         "You need to verify identity or sign documents online.",
       ],
       includes: [
-        { title: "Customer apps", body: "Purchases, bookings, payments and transactions." },
-        { title: "Team apps", body: "Visits, deliveries, inventory and audits." },
-        { title: "Identity and digital signature", body: "Biometrics and certified electronic signatures." },
-        { title: "Publishing and support", body: "On the App Store and Google Play, with updates." },
+        { title: "Customer apps", body: "Catalog, cart, card payments, bookings, order tracking and profile." },
+        { title: "Team apps", body: "Visits, deliveries, inventory, audits and customer signatures on the phone." },
+        { title: "Identity and digital signature", body: "ID card validation, facial recognition and certified electronic signatures." },
+        { title: "Publishing and support", body: "We publish on the App Store and Google Play and keep the app current with every iOS and Android version." },
       ],
     },
     automation: {
@@ -51,10 +51,10 @@ export const servicePages: Messages["servicePages"] = {
         "Reports take days to be ready.",
       ],
       includes: [
-        { title: "Automatic alerts and reminders", body: "By email or WhatsApp." },
-        { title: "System integration", body: "ERP, invoicing, CRM and online store connected." },
-        { title: "Automatic reports", body: "Your metrics ready without building them by hand." },
-        { title: "Approval workflows", body: "Every request goes through the right people." },
+        { title: "Automatic alerts and reminders", body: "By email or WhatsApp: collections, due dates, appointments and order status." },
+        { title: "System integration", body: "ERP, electronic invoicing, CRM and online store sharing the same data." },
+        { title: "Automatic reports", body: "Your metrics ready every morning, without building them in spreadsheets." },
+        { title: "Approval workflows", body: "Purchases, expenses or orders that go through the right people, with every step recorded." },
       ],
     },
     ai: {
@@ -69,10 +69,10 @@ export const servicePages: Messages["servicePages"] = {
         "You review invoices, forms or contracts by hand.",
       ],
       includes: [
-        { title: "Assistants for WhatsApp and web", body: "They answer, take orders and book appointments." },
-        { title: "Document reading", body: "They extract data from invoices, forms and IDs." },
-        { title: "Queries over your data", body: "Inventory, sales or metrics, asked by chat." },
-        { title: "Clear rules", body: "You decide with us what the assistant answers and when it hands over to a person." },
+        { title: "Assistants for WhatsApp and web", body: "They answer with your company's information, take orders, quote and book." },
+        { title: "Document reading", body: "They extract data from invoices, prescriptions, forms and IDs into your systems." },
+        { title: "Queries over your data", body: "Inventory, sales or metrics in plain language, by chat." },
+        { title: "Clear rules", body: "You decide with us what the assistant answers, what it doesn't and when it hands over to a person." },
       ],
       example: {
         name: "Your store's assistant",
@@ -98,10 +98,10 @@ export const servicePages: Messages["servicePages"] = {
         "Your current system is slow or no one maintains it.",
       ],
       includes: [
-        { title: "Operational platforms", body: "Inventory, sales, audits or whatever your operation needs." },
-        { title: "Integrations and APIs", body: "With your ERP, invoicing and third-party systems." },
-        { title: "Reports and metrics", body: "To decide with data." },
-        { title: "System modernization", body: "Step by step and without losing information." },
+        { title: "Operational platforms", body: "Inventory, sales, logistics, audits or whatever your operation needs, with role-based access." },
+        { title: "Integrations and APIs", body: "With your ERP, electronic invoicing, banks and third-party systems." },
+        { title: "Reports and metrics", body: "Dashboards with the numbers that matter, updated in real time." },
+        { title: "System modernization", body: "We modernize legacy systems step by step, without stopping the operation or losing data." },
       ],
     },
     cloud: {
@@ -116,10 +116,10 @@ export const servicePages: Messages["servicePages"] = {
         "No one is in charge of your infrastructure.",
       ],
       includes: [
-        { title: "Migration to AWS", body: "From wherever your systems are today." },
-        { title: "Controlled access", body: "Each person reaches only what they should." },
-        { title: "Backups and monitoring", body: "We make sure everything keeps working." },
-        { title: "Support and improvements", body: "We answer questions and add what you need." },
+        { title: "Migration to AWS", body: "From your own servers or other providers, in stages and without stopping the operation." },
+        { title: "Controlled access", body: "Each person reaches only what they should, with every access logged." },
+        { title: "Backups and monitoring", body: "Automatic backups and alerts if something fails, day or night." },
+        { title: "Support and improvements", body: "We handle incidents, apply updates and optimize AWS costs." },
       ],
     },
   },

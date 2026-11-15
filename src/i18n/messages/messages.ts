@@ -150,7 +150,7 @@ export type Messages = {
   pages: Record<Exclude<PageKey, "home">, { eyebrow: string; title: string; description: string }>;
   seo: Record<PageKey, { title: string; description: string }>;
   servicePages: {
-    labels: { back: string; cta: string; fitTitle: string; includesTitle: string; otherTitle: string; exampleNote: string };
+    labels: { back: string; cta: string; fitTitle: string; includesTitle: string; otherTitle: string };
     items: Record<
       ServiceId,
       {
@@ -162,6 +162,19 @@ export type Messages = {
         fit: string[];
         includes: { title: string; body: string }[];
         example?: ChatCopy;
+      }
+    >;
+  };
+  serviceDetails: {
+    labels: { outcomesTitle: string; stepsTitle: string; casesTitle: string; casesLink: string; techTitle: string; faqTitle: string };
+    items: Record<
+      ServiceId,
+      {
+        headline: string;
+        outcomes: { title: string; body: string }[];
+        steps: { when: string; title: string; body: string }[];
+        faqs: { question: string; answer: string }[];
+        cases: { name: string; summary: string }[];
       }
     >;
   };

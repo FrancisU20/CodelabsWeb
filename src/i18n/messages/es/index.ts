@@ -18,6 +18,7 @@ import { notFound } from "./not-found";
 import { pages } from "./pages";
 import { seo } from "./seo";
 import { servicePages } from "./service-pages";
+import { serviceDetails } from "./service-details";
 import { closingCall } from "./closing-call";
 import { pricing } from "./pricing";
 import { reviews } from "./reviews";
@@ -44,6 +45,7 @@ export const esMessages: Messages = {
   pages,
   seo,
   servicePages,
+  serviceDetails,
   guides,
   reviews,
   pricing,
