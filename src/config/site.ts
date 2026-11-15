@@ -21,4 +21,8 @@ export const SITE_OFFICE = `${SITE_LOCATION.neighborhood}, ${SITE_CITY}`;
 
 export const GOOGLE_BUSINESS_URL = "https://maps.google.com/?cid=15713089246548681602";
 
+export const FOUNDER_NAME = "Francisco Ulloa";
+
+export const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/panchoulloateran/";
+
 export const LINKEDIN_URL = "https://www.linkedin.com/company/98069613";

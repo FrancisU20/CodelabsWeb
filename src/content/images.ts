@@ -15,6 +15,7 @@ export const IMAGES = {
     farmaenlace: "/brands/farmaenlace.webp",
     basc: "/brands/basc.webp",
   },
+  founder: "/founder/francisco-ulloa.webp",
   cases: {
     curveBooking: "/cases/curve-booking.webp",
   },
