@@ -96,6 +96,7 @@ export type Messages = {
     flow: { label: string; detail: string }[];
   };
   team: {
+    founder: { label: string; bio: string; linkedin: string };
     title: SectionTitleCopy;
     body: string;
     leadBadge: string;

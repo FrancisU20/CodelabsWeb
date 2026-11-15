@@ -1,6 +1,11 @@
 import type { Messages } from "../messages";
 
 export const team: Messages["team"] = {
+  founder: {
+    label: "Founder",
+    bio: "He founded CodeLabs in 2018 and leads projects for banking, healthcare, retail and logistics in Ecuador, Peru, Colombia and Mexico.",
+    linkedin: "View LinkedIn profile",
+  },
   title: { lines: ["Who will work", "on your project"] },
   body: "Every part of your project is covered by someone who knows it well.",
   leadBadge: "Your contact",

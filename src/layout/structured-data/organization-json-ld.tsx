@@ -1,5 +1,5 @@
 import { CONTACT_EMAIL, WHATSAPP_NUMBER } from "@/config/contact";
-import { GOOGLE_BUSINESS_URL, LINKEDIN_URL, ORGANIZATION_ID, SITE_LOCATION, SITE_NAME, SITE_URL } from "@/config/site";
+import { FOUNDER_LINKEDIN_URL, FOUNDER_NAME, GOOGLE_BUSINESS_URL, LINKEDIN_URL, ORGANIZATION_ID, SITE_LOCATION, SITE_NAME, SITE_URL } from "@/config/site";
 import { FOUNDING_YEAR } from "@/content/company-figures";
 import { IMAGES } from "@/content/images";
 import type { Locale } from "@/i18n/locale";
@@ -19,6 +19,7 @@ const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
     email: CONTACT_EMAIL,
     telephone: `+${WHATSAPP_NUMBER}`,
     foundingDate: String(FOUNDING_YEAR),
+    founder: { "@type": "Person", name: FOUNDER_NAME, sameAs: FOUNDER_LINKEDIN_URL },
     areaServed: servedCountries(locale),
     address: {
       "@type": "PostalAddress",

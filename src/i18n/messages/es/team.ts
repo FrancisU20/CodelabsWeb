@@ -1,6 +1,11 @@
 import type { Messages } from "../messages";
 
 export const team: Messages["team"] = {
+  founder: {
+    label: "Fundador",
+    bio: "Fundó CodeLabs en 2018 y lidera los proyectos para banca, salud, retail y logística en Ecuador, Perú, Colombia y México.",
+    linkedin: "Ver perfil en LinkedIn",
+  },
   title: { lines: ["Quiénes van a trabajar", "en tu proyecto"] },
   body: "Cada parte de tu proyecto la cubre alguien que sabe de eso.",
   leadBadge: "Tu contacto",
