@@ -1,0 +1,94 @@
+.bank {
+  background: #f3f5f9;
+  color: #14213d;
+}
+
+.title {
+  font-size: 1.15em;
+  letter-spacing: -0.03em;
+}
+
+.step {
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #4b5a78;
+}
+
+.progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.35em;
+}
+
+.progress i {
+  height: 0.3em;
+  border-radius: 999px;
+  background: #d6dceb;
+}
+
+.progress .progressDone {
+  background: #14213d;
+}
+
+.face {
+  display: grid;
+  place-items: center;
+  padding: 0.9em 0;
+  border-radius: 1.1em;
+  background: #14213d;
+}
+
+.oval {
+  width: 6.4em;
+  height: 8em;
+  border-radius: 50%;
+  border: 0.25em solid #4ade80;
+  display: grid;
+  place-items: center;
+  color: #8fa3c7;
+}
+
+.oval svg {
+  width: 3.6em;
+  height: 3.6em;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: 0.78em;
+  font-weight: 600;
+}
+
+.check svg {
+  width: 1.2em;
+  height: 1.2em;
+  color: #16a34a;
+  flex: none;
+}
+
+.contract {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0.8em;
+  border-radius: 1em;
+  background: #ffffff;
+}
+
+.contract small {
+  font-size: 0.75em;
+  color: #4b5a78;
+}
+
+.sign {
+  text-align: center;
+  padding: 0.6em;
+  border-radius: 0.7em;
+  font-size: 0.8em;
+  font-weight: 700;
+  color: #ffffff;
+  background: #14213d;
+}

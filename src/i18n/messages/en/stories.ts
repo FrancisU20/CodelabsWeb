@@ -5,6 +5,11 @@ export const stories: Messages["stories"] = {
   storeLabel: "View on the App Store",
   items: [
     {
+      tag: "Banking",
+      title: "Contracts signed from a phone.",
+      body: "Identity verification with liveness detection and facial recognition on AWS Rekognition, and paperless contract signing.",
+    },
+    {
       tag: "Supermaxi · Retail",
       title: "Home delivery, from the shelf to the door.",
       body: "One app for customers to order and track their purchase, and another for couriers to manage every delivery.",

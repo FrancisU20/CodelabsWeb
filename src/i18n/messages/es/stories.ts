@@ -5,6 +5,11 @@ export const stories: Messages["stories"] = {
   storeLabel: "Ver en App Store",
   items: [
     {
+      tag: "Banca",
+      title: "Contratos firmados desde el celular.",
+      body: "Validación de identidad con prueba de vida y reconocimiento facial con AWS Rekognition, y firma del contrato sin papeles.",
+    },
+    {
       tag: "Supermaxi · Retail",
       title: "Pedidos a domicilio, de la percha a la puerta.",
       body: "Una app para que los clientes pidan y sigan su pedido, y otra para que los repartidores gestionen cada entrega.",
