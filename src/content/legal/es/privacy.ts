@@ -8,7 +8,7 @@ export const privacy: LegalDocument = {
   eyebrow: "Política de privacidad",
   title: "Política de privacidad",
   intro: "En CodeLabs respetamos tu privacidad y tratamos tus datos personales conforme a la Ley Orgánica de Protección de Datos Personales del Ecuador (LOPDP) y demás normativa aplicable. Este documento explica qué información recolectamos, con qué finalidad, en qué basamos su tratamiento y cuáles son tus derechos como titular de los datos.",
-  updated: "Última actualización: 9 de noviembre de 2026",
+  updated: "Última actualización: 15 de noviembre de 2026",
   sections: [
     {
       heading: "1. Responsable del tratamiento",
@@ -23,6 +23,8 @@ export const privacy: LegalDocument = {
           ["Datos de identificación y contacto: nombre, correo electrónico, teléfono y empresa."],
           ["Información del proyecto: contexto de negocio, requerimientos técnicos y objetivos que nos compartes para preparar una propuesta."],
           ["Datos técnicos mínimos de navegación: registros básicos (logs) y cookies estrictamente necesarias para la seguridad y el funcionamiento del Sitio. No utilizamos cookies de publicidad ni de seguimiento de terceros."],
+          ["Estadísticas de visitas: páginas vistas, sitio de origen, país y tipo de dispositivo, de forma agregada y sin cookies ni identificadores personales."],
+          ["Datos de reserva de reuniones: nombre, correo y empresa que ingresas al agendar una reunión con nosotros."],
           ["Comunicaciones: el contenido de los mensajes que nos envías por correo, WhatsApp o formularios de contacto."],
         ),
       ],
@@ -64,13 +66,14 @@ export const privacy: LegalDocument = {
       blocks: [
         paragraph("No vendemos ni comercializamos tus datos personales. Podemos compartir información con proveedores que nos prestan servicios necesarios para operar (por ejemplo, hosting en la nube, correo electrónico o herramientas de gestión de proyectos), quienes actúan como encargados del tratamiento bajo acuerdos de confidencialidad y protección de datos, y únicamente en la medida necesaria para prestar dichos servicios. También podemos divulgar información cuando una autoridad competente lo requiera conforme a la ley."),
         paragraph("Para operar el formulario de contacto utilizamos Amazon Web Services (almacenamiento y procesamiento) y Brevo (envío de correos electrónicos), que actúan como encargados del tratamiento."),
+        paragraph("Para medir las visitas al Sitio utilizamos Cloudflare Web Analytics, que no usa cookies ni identifica a los visitantes. Para agendar reuniones utilizamos Google Calendar, que procesa los datos que ingresas al reservar. Ambos actúan como encargados del tratamiento."),
       ],
     },
     {
       heading: "8. Transferencias internacionales de datos",
       blocks: [
         paragraph("Algunos de nuestros proveedores tecnológicos (por ejemplo, servicios de infraestructura en la nube) pueden almacenar o procesar datos fuera de Ecuador. En esos casos, exigimos que dichos proveedores mantengan niveles de protección adecuados, mediante cláusulas contractuales, certificaciones de seguridad u otros mecanismos reconocidos, conforme a lo previsto en la LOPDP para transferencias internacionales de datos personales."),
-        paragraph("En particular, Amazon Web Services procesa los datos del formulario de contacto en Estados Unidos y Brevo los procesa en la Unión Europea."),
+        paragraph("En particular, Amazon Web Services procesa los datos del formulario de contacto en Estados Unidos y Brevo los procesa en la Unión Europea. Cloudflare y Google pueden procesar los datos de visitas y de reservas en Estados Unidos y en su red global."),
       ],
     },
     {
