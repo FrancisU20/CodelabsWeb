@@ -4,10 +4,12 @@ import { formatUsd } from "./format-usd";
 import { LANGUAGE_TAGS, type Locale } from "./locale";
 import { getMessages } from "./messages/get-messages";
 
-export const servicePriceLabel = (service: ServiceId, locale: Locale): string => {
+export const servicePriceValue = (service: ServiceId, locale: Locale): string => {
   const { from, monthlyFrom } = SERVICE_PRICES[service];
-  const { pricing } = getMessages(locale);
   const languageTag = LANGUAGE_TAGS[locale];
-  const base = `${pricing.from} ${formatUsd(from, languageTag)}`;
-  return monthlyFrom === undefined ? base : `${base} + ${formatUsd(monthlyFrom, languageTag)} ${pricing.perMonth}`;
+  const base = formatUsd(from, languageTag);
+  return monthlyFrom === undefined ? base : `${base} + ${formatUsd(monthlyFrom, languageTag)} ${getMessages(locale).pricing.perMonth}`;
 };
+
+export const servicePriceLabel = (service: ServiceId, locale: Locale): string =>
+  `${getMessages(locale).pricing.from} ${servicePriceValue(service, locale)}`;

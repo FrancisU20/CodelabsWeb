@@ -1,5 +1,6 @@
 import { GOOGLE_BUSINESS_URL } from "@/config/site";
 import { GOOGLE_AVERAGE_RATING, MAX_RATING } from "@/content/reviews";
+import { fillTemplate } from "@/i18n/fill-template";
 import { LANGUAGE_TAGS, type Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
 import ReviewStars from "./review-stars";
@@ -13,7 +14,7 @@ const RatingCard = ({ copy, locale }: { copy: Messages["reviews"]; locale: Local
 
   return (
     <li className={`${styles.card} ${styles.ratingCard}`}>
-      <ReviewStars rating={MAX_RATING} label={copy.ratingLabel.replace("{rating}", rating)} />
+      <ReviewStars rating={MAX_RATING} label={fillTemplate(copy.ratingLabel, { rating })} />
       <p className={styles.average}>{rating}</p>
       <p className={styles.averageLabel}>{copy.averageLabel}</p>
       <a className={styles.seeAll} href={GOOGLE_BUSINESS_URL} target="_blank" rel="noopener noreferrer">

@@ -1,3 +1,4 @@
+import type { EngagementModelId } from "@/content/engagement-model-id";
 import type { IndustryId } from "@/content/industry-id";
 import type { ReviewId } from "@/content/review-id";
 import type { ReviewSource } from "@/content/review-source";
@@ -65,7 +66,14 @@ export type Messages = {
     more: string;
     helpChat: ChatCopy;
     items: { id: ServiceId; title: string; need: string; summary: string; vignette: { lines: string[]; state?: string } }[];
-    engagement: { title: SectionTitleCopy; items: { title: string; body: string }[] };
+    timelineLabel: string;
+    engagement: {
+      title: SectionTitleCopy;
+      featured: string;
+      items: Record<EngagementModelId, { title: string; forWho: string; details: { label: string; text: string }[]; priceNote: string }>;
+      chooser: { question: string; answer: string }[];
+      guideLink: string;
+    };
   };
   quality: {
     ariaLabel: string;
@@ -150,6 +158,7 @@ export type Messages = {
         seoDescription: string;
         title: string;
         description: string;
+        timeline: string;
         fit: string[];
         includes: { title: string; body: string }[];
         example?: ChatCopy;

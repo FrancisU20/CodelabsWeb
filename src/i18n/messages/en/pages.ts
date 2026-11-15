@@ -3,8 +3,8 @@ import type { Messages } from "../messages";
 export const pages: Messages["pages"] = {
   services: {
     eyebrow: "Services",
-    title: "What we build for your company.",
-    description: "Pick where to start. If you're not sure what you need, tell us the problem and we'll propose the solution.",
+    title: "We design, build and run your company's software.",
+    description: "Six services you can combine as you need, from a website to a full platform on AWS. Each one with what it includes, the typical timeline and a reference price.",
   },
   work: {
     eyebrow: "Case studies",
