@@ -19,6 +19,7 @@ import { pages } from "./pages";
 import { seo } from "./seo";
 import { servicePages } from "./service-pages";
 import { closingCall } from "./closing-call";
+import { pricing } from "./pricing";
 import { aiCases } from "./ai-cases";
 
 export const esMessages: Messages = {
@@ -41,6 +42,7 @@ export const esMessages: Messages = {
   pages,
   seo,
   servicePages,
+  pricing,
   closingCall,
   aiCases,
 };

@@ -154,6 +154,11 @@ export type Messages = {
       }
     >;
   };
+  pricing: {
+    from: string;
+    perMonth: string;
+    note: string;
+  };
   closingCall: {
     title: string;
     body: string;

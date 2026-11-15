@@ -1,9 +1,12 @@
 import { ORGANIZATION_ID, SITE_NAME, SITE_URL } from "@/config/site";
+import { SERVICE_PRICES } from "@/content/service-prices";
 import type { ServiceId } from "@/content/service-id";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath, servicePath } from "@/i18n/routing";
 import { servedCountries } from "./served-countries";
+
+const PRICE_CURRENCY = "USD";
 
 const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale }) => {
   const messages = getMessages(locale);
@@ -24,6 +27,11 @@ const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale
         url,
         provider: { "@id": ORGANIZATION_ID },
         areaServed: servedCountries(locale),
+        offers: {
+          "@type": "Offer",
+          priceCurrency: PRICE_CURRENCY,
+          priceSpecification: { "@type": "PriceSpecification", minPrice: SERVICE_PRICES[service].from, priceCurrency: PRICE_CURRENCY },
+        },
       },
       {
         "@type": "BreadcrumbList",
