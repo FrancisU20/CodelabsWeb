@@ -19,6 +19,8 @@ import { pages } from "./pages";
 import { seo } from "./seo";
 import { servicePages } from "./service-pages";
 import { closingCall } from "./closing-call";
+import { pricing } from "./pricing";
+import { guides } from "./guides";
 import { aiCases } from "./ai-cases";
 
 export const enMessages: Messages = {
@@ -41,6 +43,8 @@ export const enMessages: Messages = {
   pages,
   seo,
   servicePages,
+  guides,
+  pricing,
   closingCall,
   aiCases,
 };

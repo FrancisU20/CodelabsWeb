@@ -12,6 +12,12 @@ export const ROUTES: Record<PageKey, Record<Locale, string>> = {
   contact: { es: "/contacto", en: "/en/contact" },
 };
 
+export const GUIDES_LOCALE: Locale = "es";
+
+export const GUIDES_ROUTE = "/guias";
+
+export const guidePath = (slug: string): string => `${GUIDES_ROUTE}/${slug}`;
+
 export const CLIENTS_ANCHOR: Record<Locale, string> = { es: "clientes", en: "clients" };
 
 export const SERVICE_ROUTES: Record<ServiceId, Record<Locale, string>> = {

@@ -10,6 +10,7 @@ type ServiceCardProps = {
   title: string;
   label?: string;
   summary?: string;
+  price?: string;
   more: string;
   vignette: { kind: VignetteKind; lines: string[]; state?: string };
   layout: "stacked" | "row";
@@ -17,7 +18,7 @@ type ServiceCardProps = {
   className?: string;
 };
 
-const ServiceCard = ({ href, title, label, summary, more, vignette, layout, headingLevel: Heading = "h3", className }: ServiceCardProps) => (
+const ServiceCard = ({ href, title, label, summary, price, more, vignette, layout, headingLevel: Heading = "h3", className }: ServiceCardProps) => (
   <Card as="article" padding="sm" className={joinClassNames(styles.card, styles[layout], className)} reveal={layout === "row"}>
     <ServiceVignette {...vignette} className={styles.vignette} />
     {label && <p className={styles.label}>{label}</p>}
@@ -25,6 +26,7 @@ const ServiceCard = ({ href, title, label, summary, more, vignette, layout, head
       <Link href={href}>{title}</Link>
     </Heading>
     {summary && <p className={styles.summary}>{summary}</p>}
+    {price && <p className={styles.price}>{price}</p>}
     <span className={styles.more} aria-hidden="true">
       {more}
     </span>

@@ -3,12 +3,14 @@ import type { ServiceId } from "@/content/service-id";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath } from "@/i18n/routing";
+import { servicePriceLabel } from "@/i18n/service-price-label";
 import ButtonLink from "@/shared/ui/button/button-link";
 import ServiceArt from "./service-art";
 import styles from "./service-detail.module.css";
 
 const ServiceIntro = ({ service, locale }: { service: ServiceId; locale: Locale }) => {
-  const { labels, items } = getMessages(locale).servicePages;
+  const messages = getMessages(locale);
+  const { labels, items } = messages.servicePages;
   const detail = items[service];
 
   return (
@@ -22,6 +24,10 @@ const ServiceIntro = ({ service, locale }: { service: ServiceId; locale: Locale 
             {detail.title}
           </h1>
           <p className="lede m-0">{detail.description}</p>
+          <div className={styles.price}>
+            <b>{servicePriceLabel(service, locale)}</b>
+            <small>{messages.pricing.note}</small>
+          </div>
           <ButtonLink href={pagePath("contact", locale)}>{labels.cta}</ButtonLink>
         </div>
         <ServiceArt service={service} locale={locale} />

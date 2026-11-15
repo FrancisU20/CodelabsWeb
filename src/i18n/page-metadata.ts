@@ -4,12 +4,13 @@ import type { LegalDocumentKey } from "@/content/legal/legal-document-key";
 import { LEGAL_DOCUMENTS } from "@/content/legal/legal-documents";
 import { IMAGES } from "@/content/images";
 import type { ServiceId } from "@/content/service-id";
-import type { Locale } from "./locale";
+import { LANGUAGE_TAGS, type Locale } from "./locale";
 import { getMessages } from "./messages/get-messages";
 import type { PageKey } from "./page-key";
-import { LEGAL_ROUTES, ROUTES, SERVICE_ROUTES } from "./routing";
+import type { Guide } from "@/content/guides/guide";
+import { GUIDES_LOCALE, GUIDES_ROUTE, guidePath, LEGAL_ROUTES, ROUTES, SERVICE_ROUTES } from "./routing";
 
-const OPEN_GRAPH_LOCALE: Record<Locale, string> = { es: "es_EC", en: "en_US" };
+const openGraphLocale = (locale: Locale): string => LANGUAGE_TAGS[locale].replace("-", "_");
 const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
 
 const shareImage = (locale: Locale, alt: string) => ({ url: IMAGES.share[locale], ...SHARE_IMAGE_SIZE, alt });
@@ -31,7 +32,7 @@ const buildLocalizedMetadata = ({ title, description, paths }: LocalizedPage, lo
       canonical: url,
       languages: { es: `${SITE_URL}${paths.es}`, en: `${SITE_URL}${paths.en}`, "x-default": `${SITE_URL}${paths.es}` },
     },
-    openGraph: { title, description, url, siteName: SITE_NAME, locale: OPEN_GRAPH_LOCALE[locale], type: "website", images: [image] },
+    openGraph: { title, description, url, siteName: SITE_NAME, locale: openGraphLocale(locale), type: "website", images: [image] },
     twitter: { card: "summary_large_image", title, description, images: [image] },
   };
 };
@@ -80,3 +81,32 @@ export const buildLegalMetadata = (key: LegalDocumentKey, locale: Locale): Metad
     },
   };
 };
+
+type SingleLanguagePage = {
+  title: string;
+  description: string;
+  path: string;
+  type: "website" | "article";
+};
+
+const buildSingleLanguageMetadata = ({ title, description, path, type }: SingleLanguagePage): Metadata => {
+  const url = `${SITE_URL}${path}`;
+  const image = shareImage(GUIDES_LOCALE, title);
+
+  return {
+    title,
+    description,
+    alternates: { canonical: url, languages: { [GUIDES_LOCALE]: url } },
+    openGraph: { title, description, url, siteName: SITE_NAME, locale: openGraphLocale(GUIDES_LOCALE), type, images: [image] },
+    twitter: { card: "summary_large_image", title, description, images: [image] },
+  };
+};
+
+export const buildGuidesMetadata = (): Metadata => {
+  const { seoTitle, seoDescription } = getMessages(GUIDES_LOCALE).guides;
+
+  return buildSingleLanguageMetadata({ title: seoTitle, description: seoDescription, path: GUIDES_ROUTE, type: "website" });
+};
+
+export const buildGuideMetadata = (guide: Guide): Metadata =>
+  buildSingleLanguageMetadata({ title: guide.metaTitle, description: guide.metaDescription, path: guidePath(guide.slug), type: "article" });
