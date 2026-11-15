@@ -8,6 +8,7 @@ export const nav: Messages["nav"] = {
   services: "Services",
   allServices: "See all services",
   about: "About",
+  guides: "Guides",
   cta: "Tell us about your project",
   openMenu: "Open menu",
   closeMenu: "Close menu",

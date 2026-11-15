@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 import type { Locale } from "@/i18n/locale";
 import { LOCALES } from "@/i18n/locale";
 import { SITE_URL } from "@/config/site";
-import { LEGAL_ROUTES, ROUTES, SERVICE_ROUTES } from "@/i18n/routing";
+import { GUIDES } from "@/content/guides/guides";
+import { GUIDES_ROUTE, guidePath, LEGAL_ROUTES, ROUTES, SERVICE_ROUTES } from "@/i18n/routing";
 
 export const dynamic = "force-static";
 
@@ -10,6 +11,7 @@ const HOME_PRIORITY = 1;
 const PAGE_PRIORITY = 0.8;
 const SERVICE_PRIORITY = 0.9;
 const LEGAL_PRIORITY = 0.3;
+const GUIDE_PRIORITY = 0.7;
 
 type SitemapGroup = {
   routes: Record<Locale, string>[];
@@ -27,6 +29,13 @@ const entriesFor = ({ routes, priority, changeFrequency }: SitemapGroup): Metada
     })),
   );
 
+const guideEntries = (): MetadataRoute.Sitemap =>
+  [GUIDES_ROUTE, ...GUIDES.map((guide) => guidePath(guide.slug))].map((path) => ({
+    url: `${SITE_URL}${path}`,
+    changeFrequency: "monthly" as const,
+    priority: GUIDE_PRIORITY,
+  }));
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const { home, ...pages } = ROUTES;
 
@@ -35,5 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { routes: Object.values(pages), priority: PAGE_PRIORITY, changeFrequency: "monthly" as const },
     { routes: Object.values(SERVICE_ROUTES), priority: SERVICE_PRIORITY, changeFrequency: "monthly" as const },
     { routes: Object.values(LEGAL_ROUTES), priority: LEGAL_PRIORITY, changeFrequency: "yearly" as const },
-  ].flatMap(entriesFor);
+  ]
+    .flatMap(entriesFor)
+    .concat(guideEntries());
 }

@@ -14,6 +14,7 @@ export type Messages = {
     services: string;
     allServices: string;
     about: string;
+    guides: string;
     cta: string;
     openMenu: string;
     closeMenu: string;
@@ -153,6 +154,19 @@ export type Messages = {
         example?: ChatCopy;
       }
     >;
+  };
+  guides: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    seoTitle: string;
+    seoDescription: string;
+    label: string;
+    readingTime: string;
+    published: string;
+    faqTitle: string;
+    relatedTitle: string;
+    read: string;
   };
   pricing: {
     from: string;
