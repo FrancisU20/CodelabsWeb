@@ -9,7 +9,7 @@ export const privacy: LegalDocument = {
   title: "Privacy policy",
   intro:
     "At CodeLabs we respect your privacy and process your personal data in accordance with Ecuador's Organic Law on Personal Data Protection (LOPDP) and other applicable regulations. This document explains what information we collect, for what purpose, on what basis we process it and what your rights are as a data subject.",
-  updated: "Last updated: November 9, 2026",
+  updated: "Last updated: November 15, 2026",
   notice: COURTESY_TRANSLATION_NOTICE,
   sections: [
     {
@@ -25,6 +25,8 @@ export const privacy: LegalDocument = {
           ["Identification and contact data: name, email address, telephone number and company."],
           ["Project information: business context, technical requirements and objectives you share with us so that we can prepare a proposal."],
           ["Minimal technical browsing data: basic logs and cookies strictly necessary for the security and operation of the Site. We do not use third-party advertising or tracking cookies."],
+          ["Visit statistics: pages viewed, referring site, country and device type, aggregated and without cookies or personal identifiers."],
+          ["Meeting booking data: the name, email and company you enter when booking a meeting with us."],
           ["Communications: the content of the messages you send us by email, WhatsApp or contact forms."],
         ),
       ],
@@ -66,13 +68,14 @@ export const privacy: LegalDocument = {
       blocks: [
         paragraph("We do not sell or market your personal data. We may share information with providers that supply services necessary for our operations (for example, cloud hosting, email or project management tools), who act as data processors under confidentiality and data protection agreements, and only to the extent necessary to provide those services. We may also disclose information when required by a competent authority in accordance with the law."),
         paragraph("To operate the contact form we use Amazon Web Services (storage and processing) and Brevo (email delivery), which act as data processors."),
+        paragraph("To measure visits to the Site we use Cloudflare Web Analytics, which does not use cookies or identify visitors. To book meetings we use Google Calendar, which processes the data you enter when booking. Both act as data processors."),
       ],
     },
     {
       heading: "8. International data transfers",
       blocks: [
         paragraph("Some of our technology providers (for example, cloud infrastructure services) may store or process data outside Ecuador. In those cases, we require such providers to maintain adequate levels of protection through contractual clauses, security certifications or other recognized mechanisms, as provided in the LOPDP for international transfers of personal data."),
-        paragraph("In particular, Amazon Web Services processes contact form data in the United States and Brevo processes it in the European Union."),
+        paragraph("In particular, Amazon Web Services processes contact form data in the United States and Brevo processes it in the European Union. Cloudflare and Google may process visit and booking data in the United States and across their global networks."),
       ],
     },
     {
