@@ -7,7 +7,7 @@ export const hero: Messages["hero"] = {
   subtitle:
     "Custom software, apps, AI automation and AWS platforms for banks, insurers, retailers and growing companies. As a fixed project or with a dedicated team.",
   ctaPrimary: "Tell us about your project",
-  ctaSecondary: "See case studies",
+  ctaSecondary: "Book a meeting",
   note: "We usually reply the same day.",
   showcaseLabel: "Reference designs of apps we built for Supermaxi, Confiamed and Farmaenlace",
   showcaseNote: "Reference designs of apps we built for our clients.",

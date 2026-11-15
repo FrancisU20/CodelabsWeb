@@ -35,4 +35,5 @@ export const contact: Messages["contact"] = {
     project: "I need:",
   },
   whatsAppCard: { title: "Prefer WhatsApp?", body: "Message us and the team will reply." },
+  bookingCard: { title: "Prefer a video call?", body: "Book 30 minutes with us on Google Meet, free of charge." },
 };

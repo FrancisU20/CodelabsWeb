@@ -1,4 +1,4 @@
-import { buildWhatsAppLink } from "@/config/contact";
+import { BOOKING_URL, buildWhatsAppLink } from "@/config/contact";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import ContactDetails from "./contact-details";
@@ -21,6 +21,15 @@ const Contact = ({ locale }: { locale: Locale }) => {
           >
             <b className="block font-display text-xl">{copy.whatsAppCard.title}</b>
             <span>{copy.whatsAppCard.body}</span>
+          </a>
+          <a
+            href={BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block rounded-lg border border-line p-6 transition-transform hover:-translate-y-0.5"
+          >
+            <b className="block font-display text-xl">{copy.bookingCard.title}</b>
+            <span className="text-muted">{copy.bookingCard.body}</span>
           </a>
           <ContactDetails copy={copy} />
         </div>

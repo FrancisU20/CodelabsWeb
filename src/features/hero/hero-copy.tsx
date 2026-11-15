@@ -1,3 +1,4 @@
+import { BOOKING_URL } from "@/config/contact";
 import type { Locale } from "@/i18n/locale";
 import type { Messages } from "@/i18n/messages/messages";
 import { pagePath } from "@/i18n/routing";
@@ -14,7 +15,7 @@ const HeroCopy = ({ copy, locale }: { copy: Messages["hero"]; locale: Locale }) 
     <p className="lede m-0 rise-in [animation-delay:0.12s]">{copy.subtitle}</p>
     <div className={`${styles.actions} rise-in [animation-delay:0.18s]`}>
       <ButtonLink href={pagePath("contact", locale)}>{copy.ctaPrimary}</ButtonLink>
-      <ButtonLink variant="outline" href={pagePath("work", locale)}>
+      <ButtonLink variant="outline" href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
         {copy.ctaSecondary}
       </ButtonLink>
     </div>

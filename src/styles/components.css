@@ -125,13 +125,15 @@
   }
 
   .tone-night .btn-outline,
-  .tone-deep .btn-outline {
+  .tone-deep .btn-outline,
+  .tone-brand .btn-outline {
     border-color: var(--night-text);
     color: var(--on-dark);
   }
 
   .tone-night .btn-outline:hover,
-  .tone-deep .btn-outline:hover {
+  .tone-deep .btn-outline:hover,
+  .tone-brand .btn-outline:hover {
     background: var(--on-dark);
     color: var(--night-deep);
   }

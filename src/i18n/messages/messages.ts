@@ -120,6 +120,7 @@ export type Messages = {
     openWhatsApp: string;
     message: { greeting: string; fallbackName: string; reference: string; company: string; email: string; project: string };
     whatsAppCard: { title: string; body: string };
+    bookingCard: { title: string; body: string };
   };
   footer: {
     legalAriaLabel: string;
@@ -156,5 +157,6 @@ export type Messages = {
     title: string;
     body: string;
     cta: string;
+    bookingCta: string;
   };
 };
