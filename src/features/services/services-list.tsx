@@ -16,8 +16,6 @@ const ServicesList = ({ locale }: { locale: Locale }) => {
         {dict.items.map((service) => (
           <ServiceCard
             key={service.id}
-            layout="row"
-            headingLevel="h2"
             href={servicePath(service.id, locale)}
             title={service.title}
             summary={service.summary}

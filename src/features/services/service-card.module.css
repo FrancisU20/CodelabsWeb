@@ -1,27 +1,30 @@
 .card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 32px;
+  padding: 20px 0;
+  border-top: 1px solid var(--rule-strong);
+  border-radius: 0;
+  background: transparent;
   transition: transform 0.2s var(--ease-out);
 }
 
 .vignette {
-  margin-bottom: 10px;
+  grid-row: 1 / span 3;
+  height: 100px;
 }
 
-.label {
+.name,
+.summary,
+.price {
+  grid-column: 2;
   margin: 0;
-  padding-inline: 6px;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--dim);
 }
 
 .name {
-  margin: 0;
-  padding-inline: 6px;
-  font-size: var(--text-card);
+  font-size: var(--text-3xl);
   line-height: 1.22;
   letter-spacing: -0.015em;
   font-weight: 700;
@@ -38,83 +41,36 @@
 }
 
 .summary {
-  margin: 0;
-  padding-inline: 6px;
   color: var(--muted);
 }
 
 .price {
-  margin: 0;
-  padding-inline: 6px;
   font-size: var(--text-sm);
   font-weight: 600;
   color: var(--fg);
 }
 
 .more {
-  margin-top: auto;
-  padding: 8px 6px 0;
+  grid-column: 3;
+  grid-row: 1 / span 3;
   font-size: var(--text-md);
   font-weight: 600;
   color: var(--brand);
 }
 
-.stacked {
-  padding-bottom: 20px;
-}
-
-.stacked:hover {
-  transform: translateY(-4px);
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr) auto;
-  gap: 4px 32px;
-  align-items: center;
-  padding: 20px 0;
-  border-top: 1px solid var(--rule-strong);
-  border-radius: 0;
-  background: transparent;
-}
-
-.row .vignette {
-  grid-row: 1 / span 3;
-  height: 100px;
-  margin: 0;
-}
-
-.row .name,
-.row .summary,
-.row .price {
-  grid-column: 2;
-  padding: 0;
-}
-
-.row .name {
-  font-size: var(--text-3xl);
-}
-
-.row .more {
-  grid-column: 3;
-  grid-row: 1 / span 3;
-  margin: 0;
-  padding: 0;
-}
-
 @media (max-width: 640px) {
-  .row {
+  .card {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .row .vignette {
+  .vignette {
     display: none;
   }
 
-  .row .name,
-  .row .summary,
-  .row .price,
-  .row .more {
+  .name,
+  .summary,
+  .price,
+  .more {
     grid-column: 1;
     grid-row: auto;
   }

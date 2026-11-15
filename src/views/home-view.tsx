@@ -3,14 +3,16 @@ import Clients from "@/features/clients/clients";
 import ClosingCall from "@/features/closing-call/closing-call";
 import Hero from "@/features/hero/hero";
 import Impact from "@/features/impact/impact";
-import ServicesTrack from "@/features/services/services-track";
+import Reviews from "@/features/reviews/reviews";
+import ServiceChapters from "@/features/services/service-chapters";
 
 const HomeView = ({ locale }: { locale: Locale }) => (
   <>
     <Hero locale={locale} />
     <Clients locale={locale} />
-    <ServicesTrack locale={locale} />
+    <ServiceChapters locale={locale} />
     <Impact locale={locale} />
+    <Reviews locale={locale} />
     <ClosingCall locale={locale} />
   </>
 );

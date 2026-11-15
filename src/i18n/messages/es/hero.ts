@@ -1,14 +1,14 @@
 import type { Messages } from "../messages";
 
 export const hero: Messages["hero"] = {
-  eyebrow: "Desarrollo de software, IA y nube AWS · Ecuador y la región",
+  eyebrow: "Software, apps e IA · Socios AWS",
   titleLead: "Construimos el software",
   titleAccent: "que mueve tu empresa.",
   subtitle:
-    "Software a la medida, apps, automatización con IA y plataformas en AWS para bancos, aseguradoras, retail y empresas en crecimiento. Por proyecto o con un equipo dedicado.",
+    "Apps, plataformas y automatización con IA para empresas que quieren crecer. Desde 2018, más de 100 proyectos en cuatro países.",
   ctaPrimary: "Cuéntanos tu proyecto",
   ctaSecondary: "Agenda una reunión",
-  note: "Normalmente contestamos el mismo día.",
+  note: "Respuesta el mismo día.",
   showcaseLabel: "Diseños de referencia de apps que construimos para Supermaxi, Confiamed y Farmaenlace",
   showcaseNote: "Diseños de referencia de apps que construimos para nuestros clientes.",
 };

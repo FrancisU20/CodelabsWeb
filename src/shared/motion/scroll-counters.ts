@@ -4,12 +4,16 @@ const COUNTER_SPEED = 1.25;
 
 const counterTarget = (counter: HTMLElement): number => Number(counter.dataset.count);
 
+const counterDelay = (counter: HTMLElement): number => Number(counter.dataset.countDelay ?? 0);
+
 const writeCounter = (counter: HTMLElement, value: number) => {
   counter.textContent = `${counter.dataset.prefix ?? ""}${value}${counter.dataset.suffix ?? ""}`;
 };
 
 export const renderCounters = (counters: HTMLElement[], progress: number) =>
-  counters.forEach((counter) => writeCounter(counter, Math.round(counterTarget(counter) * clampUnit(progress * COUNTER_SPEED))));
+  counters.forEach((counter) =>
+    writeCounter(counter, Math.round(counterTarget(counter) * clampUnit((progress - counterDelay(counter)) * COUNTER_SPEED))),
+  );
 
 export const showFinalCounters = (counters: HTMLElement[]) =>
   counters.forEach((counter) => writeCounter(counter, counterTarget(counter)));

@@ -84,20 +84,12 @@
   transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
 }
 
-.story[data-active="0"] .layer:not([data-index="0"]),
-.story[data-active="1"] .layer:not([data-index="1"]),
-.story[data-active="2"] .layer:not([data-index="2"]),
-.story[data-active="3"] .layer:not([data-index="3"]),
-.story[data-active="4"] .layer:not([data-index="4"]) {
+.layer:not([data-current]) {
   opacity: 0;
   transform: scale(1.04);
 }
 
-.story[data-active="0"] .dot[data-index="0"],
-.story[data-active="1"] .dot[data-index="1"],
-.story[data-active="2"] .dot[data-index="2"],
-.story[data-active="3"] .dot[data-index="3"],
-.story[data-active="4"] .dot[data-index="4"] {
+.dot[data-current] {
   width: 28px;
   background: var(--brand);
 }
@@ -119,11 +111,7 @@
   grid-area: 1 / 1;
 }
 
-:global(.motion) .story[data-active="0"] .item:not([data-index="0"]),
-:global(.motion) .story[data-active="1"] .item:not([data-index="1"]),
-:global(.motion) .story[data-active="2"] .item:not([data-index="2"]),
-:global(.motion) .story[data-active="3"] .item:not([data-index="3"]),
-:global(.motion) .story[data-active="4"] .item:not([data-index="4"]) {
+:global(.motion) .item:not([data-current]) {
   opacity: 0;
   transform: translateY(18px);
   pointer-events: none;

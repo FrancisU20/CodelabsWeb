@@ -20,6 +20,7 @@ import { seo } from "./seo";
 import { servicePages } from "./service-pages";
 import { closingCall } from "./closing-call";
 import { pricing } from "./pricing";
+import { reviews } from "./reviews";
 import { guides } from "./guides";
 import { aiCases } from "./ai-cases";
 
@@ -44,6 +45,7 @@ export const esMessages: Messages = {
   seo,
   servicePages,
   guides,
+  reviews,
   pricing,
   closingCall,
   aiCases,
