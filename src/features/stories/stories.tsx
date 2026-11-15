@@ -26,7 +26,7 @@ const Stories = ({ locale }: { locale: Locale }) => {
             {dict.label}
           </Kicker>
           {dict.items.map((item, index) => (
-            <StoryItem key={item.title} item={item} index={index} />
+            <StoryItem key={item.title} item={item} index={index} storeLabel={dict.storeLabel} />
           ))}
           <StoryDots titles={dict.items.map((item) => item.title)} />
         </div>

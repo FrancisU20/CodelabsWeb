@@ -14,8 +14,4 @@ export type IconName =
   | "sun"
   | "check"
   | "chevron-down"
-  | "users"
-  | "mark-nucleo"
-  | "mark-aura"
-  | "mark-lexa"
-  | "mark-ruta";
+  | "users";

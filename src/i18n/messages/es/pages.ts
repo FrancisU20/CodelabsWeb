@@ -10,7 +10,7 @@ export const pages: Messages["pages"] = {
     eyebrow: "Casos de éxito",
     title: "Lo que ya construimos para otras empresas.",
     description:
-      "Proyectos que hoy están en uso. Por confidencialidad no mostramos nombres ni las apps de nuestros clientes; las pantallas son de referencia.",
+      "Proyectos que hoy están en uso. Las pantallas son diseños de referencia, salvo la de Curve Pilates Studio, que es la app real.",
   },
   howWeWork: {
     eyebrow: "Cómo trabajamos",

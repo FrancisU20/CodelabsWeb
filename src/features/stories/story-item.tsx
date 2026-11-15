@@ -6,19 +6,25 @@ import styles from "./stories.module.css";
 type StoryItemProps = {
   item: Messages["stories"]["items"][number];
   index: number;
+  storeLabel: string;
 };
 
-const StoryItem = ({ item, index }: StoryItemProps) => {
-  const { Screen } = STORY_SCREENS[index];
+const StoryItem = ({ item, index, storeLabel }: StoryItemProps) => {
+  const { screen, storeUrl } = STORY_SCREENS[index];
 
   return (
     <div className={styles.item} data-index={index} data-reveal>
       <span className={styles.tag}>{item.tag}</span>
       <h3 className={styles.itemTitle}>{item.title}</h3>
       <p className={styles.itemBody}>{item.body}</p>
+      {storeUrl && (
+        <a className={styles.storeLink} href={storeUrl} target="_blank" rel="noopener noreferrer">
+          {storeLabel}
+        </a>
+      )}
       <div className={styles.itemPhone} aria-hidden="true">
         <PhoneFrame className={styles.compactPhone}>
-          <Screen />
+          {screen}
         </PhoneFrame>
       </div>
     </div>

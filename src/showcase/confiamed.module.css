@@ -1,0 +1,89 @@
+.confiamed {
+  background: #f2f7fd;
+  color: #0b2f6b;
+}
+
+.confiamed small {
+  color: #5a6f8f;
+  font-size: 0.78em;
+}
+
+.logo {
+  width: 8.4em;
+  height: auto;
+  display: block;
+}
+
+.claim {
+  border-radius: 1.1em;
+  padding: 0.85em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  background: #0b4db8;
+  color: #ffffff;
+}
+
+.claim b {
+  font-size: 1.6em;
+  letter-spacing: -0.03em;
+}
+
+.confiamed .claim small {
+  color: #cfe2ff;
+}
+
+.claimStatus {
+  align-self: flex-start;
+  font-size: 0.7em;
+  font-weight: 700;
+  padding: 0.3em 0.7em;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0b4db8;
+}
+
+.appointment {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.7em 0.8em;
+  border-radius: 0.9em;
+  background: #ffffff;
+  font-size: 0.88em;
+}
+
+.appointment svg {
+  width: 1.6em;
+  height: 1.6em;
+  color: #2a8de0;
+  flex: none;
+}
+
+.appointment b,
+.appointment small {
+  display: block;
+}
+
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5em;
+}
+
+.shortcut {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  padding: 0.65em;
+  border-radius: 0.9em;
+  background: #ffffff;
+  font-size: 0.72em;
+  font-weight: 700;
+}
+
+.shortcut svg {
+  width: 1.6em;
+  height: 1.6em;
+  color: #0b4db8;
+}

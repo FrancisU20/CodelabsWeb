@@ -13,7 +13,7 @@ const Hero = ({ locale }: { locale: Locale }) => {
     <Section tone="deep" id="inicio" className={styles.hero} aria-labelledby="hero-title" data-pin style={pinLength("long")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <HeroCopy copy={copy} locale={locale} />
-        <HeroShowcase label={copy.showcaseLabel} />
+        <HeroShowcase label={copy.showcaseLabel} note={copy.showcaseNote} />
       </div>
     </Section>
   );

@@ -1,21 +1,21 @@
 import { joinClassNames } from "@/shared/lib/class-names";
-import type { ShipmentStatus } from "./shipment-status";
+import type { DispatchStatus } from "./dispatch-status";
 import styles from "./mockups.module.css";
 
-const STATUS_LABEL: Record<ShipmentStatus, string> = {
-  transit: "En tránsito",
-  inspection: "Inspección",
-  released: "Liberado",
+const STATUS_LABEL: Record<DispatchStatus, string> = {
+  picking: "En preparación",
+  transit: "En ruta",
+  shelved: "Perchado",
 };
 
-const STATUS_CLASS: Record<ShipmentStatus, string> = {
+const STATUS_CLASS: Record<DispatchStatus, string> = {
+  picking: styles.pillInspection,
   transit: styles.pillTransit,
-  inspection: styles.pillInspection,
-  released: styles.pillReleased,
+  shelved: styles.pillReleased,
 };
 
 type StatusPillProps = {
-  status: ShipmentStatus;
+  status: DispatchStatus;
   className?: string;
 };
 

@@ -2,22 +2,20 @@ import Icon from "@/shared/ui/icons/svg-icon";
 import type { IconName } from "@/shared/ui/icons/icon-name";
 import { joinClassNames } from "@/shared/lib/class-names";
 import Avatar from "./avatar";
+import BrandLogo from "./brand-logo";
 import styles from "./dashboard.module.css";
 
 const NAV_ITEMS: { icon: IconName; label: string; active: boolean }[] = [
-  { icon: "box", label: "Embarques", active: true },
-  { icon: "shield", label: "Auditorías", active: false },
-  { icon: "user", label: "Proveedores", active: false },
+  { icon: "box", label: "Despachos", active: true },
+  { icon: "search", label: "Bodega", active: false },
+  { icon: "home", label: "Farmacias", active: false },
   { icon: "chart", label: "Reportes", active: false },
 ];
 
-const DashboardSidebar = () => (
+const DashboardSidebar = ({ logoSrc }: { logoSrc: string }) => (
   <div className={styles.side}>
     <div className={styles.brand}>
-      <Icon name="mark-ruta" />
-      <b>
-        Ruta<span>Clara</span>
-      </b>
+      <BrandLogo src={logoSrc} name="Farmaenlace" width={422} height={92} />
     </div>
     {NAV_ITEMS.map((item) => (
       <span key={item.label} className={joinClassNames(styles.navItem, item.active && styles.navItemActive)}>
@@ -26,10 +24,10 @@ const DashboardSidebar = () => (
       </span>
     ))}
     <div className={styles.user}>
-      <Avatar initials="CO" from="#56CCF2" to="#2F80ED" />
+      <Avatar initials="DP" from="#8CC63F" to="#12235F" />
       <div>
-        <b>Carla Ortiz</b>
-        Operaciones
+        <b>Diego Paredes</b>
+        Logística
       </div>
     </div>
   </div>

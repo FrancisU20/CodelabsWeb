@@ -9,7 +9,7 @@ export const pages: Messages["pages"] = {
   work: {
     eyebrow: "Case studies",
     title: "What we have already built for other companies.",
-    description: "Projects that are in use today. For confidentiality we don't show names or our clients' apps; the screens are references.",
+    description: "Projects in use today. The screens are reference designs, except Curve Pilates Studio, which is the real app.",
   },
   howWeWork: {
     eyebrow: "How we work",

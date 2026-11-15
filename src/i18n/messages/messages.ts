@@ -31,6 +31,7 @@ export type Messages = {
     ctaSecondary: string;
     note: string;
     showcaseLabel: string;
+    showcaseNote: string;
   };
   clients: {
     title: string;
@@ -47,6 +48,7 @@ export type Messages = {
   };
   stories: {
     label: string;
+    storeLabel: string;
     items: { tag: string; title: string; body: string }[];
   };
   aiCases: {
