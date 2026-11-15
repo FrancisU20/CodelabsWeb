@@ -9,7 +9,7 @@ const sourceFiles = (readdirSync(SOURCE, { recursive: true }) as string[]).filte
 );
 
 const rules: [string, RegExp, string[]][] = [
-  ["literalColors", /#[0-9a-fA-F]{3,8}\b|rgba?\(/, ["styles/tokens.css", "showcase/", "shared/ui/icons/icon-sprite.tsx"]],
+  ["literalColors", /#[0-9a-fA-F]{3,8}\b|rgba?\(/, ["styles/tokens.css", "showcase/"]],
   ["buttonClasses", /\bbtn btn-|"btn"/, ["shared/ui/button/"]],
   ["imagePaths", /"\/[\w/.-]+\.(png|webp|svg|ico|jpe?g)"/, ["content/images.ts"]],
 ];

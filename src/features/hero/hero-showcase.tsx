@@ -1,24 +1,31 @@
+import { IMAGES } from "@/content/images";
 import PhoneFrame from "@/shared/devices/phone-frame";
-import { SHOWCASE_APPS } from "@/showcase/showcase-apps";
+import ConfiamedApp from "@/showcase/confiamed-app";
+import FarmaenlaceApp from "@/showcase/farmaenlace-app";
+import SupermaxiApp from "@/showcase/supermaxi-app";
 import styles from "./hero.module.css";
 
-const { aura: AuraScreen, nucleo: NucleoScreen, lexa: LexaScreen } = SHOWCASE_APPS;
+type HeroShowcaseProps = {
+  label: string;
+  note: string;
+};
 
-const HeroShowcase = ({ label }: { label: string }) => (
-  <div className={styles.showcase} role="img" aria-label={label}>
+const HeroShowcase = ({ label, note }: HeroShowcaseProps) => (
+  <figure className={styles.showcase} role="img" aria-label={label}>
     <div className={`${styles.fan} scene-motion`}>
       <span className={`${styles.floor} scene-motion`} />
       <PhoneFrame className={`${styles.fanPhone} ${styles.left} scene-motion`}>
-        <AuraScreen />
+        <SupermaxiApp />
       </PhoneFrame>
       <PhoneFrame className={`${styles.fanPhone} ${styles.right} scene-motion`}>
-        <LexaScreen />
+        <FarmaenlaceApp logoSrc={IMAGES.brands.farmaenlace} />
       </PhoneFrame>
       <PhoneFrame className={`${styles.fanPhone} ${styles.center} scene-motion`}>
-        <NucleoScreen />
+        <ConfiamedApp logoSrc={IMAGES.brands.confiamed} />
       </PhoneFrame>
+      <figcaption className={styles.showcaseNote}>{note}</figcaption>
     </div>
-  </div>
+  </figure>
 );
 
 export default HeroShowcase;

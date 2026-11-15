@@ -22,20 +22,10 @@
   margin-bottom: 18px;
 }
 
-.brand svg {
-  width: 30px;
-  height: 30px;
-}
-
-.brand b {
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: -0.035em;
-  color: #0f2747;
-}
-
-.brand b span {
-  color: #1a66cc;
+.brand img {
+  width: 132px;
+  height: auto;
+  display: block;
 }
 
 .navItem {

@@ -10,6 +10,14 @@ export const IMAGES = {
     es: "/og/share-es.png",
     en: "/og/share-en.png",
   },
+  brands: {
+    confiamed: "/brands/confiamed.webp",
+    farmaenlace: "/brands/farmaenlace.webp",
+    basc: "/brands/basc.webp",
+  },
+  cases: {
+    curveBooking: "/cases/curve-booking.webp",
+  },
   aws: {
     logo: "/aws/aws-logo-light.webp",
     services: ["/aws/ecs.webp", "/aws/lambda.webp", "/aws/eventbridge.webp", "/aws/sqs.webp", "/aws/rds.webp"],

@@ -5,9 +5,9 @@ import styles from "./stories.module.css";
 const StoryPhone = () => (
   <div className={styles.phoneWrap} aria-hidden="true">
     <PhoneFrame className={`${styles.storyPhone} scene-motion`}>
-      {STORY_SCREENS.map(({ id, Screen }, index) => (
+      {STORY_SCREENS.map(({ id, screen }, index) => (
         <div key={id} className={styles.layer} data-index={index}>
-          <Screen />
+          {screen}
         </div>
       ))}
     </PhoneFrame>

@@ -48,11 +48,20 @@
 
 .showcase {
   position: relative;
+  margin: 0;
   display: flex;
   justify-content: center;
-  padding: 28px 12px;
+  padding: 28px 12px 56px;
   min-width: 0;
   overflow: hidden;
+}
+
+.showcaseNote {
+  position: absolute;
+  inset: calc(100% + 18px) 0 auto;
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--night-text);
 }
 
 .fan {

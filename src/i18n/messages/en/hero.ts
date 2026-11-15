@@ -9,5 +9,6 @@ export const hero: Messages["hero"] = {
   ctaPrimary: "Tell us about your project",
   ctaSecondary: "See case studies",
   note: "We usually reply the same day.",
-  showcaseLabel: "Screens from apps built by CodeLabs: appointment booking, classes and customer sign-up",
+  showcaseLabel: "Reference designs of apps we built for Supermaxi, Confiamed and Farmaenlace",
+  showcaseNote: "Reference designs of apps we built for our clients.",
 };

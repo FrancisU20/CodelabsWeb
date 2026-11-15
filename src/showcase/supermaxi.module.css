@@ -1,0 +1,89 @@
+.supermaxi {
+  background: #fdf6f4;
+  color: #2b1a1a;
+}
+
+.supermaxi small {
+  color: #7a5d5d;
+  font-size: 0.78em;
+}
+
+.word {
+  font-size: 1.35em;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: #c8102e;
+}
+
+.order {
+  border-radius: 1.1em;
+  padding: 0.85em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  background: #c8102e;
+  color: #ffffff;
+}
+
+.supermaxi .order small {
+  color: #ffd9d9;
+}
+
+.order b {
+  font-size: 1.15em;
+  letter-spacing: -0.02em;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.3em;
+  margin-top: 0.4em;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  font-size: 0.58em;
+  font-weight: 600;
+  color: #ffb3b3;
+}
+
+.step i {
+  height: 0.4em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.stepDone {
+  color: #ffffff;
+}
+
+.stepDone i {
+  background: #ffd100;
+}
+
+.courier {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  padding: 0.7em 0.8em;
+  border-radius: 0.9em;
+  background: #ffffff;
+  font-size: 0.88em;
+}
+
+.courier b,
+.courier small {
+  display: block;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.7em 0.8em;
+  border-radius: 0.9em;
+  background: #ffffff;
+  font-size: 0.85em;
+}

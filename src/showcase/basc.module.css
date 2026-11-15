@@ -1,0 +1,68 @@
+.basc {
+  background: #f1f5fc;
+  color: #13306b;
+}
+
+.basc small {
+  color: #5b6f95;
+  font-size: 0.78em;
+}
+
+.logo {
+  width: 2.6em;
+  height: auto;
+  display: block;
+  border-radius: 0.5em;
+}
+
+.word {
+  font-size: 1.15em;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+.course {
+  border-radius: 1.1em;
+  padding: 0.85em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  background: #1c4fa3;
+  color: #ffffff;
+}
+
+.course b {
+  font-size: 1.05em;
+  letter-spacing: -0.02em;
+}
+
+.basc .course small {
+  color: #c9dbff;
+}
+
+.bar {
+  height: 0.45em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  width: var(--progress);
+  border-radius: inherit;
+  background: #7fc4ff;
+}
+
+.lesson {
+  padding: 0.7em 0.8em;
+  border-radius: 0.9em;
+  background: #ffffff;
+  font-size: 0.88em;
+}
+
+.lesson b,
+.lesson small {
+  display: block;
+}

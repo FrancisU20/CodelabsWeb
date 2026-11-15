@@ -6,21 +6,26 @@ import DashboardSidebar from "./dashboard-sidebar";
 import DashboardTable from "./dashboard-table";
 import styles from "./dashboard.module.css";
 
-const APP_ADDRESS = "app.rutaclara.com/embarques";
+const WINDOW_CAPTION = "Plataforma de despachos";
 
-const RutaDashboard = ({ className }: { className?: string }) => (
-  <WindowFrame kind="browser" caption={APP_ADDRESS} className={className}>
+type FarmaenlaceDashboardProps = {
+  logoSrc: string;
+  className?: string;
+};
+
+const FarmaenlaceDashboard = ({ logoSrc, className }: FarmaenlaceDashboardProps) => (
+  <WindowFrame kind="browser" caption={WINDOW_CAPTION} className={className}>
     <div className={styles.layout}>
-      <DashboardSidebar />
+      <DashboardSidebar logoSrc={logoSrc} />
       <div className={styles.main}>
         <div className={styles.head}>
           <div>
-            <p className={styles.title}>Trazabilidad de embarques</p>
-            <small>Actualizado hace 2 min</small>
+            <p className={styles.title}>Despachos a farmacias</p>
+            <small>Actualizado hace 1 min</small>
           </div>
           <span className={styles.search}>
             <Icon name="search" />
-            Buscar contenedor
+            Buscar código
           </span>
         </div>
         <DashboardKpis />
@@ -33,4 +38,4 @@ const RutaDashboard = ({ className }: { className?: string }) => (
   </WindowFrame>
 );
 
-export default RutaDashboard;
+export default FarmaenlaceDashboard;

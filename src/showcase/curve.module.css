@@ -1,0 +1,13 @@
+.curve {
+  background: #f5f4ee;
+  color: #2f2a24;
+  padding-inline: 0;
+  padding-bottom: 0;
+  gap: 0;
+}
+
+.screen {
+  width: 100%;
+  height: auto;
+  display: block;
+}
