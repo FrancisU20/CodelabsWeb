@@ -8,25 +8,21 @@ import styles from "./service-card.module.css";
 type ServiceCardProps = {
   href: string;
   title: string;
-  label?: string;
-  summary?: string;
-  price?: string;
+  summary: string;
+  price: string;
   more: string;
   vignette: { kind: VignetteKind; lines: string[]; state?: string };
-  layout: "stacked" | "row";
-  headingLevel?: "h2" | "h3";
   className?: string;
 };
 
-const ServiceCard = ({ href, title, label, summary, price, more, vignette, layout, headingLevel: Heading = "h3", className }: ServiceCardProps) => (
-  <Card as="article" padding="sm" className={joinClassNames(styles.card, styles[layout], className)} reveal={layout === "row"}>
+const ServiceCard = ({ href, title, summary, price, more, vignette, className }: ServiceCardProps) => (
+  <Card as="article" padding="sm" className={joinClassNames(styles.card, className)} reveal>
     <ServiceVignette {...vignette} className={styles.vignette} />
-    {label && <p className={styles.label}>{label}</p>}
-    <Heading className={styles.name}>
+    <h2 className={styles.name}>
       <Link href={href}>{title}</Link>
-    </Heading>
-    {summary && <p className={styles.summary}>{summary}</p>}
-    {price && <p className={styles.price}>{price}</p>}
+    </h2>
+    <p className={styles.summary}>{summary}</p>
+    <p className={styles.price}>{price}</p>
     <span className={styles.more} aria-hidden="true">
       {more}
     </span>

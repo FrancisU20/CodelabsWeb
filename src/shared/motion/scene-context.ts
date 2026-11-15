@@ -6,7 +6,6 @@ export type SceneContext = {
   viewportWidth: number;
   pins: HTMLElement[];
   scrubs: HTMLElement[];
-  tracks: HTMLElement[];
   counters: HTMLElement[];
   metrics: PinMetric[];
   renderedValues: Map<HTMLElement, string>;

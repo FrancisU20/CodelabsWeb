@@ -5,6 +5,7 @@ const PIN_HEIGHT = {
   short: "130vh",
   standard: "150vh",
   long: "240vh",
+  chapters: "560vh",
 } as const;
 
 type PinLength = keyof typeof PIN_HEIGHT;

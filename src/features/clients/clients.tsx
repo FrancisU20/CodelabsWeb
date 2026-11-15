@@ -5,7 +5,6 @@ import { CLIENTS_ANCHOR } from "@/i18n/routing";
 import { joinClassNames } from "@/shared/lib/class-names";
 import ClientIndustries from "./client-industries";
 import ClientLogoGroup from "./client-logo-group";
-import ClientReviews from "./client-reviews";
 import styles from "./clients.module.css";
 
 const Clients = ({ locale }: { locale: Locale }) => {
@@ -27,7 +26,6 @@ const Clients = ({ locale }: { locale: Locale }) => {
         ))}
       </div>
       <ClientIndustries copy={dict.industries} locale={locale} />
-      <ClientReviews copy={dict} />
     </section>
   );
 };

@@ -16,6 +16,11 @@ export const IMAGES = {
     basc: "/brands/basc.webp",
   },
   founder: "/founder/francisco-ulloa.webp",
+  closing: "/closing/video-call.webp",
+  reviews: {
+    cesar: "/reviews/cesar-rovalino.webp",
+    inec: "/reviews/inec.webp",
+  },
   cases: {
     curveBooking: "/cases/curve-booking.webp",
   },

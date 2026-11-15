@@ -1,4 +1,6 @@
 import type { IndustryId } from "@/content/industry-id";
+import type { ReviewId } from "@/content/review-id";
+import type { ReviewSource } from "@/content/review-source";
 import type { RoleId } from "@/content/role-id";
 import type { ServiceId } from "@/content/service-id";
 import type { PageKey } from "../page-key";
@@ -37,10 +39,6 @@ export type Messages = {
   clients: {
     title: string;
     industries: { title: string; items: Record<IndustryId, string> };
-    reviewsLabel: string;
-    reviewSource: string;
-    reviewsLink: string;
-    reviews: { quote: string; author: string }[];
   };
   manifesto: {
     ariaLabel: string;
@@ -81,10 +79,13 @@ export type Messages = {
   };
   impact: {
     eyebrow: string;
-    captionStrong: string;
-    captionMuted: string;
-    figuresLabel: string;
-    figures: { founded: string; apps: string; awsPartner: string; awsCertifications: string };
+    title: string;
+    projects: string;
+    apps: string;
+    countries: string;
+    years: string;
+    awsPartner: string;
+    awsCertifications: string;
   };
   aws: {
     eyebrow: string;
@@ -168,6 +169,14 @@ export type Messages = {
     relatedTitle: string;
     read: string;
   };
+  reviews: {
+    title: string;
+    averageLabel: string;
+    seeAll: string;
+    ratingLabel: string;
+    sources: Record<ReviewSource, string>;
+    quotes: Record<ReviewId, string>;
+  };
   pricing: {
     from: string;
     perMonth: string;
@@ -178,5 +187,6 @@ export type Messages = {
     body: string;
     cta: string;
     bookingCta: string;
+    photoAlt: string;
   };
 };

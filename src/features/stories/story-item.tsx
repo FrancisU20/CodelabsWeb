@@ -13,7 +13,7 @@ const StoryItem = ({ item, index, storeLabel }: StoryItemProps) => {
   const { screen, storeUrl } = STORY_SCREENS[index];
 
   return (
-    <div className={styles.item} data-index={index} data-reveal>
+    <div className={styles.item} data-index={index} data-current={index === 0 || undefined} data-reveal>
       <span className={styles.tag}>{item.tag}</span>
       <h3 className={styles.itemTitle}>{item.title}</h3>
       <p className={styles.itemBody}>{item.body}</p>

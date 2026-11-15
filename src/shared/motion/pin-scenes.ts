@@ -7,6 +7,13 @@ const isStory = (section: HTMLElement): boolean => section.dataset.story !== und
 
 const storyCount = (section: HTMLElement): number => Number(section.dataset.storyCount);
 
+const setActiveChapter = (section: HTMLElement, index: number) => {
+  const active = String(index);
+  if (section.dataset.active === active) return;
+  section.dataset.active = active;
+  section.querySelectorAll<HTMLElement>("[data-index]").forEach((chapter) => chapter.toggleAttribute("data-current", chapter.dataset.index === active));
+};
+
 export const measurePins = (context: SceneContext) => {
   context.metrics = context.pins.map((section) => ({
     section,
@@ -21,10 +28,8 @@ export const renderPins = (context: SceneContext) =>
     renderCounters(counters, entryProgress(window.scrollY, top, window.innerHeight));
     const progress = pinProgress(window.scrollY, top, length);
     if (!writeProgress(context, section, progress) || !isStory(section)) return;
-    section.dataset.active = String(activeIndex(progress, storyCount(section)));
+    setActiveChapter(section, activeIndex(progress, storyCount(section)));
   });
 
 export const resetStories = (context: SceneContext) =>
-  context.pins.filter(isStory).forEach((section) => {
-    section.dataset.active = "0";
-  });
+  context.pins.filter(isStory).forEach((section) => setActiveChapter(section, 0));

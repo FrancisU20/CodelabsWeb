@@ -1,4 +1,3 @@
-import { measureTrack } from "./horizontal-track";
 import { MOTION_CLASS, REDUCED_MOTION_QUERY } from "./motion-mode";
 import { measurePins, renderPins, resetStories } from "./pin-scenes";
 import { observeReveals } from "./reveal-observer";
@@ -10,11 +9,6 @@ import { renderScrubs } from "./scrub-scenes";
 const queryAll = (selector: string): HTMLElement[] => [...document.querySelectorAll<HTMLElement>(selector)];
 
 const isMotionActive = (context: SceneContext): boolean => context.root.classList.contains(MOTION_CLASS);
-
-const measure = (context: SceneContext) => {
-  context.tracks.forEach((section) => measureTrack(section, isMotionActive(context)));
-  measurePins(context);
-};
 
 const render = (context: SceneContext) => {
   context.frameRequested = false;
@@ -38,7 +32,7 @@ const showStaticState = (context: SceneContext) => {
 const applyMode = (context: SceneContext) => {
   const motionOn = !context.reducedMotion.matches;
   context.root.classList.toggle(MOTION_CLASS, motionOn);
-  measure(context);
+  measurePins(context);
   if (!motionOn) {
     showStaticState(context);
     return;
@@ -52,7 +46,6 @@ const createContext = (): SceneContext => ({
   viewportWidth: window.innerWidth,
   pins: queryAll("[data-pin]"),
   scrubs: queryAll("[data-scrub]"),
-  tracks: queryAll("[data-track]"),
   counters: queryAll("[data-count]"),
   metrics: [],
   renderedValues: new Map(),
@@ -65,7 +58,7 @@ export const startScrollScenes = (): (() => void) => {
   const onScroll = () => requestRender(context);
   const onLayoutChange = () => {
     if (!active) return;
-    measure(context);
+    measurePins(context);
     requestRender(context);
   };
   const onResize = () => {

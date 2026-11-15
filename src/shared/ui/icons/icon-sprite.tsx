@@ -68,6 +68,9 @@ const IconSprite = () => (
     <symbol id="icon-check" viewBox="0 0 24 24">
       <path {...stroke} strokeWidth={3} d="m5 12 5 5 9-10" />
     </symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path fill="currentColor" d="m12 2.8 2.8 5.7 6.3.9-4.55 4.43 1.07 6.27L12 17.14l-5.63 2.96 1.08-6.27L2.9 9.4l6.3-.91L12 2.8Z" />
+    </symbol>
   </svg>
 );
 
