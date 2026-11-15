@@ -1,8 +1,10 @@
+import { ENGAGEMENT_TERMS } from "../engagement-terms";
 import { PRICE_LIST } from "../price-list";
 import type { Guide } from "./guide";
 import { faq, list, paragraph, section, table, usd } from "./guide-tokens";
 
 const { team } = PRICE_LIST;
+const { paymentStart, paymentMidway, paymentDelivery, warrantyDays, minimumMonths, deliveryEveryWeeks } = ENGAGEMENT_TERMS;
 
 export const engagementModelsGuide: Guide = {
   slug: "proyecto-cerrado-equipo-dedicado-o-refuerzo-de-equipo",
@@ -20,7 +22,8 @@ export const engagementModelsGuide: Guide = {
         ["Qué es", "Alcance, tiempo y costo definidos desde el inicio", "Un equipo completo de CodeLabs trabaja solo en tu producto", "Ingenieros nuestros se integran a tu equipo"],
         ["Conviene si", "Sabes exactamente qué necesitas", "Tu producto cambia y crece todo el tiempo", "Ya tienes un equipo y te falta capacidad o una especialidad"],
         ["Quién dirige", "CodeLabs, con tu aprobación en cada etapa", "Tú defines prioridades; CodeLabs gestiona el equipo", "Tu equipo dirige el trabajo diario"],
-        ["Cómo se paga", "Por etapas entregadas", "Mensual", "Mensual, por ingeniero"],
+        ["Cómo se paga", `Por etapas: ${paymentStart}% / ${paymentMidway}% / ${paymentDelivery}%`, "Mensual", "Mensual, por ingeniero"],
+        ["Compromiso", `Garantía de ${warrantyDays} días`, `Mínimo ${minimumMonths} meses`, `Mínimo ${minimumMonths} meses`],
       ),
     ),
     section(
@@ -29,13 +32,13 @@ export const engagementModelsGuide: Guide = {
         "Es la opción con más certeza: sabes cuánto vas a pagar y cuándo vas a recibir cada parte. Funciona mejor para productos con alcance claro, como una app de reservas, una tienda en línea o una integración entre dos sistemas.",
       ),
       paragraph(
-        "El riesgo está en los cambios: si a mitad del proyecto cambia lo que necesitas, hay que ajustar el alcance, el tiempo y el costo. Por eso conviene dividirlo en etapas cortas.",
+        `Se paga por etapas: ${paymentStart}% al iniciar, ${paymentMidway}% a mitad del proyecto y ${paymentDelivery}% al entregar, con ${warrantyDays} días de corrección de errores sin costo después de la entrega. El riesgo está en los cambios: si a mitad del proyecto cambia lo que necesitas, hay que ajustar el alcance, el tiempo y el costo.`,
       ),
     ),
     section(
       "Equipo dedicado",
       paragraph(
-        "Un equipo completo, con dirección de proyecto, diseño, desarrollo y pruebas, trabaja solo para tu producto. Tú decides las prioridades de cada ciclo y el equipo entrega avances continuos.",
+        `Un equipo completo, con dirección de proyecto incluida, diseño, desarrollo y pruebas, trabaja solo para tu producto. Cada ${deliveryEveryWeeks} semanas decides las prioridades y recibes una entrega para probar. El compromiso mínimo es de ${minimumMonths} meses.`,
       ),
       paragraph(
         "Conviene cuando el producto es central para tu negocio y va a seguir creciendo: una plataforma para tus clientes, una app con muchas funciones o un sistema que se mejora todos los meses.",
@@ -78,7 +81,7 @@ export const engagementModelsGuide: Guide = {
     ),
     faq(
       "¿Cuál es el compromiso mínimo para un equipo dedicado?",
-      "Lo definimos en la propuesta según el proyecto y el tamaño del equipo.",
+      `${minimumMonths} meses, tanto en equipo dedicado como en refuerzo de equipo.`,
     ),
   ],
   services: ["custom", "mobile", "cloud"],

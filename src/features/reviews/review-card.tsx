@@ -1,4 +1,5 @@
 import type { Review } from "@/content/review";
+import { fillTemplate } from "@/i18n/fill-template";
 import type { Messages } from "@/i18n/messages/messages";
 import ReviewAvatar from "./review-avatar";
 import ReviewStars from "./review-stars";
@@ -13,7 +14,7 @@ const ReviewCard = ({ review, copy }: { review: Review; copy: Messages["reviews"
         {review.organization && <span className={styles.organization}>{review.organization}</span>}
       </div>
     </div>
-    <ReviewStars rating={review.rating} label={copy.ratingLabel.replace("{rating}", String(review.rating))} />
+    <ReviewStars rating={review.rating} label={fillTemplate(copy.ratingLabel, { rating: review.rating })} />
     <blockquote className={styles.quote}>{copy.quotes[review.id]}</blockquote>
     <span className={styles.source} data-source={review.source}>
       {copy.sources[review.source]}

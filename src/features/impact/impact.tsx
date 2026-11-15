@@ -1,4 +1,5 @@
 import { APPS_PUBLISHED, AWS_CERTIFICATIONS, COUNTRIES_SERVED, FOUNDING_YEAR, PROJECTS_DELIVERED, yearsInBusiness } from "@/content/company-figures";
+import { fillTemplate } from "@/i18n/fill-template";
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
 import { pinLength } from "@/shared/motion/pin-length";
@@ -14,7 +15,7 @@ const Impact = ({ locale }: { locale: Locale }) => {
     { value: PROJECTS_DELIVERED, prefix: "+", label: dict.projects },
     { value: APPS_PUBLISHED, prefix: "+", label: dict.apps },
     { value: COUNTRIES_SERVED.length, prefix: "", label: dict.countries },
-    { value: years, prefix: "", label: dict.years.replace("{founded}", String(FOUNDING_YEAR)) },
+    { value: years, prefix: "", label: fillTemplate(dict.years, { founded: FOUNDING_YEAR }) },
   ];
 
   return (
@@ -22,7 +23,7 @@ const Impact = ({ locale }: { locale: Locale }) => {
       <div className={`site-wrap ${styles.stage}`} data-stage>
         <Kicker>{dict.eyebrow}</Kicker>
         <h2 id="impact-title" className={styles.title} data-reveal>
-          {dict.title.replace("{years}", String(years))}
+          {fillTemplate(dict.title, { years })}
         </h2>
         <dl className={styles.figures}>
           {figures.map((figure, index) => (

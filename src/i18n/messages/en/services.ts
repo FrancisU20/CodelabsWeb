@@ -2,7 +2,7 @@ import type { Messages } from "../messages";
 
 export const services: Messages["services"] = {
   title: { lines: ["What does your", "company need?"] },
-  more: "Learn more",
+  more: "See the service",
   helpChat: {
     name: "CodeLabs",
     initial: "C",
@@ -20,12 +20,50 @@ export const services: Messages["services"] = {
     { id: "custom", title: "Custom software", need: "Integrate your systems and processes", summary: "Custom platforms and integrations with your systems.", vignette: { lines: [] } },
     { id: "cloud", title: "AWS cloud, security and support", need: "Run without outages and with protected data", summary: "AWS infrastructure, monitoring and ongoing support.", vignette: { lines: ["Online store", "Invoicing", "Daily backup"], state: "Online" } },
   ],
+  timelineLabel: "Typical timeline",
   engagement: {
     title: { lines: ["Ways to work", "with us"] },
-    items: [
-      { title: "Fixed project", body: "Scope, timing and cost defined from the start." },
-      { title: "Dedicated team", body: "A complete CodeLabs team working on your product." },
-      { title: "Team extension", body: "Our engineers joining your team and your way of working." },
+    featured: "Most chosen",
+    items: {
+      fixed: {
+        title: "Fixed project",
+        forWho: "For when you know what you need: a website, an app or an integration.",
+        details: [
+          { label: "How it works", text: "We send you a proposal with a fixed scope, timeline and price. You approve the design, we build in stages and you test every milestone." },
+          { label: "What you get", text: "The working system, the code and accounts in your company's name, and training for your team." },
+          { label: "How you pay", text: "{start}% at kickoff, {midway}% halfway through and {delivery}% on delivery." },
+          { label: "Guarantee", text: "{days} days of free bug fixes after delivery." },
+        ],
+        priceNote: "depending on the service and scope",
+      },
+      dedicated: {
+        title: "Dedicated team",
+        forWho: "For products that grow month after month: a platform or a feature-rich app.",
+        details: [
+          { label: "How it works", text: "A CodeLabs team works only on your product. Every {weeks} weeks you set the priorities and receive a delivery to test." },
+          { label: "Who is on it", text: "Project management included, plus the profiles your product needs: design, web and mobile development, cloud and testing." },
+          { label: "How you pay", text: "Monthly, based on team size." },
+          { label: "Commitment", text: "{months} months minimum." },
+        ],
+        priceNote: "per month per full-time engineer",
+      },
+      extension: {
+        title: "Team extension",
+        forWho: "For when you already have a team and need more capacity or a specialty.",
+        details: [
+          { label: "How it works", text: "Our engineers join your team, your tools and your schedule. Your team leads the daily work." },
+          { label: "Profiles", text: "Web and backend, mobile apps, AWS cloud and DevOps, and testing (QA)." },
+          { label: "How you pay", text: "Monthly, per engineer." },
+          { label: "Commitment", text: "{months} months minimum." },
+        ],
+        priceNote: "per month for a mid-level engineer · {senior} senior",
+      },
+    },
+    chooser: [
+      { question: "Clear scope and fixed budget?", answer: "Fixed project." },
+      { question: "Does your product change every month?", answer: "Dedicated team." },
+      { question: "Already have a team but need people?", answer: "Team extension." },
     ],
+    guideLink: "Read the full guide to choose",
   },
 };
