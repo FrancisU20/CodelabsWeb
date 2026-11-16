@@ -2,10 +2,9 @@ import type { LegalDocument } from "../legal-document";
 import { documentLink, emailWithSubject, list, paragraph, whatsApp } from "../legal-tokens";
 
 export const unsubscribe: LegalDocument = {
-  layout: "cards",
   metaTitle: "Cómo darte de baja de nuestras comunicaciones",
   metaDescription: "Solicita dejar de recibir comunicaciones de CodeLabs en cualquier momento.",
-  eyebrow: "Desuscripción",
+  eyebrow: "Legal · Comunicaciones",
   title: "Cómo darte de baja de nuestras comunicaciones",
   intro: "En ejercicio de tu derecho de oposición previsto en la Ley Orgánica de Protección de Datos Personales del Ecuador (LOPDP), puedes solicitar en cualquier momento dejar de recibir comunicaciones comerciales o de marketing de CodeLabs. Procesaremos tu solicitud en el menor tiempo posible.",
   updated: "Última actualización: 29 de junio de 2026",

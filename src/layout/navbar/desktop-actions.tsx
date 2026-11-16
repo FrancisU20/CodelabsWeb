@@ -7,11 +7,8 @@ import styles from "./navbar.module.css";
 const DesktopActions = ({ copy, links, pathname }: { copy: Messages["nav"]; links: NavbarLinks; pathname: string }) => (
   <div className={styles.actions}>
     <LanguageMenu copy={copy} pathname={pathname} alternate={links.alternate} />
-    <ButtonLink href={links.contactHref} size="sm" className={styles.cta}>
+    <ButtonLink href={links.contactHref} size="sm">
       {copy.cta}
-      <span className={styles.ctaArrow} aria-hidden="true">
-        →
-      </span>
     </ButtonLink>
   </div>
 );

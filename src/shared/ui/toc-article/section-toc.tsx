@@ -2,16 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { joinClassNames } from "@/shared/lib/class-names";
-import styles from "./guides.module.css";
+import styles from "./toc-article.module.css";
+import type { TocEntry } from "./toc-entry";
 
-type GuideTocProps = {
+type SectionTocProps = {
   title: string;
-  items: { id: string; label: string }[];
+  items: TocEntry[];
 };
 
 const VISIBLE_BAND = "-25% 0px -65% 0px";
 
-const GuideToc = ({ title, items }: GuideTocProps) => {
+const SectionToc = ({ title, items }: SectionTocProps) => {
   const [active, setActive] = useState(items[0]?.id);
 
   useEffect(() => {
@@ -39,4 +40,4 @@ const GuideToc = ({ title, items }: GuideTocProps) => {
   );
 };
 
-export default GuideToc;
+export default SectionToc;
