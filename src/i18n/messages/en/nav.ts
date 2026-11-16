@@ -15,5 +15,8 @@ export const nav: Messages["nav"] = {
   skipToContent: "Skip to content",
   languageAriaLabel: "Change language",
   currentLanguage: "English",
+  currentLanguageCode: "EN",
   otherLanguage: "Español",
+  otherLanguageCode: "ES",
+  whatsApp: "Message us on WhatsApp",
 };

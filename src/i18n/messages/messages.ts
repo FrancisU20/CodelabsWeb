@@ -26,7 +26,10 @@ export type Messages = {
     skipToContent: string;
     languageAriaLabel: string;
     currentLanguage: string;
+    currentLanguageCode: string;
     otherLanguage: string;
+    otherLanguageCode: string;
+    whatsApp: string;
   };
   hero: {
     eyebrow: string;
@@ -157,6 +160,7 @@ export type Messages = {
     ariaLabel: string;
     label: string;
     message: string;
+    bubble: { title: string; body: string; dismiss: string };
   };
   notFound: { title: string; body: string; cta: string };
   workHero: {
