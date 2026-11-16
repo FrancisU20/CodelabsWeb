@@ -24,7 +24,7 @@ export const pages: Messages["pages"] = {
   },
   contact: {
     eyebrow: "Contacto",
-    title: "Cuéntanos qué necesita tu empresa.",
-    description: "Escríbenos por aquí, por WhatsApp o por correo. Te contesta el equipo que lo va a construir, normalmente el mismo día.",
+    title: "Cuéntanos qué necesitas. Te respondemos el mismo día.",
+    description: "Escríbenos por el formulario, por WhatsApp o agenda una videollamada de 30 minutos sin costo. Te responde el equipo que va a construir tu proyecto.",
   },
 };

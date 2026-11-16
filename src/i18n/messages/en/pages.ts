@@ -23,7 +23,7 @@ export const pages: Messages["pages"] = {
   },
   contact: {
     eyebrow: "Contact",
-    title: "Tell us what your company needs.",
-    description: "Write to us here, on WhatsApp or by email. The team that will build it is the one that answers, usually the same day.",
+    title: "Tell us what you need. We reply the same day.",
+    description: "Use the form, message us on WhatsApp or book a free 30-minute video call. The team that will build your project is the one that answers.",
   },
 };

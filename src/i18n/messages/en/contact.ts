@@ -34,6 +34,6 @@ export const contact: Messages["contact"] = {
     email: "Email:",
     project: "I need:",
   },
-  whatsAppCard: { title: "Prefer WhatsApp?", body: "Message us and the team will reply." },
-  bookingCard: { title: "Prefer a video call?", body: "Book 30 minutes with us on Google Meet, free of charge." },
+  channels: { whatsApp: "Message us on WhatsApp", booking: "Book a video call" },
+  map: { label: "Map of the CodeLabs office in Ibarra", directions: "Get directions", attribution: "© OpenStreetMap contributors" },
 };

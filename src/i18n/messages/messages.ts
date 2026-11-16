@@ -142,8 +142,8 @@ export type Messages = {
     failure: string;
     openWhatsApp: string;
     message: { greeting: string; fallbackName: string; reference: string; company: string; email: string; project: string };
-    whatsAppCard: { title: string; body: string };
-    bookingCard: { title: string; body: string };
+    channels: { whatsApp: string; booking: string };
+    map: { label: string; directions: string; attribution: string };
   };
   footer: {
     legalAriaLabel: string;

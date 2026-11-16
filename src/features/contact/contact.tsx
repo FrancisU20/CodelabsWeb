@@ -1,36 +1,19 @@
-import { BOOKING_URL, buildWhatsAppLink } from "@/config/contact";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import ContactDetails from "./contact-details";
 import ContactForm from "./contact-form";
+import OfficeMap from "./office-map";
+import styles from "./contact.module.css";
 
 const Contact = ({ locale }: { locale: Locale }) => {
-  const messages = getMessages(locale);
-  const copy = messages.contact;
+  const copy = getMessages(locale).contact;
 
   return (
-    <section id="contacto" className="pt-4 pb-16 sm:pt-6 sm:pb-24">
-      <div className="site-wrap grid items-start gap-10 [grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))]">
+    <section id="contacto" className={styles.section}>
+      <div className={`site-wrap ${styles.layout}`}>
         <ContactForm copy={copy} locale={locale} />
-        <div className="flex flex-col gap-6">
-          <a
-            href={buildWhatsAppLink(messages.whatsapp.message)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-lg bg-wa p-6 text-wa-ink transition-transform hover:-translate-y-0.5"
-          >
-            <b className="block font-display text-xl">{copy.whatsAppCard.title}</b>
-            <span>{copy.whatsAppCard.body}</span>
-          </a>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block rounded-lg border border-line p-6 transition-transform hover:-translate-y-0.5"
-          >
-            <b className="block font-display text-xl">{copy.bookingCard.title}</b>
-            <span className="text-muted">{copy.bookingCard.body}</span>
-          </a>
+        <div className={styles.side}>
+          <OfficeMap copy={copy.map} />
           <ContactDetails copy={copy} />
         </div>
       </div>
