@@ -2,6 +2,8 @@ import { FOUNDER_LINKEDIN_URL, FOUNDER_NAME, ORGANIZATION_ID, SITE_NAME, SITE_UR
 import type { Guide } from "@/content/guides/guide";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { GUIDES_LOCALE, GUIDES_ROUTE, guidePath, pagePath } from "@/i18n/routing";
+import JsonLdScript from "./json-ld-script";
+import { breadcrumbNode, faqPageNode } from "./schema-nodes";
 
 const GuideJsonLd = ({ guide }: { guide: Guide }) => {
   const url = `${SITE_URL}${guidePath(guide.slug)}`;
@@ -11,7 +13,6 @@ const GuideJsonLd = ({ guide }: { guide: Guide }) => {
     { name: guide.title, item: url },
   ];
   const graph = {
-    "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
@@ -24,22 +25,12 @@ const GuideJsonLd = ({ guide }: { guide: Guide }) => {
         author: { "@type": "Person", name: FOUNDER_NAME, url: FOUNDER_LINKEDIN_URL, worksFor: { "@id": ORGANIZATION_ID } },
         publisher: { "@id": ORGANIZATION_ID },
       },
-      {
-        "@type": "FAQPage",
-        mainEntity: guide.faqs.map((entry) => ({
-          "@type": "Question",
-          name: entry.question,
-          acceptedAnswer: { "@type": "Answer", text: entry.answer },
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: breadcrumb.map((entry, index) => ({ "@type": "ListItem", position: index + 1, ...entry })),
-      },
+      faqPageNode(guide.faqs),
+      breadcrumbNode(breadcrumb),
     ],
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />;
+  return <JsonLdScript data={graph} />;
 };
 
 export default GuideJsonLd;

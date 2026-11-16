@@ -5,10 +5,10 @@ import { IMAGES } from "@/content/images";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { servedCountries } from "./served-countries";
+import JsonLdScript from "./json-ld-script";
 
 const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
   const organization = {
-    "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": ORGANIZATION_ID,
     name: SITE_NAME,
@@ -37,7 +37,7 @@ const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
     sameAs: [GOOGLE_BUSINESS_URL, LINKEDIN_URL],
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />;
+  return <JsonLdScript data={organization} />;
 };
 
 export default OrganizationJsonLd;

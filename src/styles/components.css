@@ -12,6 +12,37 @@
     color: var(--brand);
   }
 
+  .hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: 56px;
+    padding-block: 72px 88px;
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .display-title {
+    margin: 0;
+    font-size: var(--text-display);
+    line-height: 1.06;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+  }
+
+  @media (max-width: 760px) {
+    .hero-split {
+      grid-template-columns: minmax(0, 1fr);
+      padding-block: 40px 56px;
+    }
+  }
+
   .section-title {
     font-size: var(--text-title);
     line-height: 1.12;

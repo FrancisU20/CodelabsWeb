@@ -9,4 +9,5 @@ const TERM_VALUES = {
   months: ENGAGEMENT_TERMS.minimumMonths,
 };
 
-export const fillTerms = (template: string): string => fillTemplate(template, TERM_VALUES);
+export const fillTerms = (template: string, extraValues: Record<string, string | number> = {}): string =>
+  fillTemplate(template, { ...TERM_VALUES, ...extraValues });

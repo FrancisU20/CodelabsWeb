@@ -22,12 +22,12 @@ const ServiceIntro = ({ service, locale, art }: ServiceIntroProps) => {
 
   return (
     <Section tone="deep" className={styles.intro} aria-labelledby="service-title">
-      <div className={`site-wrap ${styles.introGrid}`}>
-        <div className={styles.copy}>
+      <div className={`site-wrap hero-split ${styles.introGrid}`}>
+        <div className="hero-copy">
           <Link className="eyebrow" href={pagePath("services", locale)}>
             {messages.servicePages.labels.back} · {page.title}
           </Link>
-          <h1 id="service-title" className={`${styles.title} lift-in`}>
+          <h1 id="service-title" className={`display-title ${styles.title} lift-in`}>
             {messages.serviceDetails.items[service].headline}
           </h1>
           <p className="lede m-0">{page.description}</p>

@@ -3,14 +3,8 @@ import { joinClassNames } from "@/shared/lib/class-names";
 import Card from "@/shared/ui/card/card";
 import ServiceVignette from "@/showcase/service-vignette";
 import type { VignetteKind } from "@/showcase/vignette-kind";
+import type { ServiceCardFacts } from "./service-card-facts";
 import styles from "./service-card.module.css";
-
-type ServiceCardFacts = {
-  timelineLabel: string;
-  timeline: string;
-  priceLabel: string;
-  price: string;
-};
 
 type ServiceCardProps = {
   href: string;
