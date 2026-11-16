@@ -19,7 +19,7 @@ const scriptAttributes = (attributes) =>
   );
 
 const loaderScript = (scripts) =>
-  `<script>(()=>{let started=false;const start=()=>{if(started)return;started=true;${JSON.stringify(scripts).replaceAll("<", "\\u003c")}.forEach((attributes)=>{const tag=document.createElement("script");Object.entries(attributes).forEach(([name,value])=>tag.setAttribute(name,value));tag.async=true;document.head.appendChild(tag)})};addEventListener("load",start);if(PerformanceObserver.supportedEntryTypes.includes("largest-contentful-paint"))new PerformanceObserver(()=>setTimeout(start)).observe({type:"largest-contentful-paint",buffered:true})})()</script>`;
+  `<script>(()=>{let started=false;const start=()=>{if(started)return;started=true;${JSON.stringify(scripts).replaceAll("<", "\\u003c")}.forEach((attributes)=>{const tag=document.createElement("script");Object.entries(attributes).forEach(([name,value])=>tag.setAttribute(name,value));tag.async=true;document.head.appendChild(tag)})};const paintAware=PerformanceObserver.supportedEntryTypes.includes("largest-contentful-paint");if(paintAware){const painted=new Promise((resolve)=>new PerformanceObserver(resolve).observe({type:"largest-contentful-paint",buffered:true}));Promise.all([painted,document.fonts.ready]).then(()=>requestAnimationFrame(()=>setTimeout(start)))}addEventListener("load",()=>{if(!paintAware||document.visibilityState==="hidden")start()})})()</script>`;
 
 export const deferScripts = (page) => {
   const scripts = [...new Map([...page.matchAll(DEFERRABLE_SCRIPT)].map((match) => scriptAttributes(match[1])).map((attributes) => [attributes.src, attributes])).values()];
