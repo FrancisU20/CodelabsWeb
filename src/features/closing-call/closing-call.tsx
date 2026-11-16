@@ -11,17 +11,23 @@ import styles from "./closing-call.module.css";
 const PHOTO_WIDTH = 960;
 const PHOTO_HEIGHT = 1200;
 
-const ClosingCall = ({ locale }: { locale: Locale }) => {
+type ClosingCallProps = {
+  locale: Locale;
+  variant?: "work";
+};
+
+const ClosingCall = ({ locale, variant }: ClosingCallProps) => {
   const copy = getMessages(locale).closingCall;
+  const { title, body } = variant ? copy[variant] : copy;
 
   return (
     <Section tone="brand" aria-labelledby="closing-call-title">
       <div className={`site-wrap ${styles.layout}`}>
         <div className={styles.copy} data-reveal>
           <h2 id="closing-call-title" className="section-title m-0">
-            {copy.title}
+            {title}
           </h2>
-          <p className={styles.body}>{copy.body}</p>
+          <p className={styles.body}>{body}</p>
           <div className={styles.actions}>
             <ButtonLink variant="light" href={pagePath("contact", locale)}>
               {copy.cta}

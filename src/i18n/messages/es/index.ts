@@ -16,6 +16,7 @@ import { footer } from "./footer";
 import { whatsapp } from "./whatsapp";
 import { notFound } from "./not-found";
 import { pages } from "./pages";
+import { workHero } from "./work-hero";
 import { seo } from "./seo";
 import { servicePages } from "./service-pages";
 import { serviceDetails } from "./service-details";
@@ -42,6 +43,7 @@ export const esMessages: Messages = {
   footer,
   whatsapp,
   notFound,
+  workHero,
   pages,
   seo,
   servicePages,

@@ -68,6 +68,16 @@ const IconSprite = () => (
     <symbol id="icon-check" viewBox="0 0 24 24">
       <path {...stroke} strokeWidth={3} d="m5 12 5 5 9-10" />
     </symbol>
+    <symbol id="icon-messenger" viewBox="0 0 24 24">
+      <path
+        fill="currentColor"
+        d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.15.26.36.27.58l.05 1.78c.02.57.6.94 1.12.71l1.99-.88c.17-.07.36-.09.53-.04.91.25 1.89.38 2.9.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2Zm6 7.46-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63Z"
+      />
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <circle {...stroke} cx="12" cy="12" r="9" />
+      <path {...stroke} d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+    </symbol>
     <symbol id="icon-star" viewBox="0 0 24 24">
       <path fill="currentColor" d="m12 2.8 2.8 5.7 6.3.9-4.55 4.43 1.07 6.27L12 17.14l-5.63 2.96 1.08-6.27L2.9 9.4l6.3-.91L12 2.8Z" />
     </symbol>

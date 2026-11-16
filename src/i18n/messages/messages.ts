@@ -49,7 +49,9 @@ export type Messages = {
   stories: {
     label: string;
     storeLabel: string;
-    items: { tag: string; title: string; body: string }[];
+    note: string;
+    labels: { challenge: string; solution: string; result: string };
+    items: { tag: string; title: string; challenge: string; solution: string; result: string }[];
   };
   aiCases: {
     label: string;
@@ -59,7 +61,9 @@ export type Messages = {
   webShowcase: {
     eyebrow: string;
     title: SectionTitleCopy;
-    body: string;
+    challenge: string;
+    solution: string;
+    result: string;
   };
   services: {
     title: SectionTitleCopy;
@@ -147,6 +151,12 @@ export type Messages = {
     message: string;
   };
   notFound: { title: string; body: string; cta: string };
+  workHero: {
+    statsLabel: string;
+    projects: string;
+    apps: string;
+    countries: string;
+  };
   pages: Record<Exclude<PageKey, "home">, { eyebrow: string; title: string; description: string }>;
   seo: Record<PageKey, { title: string; description: string }>;
   servicePages: {
@@ -210,5 +220,6 @@ export type Messages = {
     cta: string;
     bookingCta: string;
     photoAlt: string;
+    work: { title: string; body: string };
   };
 };
