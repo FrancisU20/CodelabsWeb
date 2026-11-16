@@ -1,20 +1,24 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { joinClassNames } from "@/shared/lib/class-names";
 import Icon from "@/shared/ui/icons/svg-icon";
 import { useDismissibleMenu } from "./use-dismissible-menu";
+import styles from "./navbar.module.css";
 
 type NavDropdownProps = {
   id: string;
-  label: string;
+  label: ReactNode;
   ariaLabel?: string;
   pathname: string;
+  current?: boolean;
   className?: string;
+  buttonClassName?: string;
   panelClassName: string;
   children: ReactNode;
 };
 
-const NavDropdown = ({ id, label, ariaLabel, pathname, className, panelClassName, children }: NavDropdownProps) => {
+const NavDropdown = ({ id, label, ariaLabel, pathname, current, className, buttonClassName, panelClassName, children }: NavDropdownProps) => {
   const { open, containerRef, toggleRef, toggle, close } = useDismissibleMenu<HTMLDivElement>(pathname, id);
 
   return (
@@ -25,14 +29,15 @@ const NavDropdown = ({ id, label, ariaLabel, pathname, className, panelClassName
         aria-label={ariaLabel}
         aria-expanded={open}
         aria-controls={id}
+        data-current={current || undefined}
         onClick={toggle}
-        className="inline-flex min-h-11 cursor-pointer items-center gap-1.5 font-medium text-muted transition-colors hover:text-brand"
+        className={joinClassNames(styles.trigger, buttonClassName)}
       >
         {label}
-        <Icon name="chevron-down" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+        <Icon name="chevron-down" className={styles.chevron} />
       </button>
       {open && (
-        <div id={id} className={panelClassName} onClick={close}>
+        <div id={id} className={joinClassNames(styles.panel, panelClassName)} onClick={close}>
           {children}
         </div>
       )}

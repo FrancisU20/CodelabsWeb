@@ -26,7 +26,10 @@ export type Messages = {
     skipToContent: string;
     languageAriaLabel: string;
     currentLanguage: string;
+    currentLanguageCode: string;
     otherLanguage: string;
+    otherLanguageCode: string;
+    whatsApp: string;
   };
   hero: {
     eyebrow: string;
@@ -42,11 +45,6 @@ export type Messages = {
   clients: {
     title: string;
     industries: { title: string; items: Record<IndustryId, string> };
-  };
-  manifesto: {
-    ariaLabel: string;
-    lead: string;
-    accent: string;
   };
   stories: {
     label: string;
@@ -102,11 +100,17 @@ export type Messages = {
     flow: { label: string; detail: string }[];
   };
   team: {
-    founder: { label: string; bio: string; linkedin: string };
+    founder: { label: string; role: string; bio: string[]; quote: string; linkedin: string };
     title: SectionTitleCopy;
     body: string;
+    clientLabel: string;
     leadBadge: string;
     roles: { id: RoleId; title: string; body: string }[];
+  };
+  about: {
+    factsLabel: string;
+    facts: { founded: string; projects: string; apps: string; countries: string };
+    trust: { title: SectionTitleCopy; body: string; link: string };
   };
   howWeWork: {
     factsLabel: string;
@@ -141,8 +145,8 @@ export type Messages = {
     failure: string;
     openWhatsApp: string;
     message: { greeting: string; fallbackName: string; reference: string; company: string; email: string; project: string };
-    whatsAppCard: { title: string; body: string };
-    bookingCard: { title: string; body: string };
+    channels: { whatsApp: string; booking: string };
+    map: { label: string; directions: string; attribution: string };
   };
   footer: {
     legalAriaLabel: string;
@@ -156,6 +160,7 @@ export type Messages = {
     ariaLabel: string;
     label: string;
     message: string;
+    bubble: { title: string; body: string; dismiss: string };
   };
   notFound: { title: string; body: string; cta: string };
   workHero: {
@@ -206,7 +211,12 @@ export type Messages = {
     published: string;
     faqTitle: string;
     relatedTitle: string;
+    relatedLink: string;
+    moreTitle: string;
     read: string;
+    byline: string;
+    tocTitle: string;
+    cta: { title: string; body: string; button: string };
   };
   reviews: {
     title: string;

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { buildWhatsAppLink } from "@/config/contact";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import Footer from "@/layout/footer/footer";
@@ -24,7 +25,13 @@ const SiteShell = ({ locale, children }: SiteShellProps) => (
       {getMessages(locale).nav.skipToContent}
     </a>
     <IconSprite />
-    <Navbar locale={locale} copy={getMessages(locale).nav} items={buildNavItems(locale)} serviceItems={buildServiceNavItems(locale)} />
+    <Navbar
+      locale={locale}
+      copy={getMessages(locale).nav}
+      items={buildNavItems(locale)}
+      serviceItems={buildServiceNavItems(locale)}
+      whatsAppHref={buildWhatsAppLink(getMessages(locale).whatsapp.message)}
+    />
     <main id={MAIN_CONTENT_ID} className="relative">
       {children}
     </main>

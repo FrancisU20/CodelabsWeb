@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { GUIDES_LOCALE, GUIDES_ROUTE, pagePath, servicePath } from "@/i18n/routing";
+import { servicePriceLabel } from "@/i18n/service-price-label";
 import type { NavItem } from "./nav-item";
 import type { ServiceNavItem } from "./service-nav-item";
 
@@ -20,4 +21,5 @@ export const buildServiceNavItems = (locale: Locale): ServiceNavItem[] =>
     href: servicePath(service.id, locale),
     label: service.title,
     summary: service.summary,
+    price: servicePriceLabel(service.id, locale),
   }));

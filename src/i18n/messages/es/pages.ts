@@ -19,12 +19,12 @@ export const pages: Messages["pages"] = {
   },
   about: {
     eyebrow: "Nosotros",
-    title: "Somos CodeLabs, una empresa de software de Ibarra, Ecuador.",
-    description: "Desde 2018 desarrollamos software para bancos, aseguradoras, cadenas de retail y empresas en crecimiento de Ecuador, Perú, Colombia y México.",
+    title: "Una empresa de software ecuatoriana con clientes en cuatro países.",
+    description: "Desde 2018 diseñamos, construimos y operamos software para bancos, aseguradoras, cadenas de retail y empresas en crecimiento. Nuestra base está en Ibarra, Ecuador.",
   },
   contact: {
     eyebrow: "Contacto",
-    title: "Cuéntanos qué necesita tu empresa.",
-    description: "Escríbenos por aquí, por WhatsApp o por correo. Te contesta el equipo que lo va a construir, normalmente el mismo día.",
+    title: "Cuéntanos qué necesitas. Te respondemos el mismo día.",
+    description: "Escríbenos por el formulario, por WhatsApp o agenda una videollamada de 30 minutos sin costo. Te responde el equipo que va a construir tu proyecto.",
   },
 };

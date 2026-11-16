@@ -1,7 +1,5 @@
 import { getMessages } from "@/i18n/messages/get-messages";
 import type { Locale } from "@/i18n/locale";
-import { joinClassNames } from "@/shared/lib/class-names";
-import Card from "@/shared/ui/card/card";
 import Section from "@/shared/ui/section/section";
 import SectionHeading from "@/shared/ui/section/section-heading";
 import styles from "./team.module.css";
@@ -10,24 +8,30 @@ const LEAD_ROLE = "manager";
 
 const Team = ({ locale }: { locale: Locale }) => {
   const dict = getMessages(locale).team;
+  const lead = dict.roles.find((role) => role.id === LEAD_ROLE);
+  const specialists = dict.roles.filter((role) => role.id !== LEAD_ROLE);
 
   return (
-    <Section id="equipo" tone="mist" space="section" aria-labelledby="team-title">
-      <div className="site-wrap">
-        <div className={styles.head} data-reveal>
-          <SectionHeading title={dict.title} titleId="team-title" />
-          <p className="lede m-0">{dict.body}</p>
-        </div>
-        <div className={styles.grid} data-reveal>
-          {dict.roles.map((role) => (
-            <Card key={role.id} className={joinClassNames(styles.role, role.id === LEAD_ROLE && joinClassNames("tone-brand", styles.lead))}>
-              <div>
-                <b>{role.title}</b>
-                <span>{role.body}</span>
-              </div>
-              {role.id === LEAD_ROLE && <em>{dict.leadBadge}</em>}
-            </Card>
-          ))}
+    <Section id="equipo" tone="night" space="section" aria-labelledby="team-title">
+      <div className={`site-wrap ${styles.layout}`}>
+        <SectionHeading title={dict.title} titleId="team-title" body={dict.body} className={styles.head} reveal />
+        <div className={styles.org} data-reveal>
+          <p className={styles.client}>{dict.clientLabel}</p>
+          {lead && (
+            <div className={styles.lead}>
+              <span className={styles.badge}>{dict.leadBadge}</span>
+              <h3>{lead.title}</h3>
+              <p>{lead.body}</p>
+            </div>
+          )}
+          <ul className={styles.specialists}>
+            {specialists.map((role) => (
+              <li key={role.id}>
+                <h3>{role.title}</h3>
+                <p>{role.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </Section>

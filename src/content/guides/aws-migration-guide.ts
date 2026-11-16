@@ -1,6 +1,6 @@
 import { PRICE_LIST } from "../price-list";
 import type { Guide } from "./guide";
-import { faq, list, paragraph, section, table, usd } from "./guide-tokens";
+import { answer, checklist, faq, paragraph, points, section, steps, tiers, usd } from "./guide-tokens";
 
 const { cloud } = PRICE_LIST;
 
@@ -15,59 +15,59 @@ export const awsMigrationGuide: Guide = {
   sections: [
     section(
       "Por qué migrar a la nube",
-      list(
-        "Tu sistema deja de caerse cuando entra mucha gente: la infraestructura crece y se reduce según la demanda.",
-        "Tu información queda respaldada y cifrada, fuera de la oficina.",
-        "No compras servidores ni pagas por capacidad que no usas.",
-        "Accedes a la misma infraestructura que usan bancos y grandes marcas.",
+      points(
+        ["Sin caídas", "La infraestructura crece y se reduce según la demanda, así tu sistema no se cae cuando entra mucha gente."],
+        ["Información protegida", "Respaldada y cifrada, fuera de la oficina."],
+        ["Sin servidores propios", "No compras equipos ni pagas por capacidad que no usas."],
+        ["Infraestructura de primer nivel", "La misma que usan bancos y grandes marcas."],
       ),
     ),
     section(
       "Qué se puede migrar",
-      list(
-        "Páginas web y tiendas en línea.",
-        "Sistemas internos: facturación, inventario, ventas o recursos humanos.",
-        "Bases de datos y archivos.",
-        "Apps móviles y sus servidores.",
-        "Correos transaccionales, tareas programadas y procesos automáticos.",
+      checklist(
+        ["Páginas web y tiendas en línea"],
+        ["Sistemas internos", "Facturación, inventario, ventas o recursos humanos."],
+        ["Bases de datos y archivos"],
+        ["Apps móviles y sus servidores"],
+        ["Procesos automáticos", "Correos transaccionales y tareas programadas."],
       ),
     ),
     section(
       "Cómo es una migración ordenada",
-      list(
-        "Evaluación: revisamos qué sistemas tienes, cómo se conectan entre sí y qué tan críticos son.",
-        "Plan: definimos qué se migra primero, cómo se protege la información y cuándo se hace cada paso.",
-        "Migración por etapas: movemos un sistema a la vez, empezando por el de menor riesgo.",
-        "Pruebas: verificamos que todo funcione igual o mejor antes de cambiar el tráfico real.",
-        "Cambio sin interrupciones: pasamos a los usuarios a la nube en el horario de menor uso.",
-        "Operación: monitoreo, respaldos y soporte continuo.",
+      steps(
+        ["Evaluación", "Qué sistemas tienes, cómo se conectan y qué tan críticos son."],
+        ["Plan", "Qué se migra primero, cómo se protege la información y cuándo se hace cada paso."],
+        ["Migración por etapas", "Un sistema a la vez, empezando por el de menor riesgo."],
+        ["Pruebas", "Todo debe funcionar igual o mejor antes de cambiar el tráfico real."],
+        ["Cambio sin interrupciones", "Pasamos a los usuarios a la nube en el horario de menor uso."],
+        ["Operación", "Monitoreo, respaldos y soporte continuo."],
       ),
     ),
     section(
       "Seguridad desde el inicio",
-      list(
-        "Cada persona accede solo a lo que le corresponde.",
-        "Respaldos automáticos y cifrado de la información.",
-        "Monitoreo y alertas si algo falla.",
-        "Configuración según las buenas prácticas de AWS para seguridad, disponibilidad y costos.",
+      checklist(
+        ["Accesos controlados", "Cada persona accede solo a lo que le corresponde."],
+        ["Respaldos automáticos y cifrado"],
+        ["Monitoreo y alertas", "Te avisamos si algo falla."],
+        ["Buenas prácticas de AWS", "Seguridad, disponibilidad y costos bajo control."],
       ),
     ),
     section(
       "Cuánto cuesta",
-      table(
-        ["Nivel", "Migración desde", "Operación mensual desde"],
-        ["Pequeño negocio: web, tienda o un sistema", usd(cloud.small), usd(cloud.smallMonthly)],
-        ["Empresa mediana: varios sistemas y bases de datos", usd(cloud.midsize), usd(cloud.midsizeMonthly)],
-        ["Gran empresa: arquitectura completa y alta disponibilidad", "A la medida", "A la medida"],
+      tiers(
+        { name: "Pequeño negocio", price: usd(cloud.small), detail: `Operación desde ${usd(cloud.smallMonthly)} al mes`, text: "Web, tienda o un sistema." },
+        { name: "Empresa mediana", price: usd(cloud.midsize), detail: `Operación desde ${usd(cloud.midsizeMonthly)} al mes`, text: "Varios sistemas y bases de datos." },
+        { name: "Gran empresa", price: "A la medida", detail: "Según la arquitectura", text: "Arquitectura completa y alta disponibilidad." },
       ),
       paragraph(
-        "Aparte se paga el consumo de AWS, que depende de cuánto usas. Antes de migrar te estimamos ese costo mensual para que no haya sorpresas.",
+        "Aparte se paga el consumo de AWS, que depende de cuánto usas. Antes de migrar te estimamos ese costo mensual.",
       ),
     ),
     section(
       "Por qué con CodeLabs",
+      answer("Somos socios AWS de nivel Select y nuestro equipo tiene certificaciones de Amazon."),
       paragraph(
-        "Somos socios AWS de nivel Select y nuestro equipo tiene certificaciones de Amazon como Solutions Architect, Developer y Cloud Practitioner. Usamos AWS en nuestros proyectos, por ejemplo en la validación de identidad con AWS Rekognition que construimos para un banco.",
+        "Entre ellas Solutions Architect, Developer y Cloud Practitioner. Usamos AWS en nuestros proyectos, por ejemplo en la validación de identidad con AWS Rekognition que construimos para un banco.",
       ),
     ),
   ],

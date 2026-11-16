@@ -1,11 +1,10 @@
 import Link from "next/link";
 import type { Messages } from "@/i18n/messages/messages";
+import Icon from "@/shared/ui/icons/svg-icon";
 import type { LanguageLink } from "./language-link";
 import NavDropdown from "./nav-dropdown";
 import { LANGUAGE_MENU_ID } from "./navbar-ids";
-
-const PANEL_CLASS = "absolute right-0 top-[calc(100%+6px)] min-w-[150px] rounded-md border border-line bg-ink p-1.5";
-const OPTION_CLASS = "block rounded px-3 py-2.5 hover:bg-panel";
+import styles from "./navbar.module.css";
 
 type LanguageMenuProps = {
   copy: Messages["nav"];
@@ -16,17 +15,25 @@ type LanguageMenuProps = {
 const LanguageMenu = ({ copy, pathname, alternate }: LanguageMenuProps) => (
   <NavDropdown
     id={LANGUAGE_MENU_ID}
-    label={copy.currentLanguage}
+    label={
+      <>
+        <Icon name="globe" className={styles.globe} />
+        {copy.currentLanguageCode}
+      </>
+    }
     ariaLabel={`${copy.languageAriaLabel}: ${copy.currentLanguage}`}
     pathname={pathname}
-    className="relative"
-    panelClassName={PANEL_CLASS}
+    className={styles.language}
+    buttonClassName={styles.languageButton}
+    panelClassName={styles.languagePanel}
   >
-    <Link href={pathname} aria-current="true" className={`${OPTION_CLASS} font-semibold text-brand`}>
-      {copy.currentLanguage}
+    <Link href={pathname} aria-current="true" className={styles.option}>
+      <span>{copy.currentLanguage}</span>
+      <small>{copy.currentLanguageCode}</small>
     </Link>
-    <Link href={alternate.href} hrefLang={alternate.locale} lang={alternate.locale} className={OPTION_CLASS}>
-      {copy.otherLanguage}
+    <Link href={alternate.href} hrefLang={alternate.locale} lang={alternate.locale} className={styles.option}>
+      <span>{copy.otherLanguage}</span>
+      <small>{copy.otherLanguageCode}</small>
     </Link>
   </NavDropdown>
 );

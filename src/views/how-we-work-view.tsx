@@ -16,8 +16,8 @@ const HowWeWorkView = ({ locale }: { locale: Locale }) => {
   return (
     <>
       <PageIntro {...messages.pages.howWeWork} tone="deep" aside={<StatGrid label={copy.factsLabel} stats={facts} />} />
-      <Process locale={locale} />
       <ProjectUpdates locale={locale} />
+      <Process locale={locale} />
       <Commitments locale={locale} />
       <ClosingCall locale={locale} variant="process" />
     </>

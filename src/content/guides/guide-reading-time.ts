@@ -1,12 +1,28 @@
 import type { Guide } from "./guide";
 import type { GuideBlock } from "./guide-block";
+import type { GuidePoint } from "./guide-point";
 
 const WORDS_PER_MINUTE = 200;
 
+const pointText = (point: GuidePoint): string[] => [point.title, point.text ?? ""];
+
 const blockText = (block: GuideBlock): string[] => {
-  if (block.kind === "paragraph") return [block.text];
-  if (block.kind === "list") return block.items;
-  return [...block.head, ...block.rows.flat()];
+  switch (block.kind) {
+    case "paragraph":
+    case "answer":
+      return [block.text];
+    case "list":
+    case "alerts":
+      return block.items;
+    case "points":
+    case "steps":
+    case "checklist":
+      return block.items.flatMap(pointText);
+    case "tiers":
+      return block.items.flatMap((tier) => [tier.name, tier.price, tier.detail, tier.text]);
+    case "table":
+      return [...block.head, ...block.rows.flat()];
+  }
 };
 
 const guideText = (guide: Guide): string[] => [

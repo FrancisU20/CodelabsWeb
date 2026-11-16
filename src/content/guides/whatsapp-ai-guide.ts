@@ -1,6 +1,6 @@
 import { PRICE_LIST } from "../price-list";
 import type { Guide } from "./guide";
-import { faq, list, paragraph, section, table, usd } from "./guide-tokens";
+import { checklist, faq, paragraph, points, section, steps, tiers, usd } from "./guide-tokens";
 
 const { ai } = PRICE_LIST;
 
@@ -15,44 +15,42 @@ export const whatsappAiGuide: Guide = {
   sections: [
     section(
       "Qué es y en qué se diferencia de un chatbot de menú",
-      paragraph(
-        "Un chatbot de menú obliga al cliente a elegir opciones: \"escribe 1 para horarios\". Un asistente con IA entiende lo que el cliente escribe con sus propias palabras y responde usando la información de tu empresa: productos, precios, stock, horarios o el estado de un trámite.",
+      points(
+        ["Chatbot de menú", "Obliga al cliente a elegir opciones: \"escribe 1 para horarios\". Solo da respuestas fijas."],
+        ["Asistente con IA", "Entiende lo que el cliente escribe con sus palabras y responde con la información de tu empresa: productos, precios, stock, horarios o el estado de un trámite."],
       ),
       paragraph(
-        "La diferencia está en que no se limita a respuestas fijas. Puede consultar tus sistemas, armar una cotización o agendar una cita, siempre dentro de las reglas que definas.",
+        "Además puede consultar tus sistemas, armar una cotización o agendar una cita, siempre dentro de las reglas que definas.",
       ),
     ),
     section(
       "Qué puede hacer por tu empresa",
-      list(
-        "Atender clientes a cualquier hora: dudas frecuentes, horarios, sucursales y promociones.",
-        "Consultar stock y precios en tus sistemas y decir en qué local hay un producto.",
-        "Armar cotizaciones y tomar pedidos.",
-        "Agendar citas y enviar recordatorios.",
-        "Recibir a pacientes o afiliados, hacer preguntas iniciales y conectarlos con un médico o un asesor.",
-        "Responder a la gerencia: stock, ventas o indicadores, preguntando por WhatsApp.",
-        "Resolver dudas internas del personal sobre procesos de la empresa.",
+      checklist(
+        ["Atender a cualquier hora", "Dudas frecuentes, horarios, sucursales y promociones."],
+        ["Consultar stock y precios", "En tus sistemas, y decir en qué local hay un producto."],
+        ["Cotizar y tomar pedidos"],
+        ["Agendar citas y enviar recordatorios"],
+        ["Recibir pacientes o afiliados", "Hacer preguntas iniciales y conectarlos con un médico o un asesor."],
+        ["Responder a la gerencia", "Stock, ventas o indicadores, preguntando por WhatsApp."],
+        ["Resolver dudas internas", "Procesos de la empresa para el personal."],
       ),
-      paragraph(
-        "Hemos construido asistentes así para una cadena de supermercados, una cadena de ferreterías y una red de salud en Ecuador.",
-      ),
+      paragraph("Hemos construido asistentes así para una cadena de supermercados, una cadena de ferreterías y una red de salud en Ecuador."),
     ),
     section(
       "Qué necesitas para tenerlo",
-      list(
-        "Un número de WhatsApp Business conectado a la API oficial de WhatsApp. Te ayudamos con el registro.",
-        "La información que el asistente debe conocer: catálogo, precios, políticas y preguntas frecuentes.",
-        "Acceso a tus sistemas si quieres que consulte stock, pedidos o citas en tiempo real.",
-        "Reglas claras: qué puede responder, qué no, y cuándo debe pasar la conversación a una persona.",
+      steps(
+        ["Un número de WhatsApp Business", "Conectado a la API oficial de WhatsApp. Te ayudamos con el registro."],
+        ["La información del negocio", "Catálogo, precios, políticas y preguntas frecuentes."],
+        ["Acceso a tus sistemas", "Si quieres que consulte stock, pedidos o citas en tiempo real."],
+        ["Reglas claras", "Qué responde, qué no y cuándo pasa la conversación a una persona."],
       ),
     ),
     section(
       "Cuánto cuesta",
-      table(
-        ["Nivel", "Qué incluye", "Implementación desde", "Mensual desde"],
-        ["Pequeño negocio", "Responde con la información de tu negocio y pasa a una persona cuando hace falta", usd(ai.small), usd(ai.smallMonthly)],
-        ["Empresa mediana", "Conectado a tus sistemas: stock, pedidos, citas o cotizaciones", usd(ai.midsize), usd(ai.midsizeMonthly)],
-        ["Gran empresa", "Varios canales, volúmenes altos e integraciones complejas", "A la medida", "A la medida"],
+      tiers(
+        { name: "Pequeño negocio", price: usd(ai.small), detail: `Desde ${usd(ai.smallMonthly)} al mes`, text: "Responde con la información de tu negocio y pasa a una persona cuando hace falta." },
+        { name: "Empresa mediana", price: usd(ai.midsize), detail: `Desde ${usd(ai.midsizeMonthly)} al mes`, text: "Conectado a tus sistemas: stock, pedidos, citas o cotizaciones." },
+        { name: "Gran empresa", price: "A la medida", detail: "Según canales y volumen", text: "Varios canales, volúmenes altos e integraciones complejas." },
       ),
       paragraph(
         "Aparte se pagan los mensajes de WhatsApp que cobra Meta según el tipo de conversación, y el uso del modelo de inteligencia artificial. En la propuesta te estimamos ambos con tu volumen real.",
@@ -60,11 +58,11 @@ export const whatsappAiGuide: Guide = {
     ),
     section(
       "Buenas prácticas para que funcione bien",
-      list(
-        "El asistente solo responde con información verificada de tu empresa: si no sabe algo, lo dice y pasa a una persona.",
-        "Una persona siempre puede tomar la conversación.",
-        "Los datos personales se tratan según la Ley Orgánica de Protección de Datos Personales.",
-        "Se revisan las conversaciones las primeras semanas para ajustar las respuestas.",
+      checklist(
+        ["Solo información verificada", "Si no sabe algo, lo dice y pasa a una persona."],
+        ["Una persona siempre puede tomar la conversación"],
+        ["Datos personales protegidos", "Según la Ley Orgánica de Protección de Datos Personales."],
+        ["Revisión de las primeras semanas", "Se revisan las conversaciones para ajustar las respuestas."],
       ),
     ),
   ],

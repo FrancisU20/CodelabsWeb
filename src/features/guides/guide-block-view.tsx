@@ -1,41 +1,40 @@
 import type { GuideBlock } from "@/content/guides/guide-block";
-import styles from "./guides.module.css";
+import GuidePoints from "./guide-points";
+import GuideTable from "./guide-table";
+import GuideTiers from "./guide-tiers";
+import styles from "./guide-blocks.module.css";
 
 const GuideBlockView = ({ block }: { block: GuideBlock }) => {
-  if (block.kind === "paragraph") return <p>{block.text}</p>;
-  if (block.kind === "list") {
-    return (
-      <ul>
-        {block.items.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    );
-  }
-  return (
-    <div className={styles.tableWrap}>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            {block.head.map((cell) => (
-              <th key={cell} scope="col">
-                {cell}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {block.rows.map((row) => (
-            <tr key={row.join("|")}>
-              {row.map((cell, cellIndex) => (
-                <td key={`${cellIndex}-${cell}`}>{cell}</td>
-              ))}
-            </tr>
+  switch (block.kind) {
+    case "paragraph":
+      return <p>{block.text}</p>;
+    case "answer":
+      return <p className={styles.answer}>{block.text}</p>;
+    case "list":
+      return (
+        <ul className={styles.list}>
+          {block.items.map((item) => (
+            <li key={item}>{item}</li>
           ))}
-        </tbody>
-      </table>
-    </div>
-  );
+        </ul>
+      );
+    case "alerts":
+      return (
+        <ul className={styles.alerts}>
+          {block.items.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      );
+    case "points":
+    case "steps":
+    case "checklist":
+      return <GuidePoints variant={block.kind} items={block.items} />;
+    case "tiers":
+      return <GuideTiers items={block.items} />;
+    case "table":
+      return <GuideTable head={block.head} rows={block.rows} />;
+  }
 };
 
 export default GuideBlockView;

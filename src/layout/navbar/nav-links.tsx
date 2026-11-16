@@ -16,8 +16,8 @@ const NavLinks = ({ items, pathname, className, linkClassName, onNavigate }: Nav
         key={item.href}
         href={item.href}
         onClick={onNavigate}
-        aria-current={item.href === pathname ? "page" : undefined}
-        className={`${linkClassName} transition-colors`}
+        aria-current={pathname.startsWith(item.href) ? "page" : undefined}
+        className={linkClassName}
       >
         {item.label}
       </Link>

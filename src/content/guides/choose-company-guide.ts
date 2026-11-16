@@ -1,5 +1,5 @@
 import type { Guide } from "./guide";
-import { faq, list, paragraph, section } from "./guide-tokens";
+import { alerts, answer, checklist, faq, list, paragraph, points, section } from "./guide-tokens";
 
 export const chooseCompanyGuide: Guide = {
   slug: "como-elegir-una-empresa-de-desarrollo-de-software-en-ecuador",
@@ -13,19 +13,19 @@ export const chooseCompanyGuide: Guide = {
   sections: [
     section(
       "Lo que debes revisar",
-      list(
-        "Casos que puedas verificar: apps publicadas en App Store o Google Play, sistemas en uso o clientes que puedas mencionar. Un portafolio solo con diseños no demuestra que el equipo sepa entregar.",
-        "Una propuesta por escrito con alcance, tiempo y costo: qué se entrega, en qué orden y cuánto cuesta cada etapa. Si la propuesta es una sola cifra sin detalle, pide que la desglosen.",
-        "Entregas por etapas: deberías poder probar avances cada pocas semanas, no ver el resultado recién al final.",
-        "Quién es dueño del código y de las cuentas: el código, los servidores, el dominio y las cuentas de las tiendas deben quedar a nombre de tu empresa.",
-        "Seguridad: accesos controlados, respaldos, cifrado y buenas prácticas en la nube. Si manejas datos de clientes, debe cumplir la Ley Orgánica de Protección de Datos Personales.",
-        "Soporte después del lanzamiento: quién atiende cuando algo falla y en cuánto tiempo, y cuánto cuesta el mantenimiento mensual.",
-        "Respaldo técnico: certificaciones o alianzas con plataformas como AWS indican que el equipo trabaja con estándares reconocidos.",
+      checklist(
+        ["Casos que puedas verificar", "Apps publicadas en App Store o Google Play, sistemas en uso o clientes que puedas mencionar. Un portafolio solo con diseños no demuestra que el equipo sepa entregar."],
+        ["Una propuesta por escrito", "Qué se entrega, en qué orden, en qué plazo y cuánto cuesta. Si la propuesta es una sola cifra sin detalle, pide que la desglosen."],
+        ["Entregas por etapas", "Deberías poder probar avances cada pocas semanas, no ver el resultado recién al final."],
+        ["El código y las cuentas a tu nombre", "El código, los servidores, el dominio y las cuentas de las tiendas deben quedar a nombre de tu empresa."],
+        ["Seguridad", "Accesos controlados, respaldos, cifrado y buenas prácticas en la nube. Si manejas datos de clientes, debe cumplir la Ley Orgánica de Protección de Datos Personales."],
+        ["Soporte después del lanzamiento", "Quién atiende cuando algo falla, en cuánto tiempo y cuánto cuesta el mantenimiento mensual."],
+        ["Respaldo técnico", "Certificaciones o alianzas con plataformas como AWS indican que el equipo trabaja con estándares reconocidos."],
       ),
     ),
     section(
       "Señales de alerta",
-      list(
+      alerts(
         "Te prometen todo en muy poco tiempo y a un precio muy bajo, sin preguntar cómo funciona tu negocio.",
         "No pueden mostrarte nada en funcionamiento.",
         "Quieren que todo quede a su nombre: el dominio, los servidores o las cuentas de las tiendas.",
@@ -46,17 +46,17 @@ export const chooseCompanyGuide: Guide = {
     ),
     section(
       "Empresa local, freelancer o empresa extranjera",
-      paragraph(
-        "Un freelancer puede ser una buena opción para algo pequeño y acotado, pero depende de una sola persona. Una empresa extranjera puede tener mucha experiencia, pero suele cobrar en tarifas de otro mercado y trabajar en otro horario.",
-      ),
-      paragraph(
-        "Una empresa local con un equipo completo te da diseño, desarrollo, nube, pruebas y soporte en tu mismo horario, con contratos bajo la ley ecuatoriana y precios en dólares del mercado local.",
+      points(
+        ["Freelancer", "Buena opción para algo pequeño y acotado, pero todo depende de una sola persona."],
+        ["Empresa extranjera", "Puede tener mucha experiencia, pero suele cobrar tarifas de otro mercado y trabajar en otro horario."],
+        ["Empresa local con equipo completo", "Diseño, desarrollo, nube, pruebas y soporte en tu mismo horario, con contratos bajo la ley ecuatoriana y precios del mercado local."],
       ),
     ),
     section(
       "Cómo trabajamos en CodeLabs",
+      answer("Desde 2018 hemos entregado más de 100 proyectos y publicado más de 30 apps para empresas de Ecuador, Perú, Colombia y México."),
       paragraph(
-        "Desde 2018 hemos entregado más de 100 proyectos y publicado más de 30 apps para empresas de Ecuador, Perú, Colombia y México, entre ellas Supermaxi, Confiamed, Farmaenlace y BASC. Somos socios AWS de nivel Select. Cada proyecto tiene una propuesta con alcance, tiempo y costo, entregas por etapas y una persona del equipo como contacto de principio a fin.",
+        "Entre nuestros clientes están Supermaxi, Confiamed, Farmaenlace y BASC, y somos socios AWS de nivel Select. Cada proyecto tiene una propuesta por escrito, entregas por etapas y una persona del equipo como contacto de principio a fin.",
       ),
     ),
   ],

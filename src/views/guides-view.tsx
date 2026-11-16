@@ -9,7 +9,7 @@ const GuidesView = ({ locale }: { locale: Locale }) => {
 
   return (
     <>
-      <PageIntro eyebrow={eyebrow} title={title} description={description} />
+      <PageIntro eyebrow={eyebrow} title={title} description={description} tone="deep" />
       <GuideList locale={locale} />
       <ClosingCall locale={locale} />
     </>

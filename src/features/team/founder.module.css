@@ -1,32 +1,41 @@
 .founder {
   display: grid;
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   align-items: center;
-  gap: 40px;
-  padding-block: var(--spacing-section);
+  gap: 64px;
 }
 
 .photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
   object-fit: cover;
   display: block;
+  box-shadow: 0 40px 80px -40px var(--shadow-deep);
 }
 
 .copy {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 14px;
   min-width: 0;
 }
 
 .name {
   margin: 0;
   font-size: var(--text-title);
-  letter-spacing: -0.03em;
-  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+}
+
+.role {
+  margin: -8px 0 6px;
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--muted);
 }
 
 .bio {
@@ -36,23 +45,39 @@
   font-size: var(--text-body);
 }
 
-.link {
-  margin-top: 6px;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--brand);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+.quote {
+  margin: 12px 0 0;
+  padding-left: 20px;
+  border-left: 3px solid var(--brand);
 }
 
-@media (max-width: 760px) {
+.quote blockquote {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  max-width: 30ch;
+}
+
+.quote figcaption {
+  margin-top: 10px;
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+.link {
+  margin-top: 12px;
+}
+
+@media (max-width: 860px) {
   .founder {
     grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
+    gap: 32px;
   }
 
   .photo {
-    width: 140px;
-    height: 140px;
+    max-width: 320px;
   }
 }

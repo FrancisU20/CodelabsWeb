@@ -17,6 +17,7 @@ export const IMAGES = {
   },
   founder: "/founder/francisco-ulloa.webp",
   closing: "/closing/video-call.webp",
+  officeMap: "/contact/office-map.webp",
   reviews: {
     cesar: "/reviews/cesar-rovalino.webp",
     inec: "/reviews/inec.webp",

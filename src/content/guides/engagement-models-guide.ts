@@ -1,7 +1,7 @@
 import { ENGAGEMENT_TERMS } from "../engagement-terms";
 import { PRICE_LIST } from "../price-list";
 import type { Guide } from "./guide";
-import { faq, list, paragraph, section, table, usd } from "./guide-tokens";
+import { answer, faq, paragraph, points, section, table, tiers, usd } from "./guide-tokens";
 
 const { team } = PRICE_LIST;
 const { paymentStart, warrantyDays, minimumMonths, deliveryEveryWeeks } = ENGAGEMENT_TERMS;
@@ -28,8 +28,9 @@ export const engagementModelsGuide: Guide = {
     ),
     section(
       "Proyecto cerrado",
+      answer("La opción con más certeza sobre plazos y presupuesto para un alcance acordado."),
       paragraph(
-        "Es la opción con más certeza: sabes cuánto vas a pagar y cuándo vas a recibir cada parte. Funciona mejor para productos con alcance claro, como una app de reservas, una tienda en línea o una integración entre dos sistemas.",
+        "Funciona mejor para productos con alcance claro, como una app de reservas, una tienda en línea o una integración entre dos sistemas.",
       ),
       paragraph(
         `Se emite una sola factura: abonas el ${paymentStart}% al iniciar y el saldo al entregar, con ${warrantyDays} días de corrección de errores sin costo después de la entrega. El riesgo está en los cambios: si a mitad del proyecto cambia lo que necesitas, hay que ajustar el alcance, el tiempo y el costo.`,
@@ -55,18 +56,19 @@ export const engagementModelsGuide: Guide = {
     ),
     section(
       "Cuánto cuesta",
-      list(
-        "Proyecto cerrado: según el alcance. Revisa los precios desde de cada servicio en nuestra página de servicios.",
-        `Equipo dedicado y refuerzo de equipo: desde ${usd(team.midLevel)} al mes por un ingeniero de nivel intermedio a tiempo completo, y desde ${usd(team.senior)} al mes por un ingeniero senior.`,
+      tiers(
+        { name: "Proyecto cerrado", price: "Según el alcance", detail: "Precio por proyecto", text: "Revisa los precios desde de cada servicio en nuestra página de servicios." },
+        { name: "Ingeniero intermedio", price: usd(team.midLevel), detail: "Al mes, tiempo completo", text: "Para equipo dedicado o refuerzo de tu equipo." },
+        { name: "Ingeniero senior", price: usd(team.senior), detail: "Al mes, tiempo completo", text: "Para equipo dedicado o refuerzo de tu equipo." },
       ),
     ),
     section(
       "Cómo decidir",
-      list(
-        "Si el alcance está claro y el presupuesto es fijo: proyecto cerrado.",
-        "Si el producto va a evolucionar mes a mes: equipo dedicado.",
-        "Si ya tienes equipo y te falta gente o una especialidad: refuerzo de equipo.",
-        "Muchas empresas empiezan con un proyecto cerrado y, cuando el producto crece, pasan a un equipo dedicado.",
+      points(
+        ["Alcance claro y presupuesto fijo", "Proyecto cerrado."],
+        ["El producto evoluciona mes a mes", "Equipo dedicado."],
+        ["Ya tienes equipo y te falta gente", "Refuerzo de tu equipo, también para sumar una especialidad."],
+        ["Lo más común", "Empezar con un proyecto cerrado y, cuando el producto crece, pasar a un equipo dedicado."],
       ),
     ),
   ],
