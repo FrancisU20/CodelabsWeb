@@ -6,14 +6,20 @@ import { guidePath } from "@/i18n/routing";
 import Card from "@/shared/ui/card/card";
 import styles from "./guides.module.css";
 
-const GuideCard = ({ guide, copy }: { guide: Guide; copy: Messages["guides"] }) => (
+type GuideCardProps = {
+  guide: Guide;
+  copy: Messages["guides"];
+  heading?: "h2" | "h3";
+};
+
+const GuideCard = ({ guide, copy, heading: Heading = "h3" }: GuideCardProps) => (
   <Card as="article" padding="sm" className={styles.card} reveal>
     <p className={styles.cardMeta}>
       {copy.label} · {readingMinutes(guide)} {copy.readingTime}
     </p>
-    <h3 className={styles.cardTitle}>
+    <Heading className={styles.cardTitle}>
       <Link href={guidePath(guide.slug)}>{guide.title}</Link>
-    </h3>
+    </Heading>
     <p className={styles.cardSummary}>{guide.summary}</p>
     <span className={styles.cardMore} aria-hidden="true">
       {copy.read}
