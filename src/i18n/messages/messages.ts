@@ -207,7 +207,12 @@ export type Messages = {
     published: string;
     faqTitle: string;
     relatedTitle: string;
+    relatedLink: string;
+    moreTitle: string;
     read: string;
+    byline: string;
+    tocTitle: string;
+    cta: { title: string; body: string; button: string };
   };
   reviews: {
     title: string;

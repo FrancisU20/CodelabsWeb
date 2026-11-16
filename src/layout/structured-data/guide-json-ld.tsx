@@ -1,4 +1,4 @@
-import { ORGANIZATION_ID, SITE_NAME, SITE_URL } from "@/config/site";
+import { FOUNDER_LINKEDIN_URL, FOUNDER_NAME, ORGANIZATION_ID, SITE_NAME, SITE_URL } from "@/config/site";
 import type { Guide } from "@/content/guides/guide";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { GUIDES_LOCALE, GUIDES_ROUTE, guidePath, pagePath } from "@/i18n/routing";
@@ -21,7 +21,7 @@ const GuideJsonLd = ({ guide }: { guide: Guide }) => {
         mainEntityOfPage: url,
         datePublished: guide.published,
         inLanguage: GUIDES_LOCALE,
-        author: { "@id": ORGANIZATION_ID },
+        author: { "@type": "Person", name: FOUNDER_NAME, url: FOUNDER_LINKEDIN_URL, worksFor: { "@id": ORGANIZATION_ID } },
         publisher: { "@id": ORGANIZATION_ID },
       },
       {

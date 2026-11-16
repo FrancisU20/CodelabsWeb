@@ -1,0 +1,242 @@
+.answer {
+  margin: 0 0 18px;
+  padding: 24px 28px;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  border-left: 4px solid var(--brand);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+}
+
+.list,
+.alerts,
+.points,
+.steps,
+.checklist,
+.tiers {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.list li {
+  padding: 14px 0 14px 28px;
+  border-top: 1px solid var(--line);
+  position: relative;
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 25px;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-round);
+  background: var(--brand);
+}
+
+.alerts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.alerts li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+}
+
+.alerts li::before {
+  content: "!";
+  flex: none;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-round);
+  display: grid;
+  place-items: center;
+  background: var(--fg);
+  color: var(--surface);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 3px;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+}
+
+.points li {
+  padding: 16px 0 18px;
+  border-top: 2px solid var(--fg);
+}
+
+.points b,
+.steps b,
+.checklist b {
+  display: block;
+  color: var(--fg);
+  font-size: var(--text-lg);
+  line-height: 1.35;
+}
+
+.points span,
+.steps div span,
+.checklist span {
+  display: block;
+  margin-top: 4px;
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(165px, 100%), 1fr));
+  gap: 12px;
+}
+
+.steps li {
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.steps .number {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-round);
+  background: var(--brand);
+  color: var(--on-dark);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  line-height: 1;
+}
+
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 32px;
+}
+
+.checklist li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.tick {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  color: var(--ok-text);
+}
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(165px, 100%), 1fr));
+  gap: 12px;
+}
+
+.tiers li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.tierName {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.tierPrice {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--fg);
+}
+
+.tierDetail {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.tiers p {
+  margin: 8px 0 0;
+  font-size: var(--text-base);
+  line-height: 1.55;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  margin-bottom: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+
+.table th,
+.table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+.table th {
+  background: var(--panel);
+  color: var(--fg);
+  font-weight: 700;
+}
+
+.table tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .points,
+  .checklist {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .answer {
+    padding: 20px;
+    font-size: var(--text-lg);
+  }
+}
