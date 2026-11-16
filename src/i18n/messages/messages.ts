@@ -43,11 +43,6 @@ export type Messages = {
     title: string;
     industries: { title: string; items: Record<IndustryId, string> };
   };
-  manifesto: {
-    ariaLabel: string;
-    lead: string;
-    accent: string;
-  };
   stories: {
     label: string;
     storeLabel: string;
@@ -102,11 +97,17 @@ export type Messages = {
     flow: { label: string; detail: string }[];
   };
   team: {
-    founder: { label: string; bio: string; linkedin: string };
+    founder: { label: string; role: string; bio: string[]; quote: string; linkedin: string };
     title: SectionTitleCopy;
     body: string;
+    clientLabel: string;
     leadBadge: string;
     roles: { id: RoleId; title: string; body: string }[];
+  };
+  about: {
+    factsLabel: string;
+    facts: { founded: string; projects: string; apps: string; countries: string };
+    trust: { title: SectionTitleCopy; body: string; link: string };
   };
   howWeWork: {
     factsLabel: string;

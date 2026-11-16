@@ -19,7 +19,7 @@ const OrganizationJsonLd = ({ locale }: { locale: Locale }) => {
     email: CONTACT_EMAIL,
     telephone: `+${WHATSAPP_NUMBER}`,
     foundingDate: String(FOUNDING_YEAR),
-    founder: { "@type": "Person", name: FOUNDER_NAME, sameAs: FOUNDER_LINKEDIN_URL },
+    founder: { "@type": "Person", name: FOUNDER_NAME, jobTitle: "CEO", sameAs: FOUNDER_LINKEDIN_URL },
     areaServed: servedCountries(locale),
     address: {
       "@type": "PostalAddress",

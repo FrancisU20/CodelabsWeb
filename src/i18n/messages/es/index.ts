@@ -2,7 +2,6 @@ import type { Messages } from "../messages";
 import { nav } from "./nav";
 import { hero } from "./hero";
 import { clients } from "./clients";
-import { manifesto } from "./manifesto";
 import { stories } from "./stories";
 import { webShowcase } from "./web-showcase";
 import { services } from "./services";
@@ -10,6 +9,7 @@ import { impact } from "./impact";
 import { aws } from "./aws";
 import { team } from "./team";
 import { howWeWork } from "./how-we-work";
+import { about } from "./about";
 import { contact } from "./contact";
 import { footer } from "./footer";
 import { whatsapp } from "./whatsapp";
@@ -29,7 +29,6 @@ export const esMessages: Messages = {
   nav,
   hero,
   clients,
-  manifesto,
   stories,
   webShowcase,
   services,
@@ -37,6 +36,7 @@ export const esMessages: Messages = {
   aws,
   team,
   howWeWork,
+  about,
   contact,
   footer,
   whatsapp,

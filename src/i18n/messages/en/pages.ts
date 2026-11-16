@@ -18,8 +18,8 @@ export const pages: Messages["pages"] = {
   },
   about: {
     eyebrow: "About",
-    title: "We are CodeLabs, a software company from Ibarra, Ecuador.",
-    description: "Since 2018 we have built software for banks, insurers, retail chains and growing companies in Ecuador, Peru, Colombia and Mexico.",
+    title: "An Ecuadorian software company with clients in four countries.",
+    description: "Since 2018 we have designed, built and run software for banks, insurers, retail chains and growing companies. We are based in Ibarra, Ecuador.",
   },
   contact: {
     eyebrow: "Contact",

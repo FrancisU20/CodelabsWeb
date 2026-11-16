@@ -1,53 +1,112 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
 .head {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 16px 40px;
-  margin-bottom: 36px;
-}
-
-.head > * {
-  min-width: 0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  flex-direction: column;
   gap: 16px;
 }
 
-.role b {
-  display: block;
-  margin-bottom: 4px;
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  letter-spacing: -0.015em;
+.org {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.role span {
-  color: var(--muted);
+.client,
+.lead {
+  position: relative;
+  text-align: center;
+}
+
+.client::after,
+.lead::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 1px;
+  height: 32px;
+  background: var(--night-soft);
+}
+
+.client {
+  margin: 0 0 32px;
+  padding: 12px 24px;
+  border: 1px solid var(--night-soft);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
 }
 
 .lead {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px 32px;
-}
-
-.lead span {
-  color: var(--brand-on);
-}
-
-.lead em {
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
+  margin-bottom: 32px;
+  width: min(420px, 100%);
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: var(--radius-lg);
   background: var(--surface);
-  color: var(--brand-deep);
-  font-style: normal;
-  font-weight: 600;
+  color: var(--fg);
+}
+
+.badge {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.lead h3 {
+  margin: 6px 0 4px;
+  font-size: var(--text-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.lead p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.specialists {
+  width: 100%;
+  margin: 0;
+  padding: 28px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--night-soft);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.specialists li {
+  min-width: 0;
+}
+
+.specialists h3 {
+  margin: 0 0 6px;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.specialists p {
+  margin: 0;
   font-size: var(--text-sm);
+  color: var(--night-text);
+}
+
+@media (max-width: 960px) {
+  .specialists {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .specialists {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

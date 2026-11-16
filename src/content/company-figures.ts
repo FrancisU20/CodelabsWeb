@@ -2,6 +2,8 @@ export const FOUNDING_YEAR = 2018;
 
 export const yearsInBusiness = (currentYear: number): number => currentYear - FOUNDING_YEAR;
 
+export const FOUNDER_EXPERIENCE_YEARS = 8;
+
 export const PROJECTS_DELIVERED = 100;
 
 export const APPS_PUBLISHED = 30;
