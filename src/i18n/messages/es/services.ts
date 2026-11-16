@@ -29,9 +29,9 @@ export const services: Messages["services"] = {
         title: "Proyecto cerrado",
         forWho: "Para cuando sabes qué necesitas: una web, una app o una integración.",
         details: [
-          { label: "Cómo funciona", text: "Te enviamos una propuesta con alcance, plazo y precio fijo. Apruebas el diseño, construimos por etapas y pruebas cada avance." },
+          { label: "Cómo funciona", text: "Te enviamos una propuesta con alcance, plazo y precio. Apruebas el diseño, construimos por etapas y pruebas cada avance." },
           { label: "Qué recibes", text: "El sistema funcionando, el código y las cuentas a nombre de tu empresa, y la capacitación de tu equipo." },
-          { label: "Cómo pagas", text: "{start}% al iniciar, {midway}% a mitad del proyecto y {delivery}% al entregar." },
+          { label: "Cómo pagas", text: "Una sola factura: {start}% de abono al iniciar y el saldo al entregar." },
           { label: "Garantía", text: "{days} días de corrección de errores sin costo después de la entrega." },
         ],
         priceNote: "según el servicio y el alcance",
@@ -42,7 +42,7 @@ export const services: Messages["services"] = {
         details: [
           { label: "Cómo funciona", text: "Un equipo de CodeLabs trabaja solo en tu producto. Cada {weeks} semanas defines las prioridades y recibes una entrega para probar." },
           { label: "Quiénes lo forman", text: "Dirección de proyecto incluida, más los perfiles que tu producto necesite: diseño, desarrollo web y móvil, nube y pruebas." },
-          { label: "Cómo pagas", text: "Mensual, según el tamaño del equipo." },
+          { label: "Cómo pagas", text: "Factura mensual a fin de mes, por servicios de consultoría externa, según el tamaño del equipo." },
           { label: "Compromiso", text: "Mínimo {months} meses." },
         ],
         priceNote: "al mes por ingeniero a tiempo completo",
@@ -53,7 +53,7 @@ export const services: Messages["services"] = {
         details: [
           { label: "Cómo funciona", text: "Nuestros ingenieros se integran a tu equipo, tus herramientas y tu horario. Tu equipo dirige el trabajo diario." },
           { label: "Perfiles", text: "Web y backend, apps móviles, nube AWS y DevOps, y pruebas (QA)." },
-          { label: "Cómo pagas", text: "Mensual, por ingeniero." },
+          { label: "Cómo pagas", text: "Factura mensual a fin de mes, por servicios de consultoría externa de cada ingeniero." },
           { label: "Compromiso", text: "Mínimo {months} meses." },
         ],
         priceNote: "al mes por ingeniero intermedio · {senior} senior",

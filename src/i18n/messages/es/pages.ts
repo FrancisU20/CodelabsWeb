@@ -14,8 +14,8 @@ export const pages: Messages["pages"] = {
   },
   howWeWork: {
     eyebrow: "Cómo trabajamos",
-    title: "Así trabajamos contigo, de la primera conversación al lanzamiento.",
-    description: "Sin tecnicismos y con avances que puedes probar cada pocas semanas.",
+    title: "Sabes qué vas a recibir, cuándo y cuánto cuesta.",
+    description: "Firmamos contrato y confidencialidad antes de empezar, una persona responde por tu proyecto de principio a fin y todo lo que construimos queda a nombre de tu empresa.",
   },
   about: {
     eyebrow: "Nosotros",

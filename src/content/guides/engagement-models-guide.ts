@@ -4,7 +4,7 @@ import type { Guide } from "./guide";
 import { faq, list, paragraph, section, table, usd } from "./guide-tokens";
 
 const { team } = PRICE_LIST;
-const { paymentStart, paymentMidway, paymentDelivery, warrantyDays, minimumMonths, deliveryEveryWeeks } = ENGAGEMENT_TERMS;
+const { paymentStart, warrantyDays, minimumMonths, deliveryEveryWeeks } = ENGAGEMENT_TERMS;
 
 export const engagementModelsGuide: Guide = {
   slug: "proyecto-cerrado-equipo-dedicado-o-refuerzo-de-equipo",
@@ -22,7 +22,7 @@ export const engagementModelsGuide: Guide = {
         ["Qué es", "Alcance, tiempo y costo definidos desde el inicio", "Un equipo completo de CodeLabs trabaja solo en tu producto", "Ingenieros nuestros se integran a tu equipo"],
         ["Conviene si", "Sabes exactamente qué necesitas", "Tu producto cambia y crece todo el tiempo", "Ya tienes un equipo y te falta capacidad o una especialidad"],
         ["Quién dirige", "CodeLabs, con tu aprobación en cada etapa", "Tú defines prioridades; CodeLabs gestiona el equipo", "Tu equipo dirige el trabajo diario"],
-        ["Cómo se paga", `Por etapas: ${paymentStart}% / ${paymentMidway}% / ${paymentDelivery}%`, "Mensual", "Mensual, por ingeniero"],
+        ["Cómo se paga", `${paymentStart}% al iniciar y el saldo al entregar, en una sola factura`, "Factura mensual, a fin de mes", "Factura mensual por ingeniero, a fin de mes"],
         ["Compromiso", `Garantía de ${warrantyDays} días`, `Mínimo ${minimumMonths} meses`, `Mínimo ${minimumMonths} meses`],
       ),
     ),
@@ -32,7 +32,7 @@ export const engagementModelsGuide: Guide = {
         "Es la opción con más certeza: sabes cuánto vas a pagar y cuándo vas a recibir cada parte. Funciona mejor para productos con alcance claro, como una app de reservas, una tienda en línea o una integración entre dos sistemas.",
       ),
       paragraph(
-        `Se paga por etapas: ${paymentStart}% al iniciar, ${paymentMidway}% a mitad del proyecto y ${paymentDelivery}% al entregar, con ${warrantyDays} días de corrección de errores sin costo después de la entrega. El riesgo está en los cambios: si a mitad del proyecto cambia lo que necesitas, hay que ajustar el alcance, el tiempo y el costo.`,
+        `Se emite una sola factura: abonas el ${paymentStart}% al iniciar y el saldo al entregar, con ${warrantyDays} días de corrección de errores sin costo después de la entrega. El riesgo está en los cambios: si a mitad del proyecto cambia lo que necesitas, hay que ajustar el alcance, el tiempo y el costo.`,
       ),
     ),
     section(

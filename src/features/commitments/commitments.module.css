@@ -1,0 +1,103 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.promises {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 40px;
+}
+
+.promises li {
+  padding: 18px 0 28px;
+  border-top: 2px solid var(--fg);
+}
+
+.promises h3 {
+  margin: 0 0 6px;
+  font-weight: 700;
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+}
+
+.promises p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 34ch;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 24px;
+}
+
+.paymentTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.terms {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.term {
+  background: var(--panel);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.term h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--text-2xl);
+  letter-spacing: -0.025em;
+}
+
+.term p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.term .termLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.compare {
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .promises {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .promises,
+  .terms {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { BOOKING_URL } from "@/config/contact";
 import { IMAGES } from "@/content/images";
+import { fillTerms } from "@/i18n/fill-terms";
 import type { Locale } from "@/i18n/locale";
 import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath } from "@/i18n/routing";
@@ -13,7 +14,7 @@ const PHOTO_HEIGHT = 1200;
 
 type ClosingCallProps = {
   locale: Locale;
-  variant?: "work";
+  variant?: "work" | "process";
 };
 
 const ClosingCall = ({ locale, variant }: ClosingCallProps) => {
@@ -27,7 +28,7 @@ const ClosingCall = ({ locale, variant }: ClosingCallProps) => {
           <h2 id="closing-call-title" className="section-title m-0">
             {title}
           </h2>
-          <p className={styles.body}>{body}</p>
+          <p className={styles.body}>{fillTerms(body)}</p>
           <div className={styles.actions}>
             <ButtonLink variant="light" href={pagePath("contact", locale)}>
               {copy.cta}

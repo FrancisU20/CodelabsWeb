@@ -6,7 +6,6 @@ import { manifesto } from "./manifesto";
 import { stories } from "./stories";
 import { webShowcase } from "./web-showcase";
 import { services } from "./services";
-import { quality } from "./quality";
 import { impact } from "./impact";
 import { aws } from "./aws";
 import { team } from "./team";
@@ -34,7 +33,6 @@ export const esMessages: Messages = {
   stories,
   webShowcase,
   services,
-  quality,
   impact,
   aws,
   team,

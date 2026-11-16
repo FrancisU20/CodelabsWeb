@@ -13,8 +13,8 @@ export const pages: Messages["pages"] = {
   },
   howWeWork: {
     eyebrow: "How we work",
-    title: "How we work with you, from the first conversation to launch.",
-    description: "No jargon, and progress you can try every few weeks.",
+    title: "You know what you'll get, when, and what it costs.",
+    description: "We sign a contract and confidentiality agreement before we start, one person answers for your project from start to finish, and everything we build belongs to your company.",
   },
   about: {
     eyebrow: "About",

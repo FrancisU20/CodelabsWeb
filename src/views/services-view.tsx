@@ -11,7 +11,7 @@ const ServicesView = ({ locale }: { locale: Locale }) => {
 
   return (
     <>
-      <PageIntro {...messages.pages.services} aside={<ChatWindow {...messages.services.helpChat} />} />
+      <PageIntro {...messages.pages.services} tone="deep" aside={<ChatWindow {...messages.services.helpChat} />} />
       <ServicesList locale={locale} />
       <EngagementModels locale={locale} />
       <ClosingCall locale={locale} />

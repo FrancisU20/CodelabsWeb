@@ -1,11 +1,13 @@
 import type { EngagementModelId } from "@/content/engagement-model-id";
 import type { IndustryId } from "@/content/industry-id";
+import type { ProcessPhaseId } from "@/content/process-phase-id";
 import type { ReviewId } from "@/content/review-id";
 import type { ReviewSource } from "@/content/review-source";
 import type { RoleId } from "@/content/role-id";
 import type { ServiceId } from "@/content/service-id";
 import type { PageKey } from "../page-key";
 import type { ChatCopy } from "./chat-copy";
+import type { ChecklistCopy } from "./checklist-copy";
 import type { SectionTitleCopy } from "./section-title-copy";
 
 export type Messages = {
@@ -79,16 +81,6 @@ export type Messages = {
       guideLink: string;
     };
   };
-  quality: {
-    ariaLabel: string;
-    title: SectionTitleCopy;
-    windowLabel: string;
-    meterTitle: string;
-    meterCaption: string;
-    checks: string[];
-    approved: string;
-    live: string;
-  };
   impact: {
     eyebrow: string;
     title: string;
@@ -117,8 +109,23 @@ export type Messages = {
     roles: { id: RoleId; title: string; body: string }[];
   };
   howWeWork: {
-    title: SectionTitleCopy;
-    steps: { title: string; body: string }[];
+    factsLabel: string;
+    facts: { value: string; label: string }[];
+    phases: {
+      title: SectionTitleCopy;
+      receivesLabel: string;
+      items: { id: ProcessPhaseId; label: string; title: string; body: string; receives: string }[];
+    };
+    visuals: {
+      proposal: { caption: string; title: string; client: string; rows: { label: string; value: string }[]; signature: string };
+      design: { caption: string; screens: string[]; approved: string };
+      board: { caption: string; columns: { title: string; cards: string[] }[] };
+      quality: ChecklistCopy;
+      handover: ChecklistCopy;
+    };
+    updates: { title: SectionTitleCopy; body: string; items: { title: string; body: string }[]; chat: ChatCopy };
+    commitments: { title: SectionTitleCopy; items: { title: string; body: string }[] };
+    payment: { title: string; items: { label: string; title: string; body: string }[]; compareLink: string };
   };
   contact: {
     emailLabel: string;
@@ -221,5 +228,6 @@ export type Messages = {
     bookingCta: string;
     photoAlt: string;
     work: { title: string; body: string };
+    process: { title: string; body: string };
   };
 };
