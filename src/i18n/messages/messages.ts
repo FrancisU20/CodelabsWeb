@@ -162,7 +162,8 @@ export type Messages = {
     message: string;
     bubble: { title: string; body: string; dismiss: string };
   };
-  notFound: { title: string; body: string; cta: string };
+  notFound: { code: string; eyebrow: string; title: string; body: string; links: { home: string; services: string; contact: string } };
+  legal: { tocTitle: string };
   workHero: {
     statsLabel: string;
     projects: string;

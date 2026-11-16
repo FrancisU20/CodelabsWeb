@@ -1,25 +1,4 @@
-.introGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  align-items: center;
-  gap: 56px;
-  padding-block: 72px 88px;
-}
-
-.copy {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  min-width: 0;
-}
-
 .title {
-  margin: 0;
-  font-size: var(--text-display);
-  line-height: 1.06;
-  letter-spacing: -0.035em;
-  font-weight: 800;
   text-wrap: balance;
 }
 
@@ -329,10 +308,6 @@
   .faqWrap {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
-  }
-
-  .introGrid {
-    padding-block: 40px 56px;
   }
 
   .art {

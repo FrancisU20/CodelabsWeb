@@ -8,18 +8,14 @@ import { LANGUAGE_TAGS, type Locale } from "./locale";
 import { getMessages } from "./messages/get-messages";
 import type { PageKey } from "./page-key";
 import type { Guide } from "@/content/guides/guide";
+import type { LocalizedPage } from "./localized-page";
+import type { SingleLanguagePage } from "./single-language-page";
 import { GUIDES_LOCALE, GUIDES_ROUTE, guidePath, LEGAL_ROUTES, ROUTES, SERVICE_ROUTES } from "./routing";
 
 const openGraphLocale = (locale: Locale): string => LANGUAGE_TAGS[locale].replace("-", "_");
 const SHARE_IMAGE_SIZE = { width: 1200, height: 630 };
 
 const shareImage = (locale: Locale, alt: string) => ({ url: IMAGES.share[locale], ...SHARE_IMAGE_SIZE, alt });
-
-type LocalizedPage = {
-  title: string;
-  description: string;
-  paths: Record<Locale, string>;
-};
 
 const buildLocalizedMetadata = ({ title, description, paths }: LocalizedPage, locale: Locale): Metadata => {
   const url = `${SITE_URL}${paths[locale]}`;
@@ -80,13 +76,6 @@ export const buildLegalMetadata = (key: LegalDocumentKey, locale: Locale): Metad
       languages: { es: spanishUrl, en: `${SITE_URL}${LEGAL_ROUTES[key].en}`, "x-default": spanishUrl },
     },
   };
-};
-
-type SingleLanguagePage = {
-  title: string;
-  description: string;
-  path: string;
-  type: "website" | "article";
 };
 
 const buildSingleLanguageMetadata = ({ title, description, path, type }: SingleLanguagePage): Metadata => {

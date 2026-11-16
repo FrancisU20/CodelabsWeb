@@ -16,7 +16,7 @@ const PageIntro = ({ eyebrow, title, description, aside, actions, tone = "defaul
     <div className="site-wrap grid items-center gap-10 py-10 sm:py-20 lg:[grid-template-columns:minmax(0,1.1fr)_minmax(0,0.9fr)]">
       <div className="flex min-w-0 flex-col items-start gap-4">
         <p className="eyebrow m-0">{eyebrow}</p>
-        <h1 className="lift-in m-0 max-w-[20ch] text-display font-extrabold leading-[1.06] tracking-[-0.035em]">{title}</h1>
+        <h1 className="display-title lift-in max-w-[20ch]">{title}</h1>
         <p className="lede m-0 max-w-2xl">{description}</p>
         {actions}
       </div>

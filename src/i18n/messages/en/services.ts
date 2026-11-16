@@ -32,7 +32,7 @@ export const services: Messages["services"] = {
           { label: "How it works", text: "We send you a proposal with scope, timeline and price. You approve the design, we build in stages and you test every milestone." },
           { label: "What you get", text: "The working system, the code and accounts in your company's name, and training for your team." },
           { label: "How you pay", text: "A single invoice: a {start}% deposit at kickoff and the balance on delivery." },
-          { label: "Guarantee", text: "{days} days of free bug fixes after delivery." },
+          { label: "Guarantee", text: "{warranty} days of free bug fixes after delivery." },
         ],
         priceNote: "depending on the service and scope",
       },

@@ -32,7 +32,7 @@ export const services: Messages["services"] = {
           { label: "Cómo funciona", text: "Te enviamos una propuesta con alcance, plazo y precio. Apruebas el diseño, construimos por etapas y pruebas cada avance." },
           { label: "Qué recibes", text: "El sistema funcionando, el código y las cuentas a nombre de tu empresa, y la capacitación de tu equipo." },
           { label: "Cómo pagas", text: "Una sola factura: {start}% de abono al iniciar y el saldo al entregar." },
-          { label: "Garantía", text: "{days} días de corrección de errores sin costo después de la entrega." },
+          { label: "Garantía", text: "{warranty} días de corrección de errores sin costo después de la entrega." },
         ],
         priceNote: "según el servicio y el alcance",
       },

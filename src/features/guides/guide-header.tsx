@@ -23,7 +23,7 @@ const GuideHeader = ({ guide, locale }: { guide: Guide; locale: Locale }) => {
         <Link className="eyebrow" href={GUIDES_ROUTE}>
           {copy.eyebrow}
         </Link>
-        <h1 id="guide-title" className="lift-in">
+        <h1 id="guide-title" className="display-title lift-in">
           {guide.title}
         </h1>
         <p className="lede m-0">{guide.summary}</p>

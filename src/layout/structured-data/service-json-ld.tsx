@@ -6,6 +6,8 @@ import { getMessages } from "@/i18n/messages/get-messages";
 import { pagePath, servicePath } from "@/i18n/routing";
 import { serviceFaqs } from "@/i18n/service-faqs";
 import { servedCountries } from "./served-countries";
+import JsonLdScript from "./json-ld-script";
+import { breadcrumbNode, faqPageNode } from "./schema-nodes";
 
 const PRICE_CURRENCY = "USD";
 
@@ -19,7 +21,6 @@ const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale
     { name: detail.title, item: url },
   ];
   const graph = {
-    "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Service",
@@ -34,22 +35,12 @@ const ServiceJsonLd = ({ service, locale }: { service: ServiceId; locale: Locale
           priceSpecification: { "@type": "PriceSpecification", minPrice: SERVICE_PRICES[service].from, priceCurrency: PRICE_CURRENCY },
         },
       },
-      {
-        "@type": "FAQPage",
-        mainEntity: serviceFaqs(service, locale).map((entry) => ({
-          "@type": "Question",
-          name: entry.question,
-          acceptedAnswer: { "@type": "Answer", text: entry.answer },
-        })),
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: breadcrumb.map((entry, index) => ({ "@type": "ListItem", position: index + 1, ...entry })),
-      },
+      faqPageNode(serviceFaqs(service, locale)),
+      breadcrumbNode(breadcrumb),
     ],
   };
 
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }} />;
+  return <JsonLdScript data={graph} />;
 };
 
 export default ServiceJsonLd;

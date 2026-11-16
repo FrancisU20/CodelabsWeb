@@ -204,19 +204,6 @@
   color: var(--dim);
 }
 
-.cta {
-  gap: 8px;
-}
-
-.ctaArrow {
-  display: inline-block;
-  transition: transform 0.25s var(--ease-out);
-}
-
-.cta:hover .ctaArrow {
-  transform: translateX(4px);
-}
-
 .toggle {
   margin-left: auto;
   width: 44px;

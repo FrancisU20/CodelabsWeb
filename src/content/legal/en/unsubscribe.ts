@@ -2,10 +2,9 @@ import type { LegalDocument } from "../legal-document";
 import { COURTESY_TRANSLATION_NOTICE, documentLink, emailWithSubject, list, paragraph, whatsApp } from "../legal-tokens";
 
 export const unsubscribe: LegalDocument = {
-  layout: "cards",
   metaTitle: "How to unsubscribe from our communications",
   metaDescription: "Request to stop receiving communications from CodeLabs at any time.",
-  eyebrow: "Unsubscribe",
+  eyebrow: "Legal · Communications",
   title: "How to unsubscribe from our communications",
   intro:
     "In exercise of your right to object under Ecuador's Organic Law on Personal Data Protection (LOPDP), you may at any time request to stop receiving commercial or marketing communications from CodeLabs. We will process your request as soon as possible.",

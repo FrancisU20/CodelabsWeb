@@ -14,6 +14,7 @@ import { contact } from "./contact";
 import { footer } from "./footer";
 import { whatsapp } from "./whatsapp";
 import { notFound } from "./not-found";
+import { legal } from "./legal";
 import { pages } from "./pages";
 import { workHero } from "./work-hero";
 import { seo } from "./seo";
@@ -41,6 +42,7 @@ export const esMessages: Messages = {
   footer,
   whatsapp,
   notFound,
+  legal,
   workHero,
   pages,
   seo,

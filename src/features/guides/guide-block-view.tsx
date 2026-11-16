@@ -4,6 +4,8 @@ import GuideTable from "./guide-table";
 import GuideTiers from "./guide-tiers";
 import styles from "./guide-blocks.module.css";
 
+const LIST_CLASSES = { list: styles.list, alerts: styles.alerts };
+
 const GuideBlockView = ({ block }: { block: GuideBlock }) => {
   switch (block.kind) {
     case "paragraph":
@@ -11,16 +13,9 @@ const GuideBlockView = ({ block }: { block: GuideBlock }) => {
     case "answer":
       return <p className={styles.answer}>{block.text}</p>;
     case "list":
-      return (
-        <ul className={styles.list}>
-          {block.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      );
     case "alerts":
       return (
-        <ul className={styles.alerts}>
+        <ul className={LIST_CLASSES[block.kind]}>
           {block.items.map((item) => (
             <li key={item}>{item}</li>
           ))}

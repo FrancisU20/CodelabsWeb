@@ -23,10 +23,10 @@ const WorkHero = ({ locale }: { locale: Locale }) => {
 
   return (
     <Section tone="deep" aria-labelledby="work-title">
-      <div className={`site-wrap ${styles.grid}`}>
-        <div className={styles.copy}>
+      <div className={`site-wrap hero-split ${styles.grid}`}>
+        <div className="hero-copy">
           <p className="eyebrow m-0">{page.eyebrow}</p>
-          <h1 id="work-title" className={`${styles.title} lift-in`}>
+          <h1 id="work-title" className={`display-title ${styles.title} lift-in`}>
             {page.title}
           </h1>
           <p className="lede m-0">{page.description}</p>
