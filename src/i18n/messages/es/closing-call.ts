@@ -6,4 +6,5 @@ export const closingCall: Messages["closingCall"] = {
   cta: "Cuéntanos tu proyecto",
   bookingCta: "Agenda una reunión",
   photoAlt: "Persona en una videollamada desde su escritorio",
+  work: { title: "Tu empresa puede ser el próximo caso de éxito.", body: "Cuéntanos qué quieres resolver y te mostramos cómo lo haríamos, con plazos y precio." },
 };

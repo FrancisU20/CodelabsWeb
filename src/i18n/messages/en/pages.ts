@@ -8,8 +8,8 @@ export const pages: Messages["pages"] = {
   },
   work: {
     eyebrow: "Case studies",
-    title: "What we have already built for other companies.",
-    description: "Projects in use today. The screens are reference designs, except Curve Pilates Studio, which is the real app.",
+    title: "Companies like yours already use what we build.",
+    description: "Banks, retail chains, pharmaceutical and healthcare companies run on CodeLabs software today. Your project could be next.",
   },
   howWeWork: {
     eyebrow: "How we work",

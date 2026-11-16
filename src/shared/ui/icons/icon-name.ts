@@ -15,4 +15,6 @@ export type IconName =
   | "check"
   | "chevron-down"
   | "users"
-  | "star";
+  | "star"
+  | "messenger"
+  | "globe";

@@ -8,9 +8,16 @@
 }
 
 .head {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 18px 48px;
+}
+
+@media (max-width: 900px) {
+  .head {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .scene {
@@ -44,9 +51,17 @@
 }
 
 :global(.motion) .stage {
-  padding-block: 64px 0;
+  padding-block: calc(var(--spacing-stage) + 8px) 0;
   justify-content: flex-start;
-  gap: 40px;
+  gap: 32px;
+}
+
+:global(.motion) .facts {
+  gap: 8px;
+}
+
+:global(.motion) .facts dd {
+  font-size: var(--text-base);
 }
 
 :global(.motion) .browser {

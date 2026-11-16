@@ -41,6 +41,76 @@
   opacity: 0.85;
 }
 
+.channel {
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  flex: none;
+}
+
+.web {
+  background: var(--panel);
+}
+
+.web .head {
+  background: var(--brand);
+}
+
+.web .head i {
+  color: var(--brand);
+}
+
+.web .customer {
+  background: var(--brand);
+  color: var(--on-dark);
+}
+
+.messenger {
+  background: var(--surface);
+}
+
+.messenger .head {
+  background: var(--messenger);
+}
+
+.messenger .head i {
+  color: var(--messenger);
+}
+
+.messenger .message {
+  border-radius: var(--radius-xl);
+  background: var(--messenger-in);
+  box-shadow: none;
+}
+
+.messenger .customer {
+  background: var(--messenger);
+  color: var(--on-dark);
+}
+
+.message {
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out);
+}
+
+.message:nth-child(2) {
+  transition-delay: 0.6s;
+}
+
+.message:nth-child(3) {
+  transition-delay: 1.2s;
+}
+
+.message:nth-child(4) {
+  transition-delay: 1.8s;
+}
+
+:global(.is-pending) .message {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
 .body {
   display: flex;
   flex-direction: column;

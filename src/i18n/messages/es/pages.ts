@@ -8,9 +8,9 @@ export const pages: Messages["pages"] = {
   },
   work: {
     eyebrow: "Casos de éxito",
-    title: "Lo que ya construimos para otras empresas.",
+    title: "Empresas como la tuya ya usan lo que construimos.",
     description:
-      "Proyectos que hoy están en uso. Las pantallas son diseños de referencia, salvo la de Curve Pilates Studio, que es la app real.",
+      "Bancos, cadenas de retail, farmacéuticas y empresas de salud trabajan hoy con software de CodeLabs. Tu proyecto puede ser el siguiente.",
   },
   howWeWork: {
     eyebrow: "Cómo trabajamos",
