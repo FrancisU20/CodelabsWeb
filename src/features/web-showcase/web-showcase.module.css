@@ -38,15 +38,54 @@
     padding-block: 56px;
   }
 
-  :global(.motion) .stage {
-    padding-top: var(--spacing-stage);
-    gap: 28px;
-  }
-
   .scene .scenePhone {
     --w: 120px;
     right: -4%;
     bottom: -18%;
+  }
+
+  :global(.motion) .stage {
+    display: grid;
+    align-items: start;
+    padding-top: var(--spacing-stage);
+  }
+
+  :global(.motion) .head,
+  :global(.motion) .scene {
+    grid-area: 1 / 1;
+  }
+
+  :global(.motion) .head {
+    animation-name: head-out;
+  }
+
+  :global(.motion) .scene {
+    transform-origin: top center;
+    animation-name: scene-in;
+  }
+
+  :global(.motion) .scene .scenePhone {
+    bottom: 3%;
+  }
+}
+
+@media (max-width: 760px) and (max-height: 660px) {
+  :global(.motion) .scene {
+    scale: 0.88;
+  }
+
+  :global(.motion) .head h2 {
+    font-size: var(--text-3xl);
+  }
+
+  :global(.motion) .facts dd {
+    font-size: var(--text-sm);
+  }
+}
+
+@media (max-width: 760px) and (max-height: 600px) {
+  :global(.motion) .scene {
+    scale: 0.8;
   }
 }
 
@@ -90,5 +129,31 @@
   73%,
   100% {
     transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes head-out {
+  0%,
+  35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  55%,
+  100% {
+    opacity: 0;
+    transform: translateY(-48px);
+  }
+}
+
+@keyframes scene-in {
+  0%,
+  40% {
+    opacity: 0;
+    transform: translateY(72px);
+  }
+  62%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

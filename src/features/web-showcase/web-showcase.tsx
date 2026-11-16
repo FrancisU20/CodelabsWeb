@@ -17,7 +17,7 @@ const WebShowcase = ({ locale }: { locale: Locale }) => {
   return (
     <section aria-labelledby="web-showcase-title" data-pin style={pinLength("standard")}>
       <div className={`site-wrap ${styles.stage}`} data-stage>
-        <div className={styles.head}>
+        <div className={`${styles.head} scene-motion`}>
           <SectionHeading eyebrow={dict.eyebrow} title={dict.title} titleId="web-showcase-title" />
           <FactList
             className={styles.facts}
@@ -28,7 +28,7 @@ const WebShowcase = ({ locale }: { locale: Locale }) => {
             ]}
           />
         </div>
-        <div className={styles.scene} aria-hidden="true">
+        <div className={`${styles.scene} scene-motion`} aria-hidden="true">
           <FarmaenlaceDashboard logoSrc={IMAGES.brands.farmaenlace} className={`${styles.browser} scene-motion`} />
           <PhoneFrame className={`${styles.scenePhone} scene-motion`}>
             <FarmaenlaceApp logoSrc={IMAGES.brands.farmaenlace} />

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Script from "next/script";
 import { CLOUDFLARE_BEACON_CONFIG, CLOUDFLARE_BEACON_URL } from "@/config/analytics";
 import type { Locale } from "@/i18n/locale";
 import { FONT_VARIABLES } from "@/styles/fonts";
@@ -17,7 +18,7 @@ const RootDocument = ({ locale, children }: RootDocumentProps) => (
       <script dangerouslySetInnerHTML={{ __html: MOTION_BOOTSTRAP_SCRIPT }} />
       {children}
       <OrganizationJsonLd locale={locale} />
-      <script defer src={CLOUDFLARE_BEACON_URL} data-cf-beacon={CLOUDFLARE_BEACON_CONFIG} />
+      <Script src={CLOUDFLARE_BEACON_URL} data-cf-beacon={CLOUDFLARE_BEACON_CONFIG} strategy="lazyOnload" />
     </body>
   </html>
 );

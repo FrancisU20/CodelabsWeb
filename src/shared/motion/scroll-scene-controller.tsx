@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 import { startScrollScenes } from "./scroll-scenes";
 
 const ScrollSceneController = () => {
   const pathname = usePathname();
 
-  useEffect(() => startScrollScenes(), [pathname]);
+  useLayoutEffect(() => startScrollScenes(), [pathname]);
 
   return null;
 };
