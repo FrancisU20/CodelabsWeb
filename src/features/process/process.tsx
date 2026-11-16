@@ -1,31 +1,27 @@
 import { getMessages } from "@/i18n/messages/get-messages";
+import { fillTerms } from "@/i18n/fill-terms";
 import type { Locale } from "@/i18n/locale";
-import { cssVars } from "@/shared/lib/css-vars";
-import Section from "@/shared/ui/section/section";
+import ChapterScene from "@/shared/ui/chapter-scene/chapter-scene";
+import ProcessVisual from "./process-visual";
 import styles from "./process.module.css";
 
-const stepNumber = (index: number): string => String(index + 1);
-
 const Process = ({ locale }: { locale: Locale }) => {
-  const dict = getMessages(locale).howWeWork;
+  const copy = getMessages(locale).howWeWork;
+  const chapters = copy.phases.items.map((phase) => ({
+    id: phase.id,
+    label: phase.label,
+    title: phase.title,
+    body: fillTerms(phase.body),
+    extra: (
+      <p className={styles.receives}>
+        <b>{copy.phases.receivesLabel}</b>
+        {fillTerms(phase.receives)}
+      </p>
+    ),
+    visual: <ProcessVisual phase={phase.id} visuals={copy.visuals} />,
+  }));
 
-  return (
-    <Section id="proceso" tone="mist" space="section" aria-label={dict.title.lines.join(" ")}>
-      <div className="site-wrap">
-        <ol className={styles.steps}>
-          {dict.steps.map((step, index) => (
-            <li key={step.title} className={styles.step} style={cssVars({ "--i": index })} data-reveal>
-              <span className={styles.number} data-number={stepNumber(index)} aria-hidden="true" />
-              <div>
-                <h2 className={styles.title}>{step.title}</h2>
-                <p className={styles.body}>{step.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </Section>
-  );
+  return <ChapterScene id="proceso" titleId="process-title" title={copy.phases.title} chapters={chapters} />;
 };
 
 export default Process;

@@ -1,0 +1,140 @@
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-block: var(--spacing-section);
+  box-sizing: border-box;
+}
+
+.heading {
+  max-width: 14ch;
+}
+
+.chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
+
+.chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.number {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--night-accent);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-statement);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  color: var(--on-dark);
+  text-wrap: balance;
+}
+
+.summary {
+  margin: 0;
+  max-width: 40ch;
+  font-size: var(--text-lede);
+  color: var(--night-text);
+}
+
+.visual {
+  height: min(48svh, 420px);
+  display: grid;
+  place-items: center;
+  min-width: 0;
+}
+
+.progress {
+  display: none;
+}
+
+:global(.motion) .stage {
+  height: 100svh;
+  padding-block: calc(var(--spacing-stage) + 24px) 40px;
+  gap: 28px;
+}
+
+:global(.motion) .chapters {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+}
+
+:global(.motion) .chapter {
+  grid-area: 1 / 1;
+  align-self: center;
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+}
+
+:global(.motion) .chapter .visual {
+  transition: transform 0.9s var(--ease-out);
+}
+
+:global(.motion) .chapter:not([data-current]) {
+  opacity: 0;
+  transform: translateY(32px);
+  pointer-events: none;
+}
+
+:global(.motion) .chapter:not([data-current]) .visual {
+  transform: scale(0.94);
+}
+
+:global(.motion) .progress {
+  display: block;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--night-soft);
+  overflow: hidden;
+}
+
+:global(.motion) .progress i {
+  display: block;
+  height: 100%;
+  background: var(--on-dark);
+  transform-origin: 0 50%;
+  transform: scaleX(var(--p, 0));
+}
+
+@media (max-width: 760px) {
+  .chapter {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .visual {
+    height: min(36svh, 300px);
+  }
+
+  :global(.motion) .stage {
+    gap: 18px;
+  }
+
+  :global(.motion) .chapter {
+    align-content: start;
+    gap: 22px;
+  }
+}

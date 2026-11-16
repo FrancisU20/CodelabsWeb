@@ -29,9 +29,9 @@ export const services: Messages["services"] = {
         title: "Fixed project",
         forWho: "For when you know what you need: a website, an app or an integration.",
         details: [
-          { label: "How it works", text: "We send you a proposal with a fixed scope, timeline and price. You approve the design, we build in stages and you test every milestone." },
+          { label: "How it works", text: "We send you a proposal with scope, timeline and price. You approve the design, we build in stages and you test every milestone." },
           { label: "What you get", text: "The working system, the code and accounts in your company's name, and training for your team." },
-          { label: "How you pay", text: "{start}% at kickoff, {midway}% halfway through and {delivery}% on delivery." },
+          { label: "How you pay", text: "A single invoice: a {start}% deposit at kickoff and the balance on delivery." },
           { label: "Guarantee", text: "{days} days of free bug fixes after delivery." },
         ],
         priceNote: "depending on the service and scope",
@@ -42,7 +42,7 @@ export const services: Messages["services"] = {
         details: [
           { label: "How it works", text: "A CodeLabs team works only on your product. Every {weeks} weeks you set the priorities and receive a delivery to test." },
           { label: "Who is on it", text: "Project management included, plus the profiles your product needs: design, web and mobile development, cloud and testing." },
-          { label: "How you pay", text: "Monthly, based on team size." },
+          { label: "How you pay", text: "Monthly invoice at month end, for external consulting services, based on team size." },
           { label: "Commitment", text: "{months} months minimum." },
         ],
         priceNote: "per month per full-time engineer",
@@ -53,7 +53,7 @@ export const services: Messages["services"] = {
         details: [
           { label: "How it works", text: "Our engineers join your team, your tools and your schedule. Your team leads the daily work." },
           { label: "Profiles", text: "Web and backend, mobile apps, AWS cloud and DevOps, and testing (QA)." },
-          { label: "How you pay", text: "Monthly, per engineer." },
+          { label: "How you pay", text: "Monthly invoice at month end, for each engineer's external consulting services." },
           { label: "Commitment", text: "{months} months minimum." },
         ],
         priceNote: "per month for a mid-level engineer · {senior} senior",

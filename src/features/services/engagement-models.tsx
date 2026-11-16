@@ -27,8 +27,6 @@ const EngagementModels = ({ locale }: { locale: Locale }) => {
   const languageTag = LANGUAGE_TAGS[locale];
   const terms = {
     start: ENGAGEMENT_TERMS.paymentStart,
-    midway: ENGAGEMENT_TERMS.paymentMidway,
-    delivery: ENGAGEMENT_TERMS.paymentDelivery,
     days: ENGAGEMENT_TERMS.warrantyDays,
     months: ENGAGEMENT_TERMS.minimumMonths,
     weeks: ENGAGEMENT_TERMS.deliveryEveryWeeks,
@@ -36,7 +34,7 @@ const EngagementModels = ({ locale }: { locale: Locale }) => {
   };
 
   return (
-    <Section space="section" aria-labelledby="engagement-title">
+    <Section id="engagement" space="section" aria-labelledby="engagement-title">
       <div className="site-wrap">
         <SectionHeading title={copy.title} titleId="engagement-title" className={styles.head} />
         <ul className={styles.models} data-reveal>

@@ -15,7 +15,7 @@ export const seo: Messages["seo"] = {
   },
   howWeWork: {
     title: "How we work | CodeLabs",
-    description: "We talk, show you the design, build in parts and stay with you after launch.",
+    description: "Written proposal, contract and confidentiality, versions you test, code review, warranty and everything in your company's name.",
   },
   about: {
     title: "Software development company in Ecuador | CodeLabs",
